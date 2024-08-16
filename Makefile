@@ -38,7 +38,7 @@ $(NAME) : $(OBJ)
 	@echo "\033[0;34m 	██║     ██║   ██║██╔══██╗     ╚═══██╗██║  ██║		"
 	@echo "\033[0;34m 	╚██████╗╚██████╔╝██████╔╝    ██████╔╝██████╔╝		"
 	@echo "\033[0;34m 	╚═════╝ ╚═════╝ ╚═════╝     ╚═════╝ ╚═════╝ 		"
-	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -g -fsanitize=address  -o $(NAME)
+	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -o $(NAME)
 	@echo "$(BLUE)Cub3D executable created!$(NC)"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
@@ -52,13 +52,13 @@ $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(DEBUG_DIR)
 	@mkdir -p $(DEBUG_DIR)/parsing
 	@mkdir -p $(DEBUG_DIR)/utils
-	@$(CC) -o $@ -c $<
+	@$(CC) -g -fsanitize=address -o $@ -c $<
 
 clean :
 	@make clean -C libft
 	@$(RM) obj/**/*.o
 	@$(RM) obj_debug/**/*.o
-	@$(RM) obj/minishell.o
+	@$(RM) obj/main.o
 	@$(RM) -r obj
 
 fclean : clean

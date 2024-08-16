@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 17:43:05 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/16 18:54:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
 #define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
-#define ERR_ALLOC "Error: Malloc map, allocation failed"
+#define ERR_ALLOC "Error: Malloc, allocation failed"
 #define ERR_EMPTY "Error: Empty file"
 
 typedef struct s_file
@@ -29,6 +29,7 @@ typedef struct s_file
     char *wall_ea;
     char *color_floor;
     char *color_ceiling;
+    int line;
 }               t_file;
 
 typedef struct s_data
@@ -39,7 +40,7 @@ typedef struct s_data
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 
-void check_file_extension(char *file);
+void check_file_extension(char *file, t_data *data);
 
 /*------------------------parsing-------------------------*/
 
@@ -52,7 +53,8 @@ void open_file(t_data *data, char *file);
 /*=========================Utils==========================*/
 /*-----------------------Utils_exit-----------------------*/
 
-void ft_error(char *str);
+void ft_error(char *str, t_data *data);
+void clear_data(t_data *data);
 
 /*--------------------------Init--------------------------*/
 
