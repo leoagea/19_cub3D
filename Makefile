@@ -19,6 +19,7 @@ SRCS_DIR = src/
 OBJS_DIR = obj/
 
 SRCS =	src/main.c \
+		src/parsing/check_arg.c \
 		src/utils/utils_exit.c 
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
@@ -42,28 +43,14 @@ $(NAME) : $(OBJ)
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
-	@mkdir -p $(OBJS_DIR)/builtins
-	@mkdir -p $(OBJS_DIR)/builtins/export
-	@mkdir -p $(OBJS_DIR)/builtins/cd
-	@mkdir -p $(OBJS_DIR)/signals
-	@mkdir -p $(OBJS_DIR)/lexer
-	@mkdir -p $(OBJS_DIR)/exec
-	@mkdir -p $(OBJS_DIR)/parser
-	@mkdir -p $(OBJS_DIR)/expander
+	@mkdir -p $(OBJS_DIR)/parsing
 	@mkdir -p $(OBJS_DIR)/utils
 	$(PROGRESS_BAR)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(DEBUG_DIR)
-	@mkdir -p $(DEBUG_DIR)/builtins
-	@mkdir -p $(DEBUG_DIR)/builtins/export
-	@mkdir -p $(DEBUG_DIR)/builtins/cd
-	@mkdir -p $(DEBUG_DIR)/signals
-	@mkdir -p $(DEBUG_DIR)/lexer
-	@mkdir -p $(DEBUG_DIR)/exec
-	@mkdir -p $(DEBUG_DIR)/parser
-	@mkdir -p $(DEBUG_DIR)/expander
+	@mkdir -p $(DEBUG_DIR)/parsing
 	@mkdir -p $(DEBUG_DIR)/utils
 	@$(CC) -o $@ -c $<
 
