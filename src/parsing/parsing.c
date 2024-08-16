@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 15:37:17 by lagea            ###   ########.fr       */
+/*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
+/*   Updated: 2024/08/16 17:43:20 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-int main(int ac, char **av)
+void    parsing(int ac, char **av, t_data *data)
 {
-    t_data data;
-    
-    parsing(ac, av, &data);
-    return 0;
+    if (ac != 2)
+        ft_error(ERR_ARG);
+    check_file_extension(av[1]);
+    init_struct_file(data);
+    open_file(data, av[1]);
 }

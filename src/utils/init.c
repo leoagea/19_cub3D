@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 15:37:17 by lagea            ###   ########.fr       */
+/*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
+/*   Updated: 2024/08/16 17:42:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-int main(int ac, char **av)
+void init_struct_file(t_data *data)
 {
-    t_data data;
-    
-    parsing(ac, av, &data);
-    return 0;
+    data->file.file = NULL;
+    data->file.wall_no = NULL;
+    data->file.wall_so = NULL;
+    data->file.wall_we = NULL;
+    data->file.wall_ea = NULL;
+    data->file.color_floor = NULL;
+    data->file.color_ceiling = NULL;
 }
