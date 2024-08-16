@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   utils_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 14:45:52 by lagea            ###   ########.fr       */
+/*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
+/*   Updated: 2024/08/16 14:42:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#include "../../inc/cub3d.h"
 
-#include "../libft/libft.h"
-
-#define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
-
-/*==========================SRC===========================*/
-/*-----------------------Utils_exit-----------------------*/
-
-void ft_error(char *str);
-
-#endif
+void ft_error(char *str)
+{
+    printf("%s\n", str);
+    exit(1);
+}

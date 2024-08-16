@@ -18,7 +18,8 @@ RM = rm -rf
 SRCS_DIR = src/
 OBJS_DIR = obj/
 
-SRCS =	src/main.c
+SRCS =	src/main.c \
+		src/utils/utils_exit.c 
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
