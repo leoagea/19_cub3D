@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 18:54:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/16 19:28:08 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ typedef struct s_file
     char *wall_ea;
     char *color_floor;
     char *color_ceiling;
+    int c_ceiling;
+    int c_floor;
+    char **map;
     int line;
 }               t_file;
 
 typedef struct s_data
 {
-    t_file  file;   
+    t_file  *file;   
 }               t_data;
 
 /*========================Parsing=========================*/

@@ -7,6 +7,8 @@ NC=\033[0m
 
 NAME = cub3d
 
+DEBUG = debug
+
 LIBFT = libft/lib/libft.a
 
 CC = cc
@@ -17,6 +19,7 @@ RM = rm -rf
 
 SRCS_DIR = src/
 OBJS_DIR = obj/
+DEBUG_DIR = debug/
 
 SRCS =	src/main.c \
 		src/parsing/check_arg.c src/parsing/parsing.c src/parsing/readfile.c \
@@ -39,6 +42,11 @@ $(NAME) : $(OBJ)
 	@echo "\033[0;34m 	╚██████╗╚██████╔╝██████╔╝    ██████╔╝██████╔╝		"
 	@echo "\033[0;34m 	╚═════╝ ╚═════╝ ╚═════╝     ╚═════╝ ╚═════╝ 		"
 	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -o $(NAME)
+	@echo "$(BLUE)Cub3D executable created!$(NC)"
+
+$(DEBUG) : $(OBJ)
+	@make -C libft
+	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -fsanitize=address -g -o $(DEBUG)
 	@echo "$(BLUE)Cub3D executable created!$(NC)"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
