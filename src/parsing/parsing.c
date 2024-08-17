@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 18:57:26 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/17 22:51:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void    parsing(int ac, char **av, t_data *data)
     open_file(data, av[1]);
     int i;
     i = 0;
-    while (i < data->file.line)
+    while (i < data->file->line)
     {
-        printf("%s", data->file.file[i]);
+        printf("%s", data->file->file[i]);
         i++;
     }
 }
