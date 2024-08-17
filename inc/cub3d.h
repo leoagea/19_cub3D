@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 00:51:50 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 01:26:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #define ERR_ALLOC "Error: Malloc, allocation failed"
 #define ERR_EMPTY "Error: Empty file"
 #define ERR_ID "Error: Wrong identifier in description file"
+#define ERR_VAL "Error: Wrong value in description file"
 
 typedef struct s_file
 {
