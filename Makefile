@@ -19,8 +19,8 @@ SRCS_DIR = src/
 OBJS_DIR = obj/
 
 SRCS =	src/main.c \
-		src/parsing/check_arg.c src/parsing/parsing.c src/parsing/readfile.c \
-		src/utils/utils_exit.c src/utils/init.c
+		src/parsing/check_arg.c src/parsing/data.c src/parsing/parsing.c src/parsing/readfile.c \
+		src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 

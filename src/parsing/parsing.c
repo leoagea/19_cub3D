@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/17 22:51:56 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 00:53:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void    parsing(int ac, char **av, t_data *data)
     i = 0;
     while (i < data->file->line)
     {
-        printf("%s", data->file->file[i]);
+        // printf("%s", data->file->file[i]);
+        if (data->file->count == 6)
+            break;
+        get_data_line(data, data->file->file[i]);
         i++;
     }
 }
