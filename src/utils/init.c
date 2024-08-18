@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 00:52:14 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 22:16:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void init_struct_file(t_data *data)
         ft_error(ERR_ALLOC, data);
     data->file->line = 0;
     data->file->count = 0;
+    data->file->map = NULL;
     data->file->file = NULL;
     data->file->wall_no = NULL;
     data->file->wall_so = NULL;

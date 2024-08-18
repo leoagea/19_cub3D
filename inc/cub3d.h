@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 21:53:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 22:16:15 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@
 #define ERR_VAL "Error: Wrong value in description file"
 #define ERR_COL "Error: Wrong color value in description file"
 
+typedef struct s_color
+{
+    char *r;
+    char *g;
+    char *b;
+    int color;
+}               t_color;
+
 typedef struct s_file
 {
-    // char *r;
-    // char *g;
-    // char *b;
     char **file;
     char *wall_no;
     char *wall_so;
@@ -38,6 +43,8 @@ typedef struct s_file
     int line;
     int count;
     char **map;
+    t_color *c_floor;
+    t_color *c_ceiling;
 }               t_file;
 
 typedef struct s_data
@@ -81,5 +88,6 @@ void init_struct_file(t_data *data);
 int skip_whitespace(char *str, int i);
 int get_len(char *str, int i);
 void check_key(t_data *data, char *key);
+void    error_color(t_data *data, char *r, char *g, char *b);
 
 #endif

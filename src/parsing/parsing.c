@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 21:30:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 22:38:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,18 @@ void    parsing(int ac, char **av, t_data *data)
     get_color(data);
     i = skip_null_line(data, i);
     get_map(data, i);
-    // printf("data->file->wall_no : %s\n", data->file->wall_no);
-    // printf("data->file->wall_so : %s\n", data->file->wall_so);
-    // printf("data->file->wall_we : %s\n", data->file->wall_we);
-    // printf("data->file->wall_ea : %s\n", data->file->wall_ea);
+    printf("data->file->wall_no : %s\n", data->file->wall_no);
+    printf("data->file->wall_so : %s\n", data->file->wall_so);
+    printf("data->file->wall_we : %s\n", data->file->wall_we);
+    printf("data->file->wall_ea : %s\n", data->file->wall_ea);
     printf("data->file->color_floor : %s\n", data->file->color_floor);
     printf("data->file->color_ceiling : %s\n", data->file->color_ceiling);
-    // int j = 0;
-    // while(data->file->map[j])
-    // {
-    //     printf("%s\n", data->file->map[j]);
-    //     j++;
-    // }
+    printf("int color floor : %d\n", data->file->c_floor->color);
+    printf("int color ceiling : %d\n", data->file->c_ceiling->color);
+    int j = 0;
+    while(data->file->map[j])
+    {
+        printf("%s\n", data->file->map[j]);
+        j++;
+    }
 }

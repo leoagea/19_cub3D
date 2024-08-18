@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:11:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 00:51:07 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 22:11:19 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ void check_key(t_data *data, char *key)
         free(key);
         ft_error(ERR_ID, data);
     }
+}
+
+void    error_color(t_data *data, char *r, char *g, char *b)
+{
+    if(r)
+        free(r);
+    if(g)
+        free(g);
+    if(b)
+        free(b);
+    ft_error(ERR_COL, data);
 }
