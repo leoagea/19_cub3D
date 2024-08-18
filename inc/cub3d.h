@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 17:32:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/18 18:09:43 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # ifdef __APPLE__
 #  include "../mlx/mlx.h"
+#  define XK_ESCAPE 53
 # endif
 
 # define WIDTH 1920
@@ -73,11 +74,17 @@ typedef struct s_data
 {
     void	*mlx_connection;
 	void	*mlx_window;
-    t_img	*img;
+    t_img	*img;;
     t_file  *file;   
 }               t_data;
+
 /*========================Window==========================*/
-t_data  *create_window(void);
+void	    create_window(t_data *data);
+void	    error_window(t_data *data);
+
+/*========================KeyHook=========================*/
+void	    handle_input(int keysym, t_data *data);
+int	        handle_key(int keysym, t_data *data);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 
@@ -96,8 +103,8 @@ void        open_file(t_data *data, char *file);
 
 void        ft_error(char *str, t_data *data);
 void        clear_data(t_data *data);
-void        exit_error(t_data *data);
-void        exit_malloc(t_data *data);
+void	    exit_error(void);
+void        exit_malloc(void);
 
 /*--------------------------Init--------------------------*/
 

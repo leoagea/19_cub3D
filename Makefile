@@ -39,6 +39,7 @@ SRCS =	src/main.c \
 		src/parsing/check_arg.c src/parsing/parsing.c src/parsing/readfile.c \
 		src/utils/utils_exit.c src/utils/init.c \
 		src/window/create_window.c \
+		src/key_hook/key_hook.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -70,6 +71,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/parsing
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
+	@mkdir -p $(OBJS_DIR)/key_hook
 	$(PROGRESS_BAR)
 	@$(CC) -O3 $(CFLAGS) -o $@ -c $<
 
@@ -77,6 +79,8 @@ $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(DEBUG_DIR)
 	@mkdir -p $(DEBUG_DIR)/parsing
 	@mkdir -p $(DEBUG_DIR)/utils
+	@mkdir -p $(DEBUG_DIR)/window
+	@mkdir -p $(DEBUG_DIR)/key_hook
 	@$(CC) -g -fsanitize=address -o $@ -c $<
 
 clean :

@@ -1,12 +1,7 @@
 #include "../../inc/cub3d.h"
 
-t_data	*create_window(void)
+void	create_window(t_data *data)
 {
-	t_data	*data;
-
-	data = malloc(sizeof(t_data));
-	if (!data)
-		exit(1);
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
 	{
@@ -15,14 +10,20 @@ t_data	*create_window(void)
 	}
 	data->mlx_connection = mlx_init();
 	if (!data->mlx_connection)
-	{
-		free(data->img);
-		free(data);
 		exit_malloc();
-	}
 	data->mlx_window = mlx_new_window(data->mlx_connection, WIDTH, HEIGHT,
-			"Fdf");
+			"Cub3D");
 	if (!data->mlx_window)
 		error_window(data);
-	return (data);
+}
+
+void	error_window(t_data *data)
+{
+	free(data->mlx_connection);
+	free(data->img);
+	free(data);
+	write(2, "Error while creating new window\n", 33);
+	mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
+	mlx_destroy_window(data->mlx_connection, data->mlx_window);
+	exit(1);
 }
