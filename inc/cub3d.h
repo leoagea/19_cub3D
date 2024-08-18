@@ -6,7 +6,7 @@
 /*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 01:26:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/18 21:53:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@
 #define ERR_EMPTY "Error: Empty file"
 #define ERR_ID "Error: Wrong identifier in description file"
 #define ERR_VAL "Error: Wrong value in description file"
+#define ERR_COL "Error: Wrong color value in description file"
 
 typedef struct s_file
 {
+    // char *r;
+    // char *g;
+    // char *b;
     char **file;
     char *wall_no;
     char *wall_so;
@@ -33,6 +37,7 @@ typedef struct s_file
     char *color_ceiling;
     int line;
     int count;
+    char **map;
 }               t_file;
 
 typedef struct s_data
@@ -44,6 +49,10 @@ typedef struct s_data
 /*-----------------------check_arg------------------------*/
 
 void check_file_extension(char *file, t_data *data);
+
+/*-------------------------color--------------------------*/
+
+void get_color(t_data *data);
 
 /*------------------------parsing-------------------------*/
 
