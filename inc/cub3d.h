@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:25:33 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 19:11:40 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void        exit_malloc(void);
 
 void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
+t_color *init_color_struct(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 

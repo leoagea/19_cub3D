@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:17:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 16:22:58 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 19:15:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void clear_file(t_data *data)
 
 void clear_color_struct(t_color *color)
 {
+    if (!color)
+        return ;
     if (color->r)
         free(color->r);
     if (color->g)
@@ -56,6 +58,7 @@ void clear_color_struct(t_color *color)
     if (color->b)
         free(color->b);
     free(color);
+    color = NULL;
 }
 
 void clear_struct_file(t_data *data)

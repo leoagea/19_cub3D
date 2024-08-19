@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:20:33 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 19:13:26 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void init_struct_file(t_data *data)
     data->file->wall_so = NULL;
     data->file->wall_we = NULL;
     data->file->wall_ea = NULL;
+    data->file->c_floor = NULL;
+    data->file->c_ceiling = NULL;
     data->file->color_floor = NULL;
     data->file->color_ceiling = NULL;
 }
@@ -40,4 +42,18 @@ void init_player_struct(t_data *data)
     data->player->dir_y = 0;
     data->player->plane_x = 0;
     data->player->plane_y = 0;
+}
+
+t_color *init_color_struct(t_data *data)
+{
+    t_color *color;
+
+    color = malloc(sizeof(t_color));
+    if (!color)
+        ft_error(ERR_ALLOC, data);
+    color->r = NULL;
+    color->g = NULL;
+    color->b = NULL;
+    color->color = 0;
+    return color;
 }
