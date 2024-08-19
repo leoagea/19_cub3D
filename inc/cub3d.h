@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:25:33 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:08:59 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 #  define XK_ESCAPE 53
 # endif
 
+# define K 1 // Constante de proportionnalite pour modifier la distance de la camera
+# define FOV 75
 # define WIDTH 1280
 # define HEIGHT 720
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
@@ -80,12 +82,19 @@ typedef struct s_img
    
 typedef struct s_player
 {
+    int    map_x;
+    int    map_y;
     double pos_x;
     double pos_y;
     double dir_x;
     double dir_y;
     double plane_x;
     double plane_y;
+    double camera_x; // Position horizontale sur le plan de la camera
+    double ray_dir_x;
+    double ray_dir_y;
+    double delta_dist_x;
+    double delta_dist_y;
 }               t_player;
     
 typedef struct s_data
@@ -104,6 +113,11 @@ int	        cross_event(t_data *data);
 /*========================KeyHook=========================*/
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
+
+/*========================Raycasting======================*/
+void	raycasting(t_player *player);
+void	ray_direction(int i, t_player *player);
+void	delta_distance(t_player *player);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

@@ -39,7 +39,8 @@ SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c \
 		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c \
-		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
+		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
+		src/raycasting/raycasting.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -79,6 +80,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
 	@mkdir -p $(OBJS_DIR)/key_hook
+	@mkdir -p $(OBJS_DIR)/raycasting
 	$(PROGRESS_BAR)
 	@$(CC) -O3 $(CFLAGS) -o $@ -c $<
 

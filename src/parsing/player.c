@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:14:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 19:39:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,46 @@ static void assign_dir(t_player *player, char **map, int i, int j)
     if (map[i][j] == 'N')
     {
         player->dir_x = 0;
-        player->dir_y = 1;
+        player->dir_y = 1 * (float)K;
     }
     else if (map[i][j] == 'S')
     {
         player->dir_x = 0;
-        player->dir_y = -1;
+        player->dir_y = -1 * (float)K;
     }
     else if (map[i][j] == 'E')
     {
-        player->dir_x = 1;
+        player->dir_x = 1 * (float)K;
         player->dir_y = 0;
     }
     else if (map[i][j] == 'W')
     {
-        player->dir_x = -1;
+        player->dir_x = -1 * (float)K;
         player->dir_y = 0;
+    }
+}
+
+static void assign_plane(t_player *player, char **map, int i, int j)
+{
+    if (map[i][j] == 'N')
+    {
+        player->plane_x = ((float)FOV / 100) * (float)K;
+        player->plane_y = 0;
+    }
+    else if (map[i][j] == 'S')
+    {
+        player->plane_x = ((float)FOV / 100) * (float)K;
+        player->plane_y = 0;
+    }
+    else if (map[i][j] == 'E')
+    {
+        player->plane_x = 0;
+        player->plane_y = ((float)FOV / 100) * (float)K;
+    }
+    else if (map[i][j] == 'W')
+    {
+        player->plane_x = 0;
+        player->plane_y = ((float)FOV / 100) * (float)K;
     }
 }
 
@@ -65,6 +89,7 @@ void get_player_pos(t_data *data)
     if (count != 1)
         ft_error(ERR_PLAY, data);
     assign_dir(data->player, map, (int) data->player->pos_y, (int) data->player->pos_x);
+    assign_plane(data->player, map, (int) data->player->pos_y, (int) data->player->pos_x);
     // printf("pos x : %f\n", data->player->pos_x);
     // printf("pos y : %f\n", data->player->pos_y);
     // printf("dir x : %f\n", data->player->dir_x);
