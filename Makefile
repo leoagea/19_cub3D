@@ -27,8 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra -fsanitize=address
-
+CFLAGS = -Werror -Wall -Wextra
 RM = rm -rf
 
 SRCS_DIR = src/
@@ -84,14 +83,12 @@ $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@$(CC) -g -fsanitize=address -o $@ -c $<
 
 clean :
-	@make clean -C libft
 	@$(RM) obj/**/*.o
 	@$(RM) obj_debug/**/*.o
 	@$(RM) obj/main.o
 	@$(RM) -r obj
 
 fclean : clean
-	@make fclean -C libft
 	@$(RM) lib/
 	@$(RM) $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 18:09:43 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 15:09:46 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define XK_ESCAPE 53
 # endif
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Error: Malloc, allocation failed"
@@ -81,7 +81,7 @@ typedef struct s_data
 /*========================Window==========================*/
 void	    create_window(t_data *data);
 void	    error_window(t_data *data);
-
+int	        cross_event(t_data *data);
 /*========================KeyHook=========================*/
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
