@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/16 19:28:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 17:18:11 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 void init_struct_file(t_data *data)
 {
     data->file = malloc(sizeof(t_file));
-    data->file->c_ceiling = 0;
-    data->file->c_floor = 0;
+    if (!data->file)
+        ft_error(ERR_ALLOC, data);
     data->file->line = 0;
+    data->file->count = 0;
     data->file->file = NULL;
     data->file->wall_no = NULL;
     data->file->wall_so = NULL;

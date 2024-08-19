@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 18:00:19 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:18:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void clear_data(t_data *data)
         }
         free(data->file->file);   
     }
+    if (data->file)
+        free(data->file);
 }
 
 void ft_error(char *str, t_data *data)

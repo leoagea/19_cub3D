@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 15:09:46 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:17:19 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,13 @@
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Error: Malloc, allocation failed"
-# define ERR_EMPTY "Error: Empty file"
-
-typedef enum    e_enumdata
-{
-    NORTH = 0,
-    SOUTH,
-    WEST,
-    EST,
-    
-}   t_enumdata;   
+# define ERR_EMPTY "Error: Empty file" 
+#define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
+#define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
+#define ERR_ALLOC "Error: Malloc, allocation failed"
+#define ERR_EMPTY "Error: Empty file"
+#define ERR_ID "Error: Wrong identifier in description file"
+#define ERR_VAL "Error: Wrong value in description file"
 
 typedef struct s_file
 {
@@ -59,6 +56,7 @@ typedef struct s_file
     int c_floor;
     char **map;
     int line;
+    int count;
 }               t_file;
 
 typedef struct s_img
@@ -92,7 +90,11 @@ void        check_file_extension(char *file, t_data *data);
 
 /*------------------------parsing-------------------------*/
 
-void        parsing(int ac, char **av, t_data *data);
+void get_data_line(t_data *data, char *line);
+
+/*------------------------parsing-------------------------*/
+
+void    parsing(int ac, char **av, t_data *data);
 
 /*-----------------------readfile-------------------------*/
 
@@ -110,5 +112,11 @@ void        exit_malloc(void);
 
 void        init_struct_file(t_data *data);
 
+
+/*------------------------Parsing-------------------------*/
+
+int skip_whitespace(char *str, int i);
+int get_len(char *str, int i);
+void check_key(t_data *data, char *key);
 
 #endif

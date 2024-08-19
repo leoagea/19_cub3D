@@ -35,10 +35,10 @@ OBJS_DIR = obj/
 DEBUG_DIR = debug/
 
 SRCS =	src/main.c \
-		src/parsing/check_arg.c src/parsing/parsing.c src/parsing/readfile.c \
-		src/utils/utils_exit.c src/utils/init.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c \
+		src/parsing/check_arg.c src/parsing/data.c src/parsing/parsing.c src/parsing/readfile.c \
+		src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
