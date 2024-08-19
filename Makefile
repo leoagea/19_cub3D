@@ -13,7 +13,7 @@ LIBFT = libft/lib/libft.a
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra #-fsanitize=address -g
+CFLAGS = -Werror -Wall -Wextra -g3 #-fsanitize=address 
 
 RM = rm -rf
 
@@ -22,7 +22,7 @@ OBJS_DIR = obj/
 DEBUG_DIR = obj_debug/
 
 SRCS =	src/main.c \
-		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/readfile.c \
+		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c \
 		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
@@ -50,8 +50,8 @@ $(DEBUG) : $(OBJD)
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)
-	@mkdir -p $(OBJS_DIR)/parsing
-	@mkdir -p $(OBJS_DIR)/utils
+	@mkdir -p $(OBJS_DIR)parsing
+	@mkdir -p $(OBJS_DIR)utils
 	$(PROGRESS_BAR)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 

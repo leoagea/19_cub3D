@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:11:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 22:11:19 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 16:20:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,15 @@ void    error_color(t_data *data, char *r, char *g, char *b)
     if(b)
         free(b);
     ft_error(ERR_COL, data);
+}
+
+int get_len_array(char **arr)
+{
+    int i = 0;
+
+    if (!arr)
+        return 0;
+    while (arr[i])
+        i++;
+    return i;
 }

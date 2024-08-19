@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 14:18:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 16:23:23 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void clear_data(t_data *data)
 {
     clear_struct_file(data);
+    clear_player_struct(data);
 }
 
 void ft_error(char *str, t_data *data)

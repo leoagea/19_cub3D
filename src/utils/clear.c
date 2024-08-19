@@ -6,22 +6,11 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:17:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 15:14:07 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 16:22:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-int get_len_array(char **arr)
-{
-    int i = 0;
-
-    if (!arr)
-        return 0;
-    while (arr[i])
-        i++;
-    return i;
-}
 
 void clear_arr(char **arr)
 {
@@ -73,6 +62,8 @@ void clear_struct_file(t_data *data)
 {
     t_file *file;
 
+    if (!data->file)
+        return ;
     file = data->file;
     if (file->wall_no)
         free(file->wall_no);
@@ -91,4 +82,11 @@ void clear_struct_file(t_data *data)
     clear_file(data);
     clear_arr(data->file->map);
     free(data->file);
+}
+
+void clear_player_struct(t_data *data)
+{
+    if (!data->player)
+        return ;
+    free(data->player);
 }

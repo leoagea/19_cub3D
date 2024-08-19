@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 15:20:04 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 17:03:55 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define ERR_ID "Error: Wrong identifier in description file"
 #define ERR_VAL "Error: Wrong value in description file"
 #define ERR_COL "Error: Wrong color value in description file"
+#define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
 
 typedef struct s_color
 {
@@ -59,7 +60,8 @@ typedef struct s_player
     
 typedef struct s_data
 {
-    t_file  *file;   
+    t_file  *file;
+    t_player *player;   
 }               t_data;
 
 /*========================Parsing=========================*/
@@ -79,6 +81,10 @@ void get_data_line(t_data *data, char *line);
 
 void    parsing(int ac, char **av, t_data *data);
 
+/*------------------------player--------------------------*/
+
+void get_player_pos(t_data *data);
+
 /*-----------------------readfile-------------------------*/
 
 void open_file(t_data *data, char *file);
@@ -89,6 +95,7 @@ void open_file(t_data *data, char *file);
 void clear_file(t_data *data);
 void clear_color_struct(t_color *color);
 void clear_struct_file(t_data *data);
+void clear_player_struct(t_data *data);
 
 /*-----------------------Utils_exit-----------------------*/
 
@@ -98,6 +105,7 @@ void clear_data(t_data *data);
 /*--------------------------Init--------------------------*/
 
 void init_struct_file(t_data *data);
+void init_player_struct(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 
@@ -105,5 +113,6 @@ int skip_whitespace(char *str, int i);
 int get_len(char *str, int i);
 void check_key(t_data *data, char *key);
 void    error_color(t_data *data, char *r, char *g, char *b);
+int get_len_array(char **arr);
 
 #endif

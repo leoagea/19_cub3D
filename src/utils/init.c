@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 22:16:58 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 16:19:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,17 @@ void init_struct_file(t_data *data)
     data->file->wall_ea = NULL;
     data->file->color_floor = NULL;
     data->file->color_ceiling = NULL;
+}
+
+void init_player_struct(t_data *data)
+{
+    data->player = malloc(sizeof(t_player));
+    if (!data->player)
+        ft_error(ERR_ALLOC, data);
+    data->player->pos_x = 0;
+    data->player->pos_y = 0;
+    data->player->dir_x = 0;
+    data->player->dir_y = 0;
+    data->player->plane_x = 0;
+    data->player->plane_y = 0;
 }
