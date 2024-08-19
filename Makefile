@@ -48,7 +48,7 @@ OBJD = $(SRCS:$(SRCS_DIR)%.c=$(DEBUG_DIR)%.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@make -C $(MLX_DIR)
+	#@make -C $(MLX_DIR)
 	@make -C libft
 	@printf "                                              							   \r"
 	@echo "\033[0;34m 														"
