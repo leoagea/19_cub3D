@@ -27,7 +27,8 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -g3 #-fsanitize=address 
+
 RM = rm -rf
 
 SRCS_DIR = src/
@@ -37,8 +38,8 @@ DEBUG_DIR = debug/
 SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c \
-		src/parsing/check_arg.c src/parsing/data.c src/parsing/parsing.c src/parsing/readfile.c \
-		src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
+		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c \
+		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -60,9 +61,16 @@ $(NAME) : $(OBJ)
 	@$(CC) -O3 $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -g $(MLX_LIB) $(MLX) -o $(NAME)
 	@echo "$(BLUE)Cub3D executable created!$(NC)"
 
-$(DEBUG) : $(OBJ)
+$(DEBUG) : $(OBJD)
 	@make -C libft
-	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -fsanitize=address -g -o $(DEBUG)
+	@$(CC) $(OBJD) $(CFLAGS) $(LIBFT) $(LINK) -fsanitize=address -g -o $(DEBUG)
+	@echo "\033[0;34m	██████╗ ██╗   ██╗██████╗     ██████╗ ██████╗ 		"
+	@echo "\033[0;34m 	██╔════╝██║   ██║██╔══██╗    ╚════██╗██╔══██╗		"
+	@echo "\033[0;34m	██║     ██║   ██║██████╔╝     █████╔╝██║  ██║		"
+	@echo "\033[0;34m 	██║     ██║   ██║██╔══██╗     ╚═══██╗██║  ██║		"
+	@echo "\033[0;34m 	╚██████╗╚██████╔╝██████╔╝    ██████╔╝██████╔╝		"
+	@echo "\033[0;34m 	╚═════╝ ╚═════╝ ╚═════╝     ╚═════╝ ╚═════╝ 		"
+	@$(CC) $(OBJD) $(CFLAGS) $(LIBFT) -o $(NAME)
 	@echo "$(BLUE)Cub3D executable created!$(NC)"
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
@@ -86,7 +94,9 @@ clean :
 	@$(RM) obj/**/*.o
 	@$(RM) obj_debug/**/*.o
 	@$(RM) obj/main.o
+	@$(RM) obj_debug/main.o
 	@$(RM) -r obj
+	@$(RM) -r obj_debug
 
 fclean : clean
 	@$(RM) lib/

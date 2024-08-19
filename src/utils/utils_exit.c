@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:18:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:20:35 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,8 @@
 
 void clear_data(t_data *data)
 {
-    int i;
-
-    i = 0;
-    if (data->file->file)
-    {
-        while (data->file->file[i])
-        {
-            free(data->file->file[i]);
-            i++;
-        }
-        free(data->file->file);   
-    }
-    if (data->file)
-        free(data->file);
+    clear_struct_file(data);
+    clear_player_struct(data);
 }
 
 void ft_error(char *str, t_data *data)
