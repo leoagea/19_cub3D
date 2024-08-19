@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 22:16:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 15:20:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ typedef struct s_file
     t_color *c_ceiling;
 }               t_file;
 
+typedef struct s_player
+{
+    double pos_x;
+    double pos_y;
+    double dir_x;
+    double dir_y;
+    double plane_x;
+    double plane_y;
+}               t_player;
+    
 typedef struct s_data
 {
     t_file  *file;   
@@ -74,6 +84,12 @@ void    parsing(int ac, char **av, t_data *data);
 void open_file(t_data *data, char *file);
 
 /*=========================Utils==========================*/
+/*-------------------------Clear--------------------------*/
+
+void clear_file(t_data *data);
+void clear_color_struct(t_color *color);
+void clear_struct_file(t_data *data);
+
 /*-----------------------Utils_exit-----------------------*/
 
 void ft_error(char *str, t_data *data);

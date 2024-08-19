@@ -13,7 +13,7 @@ LIBFT = libft/lib/libft.a
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra #-fsanitize=address -g
 
 RM = rm -rf
 
@@ -23,7 +23,7 @@ DEBUG_DIR = obj_debug/
 
 SRCS =	src/main.c \
 		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/readfile.c \
-		src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
+		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 

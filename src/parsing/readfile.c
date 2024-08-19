@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readfile.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:19:12 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/17 22:52:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/19 15:06:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,7 @@ static	void get_file_data(t_data *data, int fd)
         i++;
 		free(line);
     }
-	data->file->file[i] = NULL;
 }
-
-void set_to_null(t_data *data, int n)
-{
-	int i;
-
-	i = 0;
-	while (i < n)
-	{
-		data->file->file[i] = NULL;
-		i++;
-	}
-}	
 
 void	open_file(t_data *data, char *file)
 {
@@ -85,8 +72,8 @@ void	open_file(t_data *data, char *file)
 	close(fd);
     if (data->file->line == 0)
 		ft_error(ERR_EMPTY, data);
-	data->file->file = malloc(sizeof(char *) * data->file->line + 1);
-	set_to_null(data, data->file->line);
+	data->file->file = malloc(sizeof(char *) * (data->file->line + 1));
+	ft_memset(data->file->file, 0, sizeof(char *) * (data->file->line + 1));
 	if (!data->file->file)
 		ft_error(ERR_ALLOC, data);
 	fd = open(file, O_RDONLY);
