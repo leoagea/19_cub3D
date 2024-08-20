@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 19:33:41 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/20 19:57:21 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_player
     int    wall_height;
     int    draw_start;
     int    draw_end;
+    int    column; 
 }               t_player;
     
 typedef struct s_data
@@ -132,6 +133,8 @@ void	delta_distance(t_player *player);
 void	init_dda(t_player *player);
 void	dda_algorithm(t_player *player, t_data *data);
 void	wall_height(t_player *player);
+void	draw(t_data *data, t_player *player);
+void	draw_point(t_data *data, int x, int y, int color);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

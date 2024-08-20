@@ -5,6 +5,11 @@ void	raycasting(t_player *player, t_data *data)
 	int	i;
 
 	i = 0;
+	player->column = 0;
+	data->img->img_ptr = mlx_new_image((data)->mlx_connection, WIDTH, HEIGHT);
+	data->img->img_pixels_ptr = mlx_get_data_addr((data)->img->img_ptr,
+			&((data)->img->bits_per_pixel), &((data)->img->size_line),
+			&((data)->img->endian));
 	while (i < WIDTH)
 	{
 		ray_direction(i, player);
@@ -12,8 +17,11 @@ void	raycasting(t_player *player, t_data *data)
 		init_dda(player);
 		dda_algorithm(player, data);
 		wall_height(player);
+		draw(data, player);
 		i++;
 	}
+	mlx_put_image_to_window((data)->mlx_connection, (data)->mlx_window,
+		(data)->img->img_ptr, 0, 0);
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector
