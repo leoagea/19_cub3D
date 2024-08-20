@@ -13,7 +13,7 @@ void	raycasting(t_player *player)
 	}
 }
 
-void	ray_direction(int i, t_player *player)
+void	ray_direction(int i, t_player *player) // Calculation of Ray vector
 {
 	int w = WIDTH;
 	player->camera_x = 2.0 * (i / (double)w) - 1.0;
@@ -21,10 +21,16 @@ void	ray_direction(int i, t_player *player)
 	player->ray_dir_y =  player->dir_y + player->plane_y * player->camera_x;
 }
 
-void	delta_distance(t_player *player)
+void	delta_distance(t_player *player) // Calculation of dx and dy that represent the distance between
 {
 	player->map_x = (int) player->pos_x;
 	player->map_y = (int) player->pos_y;
-	player->delta_dist_x = fabs(1 / player->ray_dir_x);
-	player->delta_dist_y = fabs(1 / player->ray_dir_y);
+	if (player->ray_dir_x == 0) // Avoid division by 0
+		player->delta_dist_x = 1e30;
+	else
+		player->delta_dist_x = fabs(1 / player->ray_dir_x);
+	if (player->ray_dir_y == 0)
+		player->delta_dist_y = 1e30;
+	else
+		player->delta_dist_y = fabs(1 / player->ray_dir_y);
 }
