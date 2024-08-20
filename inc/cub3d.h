@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 16:49:32 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 18:27:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 #define ERR_COL "Error: Wrong color value in description file"
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
 #define ERR_MAP "Error: Map not closed with walls"
+#define ERR_XPM "Error: Xpm to image failed"
 
 typedef struct s_color
 {
@@ -89,12 +90,21 @@ typedef struct s_player
     double plane_x;
     double plane_y;
 }               t_player;
-    
+
+typedef struct s_xpm
+{
+    void    *wall_no;
+    void    *wall_so;
+    void    *wall_ea;
+    void    *wall_we;
+}               t_xpm;
+
 typedef struct s_data
 {
     void	*mlx_connection;
 	void	*mlx_window;
     t_img	*img;
+    t_xpm   xpm;
     t_file  *file;
     t_player *player;   
 }               t_data;
@@ -135,7 +145,15 @@ void get_player_pos(t_data *data);
 
 void        open_file(t_data *data, char *file);
 
+/*-----------------------readfile-------------------------*/
+
+void get_textures(t_data *data);
+
 /*=========================Utils==========================*/
+/*------------------------Clear_2-------------------------*/
+
+void clear_xpm(t_data *data);
+
 /*-------------------------Clear--------------------------*/
 
 void clear_file(t_data *data);
