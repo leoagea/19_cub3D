@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 19:13:26 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 15:09:08 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void init_struct_file(t_data *data)
     data->file->line = 0;
     data->file->count = 0;
     data->file->map = NULL;
+    data->file->cpy = NULL;
     data->file->file = NULL;
     data->file->wall_no = NULL;
     data->file->wall_so = NULL;

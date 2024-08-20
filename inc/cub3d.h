@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 13:36:23 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 15:37:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_file
     char *color_floor;
     char *color_ceiling;
     char **map;
+    char **cpy;
     int line;
     int count;
     t_color *c_floor;
