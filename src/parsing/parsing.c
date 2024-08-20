@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 13:36:39 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 16:51:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ void    parsing(int ac, char **av, t_data *data)
     // printf("data->file->color_ceiling : %s\n", data->file->color_ceiling);
     // printf("int color floor : %d\n", data->file->c_floor->color);
     // printf("int color ceiling : %d\n", data->file->c_ceiling->color);
-    int j = 0;
-    while(data->file->map[j])
-    {
-        printf("%s\n", data->file->map[j]);
-        j++;
-    }
+    // int j = 0;
+    // while(data->file->map[j])
+    // {
+    //     printf("%s\n", data->file->map[j]);
+    //     j++;
+    // }
     checking_map(data);
 }

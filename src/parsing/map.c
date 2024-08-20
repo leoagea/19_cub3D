@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 19:16:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 15:19:07 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 16:52:17 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static char **replace_char(char **cpy)
     char c;
     
     i = 0;
-    printf("\n");
     while (cpy[i])
     {
         j = 0;
@@ -50,17 +49,10 @@ static char **replace_char(char **cpy)
         }
         i++;
     }
-    i = 0;
-    printf("Cpy replace char\n");
-    while (cpy[i])
-    {
-        printf("cpy[%d] : %s\n", i, cpy[i]);
-        i++;
-    }
     return cpy;
 }
 
-static void backtrack(char **map, int i, int j)
+static void backtrack(t_data *data, char **map, int i, int j)
 {   
     if (map[i][j])
     {
@@ -69,14 +61,11 @@ static void backtrack(char **map, int i, int j)
         else if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
             map[i][j] = 'V';
         else if (map[i][j] == -1)
-        {
-            printf("Map non fermee\b");
-            exit(1);
-        }
-        backtrack(map, i + 1, j);
-        backtrack(map, i - 1, j);
-        backtrack(map, i, j + 1);
-        backtrack(map, i, j - 1);
+            ft_error(ERR_MAP, data);
+        backtrack(data, map, i + 1, j);
+        backtrack(data, map, i - 1, j);
+        backtrack(data, map, i, j + 1);
+        backtrack(data, map, i, j - 1);
     }
 }
 static char **cpy_map(char **map)
@@ -100,13 +89,6 @@ static char **cpy_map(char **map)
     ft_memset(cpy[len + 1], -1, ft_strlen(map[len - 1]) + 2);
     cpy[len + 1][ft_strlen(map[len - 1]) + 2] = '\0';
     cpy[len + 2] = NULL;
-    i = 0;
-    printf("Cpy map\n");
-    while (cpy[i])
-    {
-        printf("cpy[%d] : %s\n", i, cpy[i]);
-        i++;
-    }
     return cpy;
 }
 
@@ -114,15 +96,5 @@ void checking_map(t_data *data)
 {
     data->file->cpy = cpy_map(data->file->map);
     data->file->cpy = replace_char(data->file->cpy);
-    printf("Player pos x : %f\n", data->player->pos_x);
-    printf("Player pos y : %f\n", data->player->pos_y);
-    backtrack(data->file->cpy, data->player->pos_y + 1, data->player->pos_x + 1);
-    printf("Map ok\n");
-    printf("Backtrack map\n");
-    int i = 0;
-    while (data->file->cpy[i])
-    {
-        printf("cpy[%d] : %s\n", i, data->file->cpy[i]);
-        i++;
-    }
+    backtrack(data, data->file->cpy, data->player->pos_y + 1, data->player->pos_x + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 15:37:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 16:49:32 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 #define ERR_VAL "Error: Wrong value in description file"
 #define ERR_COL "Error: Wrong color value in description file"
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
+#define ERR_MAP "Error: Map not closed with walls"
 
 typedef struct s_color
 {
