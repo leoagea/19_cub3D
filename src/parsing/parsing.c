@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 19:18:56 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/20 13:36:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,5 @@ void    parsing(int ac, char **av, t_data *data)
         printf("%s\n", data->file->map[j]);
         j++;
     }
-    cpy_map(data->file->map);
+    checking_map(data);
 }
