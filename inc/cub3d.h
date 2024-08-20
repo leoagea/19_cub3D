@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 20:08:59 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/20 19:33:41 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # endif
 
 # define K 1 // Constante de proportionnalite pour modifier la distance de la camera
-# define FOV 75
+# define PLANE 77
+# define PI 3.14159265359
 # define WIDTH 1280
 # define HEIGHT 720
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
@@ -95,6 +96,16 @@ typedef struct s_player
     double ray_dir_y;
     double delta_dist_x;
     double delta_dist_y;
+    double side_dist_x;
+    double side_dist_y;
+    double perp_wall_dist;
+    int    step_x; // Direction of the Ray in X
+    int    step_y; // Direction of the Ray in Y
+    int    hit; // Flag hit wall
+    int    side;
+    int    wall_height;
+    int    draw_start;
+    int    draw_end;
 }               t_player;
     
 typedef struct s_data
@@ -115,9 +126,12 @@ void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
 
 /*========================Raycasting======================*/
-void	raycasting(t_player *player);
+void	raycasting(t_player *player, t_data *data);
 void	ray_direction(int i, t_player *player);
 void	delta_distance(t_player *player);
+void	init_dda(t_player *player);
+void	dda_algorithm(t_player *player, t_data *data);
+void	wall_height(t_player *player);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

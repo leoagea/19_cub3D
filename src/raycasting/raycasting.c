@@ -1,6 +1,6 @@
 #include "../../inc/cub3d.h"
 
-void	raycasting(t_player *player)
+void	raycasting(t_player *player, t_data *data)
 {
 	int	i;
 
@@ -9,6 +9,9 @@ void	raycasting(t_player *player)
 	{
 		ray_direction(i, player);
 		delta_distance(player);
+		init_dda(player);
+		dda_algorithm(player, data);
+		wall_height(player);
 		i++;
 	}
 }
@@ -21,7 +24,7 @@ void	ray_direction(int i, t_player *player) // Calculation of Ray vector
 	player->ray_dir_y =  player->dir_y + player->plane_y * player->camera_x;
 }
 
-void	delta_distance(t_player *player) // Calculation of dx and dy that represent the distance between
+void	delta_distance(t_player *player) // Calculation of dx and dy that represent the distance between 2 x or y axes in the ray_dir_x / ray_dir_y direction
 {
 	player->map_x = (int) player->pos_x;
 	player->map_y = (int) player->pos_y;
@@ -33,4 +36,64 @@ void	delta_distance(t_player *player) // Calculation of dx and dy that represent
 		player->delta_dist_y = 1e30;
 	else
 		player->delta_dist_y = fabs(1 / player->ray_dir_y);
+}
+
+void	init_dda(t_player *player)
+{
+	if (player->ray_dir_x < 0)
+	{
+		player->step_x = -1;
+		player->side_dist_x = (player->pos_x - player->map_x) * player->delta_dist_x;
+	}
+	else
+	{
+		player->step_x = 1;
+		player->side_dist_x = (player->map_x + 1.0 - player->pos_x) * player->delta_dist_x;
+	}
+	if (player->ray_dir_y < 0)
+	{
+		player->step_y = -1;
+		player->side_dist_y = (player->pos_y - player->map_y) * player->delta_dist_y;
+	}
+	else
+	{
+		player->step_y = 1;
+		player->side_dist_y = (player->map_y + 1.0 - player->pos_y) * player->delta_dist_y;
+	}
+}
+
+void	dda_algorithm(t_player *player, t_data *data)
+{
+	while (1)
+	{
+		if (player->side_dist_x < player->side_dist_y)
+		{
+			player->side_dist_x += player->delta_dist_x;
+			player->map_x += player->step_x;
+			player->side = 0;
+		}
+		else
+		{
+			player->side_dist_y += player->delta_dist_y;
+			player->map_y += player->step_y;
+			player->side = 1;		
+		}
+		if (data->file->map[player->map_y][player->map_x] == '1')
+			break ;
+	}
+	if (player->side == 0)
+		player->perp_wall_dist = player->side_dist_x - player->delta_dist_x;
+	else
+		player->perp_wall_dist = player->side_dist_y - player->delta_dist_y;
+}
+
+void	wall_height(t_player *player)
+{
+	player->wall_height = (int)(HEIGHT / player->perp_wall_dist);
+	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2;
+	if (player->draw_start < 0)
+		player->draw_start = 0;
+	player->draw_end = player->wall_height / 2 + HEIGHT / 2;
+	if (player->draw_end >= HEIGHT)
+		player->draw_end = HEIGHT - 1;
 }

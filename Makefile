@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra -g3 #-fsanitize=address 
+CFLAGS = -g3 -fsanitize=address 
 
 RM = rm -rf
 
