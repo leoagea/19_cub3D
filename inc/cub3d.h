@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 18:27:58 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/21 17:13:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 #define ERR_ID "Error: Wrong identifier in description file"
 #define ERR_VAL "Error: Wrong value in description file"
 #define ERR_COL "Error: Wrong color value in description file"
+#define ERR_DUP "Error: Duplicate key in description file"
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
 #define ERR_MAP "Error: Map not closed with walls"
 #define ERR_XPM "Error: Xpm to image failed"
@@ -68,6 +69,12 @@ typedef struct s_file
     char **cpy;
     int line;
     int count;
+    int flag_no;
+    int flag_so;
+    int flag_ea;
+    int flag_we;
+    int flag_f;
+    int flag_c;
     t_color *c_floor;
     t_color *c_ceiling;
 }               t_file;

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 15:09:08 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/21 17:18:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ void init_struct_file(t_data *data)
     data->file = malloc(sizeof(t_file));
     if (!data->file)
         ft_error(ERR_ALLOC, data);
-    data->file->line = 0;
+    data->file->flag_no = 0;
+    data->file->flag_so = 0;
+    data->file->flag_ea = 0;
+    data->file->flag_we = 0;
+    data->file->flag_c = 0;
+    data->file->flag_f = 0;
     data->file->count = 0;
     data->file->map = NULL;
     data->file->cpy = NULL;
