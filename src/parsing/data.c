@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:05:23 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 17:22:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/21 18:11:36 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,9 @@ void	get_data_line(t_data *data, char *line)
 {
 	char	*str;
 
-	(void)data;
 	str = get_key(data, line);
 	if (!str)
 		return ;
+    check_color_textures(data, line);
 	data->file->count++;
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 19:04:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/21 18:24:45 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void    parsing(int ac, char **av, t_data *data)
     open_file(data, av[1]);
     i = get_data(data);
     get_color(data);
+    check_color(data);
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 17:13:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/21 18:53:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@
 #define ERR_ALLOC "Error: Malloc, allocation failed"
 #define ERR_EMPTY "Error: Empty file"
 #define ERR_ID "Error: Wrong identifier in description file"
+#define ERR_TOK "Error: Wrong token in description file, expected 1 key and 1 value"
 #define ERR_VAL "Error: Wrong value in description file"
+#define ERR_TOK_COL "Error: Wrong color token in description file, expected r,g,b"
 #define ERR_COL "Error: Wrong color value in description file"
 #define ERR_DUP "Error: Duplicate key in description file"
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
@@ -127,6 +129,11 @@ int	        handle_key(int keysym, t_data *data);
 /*-----------------------check_arg------------------------*/
 
 void        check_file_extension(char *file, t_data *data);
+
+/*-------------------------check--------------------------*/
+
+void check_color_textures(t_data *data, char *line);
+void check_color(t_data *data);
 
 /*-------------------------color--------------------------*/
 
