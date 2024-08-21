@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 19:57:21 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/21 16:21:29 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <time.h>
 
 # ifdef __linux__
 #  include "../mlx_linux/mlx.h"
@@ -33,6 +34,8 @@
 # define K 1 // Constante de proportionnalite pour modifier la distance de la camera
 # define PLANE 77
 # define PI 3.14159265359
+# define ONEDEG 0.0174533
+# define ROTATE_SPEED 2.6
 # define WIDTH 1280
 # define HEIGHT 720
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
@@ -106,7 +109,11 @@ typedef struct s_player
     int    wall_height;
     int    draw_start;
     int    draw_end;
-    int    column; 
+    int    column;
+    int    key_left;
+    int    key_right;
+    int    key_forward;
+    int    key_backward;
 }               t_player;
     
 typedef struct s_data
@@ -123,9 +130,16 @@ void	    create_window(t_data *data);
 void	    error_window(t_data *data);
 int	        cross_event(t_data *data);
 /*========================KeyHook=========================*/
+void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
-
+int         key_press(int keysym, t_data *data);
+int	        key_release(int keysym, t_data *data);
+void	    rotate_right(t_data *data);
+void	    rotate_left(t_data *data);
+void	    move_forward(t_data *data);
+void	    move_backward(t_data *data);
+int	        player_movement(t_data *data);
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
 void	ray_direction(int i, t_player *player);

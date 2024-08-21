@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g3 -fsanitize=address 
+CFLAGS = -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 
 RM = rm -rf
 
@@ -37,11 +37,10 @@ DEBUG_DIR = debug/
 
 SRCS =	src/main.c \
 		src/window/create_window.c \
-		src/key_hook/key_hook.c \
+		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/init_key.c \
 		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c \
 		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
-		src/raycasting/raycasting.c \
-		src/raycasting/draw.c \
+		src/raycasting/raycasting.c src/raycasting/draw.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -60,7 +59,7 @@ $(NAME) : $(OBJ)
 	@echo "\033[0;34m 	██║      ██║   ██║ ██╔══██╗    ╚═══██╗ ██║  ██║		"
 	@echo "\033[0;34m 	╚██████╗ ╚██████╔╝ ██████╔╝   ██████╔╝ ██████╔╝		"
 	@echo "\033[0;34m 	 ╚═════╝  ╚═════╝  ╚═════╝     ╚═════╝  ╚═════╝ 		"
-	@$(CC) -O3 $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -g $(MLX_LIB) $(MLX) -o $(NAME)
+	@$(CC) $(OBJ) $(CFLAGS) $(LIBFT) $(LINK) -g $(MLX_LIB) $(MLX) -o $(NAME)
 	@echo "$(BLUE)Cub3D executable created!$(NC)"
 
 $(DEBUG) : $(OBJD)
@@ -84,7 +83,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/raycasting
 	@mkdir -p $(OBJS_DIR)/draw
 	$(PROGRESS_BAR)
-	@$(CC) -O3 $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(DEBUG_DIR)

@@ -10,7 +10,7 @@ void	draw(t_data *data, t_player *player)
 	while (i < HEIGHT)
 	{
 		if (i >= player->draw_start && i <= player->draw_end)
-			draw_point(data, player->column, i, 255);
+			draw_point(data, player->column, i, 14010300);
 		else
 			draw_point(data, player->column, i, 0);
 		i++;
@@ -42,3 +42,4 @@ void	draw_point(t_data *data, int x, int y, int color)
 		}
 	}
 }
+
