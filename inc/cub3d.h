@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 19:03:28 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/22 19:05:37 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,23 @@
 # define WIDTH 1280
 # define HEIGHT 720
 #define MINIMAP_SIZE 125
-# define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
-# define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
-# define ERR_ALLOC "Error: Malloc, allocation failed"
-# define ERR_EMPTY "Error: Empty file" 
-#define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
-#define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
-#define ERR_ALLOC "Error: Malloc, allocation failed"
-#define ERR_EMPTY "Error: Empty file"
-#define ERR_ID "Error: Wrong identifier in description file"
-#define ERR_TOK "Error: Wrong token in description file, expected 1 key and 1 value"
-#define ERR_VAL "Error: Wrong value in description file"
-#define ERR_TOK_COL "Error: Wrong color token in description file, expected r,g,b"
-#define ERR_COL "Error: Wrong color value in description file"
-#define ERR_DUP "Error: Duplicate key in description file"
-#define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
-#define ERR_MAP "Error: Map not closed with walls"
-#define ERR_XPM "Error: Xpm to image failed"
+# define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
+# define ERR_EXT "Wrong file extension, expected only .cub extension"
+# define ERR_ALLOC "Malloc, allocation failed"
+# define ERR_EMPTY "Empty file" 
+#define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
+#define ERR_EXT "Wrong file extension, expected only .cub extension"
+#define ERR_ALLOC "Malloc, allocation failed"
+#define ERR_EMPTY "Empty file"
+#define ERR_ID "Wrong identifier in description file"
+#define ERR_TOK "Wrong token in description file, expected 1 key and 1 value"
+#define ERR_VAL "Wrong value in description file"
+#define ERR_TOK_COL "Wrong color token in description file, expected r,g,b"
+#define ERR_COL "Wrong color value in description file"
+#define ERR_DUP "Duplicate key in description file"
+#define ERR_PLAY "Wrong number of players, expected only 1 player"
+#define ERR_MAP "Map not closed with walls"
+#define ERR_XPM "Xpm to image failed"
 
 typedef struct s_color
 {
