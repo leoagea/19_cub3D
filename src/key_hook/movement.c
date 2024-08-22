@@ -42,6 +42,13 @@ void	move_backward(t_data *data)
 	mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 	raycasting(data->player, data);
 }
+// void	move_left(t_data *data)
+// {
+// 	double new_pos_x;
+//     double new_pos_y;
+
+// 	new_pos_x =
+// }
 
 int	player_movement(t_data *data)
 {

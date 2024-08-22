@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 14:07:58 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 18:10:10 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,35 @@
 # endif
 
 # ifdef __APPLE__
-#  include "../mlx/mlx.h"
-#  define XK_ESCAPE 53
+    # include "../mlx/mlx.h"
+	# define KEY_A 0
+	# define KEY_D 2
+	# define KEY_E 14
+	# define KEY_G 5
+	# define KEY_M 46
+	# define KEY_Q 12
+	# define KEY_R 15
+	# define KEY_S 1
+	# define KEY_W 13
+	# define KEY_ESC 53
+	# define KEY_PLUS 24
+	# define KEY_MINUS 27
+	# define KEY_UP 126
+	# define KEY_RIGHT 124
+	# define KEY_DOWN 125
+	# define KEY_LEFT 123
+	# define KEY_SHIFT 257
+	# define KEY_SPACE 49
+	# define KEY_0 82
+	# define KEY_1 83
+	# define KEY_2 84
+	# define KEY_3 85
+	# define KEY_4 86
+	# define KEY_5 87
+	# define KEY_6 88
+	# define KEY_7 89
+	# define KEY_8 91
+	# define KEY_9 92
 # endif
 
 # define K 1 // Constante de proportionnalite pour modifier la distance de la camera
@@ -131,10 +158,10 @@ typedef struct s_player
 
 typedef struct s_xpm
 {
-    void    *wall_no;
-    void    *wall_so;
-    void    *wall_ea;
-    void    *wall_we;
+    t_img    *wall_no;
+    t_img    *wall_so;
+    t_img    *wall_ea;
+    t_img    *wall_we;
 }               t_xpm;
 
 typedef struct s_data
