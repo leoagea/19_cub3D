@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/21 15:52:50 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/21 17:14:49 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	handle_input(int keysym, t_data *data)
 
 int	handle_key(int keysym, t_data *data)
 {
-	if (keysym == XK_ESCAPE)
+	if (keysym == 53)
 		handle_input(keysym, data);
 	return (0);
 }

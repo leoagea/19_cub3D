@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 16:21:29 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 12:48:51 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <time.h>
+# include <sys/time.h>
 
 # ifdef __linux__
 #  include "../mlx_linux/mlx.h"
@@ -83,7 +84,15 @@ typedef struct s_img
 	int		endian;
 	int		size_line;
 }			t_img;
-   
+
+typedef struct s_fps
+{
+    struct timeval start;
+    struct timeval end;
+    double delta_time;
+    int    fps;
+}           t_fps;
+
 typedef struct s_player
 {
     int    map_x;
@@ -114,6 +123,7 @@ typedef struct s_player
     int    key_right;
     int    key_forward;
     int    key_backward;
+    t_fps  *fps;
 }               t_player;
     
 typedef struct s_data
@@ -129,6 +139,7 @@ typedef struct s_data
 void	    create_window(t_data *data);
 void	    error_window(t_data *data);
 int	        cross_event(t_data *data);
+void	    get_fps(t_player *player);
 /*========================KeyHook=========================*/
 void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
@@ -140,6 +151,7 @@ void	    rotate_left(t_data *data);
 void	    move_forward(t_data *data);
 void	    move_backward(t_data *data);
 int	        player_movement(t_data *data);
+
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
 void	ray_direction(int i, t_player *player);
@@ -193,7 +205,7 @@ void        exit_malloc(void);
 
 void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
-
+void init_fps_struct(t_data *data);
 /*------------------------Parsing-------------------------*/
 
 int skip_whitespace(char *str, int i);

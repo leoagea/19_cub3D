@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:20:33 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 12:48:38 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ void init_player_struct(t_data *data)
     data->player->dir_y = 0;
     data->player->plane_x = 0;
     data->player->plane_y = 0;
+}
+
+void init_fps_struct(t_data *data)
+{
+    data->player->fps->delta_time = 0.0;
+    data->player->fps->fps = 0;
 }

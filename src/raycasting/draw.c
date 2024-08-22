@@ -10,7 +10,12 @@ void	draw(t_data *data, t_player *player)
 	while (i < HEIGHT)
 	{
 		if (i >= player->draw_start && i <= player->draw_end)
-			draw_point(data, player->column, i, 14010300);
+		{
+			if (player->side == 1)
+				draw_point(data, player->column, i, 106921);
+			else
+				draw_point(data, player->column, i, 3487122);
+		}
 		else
 			draw_point(data, player->column, i, 0);
 		i++;
@@ -43,3 +48,11 @@ void	draw_point(t_data *data, int x, int y, int color)
 	}
 }
 
+void	get_fps(t_player *player)
+{
+	gettimeofday(&player->fps->end, NULL);
+	player->fps->delta_time = (player->fps->end.tv_sec - player->fps->start.tv_sec) * 1000.0;
+	player->fps->delta_time += (player->fps->end.tv_usec - player->fps->start.tv_usec) / 1000.0;
+    player->fps->fps = 1000.0 / player->fps->delta_time;
+    gettimeofday(&player->fps->start, NULL);
+}

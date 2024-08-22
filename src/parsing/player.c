@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 18:56:36 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 13:28:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void assign_dir(t_player *player, char **map, int i, int j)
     if (map[i][j] == 'N')
     {
         player->dir_x = 0;
-        player->dir_y = -1 * (float)K;
+        player->dir_y = -1;
     }
     else if (map[i][j] == 'S')
     {
@@ -63,10 +63,10 @@ static void assign_plane(t_player *player, char **map, int i, int j)
     }
 }
 
-static int    assing_coord(t_data *data, float i, float j, int count)
+static int    assing_coord(t_data *data, int i, int j, int count)
 {
-    data->player->pos_x = (float) j;
-    data->player->pos_y = (float) i;
+    data->player->pos_x = (double)j + 0.5;
+    data->player->pos_y = (double)i + 0.5;
     count++;
     return count;
 }
@@ -86,7 +86,7 @@ void get_player_pos(t_data *data)
         while (map[i][j] && map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W')
             j++;
         if (map[i][j] && (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W'))
-            count = assing_coord(data, (float) i, (float) j, count);
+            count = assing_coord(data, i, j, count);
         i++;
     }
     if (count != 1)
