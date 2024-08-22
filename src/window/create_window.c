@@ -15,6 +15,10 @@ void	create_window(t_data *data)
 			"Cub3D");
 	if (!data->mlx_window)
 		error_window(data);
+	data->img->img_ptr = mlx_new_image((data)->mlx_connection, WIDTH, HEIGHT);
+	data->img->img_pixels_ptr = mlx_get_data_addr((data)->img->img_ptr,
+			&((data)->img->bits_per_pixel), &((data)->img->size_line),
+			&((data)->img->endian));
 }
 
 void	error_window(t_data *data)

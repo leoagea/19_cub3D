@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -Werror -Wall -Wextra -g3 #-fsanitize=address 
+CFLAGS = -Werror -Wall -Wextra -g3 -fsanitize=address 
 
 RM = rm -rf
 
@@ -38,6 +38,7 @@ DEBUG_DIR = debug/
 SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c \
+		src/minimap/draw.c src/minimap/minimap.c \
 		src/parsing/check_arg.c src/parsing/check.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
@@ -79,6 +80,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
 	@mkdir -p $(OBJS_DIR)/key_hook
+	@mkdir -p $(OBJS_DIR)/minimap
 	$(PROGRESS_BAR)
 	@$(CC) -O3 $(CFLAGS) -o $@ -c $<
 

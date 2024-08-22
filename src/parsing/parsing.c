@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 18:24:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/22 18:15:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static int skip_null_line(t_data *data, int i)
 static void get_map(t_data *data, int i)
 {
     int j;
-    
+    int len;
+    int max_len;
+
+    max_len = 0;
     data->file->map = malloc(sizeof(char *) * data->file->line - i + 1);
     if(!data->file->map)
         ft_error(ERR_ALLOC, data);
@@ -58,7 +61,16 @@ static void get_map(t_data *data, int i)
         i++;
         j++;
     }
+    data->file->map_height = j;
     data->file->map[j] = NULL;
+    i = -1;
+    while (data->file->map[++i])
+    {
+        len = ft_strlen(data->file->map[i]);
+        if (len > max_len)
+            max_len = len;
+    }
+    data->file->map_width = max_len;
 }
 
 void    parsing(int ac, char **av, t_data *data)
@@ -77,8 +89,14 @@ void    parsing(int ac, char **av, t_data *data)
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);
-    checking_map(data);
     get_textures(data);
+    checking_map(data);
+    int j = 0;
+    while(data->file->map[j])
+    {
+        printf("%s\n", data->file->map[j]);
+        j++;
+    }
 }
 
     // printf("data->file->wall_no : %s\n", data->file->wall_no);
@@ -90,8 +108,3 @@ void    parsing(int ac, char **av, t_data *data)
     // printf("int color floor : %d\n", data->file->c_floor->color);
     // printf("int color ceiling : %d\n", data->file->c_ceiling->color);
     // int j = 0;
-    // while(data->file->map[j])
-    // {
-    //     printf("%s\n", data->file->map[j]);
-    //     j++;
-    // }

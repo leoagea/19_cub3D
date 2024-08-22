@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 18:53:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/22 19:03:28 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
+#define MINIMAP_SIZE 125
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Error: Malloc, allocation failed"
@@ -77,6 +78,8 @@ typedef struct s_file
     int flag_we;
     int flag_f;
     int flag_c;
+    int map_height;
+    int map_width;
     t_color *c_floor;
     t_color *c_ceiling;
 }               t_file;
@@ -89,7 +92,16 @@ typedef struct s_img
 	int		endian;
 	int		size_line;
 }			t_img;
-   
+
+typedef struct s_minimap
+{
+    int start_x;
+    int start_y;
+    int cell_width;
+    int cell_height;
+    int wall_thick;
+}               t_minimap;
+
 typedef struct s_player
 {
     double pos_x;
@@ -116,6 +128,7 @@ typedef struct s_data
     t_xpm   xpm;
     t_file  *file;
     t_player *player;   
+    t_minimap *minimap;
 }               t_data;
 
 /*========================Window==========================*/
@@ -125,6 +138,16 @@ int	        cross_event(t_data *data);
 /*========================KeyHook=========================*/
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
+
+/*========================Minimap=========================*/
+/*-------------------------draw---------------------------*/
+
+void draw_cell(t_data *data, int x, int y, int color);
+
+/*------------------------minimap-------------------------*/
+
+void create_minimap(t_data *data);
+
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 
@@ -167,6 +190,7 @@ void get_textures(t_data *data);
 /*------------------------Clear_2-------------------------*/
 
 void clear_xpm(t_data *data);
+void clear_minimap_struct(t_data *data);
 
 /*-------------------------Clear--------------------------*/
 
@@ -187,6 +211,8 @@ void        exit_malloc(void);
 void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
 t_color *init_color_struct(t_data *data);
+void init_minimap_struct(t_data *data);
+void init_data(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 
