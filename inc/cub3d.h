@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 12:48:51 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 14:07:58 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 #define ERR_VAL "Error: Wrong value in description file"
 #define ERR_COL "Error: Wrong color value in description file"
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
+#define ERR_MAP "Error: Map not closed with walls"
+#define ERR_XPM "Error: Xpm to image failed"
 
 typedef struct s_color
 {
@@ -70,6 +72,7 @@ typedef struct s_file
     char *color_floor;
     char *color_ceiling;
     char **map;
+    char **cpy;
     int line;
     int count;
     t_color *c_floor;
@@ -125,12 +128,21 @@ typedef struct s_player
     int    key_backward;
     t_fps  *fps;
 }               t_player;
-    
+
+typedef struct s_xpm
+{
+    void    *wall_no;
+    void    *wall_so;
+    void    *wall_ea;
+    void    *wall_we;
+}               t_xpm;
+
 typedef struct s_data
 {
     void	*mlx_connection;
 	void	*mlx_window;
     t_img	*img;
+    t_xpm   xpm;
     t_file  *file;
     t_player *player;   
 }               t_data;
@@ -170,9 +182,13 @@ void        check_file_extension(char *file, t_data *data);
 
 void get_color(t_data *data);
 
-/*------------------------parsing-------------------------*/
+/*-------------------------data---------------------------*/
 
 void get_data_line(t_data *data, char *line);
+
+/*--------------------------map---------------------------*/
+
+void checking_map(t_data *data);
 
 /*------------------------parsing-------------------------*/
 
@@ -186,7 +202,15 @@ void get_player_pos(t_data *data);
 
 void        open_file(t_data *data, char *file);
 
+/*-----------------------readfile-------------------------*/
+
+void get_textures(t_data *data);
+
 /*=========================Utils==========================*/
+/*------------------------Clear_2-------------------------*/
+
+void clear_xpm(t_data *data);
+
 /*-------------------------Clear--------------------------*/
 
 void clear_file(t_data *data);
@@ -206,6 +230,8 @@ void        exit_malloc(void);
 void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
 void init_fps_struct(t_data *data);
+t_color *init_color_struct(t_data *data);
+
 /*------------------------Parsing-------------------------*/
 
 int skip_whitespace(char *str, int i);

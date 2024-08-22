@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
+CFLAGS = -fsanitize=address -g -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 
 RM = rm -rf
 
@@ -37,10 +37,10 @@ DEBUG_DIR = debug/
 
 SRCS =	src/main.c \
 		src/window/create_window.c \
-		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/init_key.c \
-		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c \
-		src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
+		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
+		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
+		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -49,7 +49,7 @@ OBJD = $(SRCS:$(SRCS_DIR)%.c=$(DEBUG_DIR)%.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@make -C $(MLX_DIR)
+	#@make -C $(MLX_DIR)
 	@make -C libft
 	@printf "                                              							   \r"
 	@echo "\033[0;34m 														"

@@ -18,8 +18,6 @@ void	move_forward(t_data *data)
 		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 		raycasting(data->player, data);
 	}
-	else
-		printf("Blocked ->");
 }
 
 void	move_backward(t_data *data)

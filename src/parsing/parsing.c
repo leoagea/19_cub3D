@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:20:28 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 14:10:02 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ void    parsing(int ac, char **av, t_data *data)
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);
+    checking_map(data);
+    // get_textures(data);
+}
+
     // printf("data->file->wall_no : %s\n", data->file->wall_no);
     // printf("data->file->wall_so : %s\n", data->file->wall_so);
     // printf("data->file->wall_we : %s\n", data->file->wall_we);
@@ -84,10 +88,9 @@ void    parsing(int ac, char **av, t_data *data)
     // printf("data->file->color_ceiling : %s\n", data->file->color_ceiling);
     // printf("int color floor : %d\n", data->file->c_floor->color);
     // printf("int color ceiling : %d\n", data->file->c_ceiling->color);
-    int j = 0;
-    while(data->file->map[j])
-    {
-        printf("%s\n", data->file->map[j]);
-        j++;
-    }
-}
+    // int j = 0;
+    // while(data->file->map[j])
+    // {
+    //     printf("%s\n", data->file->map[j]);
+    //     j++;
+    // }

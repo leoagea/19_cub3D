@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 13:28:23 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 14:16:24 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,26 @@ static void assign_dir(t_player *player, char **map, int i, int j)
 
 static void assign_plane(t_player *player, char **map, int i, int j)
 {
-    double fov;
-
-    fov = 2 * atan(((float) PLANE)/ 100) * (180 / (float)PI);    // fov en degres
+  
     if (map[i][j] == 'N')
     {
-        player->plane_x = ((float)fov / 100) * (float)K;
+        player->plane_x = (double)PLANE / 100.0;
         player->plane_y = 0;
     }
     else if (map[i][j] == 'S')
     {
-        player->plane_x = ((float)fov / 100) * (float)K;
+        player->plane_x = (double)PLANE / 100.0;
         player->plane_y = 0;
     }
     else if (map[i][j] == 'E')
     {
         player->plane_x = 0;
-        player->plane_y = -1.0 * ((float)fov / 100) * (float)K;
+        player->plane_y = -1.0 * (double)PLANE / 100.0;
     }
     else if (map[i][j] == 'W')
     {
         player->plane_x = 0;
-        player->plane_y = -1.0 * ((float)fov / 100) * (float)K;
+        player->plane_y = -1.0 * (double)PLANE / 100.0;
     }
 }
 

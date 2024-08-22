@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 13:30:05 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/22 14:15:21 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int main(int ac, char **av)
 {
     t_data data;
+    
     parsing(ac, av, &data);
-    init_key(data.player);
-    // init_fps_struct(&data);
     create_window(&data);
     raycasting(data.player, &data);
 
