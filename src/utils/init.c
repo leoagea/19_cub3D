@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 13:26:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:52:10 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,12 @@ void init_data(t_data *data)
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
     data->player = NULL;
+}
+
+void init_xpm(t_data *data)
+{
+    data->xpm.wall_no = NULL;
+    data->xpm.wall_so = NULL;
+    data->xpm.wall_ea = NULL;
+    data->xpm.wall_we = NULL;
 }
