@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 18:18:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 12:45:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ void init_player_struct(t_data *data)
     data->player->dir_y = 0;
     data->player->plane_x = 0;
     data->player->plane_y = 0;
+    data->player->key_backward = 0;
+	data->player->key_forward = 0;
+	data->player->key_left = 0;
+	data->player->key_right = 0;
+}
+
+void init_fps_struct(t_data *data)
+{
+    data->player->fps->delta_time = 0.0;
+    data->player->fps->fps = 0;
 }
 
 t_color *init_color_struct(t_data *data)

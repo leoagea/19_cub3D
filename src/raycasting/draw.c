@@ -1,0 +1,58 @@
+#include "../../inc/cub3d.h"
+
+void	draw(t_data *data, t_player *player)
+{
+	int	i;
+	int	total;
+
+	i = 0;
+	total = HEIGHT * WIDTH;
+	while (i < HEIGHT)
+	{
+		if (i >= player->draw_start && i <= player->draw_end)
+		{
+			if (player->side == 1)
+				draw_point(data, player->column, i, 106921);
+			else
+				draw_point(data, player->column, i, 3487122);
+		}
+		else
+			draw_point(data, player->column, i, 0);
+		i++;
+	}
+	player->column++;
+}
+
+void	draw_point(t_data *data, int x, int y, int color)
+{
+	int	pixel;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		pixel = (y * data->img->size_line) + (x * (data->img->bits_per_pixel
+					/ 8));
+		if (data->img->endian == 0)
+		{
+			data->img->img_pixels_ptr[pixel + 0] = (color & 0xFF);
+			data->img->img_pixels_ptr[pixel + 1] = (color >> 8) & 0xFF;
+			data->img->img_pixels_ptr[pixel + 2] = (color >> 16) & 0xFF;
+			data->img->img_pixels_ptr[pixel + 3] = (color >> 24) & 0xFF;
+		}
+		else
+		{
+			data->img->img_pixels_ptr[pixel + 0] = (color >> 24) & 0xFF;
+			data->img->img_pixels_ptr[pixel + 1] = (color >> 16) & 0xFF;
+			data->img->img_pixels_ptr[pixel + 2] = (color >> 8) & 0xFF;
+			data->img->img_pixels_ptr[pixel + 3] = (color & 0xFF);
+		}
+	}
+}
+
+void	get_fps(t_player *player)
+{
+	gettimeofday(&player->fps->end, NULL);
+	player->fps->delta_time = (player->fps->end.tv_sec - player->fps->start.tv_sec) * 1000.0;
+	player->fps->delta_time += (player->fps->end.tv_usec - player->fps->start.tv_usec) / 1000.0;
+    player->fps->fps = 1000.0 / player->fps->delta_time;
+    gettimeofday(&player->fps->start, NULL);
+}

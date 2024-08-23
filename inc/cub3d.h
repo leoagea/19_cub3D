@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 22:47:43 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 12:44:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <time.h>
+# include <sys/time.h>
 
 # ifdef __linux__
 #  include "../mlx_linux/mlx.h"
@@ -26,10 +28,42 @@
 # endif
 
 # ifdef __APPLE__
-#  include "../mlx/mlx.h"
-#  define XK_ESCAPE 53
+    # include "../mlx/mlx.h"
+	# define KEY_A 0
+	# define KEY_D 2
+	# define KEY_E 14
+	# define KEY_G 5
+	# define KEY_M 46
+	# define KEY_Q 12
+	# define KEY_R 15
+	# define KEY_S 1
+	# define KEY_W 13
+	# define KEY_ESC 53
+	# define KEY_PLUS 24
+	# define KEY_MINUS 27
+	# define KEY_UP 126
+	# define KEY_RIGHT 124
+	# define KEY_DOWN 125
+	# define KEY_LEFT 123
+	# define KEY_SHIFT 257
+	# define KEY_SPACE 49
+	# define KEY_0 82
+	# define KEY_1 83
+	# define KEY_2 84
+	# define KEY_3 85
+	# define KEY_4 86
+	# define KEY_5 87
+	# define KEY_6 88
+	# define KEY_7 89
+	# define KEY_8 91
+	# define KEY_9 92
 # endif
 
+# define K 1 // Constante de proportionnalite pour modifier la distance de la camera
+# define PLANE 77
+# define PI 3.14159265359
+# define ONEDEG 0.0174533
+# define ROTATE_SPEED 2.6
 # define WIDTH 1280
 # define HEIGHT 720
 #define MINIMAP_SIZE 125
@@ -101,23 +135,53 @@ typedef struct s_minimap
     int cell_height;
     int wall_thick;
 }               t_minimap;
+typedef struct s_fps
+{
+    struct timeval start;
+    struct timeval end;
+    double delta_time;
+    int    fps;
+}           t_fps;
 
 typedef struct s_player
 {
+    int    map_x;
+    int    map_y;
     double pos_x;
     double pos_y;
     double dir_x;
     double dir_y;
     double plane_x;
     double plane_y;
+    double camera_x; // Position horizontale sur le plan de la camera
+    double ray_dir_x;
+    double ray_dir_y;
+    double delta_dist_x;
+    double delta_dist_y;
+    double side_dist_x;
+    double side_dist_y;
+    double perp_wall_dist;
+    int    step_x; // Direction of the Ray in X
+    int    step_y; // Direction of the Ray in Y
+    int    hit; // Flag hit wall
+    int    side;
+    int    wall_height;
+    int    draw_start;
+    int    draw_end;
+    int    column;
+    int    key_left;
+    int    key_right;
+    int    key_forward;
+    int    key_backward;
+    t_fps  *fps;
 }               t_player;
 
 typedef struct s_xpm
 {
-    void    *wall_no;
-    void    *wall_so;
-    void    *wall_ea;
-    void    *wall_we;
+    t_img    *wall_no;
+    t_img    *wall_so;
+    t_img    *wall_ea;
+    t_img    *wall_we;
 }               t_xpm;
 
 typedef struct s_data
@@ -135,7 +199,9 @@ typedef struct s_data
 void	    create_window(t_data *data);
 void	    error_window(t_data *data);
 int	        cross_event(t_data *data);
+void	    get_fps(t_player *player);
 /*========================KeyHook=========================*/
+void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
 
@@ -149,6 +215,23 @@ void	draw_point(t_data *data, int x, int y, int color);
 
 void create_minimap(t_data *data);
 
+int         key_press(int keysym, t_data *data);
+int	        key_release(int keysym, t_data *data);
+void	    rotate_right(t_data *data);
+void	    rotate_left(t_data *data);
+void	    move_forward(t_data *data);
+void	    move_backward(t_data *data);
+int	        player_movement(t_data *data);
+
+/*========================Raycasting======================*/
+void	raycasting(t_player *player, t_data *data);
+void	ray_direction(int i, t_player *player);
+void	delta_distance(t_player *player);
+void	init_dda(t_player *player);
+void	dda_algorithm(t_player *player, t_data *data);
+void	wall_height(t_player *player);
+void	draw(t_data *data, t_player *player);
+void	draw_point(t_data *data, int x, int y, int color);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 
@@ -211,6 +294,7 @@ void        exit_malloc(void);
 
 void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
+void init_fps_struct(t_data *data);
 t_color *init_color_struct(t_data *data);
 void init_minimap_struct(t_data *data);
 void init_data(t_data *data);

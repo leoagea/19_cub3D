@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 18:15:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 12:48:40 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void    parsing(int ac, char **av, t_data *data)
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);
-    get_textures(data);
+    // get_textures(data);
     checking_map(data);
     int j = 0;
     while(data->file->map[j])
