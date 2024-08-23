@@ -22,6 +22,7 @@ void	raycasting(t_player *player, t_data *data)
 		draw(data, player);
 		i++;
 	}
+	// create_minimap(data);
 	// fps_str = ft_itoa(data->player->fps->fps);
 	mlx_put_image_to_window((data)->mlx_connection, (data)->mlx_window,
 		(data)->img->img_ptr, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 12:45:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 13:26:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void init_minimap_struct(t_data *data)
     data->minimap = malloc(sizeof(t_minimap));
     if (!data->minimap)
         ft_error(ERR_ALLOC, data);
-    data->minimap->start_x = WIDTH - MINIMAP_SIZE - 25;
-    data->minimap->start_y = 0 + 25;
+    data->minimap->start_x = 440;
+    data->minimap->start_y = (HEIGHT - MINIMAP_SIZE) / 2;
     data->minimap->wall_thick = 0;
     data->minimap->cell_width = MINIMAP_SIZE / data->file->map_width;
     data->minimap->cell_height = MINIMAP_SIZE / data->file->map_height;

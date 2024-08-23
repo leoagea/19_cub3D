@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 14:16:24 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/23 13:15:18 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static void assign_plane(t_player *player, char **map, int i, int j)
     }
     else if (map[i][j] == 'S')
     {
-        player->plane_x = (double)PLANE / 100.0;
+        player->plane_x = -1.0 * (double)PLANE / 100.0;
         player->plane_y = 0;
     }
     else if (map[i][j] == 'E')
     {
         player->plane_x = 0;
-        player->plane_y = -1.0 * (double)PLANE / 100.0;
+        player->plane_y = (double)PLANE / 100.0;
     }
     else if (map[i][j] == 'W')
     {

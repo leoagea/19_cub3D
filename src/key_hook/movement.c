@@ -60,5 +60,7 @@ int	player_movement(t_data *data)
 		move_forward(data);
 	if (data->player->key_backward)
 		move_backward(data);
+	if (data->player->minimap)
+		create_minimap(data);
 	return (0);
 }

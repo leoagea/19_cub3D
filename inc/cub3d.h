@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 12:44:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 16:28:17 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 	# define KEY_LEFT 123
 	# define KEY_SHIFT 257
 	# define KEY_SPACE 49
+	# define KEY_TAB 48
 	# define KEY_0 82
 	# define KEY_1 83
 	# define KEY_2 84
@@ -66,7 +67,7 @@
 # define ROTATE_SPEED 2.6
 # define WIDTH 1280
 # define HEIGHT 720
-#define MINIMAP_SIZE 125
+#define MINIMAP_SIZE 400
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -173,6 +174,7 @@ typedef struct s_player
     int    key_right;
     int    key_forward;
     int    key_backward;
+    int minimap;
     t_fps  *fps;
 }               t_player;
 
@@ -209,7 +211,9 @@ int	        handle_key(int keysym, t_data *data);
 /*-------------------------draw---------------------------*/
 
 void draw_cell(t_data *data, int x, int y, int color);
-void	draw_point(t_data *data, int x, int y, int color);
+void draw_player(t_data *data, int x, int y, int color);
+void draw_dda(t_data *data, int start_x, int start_y, int end_x, int end_y);
+void draw_view(t_data *data, int x, int y, int color);
 
 /*------------------------minimap-------------------------*/
 

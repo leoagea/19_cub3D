@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/22 18:09:32 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/23 15:24:14 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	key_press(int keysym, t_data *data)
 		data->player->key_forward = 1;
 	if (keysym == KEY_S)
 		data->player->key_backward = 1;
+	if (keysym == KEY_TAB)
+		data->player->minimap = 1;
 	return (0);
 }
 
@@ -63,5 +65,7 @@ int	key_release(int keysym, t_data *data)
 		data->player->key_forward = 0;
 	if (keysym == KEY_S)
 		data->player->key_backward = 0;
+	if (keysym == KEY_TAB)
+		data->player->minimap = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 12:48:43 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 15:08:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,5 @@ int main(int ac, char **av)
     mlx_loop(data.mlx_connection);
     return 0;
 }
+
+//voir bug video

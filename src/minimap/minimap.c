@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 13:18:48 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 02:03:30 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 18:21:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void draw_minimap(t_data *data)
 		}
 		i++;
 	}
-	draw_cell(data,(data->minimap->cell_width * (int)data->player->pos_x) + data->minimap->start_x, (data->minimap->cell_height * (int) data->player->pos_y ) + data->minimap->start_y, 12779520);
+	draw_player(data,(data->minimap->cell_width * (int)data->player->pos_x) + data->minimap->start_x, (data->minimap->cell_height * (int) data->player->pos_y ) + data->minimap->start_y, 12779520);
+	// draw_view(data,(data->minimap->cell_width * (int)data->player->pos_x) + data->minimap->start_x, (data->minimap->cell_height * (int) data->player->pos_y ) + data->minimap->start_y, 12779520);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->img->img_ptr, 0, 0);
 }
 
@@ -114,15 +115,16 @@ void create_minimap(t_data *data)
 	// draw_square(data, (int)data->player->pos_x, (int)data->player->pos_y, 25, 5984850);
 	// start_y = (int) data->player->pos_y - 2;
 	// for(int start_y = (int) data->player->pos_y - 2; start_y < data->player->pos_y + 2; start_y++)
-	for(int i = -2; i < 4; i++)
-	{
-		for(int j = -2; j < 4; j++)
-		{
-			if (data->file->map[(int) data->player->pos_y - i][(int) data->player->pos_x - j] && data->file->map[(int) data->player->pos_y - i][(int) data->player->pos_x - j] == '1')
-				draw_square(data, (j * 25) + data->minimap->start_x, (i * 25) + data->minimap->start_y, 25, 5984850);
-		}
-	}
-	draw_square(data, (int) data->minimap->start_x + 6, (int)data->player->pos_y + 50, 12, 1653652);
+	// for(int i = -2; i < 4; i++)
+	// {
+	// 	for(int j = -2; j < 4; j++)
+	// 	{
+	// 		if (data->file->map[(int) data->player->pos_y - i][(int) data->player->pos_x - j] && data->file->map[(int) data->player->pos_y - i][(int) data->player->pos_x - j] == '1')
+	// 			draw_square(data, (j * 25) + data->minimap->start_x, (i * 25) + data->minimap->start_y, 25, 5984850);
+	// 	}
+	// }
+	// draw_square(data, (int) data->minimap->start_x + 6, (int)data->player->pos_y + 50, 12, 1653652);
 	// draw_zone_4x4(data,data->file->map, (int)data->player->pos_x, (int)data->player->pos_y, 25);
-    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->img->img_ptr, 0, 0);
+    // mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->img->img_ptr, 0, 0);
+	draw_minimap(data);
 }
