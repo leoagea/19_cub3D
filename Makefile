@@ -14,7 +14,7 @@ LIBFT = libft/lib/libft.a
 ifeq ($(shell uname), Linux)
 	MLX_DIR = ./mlx_linux
 	MLX_PATH = mlx_linux/libmlx.a
-	MLX =  -L /usr/lib -lXext -lX11 -lm -lz 
+	MLX =  -L /usr/lib -lXext -lX11 -lm 
 	MLX_OBJ = -I/usr/include -Imlx_linux -O3
 else
 	MLX_DIR = ./mlx
@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
+CFLAGS = -g -O3 #-g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 
 RM = rm -rf
 

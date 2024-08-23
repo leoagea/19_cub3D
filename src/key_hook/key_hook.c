@@ -50,6 +50,10 @@ int	key_press(int keysym, t_data *data)
 		data->player->key_forward = 1;
 	if (keysym == KEY_S)
 		data->player->key_backward = 1;
+	if (keysym == KEY_A)
+		data->player->key_move_left = 1;
+	if (keysym == KEY_D)
+		data->player->key_move_right = 1;
 	return (0);
 }
 
@@ -63,5 +67,9 @@ int	key_release(int keysym, t_data *data)
 		data->player->key_forward = 0;
 	if (keysym == KEY_S)
 		data->player->key_backward = 0;
+	if (keysym == KEY_A)
+		data->player->key_move_left = 0;
+	if (keysym == KEY_D)
+		data->player->key_move_right = 0;
 	return (0);
 }

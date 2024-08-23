@@ -23,8 +23,26 @@
 # include <sys/time.h>
 
 # ifdef __linux__
-#  include "../mlx_linux/mlx.h"
-#  include <X11/keysym.h>
+    # include "../mlx_linux/mlx.h"
+    # include <X11/keysym.h>
+    #define KEY_A 113
+	#define KEY_D 100
+	#define KEY_E 101
+	#define KEY_G 103
+	#define KEY_M 109
+	#define KEY_Q 97
+	#define KEY_R 114
+	#define KEY_S 115
+	#define KEY_W 122
+	#define KEY_ESC 65307
+	#define KEY_PLUS 61
+	#define KEY_MINUS 45
+	#define KEY_UP 65362
+	#define KEY_RIGHT 65363
+	#define KEY_DOWN 65364
+	#define KEY_LEFT 65361
+	#define KEY_SHIFT 65505
+	#define KEY_SPACE 32
 # endif
 
 # ifdef __APPLE__
@@ -153,6 +171,8 @@ typedef struct s_player
     int    key_right;
     int    key_forward;
     int    key_backward;
+    int    key_move_left;
+    int    key_move_right;
     t_fps  *fps;
 }               t_player;
 
@@ -189,6 +209,8 @@ void	    rotate_right(t_data *data);
 void	    rotate_left(t_data *data);
 void	    move_forward(t_data *data);
 void	    move_backward(t_data *data);
+void	    move_left(t_data *data);
+void	    move_right(t_data *data);
 int	        player_movement(t_data *data);
 
 /*========================Raycasting======================*/

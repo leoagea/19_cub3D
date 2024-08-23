@@ -47,6 +47,8 @@ void init_player_struct(t_data *data)
 	data->player->key_forward = 0;
 	data->player->key_left = 0;
 	data->player->key_right = 0;
+    data->player->key_move_left = 0;
+    data->player->key_move_right = 0;
 }
 
 void init_fps_struct(t_data *data)
