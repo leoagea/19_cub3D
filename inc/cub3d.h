@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 16:28:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 19:11:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@
 #define ERR_PLAY "Wrong number of players, expected only 1 player"
 #define ERR_MAP "Map not closed with walls"
 #define ERR_XPM "Xpm to image failed"
+#define ERR_MAP_CHAR "Wrong char in map"
 
 typedef struct s_color
 {
@@ -241,6 +242,10 @@ void	draw_point(t_data *data, int x, int y, int color);
 
 void        check_file_extension(char *file, t_data *data);
 
+/*----------------------check_map-------------------------*/
+
+void checking_map(t_data *data);
+
 /*-------------------------check--------------------------*/
 
 void check_color_textures(t_data *data, char *line);
@@ -254,9 +259,9 @@ void get_color(t_data *data);
 
 void get_data_line(t_data *data, char *line);
 
-/*--------------------------map---------------------------*/
+/*-------------------------map----------------------------*/
 
-void checking_map(t_data *data);
+void get_map(t_data *data, int i);
 
 /*------------------------parsing-------------------------*/
 
@@ -302,6 +307,7 @@ void init_fps_struct(t_data *data);
 t_color *init_color_struct(t_data *data);
 void init_minimap_struct(t_data *data);
 void init_data(t_data *data);
+void init_xpm(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 

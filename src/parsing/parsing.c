@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 12:48:40 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/23 19:09:37 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,35 +44,6 @@ static int skip_null_line(t_data *data, int i)
     return i;
 } 
 
-static void get_map(t_data *data, int i)
-{
-    int j;
-    int len;
-    int max_len;
-
-    max_len = 0;
-    data->file->map = malloc(sizeof(char *) * data->file->line - i + 1);
-    if(!data->file->map)
-        ft_error(ERR_ALLOC, data);
-    j = 0;
-    while (i < data->file->line)
-    {
-        data->file->map[j] = ft_strtrim(data->file->file[i], "\n");
-        i++;
-        j++;
-    }
-    data->file->map_height = j;
-    data->file->map[j] = NULL;
-    i = -1;
-    while (data->file->map[++i])
-    {
-        len = ft_strlen(data->file->map[i]);
-        if (len > max_len)
-            max_len = len;
-    }
-    data->file->map_width = max_len;
-}
-
 void    parsing(int ac, char **av, t_data *data)
 {
     int i;
@@ -82,6 +53,7 @@ void    parsing(int ac, char **av, t_data *data)
     check_file_extension(av[1], data);
     init_struct_file(data);
     init_player_struct(data);
+    init_xpm(data);
     open_file(data, av[1]);
     i = get_data(data);
     get_color(data);
