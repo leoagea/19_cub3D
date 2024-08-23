@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 19:05:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/22 22:47:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int	        handle_key(int keysym, t_data *data);
 /*-------------------------draw---------------------------*/
 
 void draw_cell(t_data *data, int x, int y, int color);
+void	draw_point(t_data *data, int x, int y, int color);
 
 /*------------------------minimap-------------------------*/
 
