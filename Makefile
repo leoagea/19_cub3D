@@ -37,10 +37,11 @@ DEBUG_DIR = debug/
 
 SRCS =	src/main.c \
 		src/window/create_window.c \
-		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c \
+		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/mouse.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
 		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
-		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
+		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
+		src/texture/floor_ceiling.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -82,6 +83,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/key_hook
 	@mkdir -p $(OBJS_DIR)/raycasting
 	@mkdir -p $(OBJS_DIR)/draw
+	@mkdir -p $(OBJS_DIR)/texture
 	$(PROGRESS_BAR)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 

@@ -14,12 +14,12 @@
 
 void clear_xpm(t_data *data)
 {
-    if (data->xpm.wall_no)
-        mlx_destroy_image(data->mlx_connection, data->xpm.wall_no);
-    if (data->xpm.wall_so)
-        mlx_destroy_image(data->mlx_connection, data->xpm.wall_so);
-    if (data->xpm.wall_ea)
-        mlx_destroy_image(data->mlx_connection, data->xpm.wall_ea);
-    if (data->xpm.wall_we)
-        mlx_destroy_image(data->mlx_connection, data->xpm.wall_we);
+    if (data->texture[NO].img_ptr)
+        mlx_destroy_image(data->mlx_connection, data->texture[NO].img_ptr);
+    // if (data->xpm.wall_so)
+    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_so);
+    // if (data->xpm.wall_ea)
+    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_ea);
+    // if (data->xpm.wall_we)
+    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_we);
 }

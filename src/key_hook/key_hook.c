@@ -33,13 +33,6 @@ void	handle_input(int keysym, t_data *data)
 	exit(1);
 }
 
-int	handle_key(int keysym, t_data *data)
-{
-	if (keysym == 53)
-		handle_input(keysym, data);
-	return (0);
-}
-
 int	key_press(int keysym, t_data *data)
 {
 	if (keysym == KEY_LEFT)
@@ -54,6 +47,8 @@ int	key_press(int keysym, t_data *data)
 		data->player->key_move_left = 1;
 	if (keysym == KEY_D)
 		data->player->key_move_right = 1;
+	if (keysym == KEY_ESC)
+		handle_input(keysym, data);
 	return (0);
 }
 

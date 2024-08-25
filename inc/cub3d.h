@@ -81,7 +81,9 @@
 # define PLANE 77
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
-# define ROTATE_SPEED 2.6
+# define SPEED 0.07
+# define SENSI 0.002
+# define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
@@ -98,6 +100,14 @@
 #define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
 #define ERR_MAP "Error: Map not closed with walls"
 #define ERR_XPM "Error: Xpm to image failed"
+
+enum
+{
+    NO = 0,
+    SO,
+    EA,
+    WE
+};
 
 typedef struct s_color
 {
@@ -131,6 +141,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		endian;
 	int		size_line;
+    int     height;
+    int     width;
 }			t_img;
 
 typedef struct s_fps
@@ -173,6 +185,7 @@ typedef struct s_player
     int    key_backward;
     int    key_move_left;
     int    key_move_right;
+    double rotation_speed;
     t_fps  *fps;
 }               t_player;
 
@@ -184,14 +197,23 @@ typedef struct s_xpm
     t_img    *wall_we;
 }               t_xpm;
 
+typedef struct s_floor
+{
+    double ray_dir_left_x;
+    double ray_dir_left_y;
+    double ray_dir_right_x;
+    double ray_dir_right_y;
+}              t_floor;
+
 typedef struct s_data
 {
-    void	*mlx_connection;
-	void	*mlx_window;
-    t_img	*img;
-    t_xpm   xpm;
-    t_file  *file;
-    t_player *player;   
+    void	 *mlx_connection;
+	void	 *mlx_window;
+    t_img	 *img;
+    t_img    texture[4];
+    t_file   *file;
+    t_player *player;
+    t_floor  *floor;   
 }               t_data;
 
 /*========================Window==========================*/
@@ -212,7 +234,8 @@ void	    move_backward(t_data *data);
 void	    move_left(t_data *data);
 void	    move_right(t_data *data);
 int	        player_movement(t_data *data);
-
+void        rotate_mouse(t_data *data, double angle);
+void        mouse_rotation(t_data *data);
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
 void	ray_direction(int i, t_player *player);

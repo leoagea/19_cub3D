@@ -15,13 +15,14 @@
 int main(int ac, char **av)
 {
     t_data data;
-    
+
     parsing(ac, av, &data);
     create_window(&data);
+    mlx_mouse_hide(data.mlx_connection, data.mlx_window);
+    mlx_mouse_move(data.mlx_connection, data.mlx_window, WIDTH / 2, HEIGHT / 2);
     get_textures(&data);
     raycasting(data.player, &data);
     
-    // mlx_key_hook(data.mlx_window, &handle_key, &data);
     mlx_hook(data.mlx_window, 17, 0, &cross_event, &data);
     mlx_hook(data.mlx_window, 2, 1L<<0, &key_press, &data);
     mlx_hook(data.mlx_window, 3, 1L<<1, &key_release, &data);

@@ -21,7 +21,7 @@ void clear_data(t_data *data)
 void ft_error(char *str, t_data *data)
 {
     printf("%s\n", str);
-    clear_data(data);
+    // clear_data(data);
     exit(1);
 }
 
