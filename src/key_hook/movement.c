@@ -62,5 +62,7 @@ int	player_movement(t_data *data)
 		move_backward(data);
 	if (data->player->minimap)
 		create_minimap(data);
+	else
+		raycasting(data->player, data);
 	return (0);
 }

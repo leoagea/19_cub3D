@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 18:52:10 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 13:28:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void init_player_struct(t_data *data)
     data->player = malloc(sizeof(t_player));
     if (!data->player)
         ft_error(ERR_ALLOC, data);
+    data->player->minimap = 0;
     data->player->pos_x = 0;
     data->player->pos_y = 0;
     data->player->dir_x = 0;

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 19:10:51 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 13:22:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void get_map(t_data *data, int i)
         j++;
     }
     data->file->map[j] = NULL;
+    get_max_len_map(data, j);
 }
