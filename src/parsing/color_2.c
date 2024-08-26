@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 14:55:24 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 16:03:49 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:58:29 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void get_texture_floor(t_data *data, char *path)
     int y;
     int fd;
     
-    printf("Test\n");
     fd = open(path, O_RDONLY);
     if (fd == -1)
         ft_error(strerror(errno), data);

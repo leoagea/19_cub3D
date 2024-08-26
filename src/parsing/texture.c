@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 16:02:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 18:50:24 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void load_xpm(t_data *data)
     data->xpm.wall_so = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_so, &x, &y);
     data->xpm.wall_ea = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_ea, &x, &y);
     data->xpm.wall_we = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_we, &x, &y);
-    if (!data->xpm.wall_no || !data->xpm.wall_so || !data->xpm.wall_ea || !data->xpm.wall_we)
+    data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu_2.xpm", &x, &y);
+    if (!data->xpm.wall_no || !data->xpm.wall_so || !data->xpm.wall_ea || !data->xpm.wall_we || !data->xpm.menu)
         ft_error(ERR_XPM, data);
 }
 
@@ -42,6 +43,10 @@ static int check_xpm(t_data *data)
         return (ft_error(strerror(errno), data), 1);
     close(fd);
     fd = open(data->file->wall_we, O_RDONLY);
+    if (fd == -1)
+        return (ft_error(strerror(errno), data), 1);
+    close(fd);
+    fd = open("./assets/menu.xpm", O_RDONLY);
     if (fd == -1)
         return (ft_error(strerror(errno), data), 1);
     close(fd);

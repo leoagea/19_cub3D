@@ -42,7 +42,8 @@ SRCS =	src/main.c \
 		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
-		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c
+		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
+		src/menu/menu.c 
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -82,6 +83,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
 	@mkdir -p $(OBJS_DIR)/key_hook
+	@mkdir -p $(OBJS_DIR)/menu
 	@mkdir -p $(OBJS_DIR)/minimap
 	@mkdir -p $(OBJS_DIR)/raycasting
 	@mkdir -p $(OBJS_DIR)/draw

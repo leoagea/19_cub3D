@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 15:08:23 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:26:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,5 @@ void init_xpm(t_data *data)
     data->xpm.wall_we = NULL;
     data->xpm.floor = NULL;
     data->xpm.ceiling = NULL;
+    data->xpm.menu = NULL;
 }

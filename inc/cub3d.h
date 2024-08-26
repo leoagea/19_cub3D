@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 15:34:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:46:03 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ typedef struct s_xpm
     t_img    *wall_we;
     t_img    *floor;
     t_img    *ceiling;
+    t_img    *menu;
 }               t_xpm;
 
 typedef struct s_data
@@ -210,6 +211,13 @@ void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
 
+int         key_press(int keysym, t_data *data);
+int	        key_release(int keysym, t_data *data);
+void	    rotate_right(t_data *data);
+void	    rotate_left(t_data *data);
+void	    move_forward(t_data *data);
+void	    move_backward(t_data *data);
+int	        player_movement(t_data *data);
 /*========================Minimap=========================*/
 /*-------------------------draw---------------------------*/
 
@@ -218,17 +226,14 @@ void draw_player(t_data *data, int x, int y, int color);
 void draw_dda(t_data *data, int start_x, int start_y, int end_x, int end_y);
 void draw_view(t_data *data, int x, int y, int color);
 
-/*------------------------minimap-------------------------*/
+/*-------------------------minimap------------------------*/
 
 void create_minimap(t_data *data);
 
-int         key_press(int keysym, t_data *data);
-int	        key_release(int keysym, t_data *data);
-void	    rotate_right(t_data *data);
-void	    rotate_left(t_data *data);
-void	    move_forward(t_data *data);
-void	    move_backward(t_data *data);
-int	        player_movement(t_data *data);
+/*==========================Menu==========================*/
+/*--------------------------menu--------------------------*/
+
+void create_menu(t_data *data);
 
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
