@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/22 18:09:32 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 18:25:15 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ int	key_press(int keysym, t_data *data)
 		data->player->key_move_right = 1;
 	if (keysym == KEY_ESC)
 		handle_input(keysym, data);
+	if (keysym == KEY_G)
+	{
+		if (data->player->speed * 100 <= 30 && data->player->speed >= -30)
+		{
+			data->player->speed += 0.01;
+			raycasting(data->player, data);
+		}
+	}
+	if (keysym == KEY_R)
+	{
+		if (data->player->speed * 100 <= 30 && data->player->speed >= -30)
+		{
+			data->player->speed -= 0.01;
+			raycasting(data->player, data);
+		}
+	}
 	return (0);
 }
 

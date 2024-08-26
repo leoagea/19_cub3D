@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 17:15:40 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 18:35:52 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,8 @@ typedef struct s_player
     int    key_move_right;
     double rotation_speed;
     int    side_view;
+    double speed;
+    double pitch;
 }               t_player;
 
 typedef struct s_wall

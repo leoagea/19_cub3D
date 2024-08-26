@@ -5,8 +5,8 @@ void	move_forward(t_data *data)
 	double new_pos_x;
     double new_pos_y;
 
-	new_pos_x = data->player->pos_x + data->player->dir_x * SPEED;
-	new_pos_y = data->player->pos_y + data->player->dir_y * SPEED;
+	new_pos_x = data->player->pos_x + data->player->dir_x * data->player->speed;
+	new_pos_y = data->player->pos_y + data->player->dir_y * data->player->speed;
 	if (data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
@@ -25,8 +25,8 @@ void	move_backward(t_data *data)
 	double new_pos_x;
     double new_pos_y;
 
-	new_pos_x = data->player->pos_x - data->player->dir_x * SPEED;
-	new_pos_y = data->player->pos_y - data->player->dir_y * SPEED;
+	new_pos_x = data->player->pos_x - data->player->dir_x * data->player->speed;
+	new_pos_y = data->player->pos_y - data->player->dir_y * data->player->speed;
 
 	if (data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
@@ -52,8 +52,8 @@ void	move_right(t_data *data)
 
 	new_vect_x = data->player->dir_x * cos(PI / 2) - data->player->dir_y * sin(PI / 2);
 	new_vect_y = data->player->dir_x * sin(PI / 2) + data->player->dir_y * cos(PI / 2);
-	new_pos_x = data->player->pos_x + new_vect_x * SPEED;
-	new_pos_y = data->player->pos_y + new_vect_y * SPEED;
+	new_pos_x = data->player->pos_x + new_vect_x * data->player->speed;
+	new_pos_y = data->player->pos_y + new_vect_y * data->player->speed;
 	if (data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
@@ -78,8 +78,8 @@ void	move_left(t_data *data)
 
 	new_vect_x = data->player->dir_x * cos(PI / 2) - data->player->dir_y * sin(PI / 2);
 	new_vect_y = data->player->dir_x * sin(PI / 2) + data->player->dir_y * cos(PI / 2);
-	new_pos_x = data->player->pos_x - new_vect_x * SPEED;
-	new_pos_y = data->player->pos_y - new_vect_y * SPEED;
+	new_pos_x = data->player->pos_x - new_vect_x * data->player->speed;
+	new_pos_y = data->player->pos_y - new_vect_y * data->player->speed;
 	if (data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
 		data->file->map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||

@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO 				./assets/texture_2.xpm
+			SO ./assets/texture_32.xpm
+WE 						./assets/texture_5.xpm
+EA ./assets/texture_26.xpm
 
-F 220,100,0
-C 225,30,0
+F 0,0,0
+C 0,0,0
 
          11
         1001

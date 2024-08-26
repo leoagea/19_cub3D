@@ -1,10 +1,10 @@
 NO 				./assets/texture_2.xpm
 			SO ./assets/texture_32.xpm
-WE 						./assets/texture_16.xpm
+WE 						./assets/texture_5.xpm
 EA ./assets/texture_26.xpm
 
-C 172,21,237
-F 204,237,57
+F 0,0,0
+C 0,0,0
 
 
 1111111111111111111111111

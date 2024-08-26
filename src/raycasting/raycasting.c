@@ -7,10 +7,10 @@ void	raycasting(t_player *player, t_data *data)
 
 	i = 0;
 	player->column = 0;
-	data->img->img_ptr = mlx_new_image((data)->mlx_connection, WIDTH, HEIGHT);
-	data->img->img_pixels_ptr = mlx_get_data_addr((data)->img->img_ptr,
-			&((data)->img->bits_per_pixel), &((data)->img->size_line),
-			&((data)->img->endian));
+	data->img->img_ptr = mlx_new_image(data->mlx_connection, WIDTH, HEIGHT);
+	data->img->img_pixels_ptr = mlx_get_data_addr(data->img->img_ptr,
+			&(data->img->bits_per_pixel), &(data->img->size_line),
+			&(data->img->endian));
 	while (i < WIDTH)
 	{
 		ray_direction(i, player);
@@ -23,8 +23,10 @@ void	raycasting(t_player *player, t_data *data)
 		draw_crosshair(data);
 		i++;
 	}
-	mlx_put_image_to_window((data)->mlx_connection, (data)->mlx_window,
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
+	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 700, 16777215, "Speed :");
+	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 700, 16777215, ft_itoa(data->player->speed * 100));
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector
@@ -101,10 +103,10 @@ void	dda_algorithm(t_player *player, t_data *data)
 void	wall_height(t_player *player)
 {
 	player->wall_height = (int)(HEIGHT / player->perp_wall_dist);
-	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2;
+	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2 + player->pitch;
 	if (player->draw_start < 0)
 		player->draw_start = 0;
-	player->draw_end = player->wall_height / 2 + HEIGHT / 2;
+	player->draw_end = player->wall_height / 2 + HEIGHT / 2 + player->pitch;
 	if (player->draw_end >= HEIGHT)
 		player->draw_end = HEIGHT - 1;
 }
