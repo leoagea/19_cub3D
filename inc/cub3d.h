@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 16:13:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 17:15:40 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ typedef struct s_player
     int    key_move_left;
     int    key_move_right;
     double rotation_speed;
+    int    side_view;
 }               t_player;
 
 typedef struct s_wall
@@ -250,6 +251,7 @@ void	draw(t_data *data, t_player *player);
 void	draw_point(t_data *data, int x, int y, long color);
 void	draw_crosshair(t_data *data);
 void	wall_texture(t_data *data, t_player *player, int i);
+void	side_view(t_player *player);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

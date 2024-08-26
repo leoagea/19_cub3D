@@ -5,6 +5,7 @@ void	wall_texture(t_data *data, t_player *player, int i)
 	int	j;
 	uint32_t color;
 	int pixel_index;
+	unsigned char *pixel;
 
 	if (player->side == 0)
 		data->wall->wall_coord = player->pos_y + player->perp_wall_dist * player->ray_dir_y;
@@ -21,10 +22,23 @@ void	wall_texture(t_data *data, t_player *player, int i)
 	{
 		data->wall->tex_y = (int) data->wall->tex_pos & (TEXHEIGHT - 1);
 		data->wall->tex_pos += data->wall->step;
-		pixel_index = (data->wall->tex_y * TEXWIDTH + data->wall->tex_x) * (data->texture[NO].bits_per_pixel / 8);
-		unsigned char *pixel = (unsigned char *)&data->texture[NO].img_pixels_ptr[pixel_index];
+		side_view(player);
+		pixel_index = (data->wall->tex_y * TEXWIDTH + data->wall->tex_x) * (data->texture[player->side_view].bits_per_pixel / 8);
+		pixel = (unsigned char *)&data->texture[player->side_view].img_pixels_ptr[pixel_index];
         color = (pixel[2] << 16) | (pixel[1] << 8) | pixel[0];  // RGB
 		draw_point(data, i, j, color);
 		j++;
 	}
+}
+
+void	side_view(t_player *player)
+{
+	if (player->side == 1 && player->ray_dir_y < 0)
+		player->side_view = NO;
+	if (player->side == 1 && player->ray_dir_y > 0)
+		player->side_view = SO;
+	if (player->side == 0 && player->ray_dir_x < 0)
+		player->side_view = WE;
+	if (player->side == 0 && player->ray_dir_x > 0)
+		player->side_view = EA;
 }

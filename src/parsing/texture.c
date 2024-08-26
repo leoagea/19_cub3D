@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 16:08:15 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 17:19:08 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static void load_xpm(t_data *data)
 {
     data->texture[NO].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_no, &data->texture[NO].width, &data->texture[NO].height);
     data->texture[NO].img_pixels_ptr = mlx_get_data_addr(data->texture[NO].img_ptr, &(data->texture[NO].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[NO].endian));
-    data->texture[SO].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_no, &data->texture[SO].width, &data->texture[SO].height);
+    data->texture[SO].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_so, &data->texture[SO].width, &data->texture[SO].height);
     data->texture[SO].img_pixels_ptr = mlx_get_data_addr(data->texture[SO].img_ptr, &(data->texture[SO].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[SO].endian));
-    data->texture[EA].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_no, &data->texture[EA].width, &data->texture[EA].height);
+    data->texture[EA].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_ea, &data->texture[EA].width, &data->texture[EA].height);
     data->texture[EA].img_pixels_ptr = mlx_get_data_addr(data->texture[EA].img_ptr, &(data->texture[EA].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[EA].endian));
-    data->texture[WE].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_no, &data->texture[WE].width, &data->texture[WE].height);
+    data->texture[WE].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_we, &data->texture[WE].width, &data->texture[WE].height);
     data->texture[WE].img_pixels_ptr = mlx_get_data_addr(data->texture[WE].img_ptr, &(data->texture[WE].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[WE].endian));
     if (!data->texture[NO].img_ptr || !data->texture[SO].img_ptr || !data->texture[EA].img_ptr || !data->texture[WE].img_ptr)
         ft_error(ERR_XPM, data);
