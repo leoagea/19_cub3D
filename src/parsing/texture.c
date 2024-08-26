@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 16:08:15 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 16:02:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ static int check_xpm(t_data *data)
     
     fd = open(data->file->wall_no, O_RDONLY);
     if (fd == -1)
-        return (printf("Error 0: "), ft_error(strerror(errno), data), 1);
+        return (ft_error(strerror(errno), data), 1);
     close(fd);
     fd = open(data->file->wall_so, O_RDONLY);
     if (fd == -1)
-        return (printf("Error 1: "), ft_error(strerror(errno), data), 1);
+        return (ft_error(strerror(errno), data), 1);
     close(fd);
     fd = open(data->file->wall_ea, O_RDONLY);
     if (fd == -1)
-        return (printf("Error 2: "), ft_error(strerror(errno), data), 1);
+        return (ft_error(strerror(errno), data), 1);
     close(fd);
     fd = open(data->file->wall_we, O_RDONLY);
     if (fd == -1)
-        return (printf("Error 3: "), ft_error(strerror(errno), data), 1);
+        return (ft_error(strerror(errno), data), 1);
     close(fd);
     return 0; 
 }
@@ -52,4 +52,8 @@ void get_textures(t_data *data)
 {
     check_xpm(data);
     load_xpm(data);
+    if (!data->file->c_floor)
+        get_texture_floor(data, data->file->color_floor);
+    if (!data->file->c_ceiling)
+        get_texture_floor(data, data->file->color_ceiling);
 }

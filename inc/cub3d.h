@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 19:11:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 15:34:45 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,8 @@ typedef struct s_xpm
     t_img    *wall_so;
     t_img    *wall_ea;
     t_img    *wall_we;
+    t_img    *floor;
+    t_img    *ceiling;
 }               t_xpm;
 
 typedef struct s_data
@@ -250,6 +252,12 @@ void checking_map(t_data *data);
 
 void check_color_textures(t_data *data, char *line);
 void check_color(t_data *data);
+
+/*-----------------------color_2--------------------------*/
+
+int check_is_rgb_color(char *line);
+void get_texture_floor(t_data *data, char *path);
+void get_texture_ceiling(t_data *data, char *path);
 
 /*-------------------------color--------------------------*/
 

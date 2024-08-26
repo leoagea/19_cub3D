@@ -39,7 +39,7 @@ DEBUG_DIR = debug/
 SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/minimap/draw.c src/minimap/minimap.c \
-		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
+		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
 		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:42:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/21 18:55:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:03:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,14 @@ void check_color_textures(t_data *data, char *line)
 
 void check_color(t_data *data)
 {
-    get_number_color_data(data, data->file->color_floor);
-    get_number_color_data(data, data->file->color_ceiling);
-    check_coma(data, data->file->color_floor);
-    check_coma(data, data->file->color_ceiling);
+    if (data->file->c_floor)
+    {
+        get_number_color_data(data, data->file->color_floor);
+        check_coma(data, data->file->color_floor);
+    }
+    if (data->file->c_ceiling)
+    {
+        get_number_color_data(data, data->file->color_ceiling);
+        check_coma(data, data->file->color_ceiling);
+    }
 }
