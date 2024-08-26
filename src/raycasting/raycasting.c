@@ -11,7 +11,6 @@ void	raycasting(t_player *player, t_data *data)
 	data->img->img_pixels_ptr = mlx_get_data_addr((data)->img->img_ptr,
 			&((data)->img->bits_per_pixel), &((data)->img->size_line),
 			&((data)->img->endian));
-	// get_fps(data->player);
 	while (i < WIDTH)
 	{
 		ray_direction(i, player);
@@ -20,14 +19,12 @@ void	raycasting(t_player *player, t_data *data)
 		dda_algorithm(player, data);
 		wall_height(player);
 		draw(data, player);
+		wall_texture(data, player, i);
+		draw_crosshair(data);
 		i++;
 	}
-	// fps_str = ft_itoa(data->player->fps->fps);
 	mlx_put_image_to_window((data)->mlx_connection, (data)->mlx_window,
 		(data)->img->img_ptr, 0, 0);
-	// mlx_string_put(data->mlx_connection, data->mlx_window, 10, 10, 0xFFFFFF, "FPS :");	
-	// mlx_string_put(data->mlx_connection, data->mlx_window, 70, 10, 0xFFFFFF, fps_str);
-	// free(fps_str);
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector

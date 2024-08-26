@@ -10,20 +10,13 @@ void	draw(t_data *data, t_player *player)
 	while (i < HEIGHT)
 	{
 		if (i >= player->draw_start && i <= player->draw_end)
-		{
-			if (player->side == 1)
-				draw_point(data, player->column, i, 106921);
-			else
-				draw_point(data, player->column, i, 3487122);
-		}
-		else
 			draw_point(data, player->column, i, 0);
 		i++;
 	}
 	player->column++;
 }
 
-void	draw_point(t_data *data, int x, int y, int color)
+void	draw_point(t_data *data, int x, int y, long color)
 {
 	int	pixel;
 
@@ -48,11 +41,20 @@ void	draw_point(t_data *data, int x, int y, int color)
 	}
 }
 
-void	get_fps(t_player *player)
+void	draw_crosshair(t_data *data)
 {
-	gettimeofday(&player->fps->end, NULL);
-	player->fps->delta_time = (player->fps->end.tv_sec - player->fps->start.tv_sec) * 1000.0;
-	player->fps->delta_time += (player->fps->end.tv_usec - player->fps->start.tv_usec) / 1000.0;
-    player->fps->fps = 1000.0 / player->fps->delta_time;
-    gettimeofday(&player->fps->start, NULL);
+	int i;
+
+	i = -10;
+	while (i < 10)
+	{
+		draw_point(data, WIDTH / 2 + i, HEIGHT / 2, 4294967295);
+		i++;
+	}
+	i = -10;
+	while (i < 10)
+	{
+		draw_point(data, WIDTH / 2, HEIGHT / 2 + i, 4294967295);
+		i++;
+	}
 }

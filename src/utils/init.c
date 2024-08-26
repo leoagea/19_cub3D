@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 14:14:25 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 14:31:34 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,6 @@ void init_player_struct(t_data *data)
 	data->player->key_right = 0;
     data->player->key_move_left = 0;
     data->player->key_move_right = 0;
-}
-
-void init_fps_struct(t_data *data)
-{
-    data->player->fps->delta_time = 0.0;
-    data->player->fps->fps = 0;
 }
 
 t_color *init_color_struct(t_data *data)

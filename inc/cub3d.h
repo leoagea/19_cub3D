@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 18:10:10 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 16:13:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <limits.h>
 # include <time.h>
 # include <sys/time.h>
+# include <stdint.h>
 
 # ifdef __linux__
     # include "../mlx_linux/mlx.h"
@@ -77,15 +78,16 @@
 	# define KEY_9 92
 # endif
 
-# define K 1 // Constante de proportionnalite pour modifier la distance de la camera
 # define PLANE 77
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
-# define SPEED 0.07
-# define SENSI 0.002
+# define SPEED 0.1
+# define SENSI 0.0039
 # define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 # define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Error: Malloc, allocation failed"
@@ -145,14 +147,6 @@ typedef struct s_img
     int     width;
 }			t_img;
 
-typedef struct s_fps
-{
-    struct timeval start;
-    struct timeval end;
-    double delta_time;
-    int    fps;
-}           t_fps;
-
 typedef struct s_player
 {
     int    map_x;
@@ -186,8 +180,16 @@ typedef struct s_player
     int    key_move_left;
     int    key_move_right;
     double rotation_speed;
-    t_fps  *fps;
 }               t_player;
+
+typedef struct s_wall
+{
+    double  wall_coord;
+    int     tex_x;
+    int     tex_y;
+    double  step;
+    double  tex_pos;
+}               t_wall;
 
 typedef struct s_xpm
 {
@@ -209,6 +211,7 @@ typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
+    t_wall   *wall;
     t_img	 *img;
     t_img    texture[4];
     t_file   *file;
@@ -244,7 +247,9 @@ void	init_dda(t_player *player);
 void	dda_algorithm(t_player *player, t_data *data);
 void	wall_height(t_player *player);
 void	draw(t_data *data, t_player *player);
-void	draw_point(t_data *data, int x, int y, int color);
+void	draw_point(t_data *data, int x, int y, long color);
+void	draw_crosshair(t_data *data);
+void	wall_texture(t_data *data, t_player *player, int i);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

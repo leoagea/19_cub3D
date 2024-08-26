@@ -20,12 +20,12 @@ void    mouse_rotation(t_data *data)
     int x;
     int y;
 
-    mlx_mouse_get_pos(data->mlx_connection, data->mlx_window, &x, &y);
+    mlx_mouse_get_pos(data->mlx_window, &x, &y);
     if (x - WIDTH / 2 != 0)
     {
         rotate_mouse(data, ((double)x - (double)WIDTH / 2) * SENSI);
-        mlx_mouse_move(data->mlx_connection, data->mlx_window, WIDTH / 2, HEIGHT / 2);
+        mlx_mouse_move(data->mlx_window, WIDTH / 2, HEIGHT / 2);
     }
     if (y - HEIGHT / 2 != 0)
-        mlx_mouse_move(data->mlx_connection, data->mlx_window, WIDTH / 2, HEIGHT / 2);
+        mlx_mouse_move(data->mlx_window, WIDTH / 2, HEIGHT / 2);
 }

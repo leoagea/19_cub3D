@@ -18,7 +18,7 @@ ifeq ($(shell uname), Linux)
 	MLX_OBJ = -I/usr/include -Imlx_linux -O3
 else
 	MLX_DIR = ./mlx
-	MLX_PATH = mlx/libmlx.a	
+	MLX_PATH = mlx/libmlx.a
 	MLX = -lmlx -Lmlx -framework OpenGl -framework AppKit
 	MLX_OBJ = -Imlx -c
 endif
@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g -O3 #-g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
+CFLAGS = -g -O3 -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 
 RM = rm -rf
 
@@ -41,7 +41,7 @@ SRCS =	src/main.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
 		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
-		src/texture/floor_ceiling.c \
+		src/texture/wall.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -51,6 +51,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	#@make -C $(MLX_DIR)
+	@export DYLD_LIBRARY_PATH=./mlx:$DYLD_LIBRARY_PATH
 	@make -C libft
 	@printf "                                              							   \r"
 	@echo "\033[0;34m 														"

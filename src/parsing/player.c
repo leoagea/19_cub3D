@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 14:16:24 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:50:42 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ static void assign_dir(t_player *player, char **map, int i, int j)
     else if (map[i][j] == 'S')
     {
         player->dir_x = 0;
-        player->dir_y = 1 * (float)K;
+        player->dir_y = 1;
     }
     else if (map[i][j] == 'E')
     {
-        player->dir_x = 1 * (float)K;
+        player->dir_x = 1;
         player->dir_y = 0;
     }
     else if (map[i][j] == 'W')
     {
-        player->dir_x = -1 * (float)K;
+        player->dir_x = -1;
         player->dir_y = 0;
     }
 }
