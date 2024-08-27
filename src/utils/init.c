@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/27 15:48:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/27 17:12:11 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,8 @@ void init_xpm(t_data *data)
     data->xpm.floor = NULL;
     data->xpm.ceiling = NULL;
     data->xpm.menu = NULL;
+    data->xpm.start = NULL;
+    data->xpm.start_select = NULL;
+    data->xpm.exit = NULL;
+    data->xpm.exit_select = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 19:09:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/27 17:17:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void    parsing(int ac, char **av, t_data *data)
     get_player_pos(data);
     // get_textures(data);
     checking_map(data);
-    int j = 0;
-    while(data->file->map[j])
-    {
-        printf("%s\n", data->file->map[j]);
-        j++;
-    }
+    // int j = 0;
+    // while(data->file->map[j])
+    // {
+    //     printf("%s\n", data->file->map[j]);
+    //     j++;
+    // }
 }
 
     // printf("data->file->wall_no : %s\n", data->file->wall_no);

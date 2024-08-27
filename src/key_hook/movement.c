@@ -56,6 +56,7 @@ int player_movement(t_data *data)
         create_menu(data);
     else if (data->menu == 1)
     {
+		// printf("Test\n");
         if (data->player->key_left)
             rotate_left(data);
         if (data->player->key_right)

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/27 15:12:41 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/27 17:11:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,9 @@ typedef struct s_xpm
     t_img    *ceiling;
     t_img    *menu;
     t_img    *start;
+    t_img   *start_select;
+    t_img *exit;
+    t_img *exit_select;
 }               t_xpm;
 
 typedef struct s_data
@@ -236,6 +239,7 @@ void create_minimap(t_data *data);
 /*==========================Menu==========================*/
 /*--------------------------menu--------------------------*/
 
+int handle_mouse(int keysm, int x, int y, t_data *data);
 int create_menu(t_data *data);
 
 /*========================Raycasting======================*/
