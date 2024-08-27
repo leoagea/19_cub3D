@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 17:19:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/27 14:09:05 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ static int check_xpm(t_data *data)
 void get_textures(t_data *data)
 {
     // check_xpm(data);
+    load_weapon(data);
     load_xpm(data);
 }

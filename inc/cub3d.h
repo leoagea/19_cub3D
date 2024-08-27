@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 18:35:52 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/27 17:56:02 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,14 @@ enum
     WE
 };
 
+enum
+{
+    SIMPLE = 0,
+    SHOOT,
+    RECOIL,
+    REPLACE
+};
+
 typedef struct s_color
 {
     char *r;
@@ -183,6 +191,9 @@ typedef struct s_player
     int    side_view;
     double speed;
     double pitch;
+    int     is_firing;
+    int     fire_frame;
+    t_img    weapon[4];
 }               t_player;
 
 typedef struct s_wall
@@ -216,10 +227,10 @@ typedef struct s_data
 	void	 *mlx_window;
     t_wall   *wall;
     t_img	 *img;
-    t_img    texture[4];
     t_file   *file;
     t_player *player;
     t_floor  *floor;   
+    t_img    texture[4];
 }               t_data;
 
 /*========================Window==========================*/
@@ -254,6 +265,10 @@ void	draw_point(t_data *data, int x, int y, long color);
 void	draw_crosshair(t_data *data);
 void	wall_texture(t_data *data, t_player *player, int i);
 void	side_view(t_player *player);
+void	load_weapon(t_data *data);
+void	draw_weapon(t_data *data, int weapon_pos);
+int	    shoot_event(int keysym, int x, int y, t_data *data);
+void	render_weapon(t_data *data);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

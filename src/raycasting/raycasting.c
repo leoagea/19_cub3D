@@ -25,6 +25,7 @@ void	raycasting(t_player *player, t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
+	render_weapon(data);
 	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 700, 16777215, "Speed :");
 	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 700, 16777215, ft_itoa(data->player->speed * 100));
 }
