@@ -50,19 +50,24 @@ void	move_backward(t_data *data)
 // 	new_pos_x =
 // }
 
-int	player_movement(t_data *data)
+int player_movement(t_data *data)
 {
-	if (data->player->key_left)
-		rotate_left(data);
-	if (data->player->key_right)
-		rotate_right(data);
-	if (data->player->key_forward)
-		move_forward(data);
-	if (data->player->key_backward)
-		move_backward(data);
-	if (data->player->minimap)
-		create_minimap(data);
-	else
-		raycasting(data->player, data);
-	return (0);
+    if (data->menu == 0)
+        create_menu(data);
+    else if (data->menu == 1)
+    {
+        if (data->player->key_left)
+            rotate_left(data);
+        if (data->player->key_right)
+            rotate_right(data);
+        if (data->player->key_forward)
+            move_forward(data);
+        if (data->player->key_backward)
+            move_backward(data);
+        if (data->player->minimap)
+            create_minimap(data);
+        else
+            raycasting(data->player, data);
+    }
+    return (0);
 }

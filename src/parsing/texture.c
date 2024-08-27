@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 18:50:24 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/27 15:48:27 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void load_xpm(t_data *data)
     data->xpm.wall_so = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_so, &x, &y);
     data->xpm.wall_ea = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_ea, &x, &y);
     data->xpm.wall_we = mlx_xpm_file_to_image(data->mlx_connection, data->file->wall_we, &x, &y);
-    data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu_2.xpm", &x, &y);
-    if (!data->xpm.wall_no || !data->xpm.wall_so || !data->xpm.wall_ea || !data->xpm.wall_we || !data->xpm.menu)
+    data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection, "./assets/Menu.xpm", &x, &y);
+    if (!data->xpm.wall_no || !data->xpm.wall_so || !data->xpm.wall_ea || !data->xpm.wall_we)
         ft_error(ERR_XPM, data);
 }
 

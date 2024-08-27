@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/26 16:46:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/27 15:12:41 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_minimap
     int cell_height;
     int wall_thick;
 }               t_minimap;
+
 typedef struct s_fps
 {
     struct timeval start;
@@ -188,6 +189,7 @@ typedef struct s_xpm
     t_img    *floor;
     t_img    *ceiling;
     t_img    *menu;
+    t_img    *start;
 }               t_xpm;
 
 typedef struct s_data
@@ -199,6 +201,7 @@ typedef struct s_data
     t_file  *file;
     t_player *player;   
     t_minimap *minimap;
+    int menu;
 }               t_data;
 
 /*========================Window==========================*/
@@ -233,7 +236,7 @@ void create_minimap(t_data *data);
 /*==========================Menu==========================*/
 /*--------------------------menu--------------------------*/
 
-void create_menu(t_data *data);
+int create_menu(t_data *data);
 
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
