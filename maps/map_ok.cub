@@ -1,10 +1,10 @@
-NO 				./assets/texture_2.xpm
-			SO ./assets/texture_32.xpm
-WE 						./assets/texture_5.xpm
-EA ./assets/texture_26.xpm
+NO 				./assets/wall/texture_43.xpm
+			SO ./assets/wall/texture_32.xpm
+WE 						./assets/wall/texture_16.xpm
+EA ./assets/wall/texture_26.xpm
 
-C 1,1,1
-F 23,23,23
+C 21,21,21
+F 21,21,21
 
 
 1111111111111111111111111

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:10:41 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:56:56 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,10 +231,13 @@ typedef struct s_wall
 
 typedef struct s_xpm
 {
-    t_img    *wall_no;
-    t_img    *wall_so;
-    t_img    *wall_ea;
-    t_img    *wall_we;
+    t_img    *floor;
+    t_img    *ceiling;
+    t_img    *menu;
+    t_img    *start;
+    t_img   *start_select;
+    t_img *exit;
+    t_img *exit_select;
 }               t_xpm;
 
 typedef struct s_floor
@@ -255,7 +258,9 @@ typedef struct s_data
     t_file   file;
     t_player player;
     t_floor  floor;   
+    t_xpm   xpm;
     t_img    texture[4];
+    int menu;
 }               t_data;
 
 /*========================Window==========================*/
@@ -268,6 +273,13 @@ void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
 
+int         key_press(int keysym, t_data *data);
+int	        key_release(int keysym, t_data *data);
+void	    rotate_right(t_data *data);
+void	    rotate_left(t_data *data);
+void	    move_forward(t_data *data);
+void	    move_backward(t_data *data);
+int	        player_movement(t_data *data);
 /*========================Minimap=========================*/
 /*-------------------------draw---------------------------*/
 
@@ -276,7 +288,7 @@ void draw_player(t_data *data, int x, int y, int color);
 void draw_dda(t_data *data, int start_x, int start_y, int end_x, int end_y);
 void draw_view(t_data *data, int x, int y, int color);
 
-/*------------------------minimap-------------------------*/
+/*-------------------------minimap------------------------*/
 
 void create_minimap(t_data *data);
 
@@ -291,6 +303,12 @@ void	    move_right(t_data *data);
 int	        player_movement(t_data *data);
 void        rotate_mouse(t_data *data, double angle);
 void        mouse_rotation(t_data *data);
+/*==========================Menu==========================*/
+/*--------------------------menu--------------------------*/
+
+int handle_mouse(int keysm, int x, int y, t_data *data);
+int create_menu(t_data *data);
+
 /*========================Raycasting======================*/
 void	raycasting(t_player *player, t_data *data);
 void	ray_direction(int i, t_player *player);
@@ -320,6 +338,12 @@ void checking_map(t_data *data);
 
 void check_color_textures(t_data *data, char *line);
 void check_color(t_data *data);
+
+/*-----------------------color_2--------------------------*/
+
+int check_is_rgb_color(char *line);
+void get_texture_floor(t_data *data, char *path);
+void get_texture_ceiling(t_data *data, char *path);
 
 /*-------------------------color--------------------------*/
 

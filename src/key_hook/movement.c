@@ -95,25 +95,32 @@ void	move_left(t_data *data)
 	// raycasting(&data->player, data);
 }
 
-int	player_movement(t_data *data)
+int player_movement(t_data *data)
 {
-	if (data->player.key_left)
-		rotate_left(data);
-	if (data->player.key_right)
-		rotate_right(data);
-	if (data->player.key_forward)
-		move_forward(data);
-	if (data->player.key_backward)
-		move_backward(data);
-	if (data->player.key_move_left)
-		move_left(data);
-	if (data->player.key_move_right)
-		move_right(data);
-	if (data->player.minimap)
-		create_minimap(data);
-	mouse_rotation(data);
-	mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-	raycasting(&data->player, data);
-	render_weapon(data);
-	return (0);
+    if (data->menu == 0)
+        create_menu(data);
+    else if (data->menu == 1)
+    {
+		// printf("Test\n");
+		mlx_mouse_hide(data->mlx_window);
+        if (data->player.key_left)
+            rotate_left(data);
+        if (data->player.key_right)
+            rotate_right(data);
+        if (data->player.key_forward)
+            move_forward(data);
+        if (data->player.key_backward)
+            move_backward(data);
+		if (data->player.key_move_left)
+            move_left(data);
+        if (data->player.key_move_right)
+            move_right(data);
+        if (data->player.minimap)
+            create_minimap(data);
+		mouse_rotation(data);
+		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
+		raycasting(&data->player, data);
+		render_weapon(data);
+    }
+    return (0);
 }

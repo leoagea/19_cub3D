@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 11:42:29 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:53:21 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,19 @@ t_color *isolate_color_param(t_data *data, char *color)
 
 void get_color(t_data *data)
 {
+    int x;
+    int y;
+    
     t_color *color;
     
-    color = isolate_color_param(data, data->file.color_floor);
-    data->file.c_floor = color;
-    color = isolate_color_param(data, data->file.color_ceiling);
-    data->file.c_ceiling = color;
+    if (check_is_rgb_color(data->file.color_floor))
+    {
+        color = isolate_color_param(data, data->file.color_floor);
+        data->file.c_floor = color;
+    }
+    if (check_is_rgb_color(data->file.color_ceiling))
+    {
+        color = isolate_color_param(data, data->file.color_ceiling);
+        data->file.c_ceiling = color;
+    }
 }

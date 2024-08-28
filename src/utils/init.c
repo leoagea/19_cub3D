@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:12:27 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 14:05:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void init_struct_file(t_data *data)
     data->file.c_ceiling = NULL;
     data->file.color_floor = NULL;
     data->file.color_ceiling = NULL;
+    data->file.flag_no = 0;
+    data->file.flag_so = 0;
+    data->file.flag_ea = 0;
+    data->file.flag_we = 0;
+    data->file.flag_f = 0;
+    data->file.flag_c = 0;
 }
 
 void init_player_struct(t_data *data)
@@ -81,4 +87,5 @@ void init_data(t_data *data)
     data->minimap = NULL;
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
+    data->menu = 0;
 }

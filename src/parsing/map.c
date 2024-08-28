@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:14:58 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:53:35 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,5 @@ void get_map(t_data *data, int i)
         j++;
     }
     data->file.map[j] = NULL;
+    get_max_len_map(data, j);
 }

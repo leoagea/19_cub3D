@@ -27,7 +27,8 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g -fsanitize=address -O3 -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
+CFLAGS = -g -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing \
+	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3 #-fsanitize=address
 
 RM = rm -rf
 
@@ -43,7 +44,8 @@ SRCS =	src/main.c \
 		src/texture/wall.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \
 		src/minimap/draw.c src/minimap/minimap.c \
-		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
+		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
+		src/menu/menu.c 
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -84,6 +86,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
 	@mkdir -p $(OBJS_DIR)/key_hook
+	@mkdir -p $(OBJS_DIR)/menu
 	@mkdir -p $(OBJS_DIR)/minimap
 	@mkdir -p $(OBJS_DIR)/raycasting
 	@mkdir -p $(OBJS_DIR)/draw
