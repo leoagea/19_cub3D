@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea < lagea@student.s19.be >             +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:05:23 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/18 01:39:25 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/28 11:42:46 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void assign_value(t_data *data, char* key, char *value)
 {
     if (ft_strncmp(key, "NO", INT_MAX) == 0)
-        data->file->wall_no = value;
+        data->file.wall_no = value;
     else if (ft_strncmp(key, "SO", INT_MAX) == 0)
-        data->file->wall_so = value;
+        data->file.wall_so = value;
     else if (ft_strncmp(key, "WE", INT_MAX) == 0)
-        data->file->wall_we = value;
+        data->file.wall_we = value;
     else if (ft_strncmp(key, "EA", INT_MAX) == 0)
-        data->file->wall_ea = value;
+        data->file.wall_ea = value;
     else if (ft_strncmp(key, "F", INT_MAX) == 0)
-        data->file->color_floor = value;
+        data->file.color_floor = value;
     else if (ft_strncmp(key, "C", INT_MAX) == 0)
-        data->file->color_ceiling = value;
+        data->file.color_ceiling = value;
     free(key);
 }
 
@@ -77,5 +77,5 @@ void get_data_line(t_data *data, char *line)
     str = get_key(data, line);
     if (!str)
         return ;
-    data->file->count++;
+    data->file.count++;
 }

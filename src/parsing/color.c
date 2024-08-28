@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 19:14:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/28 11:42:29 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void get_color(t_data *data)
 {
     t_color *color;
     
-    color = isolate_color_param(data, data->file->color_floor);
-    data->file->c_floor = color;
-    color = isolate_color_param(data, data->file->color_ceiling);
-    data->file->c_ceiling = color;
+    color = isolate_color_param(data, data->file.color_floor);
+    data->file.c_floor = color;
+    color = isolate_color_param(data, data->file.color_ceiling);
+    data->file.c_ceiling = color;
 }

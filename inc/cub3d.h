@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/27 17:56:02 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 12:47:00 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
 # define SPEED 0.1
-# define SENSI 0.0039
+# define SENSI 0.0025
 # define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
@@ -225,11 +225,11 @@ typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
-    t_wall   *wall;
     t_img	 *img;
-    t_file   *file;
-    t_player *player;
-    t_floor  *floor;   
+    t_wall   wall;
+    t_file   file;
+    t_player player;
+    t_floor  floor;   
     t_img    texture[4];
 }               t_data;
 

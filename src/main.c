@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/27 18:04:01 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 12:26:56 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char **av)
     mlx_mouse_hide(data.mlx_window);
     mlx_mouse_move(data.mlx_window, WIDTH / 2, HEIGHT / 2);
     get_textures(&data);
-    raycasting(data.player, &data);
+    raycasting(&data.player, &data);
     
     mlx_hook(data.mlx_window, 4, 1L << 2, shoot_event, &data);
     mlx_hook(data.mlx_window, 17, 0, &cross_event, &data);

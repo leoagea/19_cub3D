@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 19:16:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/20 16:52:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/28 11:57:10 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static char **cpy_map(char **map)
 
 void checking_map(t_data *data)
 {
-    data->file->cpy = cpy_map(data->file->map);
-    data->file->cpy = replace_char(data->file->cpy);
-    backtrack(data, data->file->cpy, data->player->pos_y + 1, data->player->pos_x + 1);
+    data->file.cpy = cpy_map(data->file.map);
+    data->file.cpy = replace_char(data->file.cpy);
+    backtrack(data, data->file.cpy, data->player.pos_y + 1, data->player.pos_x + 1);
 }

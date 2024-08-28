@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/22 14:10:02 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 11:43:18 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int    get_data(t_data *data)
     int i;
     i = 0;
     
-    while (i < data->file->line)
+    while (i < data->file.line)
     {
-        if (data->file->count == 6)
+        if (data->file.count == 6)
             return i;
-        get_data_line(data, data->file->file[i]);
+        get_data_line(data, data->file.file[i]);
         i++;
     }
     return i;
@@ -32,11 +32,11 @@ static int skip_null_line(t_data *data, int i)
     int j;
     int len;
     
-    while (i < data->file->line && data->file->file[i])
+    while (i < data->file.line && data->file.file[i])
     {
         j = 0;
-        j = skip_whitespace(data->file->file[i], j);
-        len = get_len(data->file->file[i], j);
+        j = skip_whitespace(data->file.file[i], j);
+        len = get_len(data->file.file[i], j);
         if (len != 0)
             return i;
         i++;
@@ -48,17 +48,17 @@ static void get_map(t_data *data, int i)
 {
     int j;
     
-    data->file->map = malloc(sizeof(char *) * data->file->line - i + 1);
-    if(!data->file->map)
+    data->file.map = malloc(sizeof(char *) * data->file.line - i + 1);
+    if(!data->file.map)
         ft_error(ERR_ALLOC, data);
     j = 0;
-    while (i < data->file->line)
+    while (i < data->file.line)
     {
-        data->file->map[j] = ft_strtrim(data->file->file[i], "\n");
+        data->file.map[j] = ft_strtrim(data->file.file[i], "\n");
         i++;
         j++;
     }
-    data->file->map[j] = NULL;
+    data->file.map[j] = NULL;
 }
 
 void    parsing(int ac, char **av, t_data *data)
@@ -80,17 +80,17 @@ void    parsing(int ac, char **av, t_data *data)
     // get_textures(data);
 }
 
-    // printf("data->file->wall_no : %s\n", data->file->wall_no);
-    // printf("data->file->wall_so : %s\n", data->file->wall_so);
-    // printf("data->file->wall_we : %s\n", data->file->wall_we);
-    // printf("data->file->wall_ea : %s\n", data->file->wall_ea);
-    // printf("data->file->color_floor : %s\n", data->file->color_floor);
-    // printf("data->file->color_ceiling : %s\n", data->file->color_ceiling);
-    // printf("int color floor : %d\n", data->file->c_floor->color);
-    // printf("int color ceiling : %d\n", data->file->c_ceiling->color);
+    // printf("data->file.wall_no : %s\n", data->file.wall_no);
+    // printf("data->file.wall_so : %s\n", data->file.wall_so);
+    // printf("data->file.wall_we : %s\n", data->file.wall_we);
+    // printf("data->file.wall_ea : %s\n", data->file.wall_ea);
+    // printf("data->file.color_floor : %s\n", data->file.color_floor);
+    // printf("data->file.color_ceiling : %s\n", data->file.color_ceiling);
+    // printf("int color floor : %d\n", data->file.c_floor->color);
+    // printf("int color ceiling : %d\n", data->file.c_ceiling->color);
     // int j = 0;
-    // while(data->file->map[j])
+    // while(data->file.map[j])
     // {
-    //     printf("%s\n", data->file->map[j]);
+    //     printf("%s\n", data->file.map[j]);
     //     j++;
     // }
