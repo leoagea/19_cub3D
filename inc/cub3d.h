@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:56:56 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 19:06:14 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,13 +231,24 @@ typedef struct s_wall
 
 typedef struct s_xpm
 {
-    t_img    *floor;
-    t_img    *ceiling;
-    t_img    *menu;
-    t_img    *start;
-    t_img   *start_select;
-    t_img *exit;
-    t_img *exit_select;
+    t_img   *floor;
+    t_img   *ceiling;
+    t_img   *menu;
+    t_img   *start;
+    t_img   *start_highlight;
+    t_img   *exit;
+    t_img   *exit_highlight;
+    t_img   *_continue;
+    t_img   *_continue_highlight;
+    t_img   *controls;
+    t_img   *controls_highlight;
+    t_img   *cont_moves;
+    t_img   *cont_vision;
+    t_img   *cont_interations;
+    t_img   *cont_for;
+    t_img   *cont_back;
+    t_img   *cont_left;
+    t_img   *cont_right;
 }               t_xpm;
 
 typedef struct s_floor
@@ -247,6 +258,17 @@ typedef struct s_floor
     double ray_dir_right_x;
     double ray_dir_right_y;
 }              t_floor;
+
+typedef struct s_controls
+{
+    const char *keyboard[160];
+    int m_for;
+    int m_back;
+    int m_right;
+    int m_left;
+    int r_right;
+    int r_left;
+}               t_controls;
 
 typedef struct s_data
 {
@@ -260,7 +282,11 @@ typedef struct s_data
     t_floor  floor;   
     t_xpm   xpm;
     t_img    texture[4];
+    t_controls key;
     int menu;
+    int pause;
+    int mouse;
+    int controls;
 }               t_data;
 
 /*========================Window==========================*/
@@ -307,6 +333,8 @@ void        mouse_rotation(t_data *data);
 /*--------------------------menu--------------------------*/
 
 int handle_mouse(int keysm, int x, int y, t_data *data);
+int menu_controls(t_data *data);
+int menu_pause(t_data *data);
 int create_menu(t_data *data);
 
 /*========================Raycasting======================*/

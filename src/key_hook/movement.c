@@ -97,9 +97,19 @@ void	move_left(t_data *data)
 
 int player_movement(t_data *data)
 {
-    if (data->menu == 0)
+    if (data->menu == 1 && data->pause == 0 && !data->controls)
         create_menu(data);
-    else if (data->menu == 1)
+	else if (!data->menu && data->pause && !data->controls)
+	{
+        mlx_mouse_show(data->mlx_window);
+		menu_pause(data);
+	}
+	else if (data->controls && (data->pause || data->menu))
+	{
+        mlx_mouse_show(data->mlx_window);
+		menu_controls(data);
+	}
+    else if (!data->menu && !data->pause && !data->controls)
     {
 		// printf("Test\n");
 		mlx_mouse_hide(data->mlx_window);
@@ -124,3 +134,9 @@ int player_movement(t_data *data)
     }
     return (0);
 }
+
+// else if (data->menu == 0 && data->pause == 1)
+// 	{
+//         mlx_mouse_show(data->mlx_window);
+// 		menu_pause(data);
+// 	}

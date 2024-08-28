@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 14:05:57 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 19:14:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,25 @@ void init_minimap_struct(t_data *data)
     data->minimap->cell_height = MINIMAP_SIZE / data->file.map_height;
 }
 
+void init_controls(t_data *data)
+{
+    data->key.m_for = (int)KEY_W;    
+    data->key.m_back = (int)KEY_S;    
+    data->key.m_right = (int)KEY_D;    
+    data->key.m_left = (int)KEY_A;    
+    data->key.r_right = (int)KEY_RIGHT;    
+    data->key.r_left = (int)KEY_LEFT;   
+}
+
 void init_data(t_data *data)
 {
     data->img = NULL;
     data->minimap = NULL;
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
-    data->menu = 0;
+    data->menu = 1;
+    data->pause = 0;
+    data->mouse = 1;
+    data->controls = 0;
+    init_controls(data);
 }

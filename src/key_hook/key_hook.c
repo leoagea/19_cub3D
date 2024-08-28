@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/28 13:11:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 16:46:15 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ int	key_press(int keysym, t_data *data)
 		data->player.key_move_left = 1;
 	if (keysym == KEY_D)
 		data->player.key_move_right = 1;
-	if (keysym == KEY_ESC)
-		handle_input(keysym, data);
+	if (keysym == KEY_ESC && data->menu == 0)
+	{
+		data->pause = 1;
+    	mlx_mouse_show(data->mlx_window);
+		menu_pause(data);
+		// handle_input(keysym ,data);
+	}
 	if (keysym == KEY_G)
 	{
 		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
