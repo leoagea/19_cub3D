@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 12:13:14 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:12:27 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,24 @@ t_color *init_color_struct(t_data *data)
     color->b = NULL;
     color->color = 0;
     return color;
+}
+
+void init_minimap_struct(t_data *data)
+{
+    data->minimap = malloc(sizeof(t_minimap));
+    if (!data->minimap)
+        ft_error(ERR_ALLOC, data);
+    data->minimap->start_x = 440;
+    data->minimap->start_y = (HEIGHT - MINIMAP_SIZE) / 2;
+    data->minimap->wall_thick = 0;
+    data->minimap->cell_width = MINIMAP_SIZE / data->file.map_width;
+    data->minimap->cell_height = MINIMAP_SIZE / data->file.map_height;
+}
+
+void init_data(t_data *data)
+{
+    data->img = NULL;
+    data->minimap = NULL;
+    data->mlx_connection = NULL;
+    data->mlx_window = NULL;
 }

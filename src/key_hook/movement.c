@@ -109,6 +109,8 @@ int	player_movement(t_data *data)
 		move_left(data);
 	if (data->player.key_move_right)
 		move_right(data);
+	if (data->player.minimap)
+		create_minimap(data);
 	mouse_rotation(data);
 	mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 	raycasting(&data->player, data);

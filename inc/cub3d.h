@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 12:47:00 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:10:41 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 	# define KEY_LEFT 123
 	# define KEY_SHIFT 257
 	# define KEY_SPACE 49
+	# define KEY_TAB 48
 	# define KEY_0 82
 	# define KEY_1 83
 	# define KEY_2 84
@@ -88,20 +89,25 @@
 # define HEIGHT 720
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-# define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
-# define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
-# define ERR_ALLOC "Error: Malloc, allocation failed"
-# define ERR_EMPTY "Error: Empty file" 
-#define ERR_ARG "Error: Wrong number of arguments, expected only 2 arguments"
-#define ERR_EXT "Error: Wrong file extension, expected only .cub extension"
-#define ERR_ALLOC "Error: Malloc, allocation failed"
-#define ERR_EMPTY "Error: Empty file"
-#define ERR_ID "Error: Wrong identifier in description file"
-#define ERR_VAL "Error: Wrong value in description file"
-#define ERR_COL "Error: Wrong color value in description file"
-#define ERR_PLAY "Error: Wrong number of players, expected only 1 player"
-#define ERR_MAP "Error: Map not closed with walls"
-#define ERR_XPM "Error: Xpm to image failed"
+# define MINIMAP_SIZE 400
+# define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
+# define ERR_EXT "Wrong file extension, expected only .cub extension"
+# define ERR_ALLOC "Malloc, allocation failed"
+# define ERR_EMPTY "Empty file" 
+# define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
+# define ERR_EXT "Wrong file extension, expected only .cub extension"
+# define ERR_ALLOC "Malloc, allocation failed"
+# define ERR_EMPTY "Empty file"
+# define ERR_ID "Wrong identifier in description file"
+# define ERR_TOK "Wrong token in description file, expected 1 key and 1 value"
+# define ERR_VAL "Wrong value in description file"
+# define ERR_TOK_COL "Wrong color token in description file, expected r,g,b"
+# define ERR_COL "Wrong color value in description file"
+# define ERR_DUP "Duplicate key in description file"
+# define ERR_PLAY "Wrong number of players, expected only 1 player"
+# define ERR_MAP "Map not closed with walls"
+# define ERR_XPM "Xpm to image failed"
+#define ERR_MAP_CHAR "Wrong char in map"
 
 enum
 {
@@ -140,6 +146,14 @@ typedef struct s_file
     char **cpy;
     int line;
     int count;
+    int flag_no;
+    int flag_so;
+    int flag_ea;
+    int flag_we;
+    int flag_f;
+    int flag_c;
+    int map_height;
+    int map_width;
     t_color *c_floor;
     t_color *c_ceiling;
 }               t_file;
@@ -154,6 +168,15 @@ typedef struct s_img
     int     height;
     int     width;
 }			t_img;
+
+typedef struct s_minimap
+{
+    int start_x;
+    int start_y;
+    int cell_width;
+    int cell_height;
+    int wall_thick;
+}               t_minimap;
 
 typedef struct s_player
 {
@@ -194,6 +217,7 @@ typedef struct s_player
     int     is_firing;
     int     fire_frame;
     t_img    weapon[4];
+    int minimap;
 }               t_player;
 
 typedef struct s_wall
@@ -225,6 +249,7 @@ typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
+    t_minimap *minimap;
     t_img	 *img;
     t_wall   wall;
     t_file   file;
@@ -242,6 +267,19 @@ void	    get_fps(t_player *player);
 void	    init_key(t_player *player);
 void	    handle_input(int keysym, t_data *data);
 int	        handle_key(int keysym, t_data *data);
+
+/*========================Minimap=========================*/
+/*-------------------------draw---------------------------*/
+
+void draw_cell(t_data *data, int x, int y, int color);
+void draw_player(t_data *data, int x, int y, int color);
+void draw_dda(t_data *data, int start_x, int start_y, int end_x, int end_y);
+void draw_view(t_data *data, int x, int y, int color);
+
+/*------------------------minimap-------------------------*/
+
+void create_minimap(t_data *data);
+
 int         key_press(int keysym, t_data *data);
 int	        key_release(int keysym, t_data *data);
 void	    rotate_right(t_data *data);
@@ -274,6 +312,15 @@ void	render_weapon(t_data *data);
 
 void        check_file_extension(char *file, t_data *data);
 
+/*----------------------check_map-------------------------*/
+
+void checking_map(t_data *data);
+
+/*-------------------------check--------------------------*/
+
+void check_color_textures(t_data *data, char *line);
+void check_color(t_data *data);
+
 /*-------------------------color--------------------------*/
 
 void get_color(t_data *data);
@@ -282,9 +329,9 @@ void get_color(t_data *data);
 
 void get_data_line(t_data *data, char *line);
 
-/*--------------------------map---------------------------*/
+/*-------------------------map----------------------------*/
 
-void checking_map(t_data *data);
+void get_map(t_data *data, int i);
 
 /*------------------------parsing-------------------------*/
 
@@ -306,6 +353,7 @@ void get_textures(t_data *data);
 /*------------------------Clear_2-------------------------*/
 
 void clear_xpm(t_data *data);
+void clear_minimap_struct(t_data *data);
 
 /*-------------------------Clear--------------------------*/
 
@@ -327,6 +375,9 @@ void init_struct_file(t_data *data);
 void init_player_struct(t_data *data);
 void init_fps_struct(t_data *data);
 t_color *init_color_struct(t_data *data);
+void init_minimap_struct(t_data *data);
+void init_data(t_data *data);
+void init_xpm(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 12:26:56 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:48:30 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int ac, char **av)
 {
     t_data data;
 
+    init_data(&data);
     parsing(ac, av, &data);
     create_window(&data);
     mlx_mouse_hide(data.mlx_window);
@@ -31,3 +32,5 @@ int main(int ac, char **av)
     mlx_loop(data.mlx_connection);
     return 0;
 }
+
+//voir bug video

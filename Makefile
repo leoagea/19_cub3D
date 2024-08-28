@@ -27,7 +27,7 @@ MLX_LIB = -L $(MLX_DIR) -lmlx
 
 CC = cc
 
-CFLAGS = -g -O3 -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
+CFLAGS = -g -fsanitize=address -O3 -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 
 RM = rm -rf
 
@@ -39,10 +39,11 @@ SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/mouse.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c \
-		src/parsing/check_arg.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
 		src/texture/wall.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \
+		src/minimap/draw.c src/minimap/minimap.c \
+		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -50,7 +51,7 @@ OBJD = $(SRCS:$(SRCS_DIR)%.c=$(DEBUG_DIR)%.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) Makefile
 	#@make -C $(MLX_DIR)
 	@export DYLD_LIBRARY_PATH=./mlx:$DYLD_LIBRARY_PATH
 	@make -C libft
@@ -83,6 +84,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/utils
 	@mkdir -p $(OBJS_DIR)/window
 	@mkdir -p $(OBJS_DIR)/key_hook
+	@mkdir -p $(OBJS_DIR)/minimap
 	@mkdir -p $(OBJS_DIR)/raycasting
 	@mkdir -p $(OBJS_DIR)/draw
 	@mkdir -p $(OBJS_DIR)/texture

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 11:43:18 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:37:35 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,6 @@ static int skip_null_line(t_data *data, int i)
     return i;
 } 
 
-static void get_map(t_data *data, int i)
-{
-    int j;
-    
-    data->file.map = malloc(sizeof(char *) * data->file.line - i + 1);
-    if(!data->file.map)
-        ft_error(ERR_ALLOC, data);
-    j = 0;
-    while (i < data->file.line)
-    {
-        data->file.map[j] = ft_strtrim(data->file.file[i], "\n");
-        i++;
-        j++;
-    }
-    data->file.map[j] = NULL;
-}
-
 void    parsing(int ac, char **av, t_data *data)
 {
     int i;
@@ -73,11 +56,12 @@ void    parsing(int ac, char **av, t_data *data)
     open_file(data, av[1]);
     i = get_data(data);
     get_color(data);
+    check_color(data);
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);
-    checking_map(data);
     // get_textures(data);
+    checking_map(data);
 }
 
     // printf("data->file.wall_no : %s\n", data->file.wall_no);
@@ -94,3 +78,12 @@ void    parsing(int ac, char **av, t_data *data)
     //     printf("%s\n", data->file.map[j]);
     //     j++;
     // }
+    // printf("data->file->wall_no : %s\n", data->file->wall_no);
+    // printf("data->file->wall_so : %s\n", data->file->wall_so);
+    // printf("data->file->wall_we : %s\n", data->file->wall_we);
+    // printf("data->file->wall_ea : %s\n", data->file->wall_ea);
+    // printf("data->file->color_floor : %s\n", data->file->color_floor);
+    // printf("data->file->color_ceiling : %s\n", data->file->color_ceiling);
+    // printf("int color floor : %d\n", data->file->c_floor->color);
+    // printf("int color ceiling : %d\n", data->file->c_ceiling->color);
+    // int j = 0;

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 17:20:35 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:16:43 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 void clear_data(t_data *data)
 {
     clear_struct_file(data);
-    clear_player_struct(data);
 }
 
 void ft_error(char *str, t_data *data)
 {
-    printf("%s\n", str);
+    printf("Error :\n%s\n", str);
     // clear_data(data);
     exit(1);
 }

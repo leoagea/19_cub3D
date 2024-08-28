@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/28 12:59:56 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 13:11:08 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	key_press(int keysym, t_data *data)
 			raycasting(&data->player, data);
 		}
 	}
+	if (keysym == KEY_TAB)
+		data->player.minimap = 1;
 	return (0);
 }
 
@@ -82,5 +84,7 @@ int	key_release(int keysym, t_data *data)
 		data->player.key_move_left = 0;
 	if (keysym == KEY_D)
 		data->player.key_move_right = 0;
+	if (keysym == KEY_TAB)
+		data->player.minimap = 0;
 	return (0);
 }
