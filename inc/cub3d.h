@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 17:05:29 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 19:29:25 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,21 +256,21 @@ typedef struct s_floor
     double ray_dir_right_y;
 }              t_floor;
 
-typedef struct  s_enemy
-{
-    double  pos_x;
-    double  pos_y;
-    int     current_frame;
-    int     number_frames;
-    t_img   *img_frames;
-}
+// typedef struct  s_enemy
+// {
+//     double  pos_x;
+//     double  pos_y;
+//     int     current_frame;
+//     int     number_frames;
+//     t_img   *img_frames;
+// }
 typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
     t_minimap *minimap;
     t_img	 *img;
-    t_enemy *enemy;
+    // t_enemy *enemy;
     t_wall   wall;
     t_file   file;
     t_player player;

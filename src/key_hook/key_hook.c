@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/28 13:11:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 19:30:03 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	key_press(int keysym, t_data *data)
 		handle_input(keysym, data);
 	if (keysym == KEY_G)
 	{
-		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
+		if (data->player.speed * 100.0 <= 30.0)
 		{
 			data->player.speed += 0.01;
 			raycasting(&data->player, data);
@@ -59,7 +59,7 @@ int	key_press(int keysym, t_data *data)
 	}
 	if (keysym == KEY_R)
 	{
-		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
+		if (data->player.speed * 100 >= -30.0)
 		{
 			data->player.speed -= 0.01;
 			raycasting(&data->player, data);
