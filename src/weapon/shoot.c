@@ -1,27 +1,21 @@
 #include "../../inc/cub3d.h"
 
-int	 shoot_event(int keysym, int x, int y, t_data *data)
-{
-	if (keysym == 1)
-	{
-		data->player.is_firing = 1;
-		data->player.fire_frame = 0;
-	}
-	return (0);
-}
-
 void	render_weapon(t_data *data)
 {
-	if (data->player.is_firing)
+	struct timeval current_time;
+	long		   delta_time;
+	gettimeofday(&current_time, NULL);
+	delta_time =(current_time.tv_sec - data->player.anim.last_update.tv_sec) * 1000000 + (current_time.tv_usec - data->player.anim.last_update.tv_usec);
+	if (delta_time >= ANIM)
 	{
-		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.fire_frame].img_ptr, ((WIDTH - data->player.weapon[data->player.fire_frame].width) / 2) + 100, 400);
-		data->player.fire_frame++;
+		data->player.anim.current_frame++;
+		if (data->player.anim.current_frame >= 4)
+		{
+			data->player.anim.current_frame = 0;
+			data->player.is_firing = 0;
+		}
+		data->player.anim.last_update = current_time;
+		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
 	}
-	if (data->player.fire_frame >= 4)
-	{
-		data->player.fire_frame = 0;
-		data->player.is_firing = 0;
-	}
-	else
-		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[0].img_ptr, ((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
 }

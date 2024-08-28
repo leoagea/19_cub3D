@@ -15,8 +15,6 @@ void	move_forward(t_data *data)
 	{
 		data->player.pos_x = new_pos_x;
         data->player.pos_y = new_pos_y;
-		// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-		// raycasting(&data->player, data);
 	}
 }
 
@@ -36,11 +34,7 @@ void	move_backward(t_data *data)
 	{
 		data->player.pos_x = new_pos_x;
         data->player.pos_y = new_pos_y;
-		// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-		// raycasting(&data->player, data);
 	}
-	// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-	// raycasting(&data->player, data);
 }
 
 void	move_right(t_data *data)
@@ -101,7 +95,6 @@ int player_movement(t_data *data)
         create_menu(data);
     else if (data->menu == 1)
     {
-		// printf("Test\n");
 		mlx_mouse_hide(data->mlx_window);
         if (data->player.key_left)
             rotate_left(data);
@@ -120,7 +113,10 @@ int player_movement(t_data *data)
 		mouse_rotation(data);
 		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 		raycasting(&data->player, data);
-		render_weapon(data);
+		if (data->player.is_firing == 0)
+			mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
+		else
+			render_weapon(data);
     }
     return (0);
 }

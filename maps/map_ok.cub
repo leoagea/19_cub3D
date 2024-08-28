@@ -1,7 +1,7 @@
-NO 				./assets/wall/texture_43.xpm
-			SO ./assets/wall/texture_32.xpm
-WE 						./assets/wall/texture_16.xpm
-EA ./assets/wall/texture_26.xpm
+NO 				./assets/wall/texture_23.xpm
+			SO ./assets/wall/texture_29.xpm
+WE 						./assets/wall/texture_39.xpm
+EA ./assets/wall/texture_39.xpm
 
 C 21,21,21
 F 21,21,21

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/27 17:31:48 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/28 16:01:38 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ void switch_menu(t_data *data)
 
 int handle_mouse(int keysm, int x, int y, t_data *data)
 {
-    // printf("keysm : %d      x : %d          y : %d\n",keysm, x, y);
-    // printf("Test\n");
     if (keysm == 1 && data->menu == 0 && (x > 375 && x < 900) && (y > 140 && y < 230))
         data->menu = 1;
     else if (keysm == 1 && data->menu == 0 && (x > 540 && x < 730) && (y > 490 && y < 580))
         exit(0);
+    else if (keysm == 1 && data->menu == 1)
+    {
+        data->player.is_firing = 1;
+		data->player.fire_frame = 0;
+    }
     // printf("menu : %d\n", data->menu);
     return 0;
 }

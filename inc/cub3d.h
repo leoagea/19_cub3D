@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:56:56 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/28 17:05:29 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,14 @@
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
 # define SPEED 0.1
-# define SENSI 0.0025
+# define SENSI 0.0018
 # define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
 # define MINIMAP_SIZE 400
+# define ANIM 60000
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -178,6 +179,12 @@ typedef struct s_minimap
     int wall_thick;
 }               t_minimap;
 
+typedef struct s_anim
+{
+    int current_frame;
+    struct timeval last_update;
+}               t_anim;
+
 typedef struct s_player
 {
     int    map_x;
@@ -213,11 +220,12 @@ typedef struct s_player
     double rotation_speed;
     int    side_view;
     double speed;
-    double pitch;
     int     is_firing;
     int     fire_frame;
+    int     counter;
     t_img    weapon[4];
-    int minimap;
+    int     minimap;
+    t_anim  anim;
 }               t_player;
 
 typedef struct s_wall
@@ -248,12 +256,21 @@ typedef struct s_floor
     double ray_dir_right_y;
 }              t_floor;
 
+typedef struct  s_enemy
+{
+    double  pos_x;
+    double  pos_y;
+    int     current_frame;
+    int     number_frames;
+    t_img   *img_frames;
+}
 typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
     t_minimap *minimap;
     t_img	 *img;
+    t_enemy *enemy;
     t_wall   wall;
     t_file   file;
     t_player player;

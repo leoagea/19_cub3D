@@ -103,10 +103,10 @@ void	dda_algorithm(t_player *player, t_data *data)
 void	wall_height(t_player *player)
 {
 	player->wall_height = (int)(HEIGHT / player->perp_wall_dist);
-	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2 + player->pitch;
+	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2;
 	if (player->draw_start < 0)
 		player->draw_start = 0;
-	player->draw_end = player->wall_height / 2 + HEIGHT / 2 + player->pitch;
+	player->draw_end = player->wall_height / 2 + HEIGHT / 2;
 	if (player->draw_end >= HEIGHT)
 		player->draw_end = HEIGHT - 1;
 }
