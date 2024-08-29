@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:53:35 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/08/29 18:59:37 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int check_line(char *line)
+int check_line(t_data *data, char *line)
 {
 	while(*line)
 	{
-		if (*line != '1' && *line != '0' && *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W' && *line != ' ' && *line != '\n')
+        if (*line == 'X')
+            data->nb_ennemy++;
+		if (*line != '1' && *line != '0' && *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W' && *line != ' ' && *line != '\n' && *line!= 'X')
 			return 0;
 		line++;
 	}
@@ -53,6 +55,35 @@ static void get_max_len_map(t_data *data, int j)
     data->file.map_width = max_len;    
 }
 
+static void get_ennemy_pos(t_data *data)
+{
+    int i;
+    int j;
+    int k;
+    
+    k = data->nb_ennemy;
+    if (k == 0)
+        return 0;
+    i = -1;
+    data->ennemy = malloc(sizeof(t_ennemy) * data->nb_ennemy);
+    if(!data->ennemy)
+        ft_error(ERR_ALLOC, data);
+    while(data->file.map[++i])
+    {
+       j = 0;
+       while (data->file.map[i][j])
+       {
+            if(data->file.map[i][j] == 'X')
+            {
+                k--;
+                data->ennemy[k].pos_x = (double)j;
+                data->ennemy[k].pos_y = (double)i;
+            }
+            j++;
+       }
+    }
+}
+
 void get_map(t_data *data, int i)
 {
     int j;
@@ -64,7 +95,7 @@ void get_map(t_data *data, int i)
     j = 0;
     while (i < data->file.line)
     {
-        if (!check_line(data->file.file[i]))
+        if (!check_line(data, data->file.file[i]))
             ft_error(ERR_MAP_CHAR, data);
         data->file.map[j] = ft_strtrim(data->file.file[i], "\n");
         i++;
@@ -72,4 +103,11 @@ void get_map(t_data *data, int i)
     }
     data->file.map[j] = NULL;
     get_max_len_map(data, j);
+    get_ennemy_pos(data);
+    int k = 0;
+    while(k < 3)
+    {
+        printf("ennemy %d, pos x: %f    pos y : %f\n", k, data->ennemy[k].pos_x, data->ennemy[k].pos_y);
+        k++;
+    }
 }

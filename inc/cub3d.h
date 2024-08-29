@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 19:06:14 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:58:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,81 @@
 
 # ifdef __APPLE__
     # include "../mlx/mlx.h"
-	# define KEY_A 0
-	# define KEY_D 2
-	# define KEY_E 14
-	# define KEY_G 5
-	# define KEY_M 46
-	# define KEY_Q 12
-	# define KEY_R 15
-	# define KEY_S 1
-	# define KEY_W 13
-	# define KEY_ESC 53
-	# define KEY_PLUS 24
-	# define KEY_MINUS 27
-	# define KEY_UP 126
-	# define KEY_RIGHT 124
-	# define KEY_DOWN 125
-	# define KEY_LEFT 123
-	# define KEY_SHIFT 257
-	# define KEY_SPACE 49
-	# define KEY_TAB 48
-	# define KEY_0 82
-	# define KEY_1 83
-	# define KEY_2 84
-	# define KEY_3 85
-	# define KEY_4 86
-	# define KEY_5 87
-	# define KEY_6 88
-	# define KEY_7 89
-	# define KEY_8 91
-	# define KEY_9 92
+	typedef enum e_keys
+    {
+        KEY_A = 0,
+        KEY_S,
+        KEY_D,
+        KEY_F,
+        KEY_H,
+        KEY_G,
+        KEY_Z,
+        KEY_X,
+        KEY_C,
+        KEY_V,
+        KEY_B = 11,
+        KEY_Q,
+        KEY_W,
+        KEY_E,
+        KEY_R,
+        KEY_Y,
+        KEY_T,
+        KEY_1,
+        KEY_2,
+        KEY_3,
+        KEY_4,
+        KEY_6,
+        KEY_5,
+        KEY_EQUAL,
+        KEY_9,
+        KEY_7,
+        KEY_MINUS,
+        KEY_8,
+        KEY_0,
+        KEY_RIGHT_BRACKET,
+        KEY_O,
+        KEY_U,
+        KEY_LEFT_BRACKET,
+        KEY_I,
+        KEY_P,
+        KEY_RETURN,
+        KEY_L,
+        KEY_J,
+        KEY_QUOTE,
+        KEY_K,
+        KEY_SEMICOLON,
+        KEY_BACKSLASH,
+        KEY_COMMA,
+        KEY_SLASH,
+        KEY_N,
+        KEY_M,
+        KEY_PERIOD,
+        KEY_TAB,
+        KEY_SPACE,
+        KEY_GRAVE,
+        KEY_DELETE,
+        KEY_ESCAPE = 53,
+        KEY_COMMAND = 55,
+        KEY_SHIFT = 56,
+        KEY_CAPSLOCK = 57,
+        KEY_OPTION = 58,
+        KEY_CONTROL = 59,
+        KEY_SHIFT_RIGHT = 60,
+        KEY_OPTION_RIGHT = 61,
+        KEY_CONTROL_RIGHT = 62,
+        KEY_FN = 63,
+        KEY_NUM_LOCK = 71,
+        KEY_ENTER = 76,
+        KEY_HOME = 115,
+        KEY_PAGE_UP = 116,
+        KEY_FORWARD_DELETE = 117,
+        KEY_END = 119,
+        KEY_PAGE_DOWN = 121,
+        KEY_LEFT_ARROW = 123,
+        KEY_RIGHT_ARROW,
+        KEY_DOWN_ARROW,
+        KEY_UP_ARROW
+    }       t_keys;
 # endif
 
 # define PLANE 77
@@ -251,6 +297,11 @@ typedef struct s_xpm
     t_img   *cont_right;
 }               t_xpm;
 
+typedef struct s_letters
+{
+    void *w;
+}               t_letters;
+
 typedef struct s_floor
 {
     double ray_dir_left_x;
@@ -261,14 +312,22 @@ typedef struct s_floor
 
 typedef struct s_controls
 {
-    const char *keyboard[160];
-    int m_for;
-    int m_back;
-    int m_right;
+    int m_forward;
+    int m_backward;
     int m_left;
-    int r_right;
+    int m_right;
     int r_left;
+    int r_right;
 }               t_controls;
+
+typedef struct  s_enemy
+{
+    double  pos_x;
+    double  pos_y;
+    int     current_frame;
+    int     number_frames;
+    t_img   *img_frames;
+}               t_ennemy;
 
 typedef struct s_data
 {
@@ -283,10 +342,13 @@ typedef struct s_data
     t_xpm   xpm;
     t_img    texture[4];
     t_controls key;
+    t_ennemy    *ennemy;
     int menu;
     int pause;
     int mouse;
     int controls;
+    int nb_ennemy;
+    void *letters[128];
 }               t_data;
 
 /*========================Window==========================*/
@@ -330,6 +392,10 @@ int	        player_movement(t_data *data);
 void        rotate_mouse(t_data *data, double angle);
 void        mouse_rotation(t_data *data);
 /*==========================Menu==========================*/
+/*--------------------------menu--------------------------*/
+
+void init_letters(t_data *data);
+
 /*--------------------------menu--------------------------*/
 
 int handle_mouse(int keysm, int x, int y, t_data *data);

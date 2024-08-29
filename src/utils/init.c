@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 19:14:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:59:54 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ void init_minimap_struct(t_data *data)
     data->minimap->cell_height = MINIMAP_SIZE / data->file.map_height;
 }
 
-void init_controls(t_data *data)
+void init_key_struct(t_data *data)
 {
-    data->key.m_for = (int)KEY_W;    
-    data->key.m_back = (int)KEY_S;    
-    data->key.m_right = (int)KEY_D;    
-    data->key.m_left = (int)KEY_A;    
-    data->key.r_right = (int)KEY_RIGHT;    
-    data->key.r_left = (int)KEY_LEFT;   
+    data->key.m_forward = KEY_W;    
+    data->key.m_backward = KEY_S;    
+    data->key.m_right = KEY_D;    
+    data->key.m_left = KEY_A;    
+    data->key.r_right = KEY_RIGHT_ARROW;    
+    data->key.r_left = KEY_LEFT_ARROW;    
 }
 
 void init_data(t_data *data)
@@ -101,5 +101,7 @@ void init_data(t_data *data)
     data->pause = 0;
     data->mouse = 1;
     data->controls = 0;
-    init_controls(data);
+    data->nb_ennemy = 0;
+    data->ennemy = NULL;
+    init_key_struct(data);
 }

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 18:56:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/29 18:26:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ int menu_controls(t_data *data)
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.menu, 0, 0);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_moves, 100, 75);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_for, 200, 125);
-    mlx_string_put(data->mlx_connection, data->mlx_window, 300, 125, 0xFFFFFF, ft_itoa(data->key.m_for));
+    // mlx_string_put(data->mlx_connection, data->mlx_window, 400, 200, 0xFFFFFF, data->keyboard[data->key.m_forward]);
+    // mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_W], 375, 130);
+    // printf("key.m_for : %d\n", data->key.m_forward);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[data->key.m_forward], 375, 130);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_back, 200, 175);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_right, 200, 225);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_left, 200, 275);
@@ -87,6 +90,7 @@ int create_menu(t_data *data)
     int x;
     int y;
     
+    init_letters(data);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.menu, 0, 0);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.start, 395, 150);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.controls, 465, 312);

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/28 16:46:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/29 15:46:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ void	handle_input(int keysym, t_data *data)
 
 int	key_press(int keysym, t_data *data)
 {
-	if (keysym == KEY_LEFT)
+	if (keysym == data->key.r_left)
 		data->player.key_left = 1;
-	if (keysym == KEY_RIGHT)
+	if (keysym == data->key.r_right)
 		data->player.key_right = 1;
-	if (keysym == KEY_W)
+	if (keysym == data->key.m_forward)
 		data->player.key_forward = 1;
-	if (keysym == KEY_S)
+	if (keysym == data->key.m_backward)
 		data->player.key_backward = 1;
-	if (keysym == KEY_A)
+	if (keysym == data->key.m_left)
 		data->player.key_move_left = 1;
-	if (keysym == KEY_D)
+	if (keysym == data->key.m_right)
 		data->player.key_move_right = 1;
-	if (keysym == KEY_ESC && data->menu == 0)
+	if (keysym == KEY_ESCAPE && data->menu == 0)
 	{
 		data->pause = 1;
     	mlx_mouse_show(data->mlx_window);
@@ -77,17 +77,17 @@ int	key_press(int keysym, t_data *data)
 
 int	key_release(int keysym, t_data *data)
 {
-	if (keysym == KEY_LEFT)
+	if (keysym == data->key.r_left)
 		data->player.key_left = 0;
-	if (keysym == KEY_RIGHT)
+	if (keysym == data->key.r_right)
 		data->player.key_right = 0;
-	if (keysym == KEY_W)
+	if (keysym == data->key.m_forward)
 		data->player.key_forward = 0;
-	if (keysym == KEY_S)
+	if (keysym == data->key.m_backward)
 		data->player.key_backward = 0;
-	if (keysym == KEY_A)
+	if (keysym == data->key.m_left)
 		data->player.key_move_left = 0;
-	if (keysym == KEY_D)
+	if (keysym == data->key.m_right)
 		data->player.key_move_right = 0;
 	if (keysym == KEY_TAB)
 		data->player.minimap = 0;
