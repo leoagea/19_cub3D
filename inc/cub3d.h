@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/29 18:58:06 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/30 17:28:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,16 @@ enum
     REPLACE
 };
 
+typedef enum e_moves
+{
+    M_FORWARD,
+    M_BACKWARD,
+    M_RIGHT,
+    M_LEFT,
+    R_RIGHT,
+    R_LEFT
+}               t_moves;
+
 typedef struct s_color
 {
     char *r;
@@ -295,6 +305,9 @@ typedef struct s_xpm
     t_img   *cont_back;
     t_img   *cont_left;
     t_img   *cont_right;
+    t_img   *waitng_key_press;
+    t_img   *_return;
+    t_img   *_return_highlight;
 }               t_xpm;
 
 typedef struct s_letters
@@ -329,6 +342,16 @@ typedef struct  s_enemy
     t_img   *img_frames;
 }               t_ennemy;
 
+typedef struct s_flag
+{
+    int menu;
+    int pause;
+    int mouse;
+    int controls;
+    int change;
+    int key;
+}               t_flag;
+
 typedef struct s_data
 {
     void	 *mlx_connection;
@@ -343,12 +366,10 @@ typedef struct s_data
     t_img    texture[4];
     t_controls key;
     t_ennemy    *ennemy;
-    int menu;
-    int pause;
-    int mouse;
-    int controls;
+    t_flag menu;
     int nb_ennemy;
     void *letters[128];
+    void *highlight[128];
 }               t_data;
 
 /*========================Window==========================*/
@@ -391,8 +412,14 @@ void	    move_right(t_data *data);
 int	        player_movement(t_data *data);
 void        rotate_mouse(t_data *data, double angle);
 void        mouse_rotation(t_data *data);
+
 /*==========================Menu==========================*/
-/*--------------------------menu--------------------------*/
+/*--------------------change_letters----------------------*/
+
+void menu_change_controls(t_data *data);
+void change_controls(t_data *data, int keysim);
+
+/*------------------------letters-------------------------*/
 
 void init_letters(t_data *data);
 

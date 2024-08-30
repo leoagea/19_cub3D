@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 16:50:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:20:27 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char **av)
     create_window(&data);
     get_textures(&data);
     create_menu(&data);
-    if (data.menu == 0)
+    if (data.menu.menu == 0)
     {
         mlx_mouse_hide(data.mlx_window);
         mlx_mouse_move(data.mlx_window, WIDTH / 2, HEIGHT / 2);

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/29 18:59:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:06:05 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void get_ennemy_pos(t_data *data)
     
     k = data->nb_ennemy;
     if (k == 0)
-        return 0;
+        return ;
     i = -1;
     data->ennemy = malloc(sizeof(t_ennemy) * data->nb_ennemy);
     if(!data->ennemy)
@@ -104,10 +104,10 @@ void get_map(t_data *data, int i)
     data->file.map[j] = NULL;
     get_max_len_map(data, j);
     get_ennemy_pos(data);
-    int k = 0;
-    while(k < 3)
-    {
-        printf("ennemy %d, pos x: %f    pos y : %f\n", k, data->ennemy[k].pos_x, data->ennemy[k].pos_y);
-        k++;
-    }
+    // int k = 0;
+    // while(k < 3)
+    // {
+    //     printf("ennemy %d, pos x: %f    pos y : %f\n", k, data->ennemy[k].pos_x, data->ennemy[k].pos_y);
+    //     k++;
+    // }
 }

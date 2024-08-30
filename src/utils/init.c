@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/29 18:59:54 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/30 14:40:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ void init_data(t_data *data)
     data->minimap = NULL;
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
-    data->menu = 1;
-    data->pause = 0;
-    data->mouse = 1;
-    data->controls = 0;
+    data->menu.menu = 1;
+    data->menu.pause = 0;
+    data->menu.mouse = 1;
+    data->menu.controls = 0;
+    data->menu.change = 0;
     data->nb_ennemy = 0;
     data->ennemy = NULL;
     init_key_struct(data);
