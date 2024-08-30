@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 13:20:27 by lagea            ###   ########.fr       */
+/*   Updated: 2024/08/30 17:40:21 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ int main(int ac, char **av)
     return 0;
 }
 
-//voir bug video
+//change controls doesnt work in main menu but works in pause menu
+// add all xpm for keyboard input
