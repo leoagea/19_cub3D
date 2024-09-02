@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/02 15:45:19 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 17:04:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	key_press(int keysym, t_data *data)
 		|| keysym == KEY_N || keysym == KEY_M || keysym == KEY_1 || keysym == KEY_2 || keysym == KEY_3 || keysym == KEY_4 || keysym == KEY_5
 		|| keysym == KEY_6 || keysym == KEY_7 || keysym == KEY_8 || keysym == KEY_9 || keysym == KEY_0 || keysym == KEY_NUM_0 || keysym == KEY_NUM_1
 		|| keysym == KEY_NUM_2 || keysym == KEY_NUM_3 || keysym == KEY_NUM_4 || keysym == KEY_NUM_5 || keysym == KEY_NUM_6 || keysym == KEY_NUM_7
-		|| keysym == KEY_NUM_8 || keysym == KEY_NUM_9))
+		|| keysym == KEY_NUM_8 || keysym == KEY_NUM_9 || keysym == KEY_MINUS || keysym == KEY_EQUAL))
 		change_controls(data, keysym);
 	else if ((data->menu.menu || data->menu.pause) && data->menu.controls && data->menu.change)
 	{

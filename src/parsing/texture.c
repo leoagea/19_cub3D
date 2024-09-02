@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 15:19:05 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 17:12:13 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void load_xpm(t_data *data)
     data->xpm.controls = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Controls.xpm", &x, &y);
     data->xpm.controls_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Controls_highlight.xpm", &x, &y);
     data->xpm.cont_moves = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_moves.xpm", &x, &y);
-    data->xpm.cont_vision = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_vision.xpm", &x, &y);
+    data->xpm.cont_vision = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_rotate.xpm", &x, &y);
     data->xpm.cont_interations = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_interactions.xpm", &x, &y);
     data->xpm.cont_for = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Forward.xpm", &x, &y);
     data->xpm.cont_back = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Backward.xpm", &x, &y);

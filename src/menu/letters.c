@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:26:16 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/02 16:12:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 17:35:54 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ void init_letters(t_data *data)
     data->letters[KEY_NUM_7] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_7.xpm",&x, &y);
     data->letters[KEY_NUM_8] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_8.xpm",&x, &y);
     data->letters[KEY_NUM_9] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_9.xpm",&x, &y);
+    data->letters[KEY_UP_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_UP.xpm",&x, &y);
+    data->letters[KEY_DOWN_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_DOWN.xpm",&x, &y);
+    data->letters[KEY_LEFT_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_LEFT.xpm",&x, &y);
+    data->letters[KEY_RIGHT_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_RIGHT.xpm",&x, &y);
 
     data->highlight[KEY_W] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/W_high.xpm",&x, &y);
     data->highlight[KEY_S] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/S_high.xpm",&x, &y);
@@ -108,7 +112,7 @@ void init_letters(t_data *data)
     data->highlight[KEY_8] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/8_high.xpm",&x, &y);
     data->highlight[KEY_9] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/9_high.xpm",&x, &y);
     data->highlight[KEY_0] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/0_high.xpm",&x, &y);
-    data->highlight[KEY_MINUS] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/Minu_high..xpm",&x, &y);
+    data->highlight[KEY_MINUS] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/Minus_high.xpm",&x, &y);
     data->highlight[KEY_EQUAL] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/Plus_high.xpm",&x, &y);
     data->highlight[KEY_NUM_0] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_0_high.xpm",&x, &y);
     data->highlight[KEY_NUM_1] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_1_high.xpm",&x, &y);
@@ -120,6 +124,10 @@ void init_letters(t_data *data)
     data->highlight[KEY_NUM_7] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_7_high.xpm",&x, &y);
     data->highlight[KEY_NUM_8] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_8_high.xpm",&x, &y);
     data->highlight[KEY_NUM_9] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/NUM_9_high.xpm",&x, &y);
+    data->highlight[KEY_UP_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_UP_high.xpm",&x, &y);
+    data->highlight[KEY_DOWN_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_DOWN_high.xpm",&x, &y);
+    data->highlight[KEY_LEFT_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_LEFT_high.xpm",&x, &y);
+    data->highlight[KEY_RIGHT_ARROW] = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/keyboard_keys/ARR_RIGHT_high.xpm",&x, &y);
     
     if (!data->letters[KEY_Q] || !data->letters[KEY_W] || !data->letters[KEY_E] || !data->letters[KEY_R] || !data->letters[KEY_T] || !data->letters[KEY_Y] \
     || !data->letters[KEY_U] || !data->letters[KEY_I] || !data->letters[KEY_O] || !data->letters[KEY_P] || !data->letters[KEY_A] || !data->letters[KEY_S] \
@@ -128,7 +136,9 @@ void init_letters(t_data *data)
     || !data->letters[KEY_N] || !data->letters[KEY_M] || !data->letters[KEY_1] || !data->letters[KEY_2] || !data->letters[KEY_3] || !data->letters[KEY_4] \
     || !data->letters[KEY_5] || !data->letters[KEY_6] || !data->letters[KEY_7] || !data->letters[KEY_8] || !data->letters[KEY_9] || !data->letters[KEY_0] \
     || !data->letters[KEY_NUM_1] || !data->letters[KEY_NUM_2] || !data->letters[KEY_NUM_3] || !data->letters[KEY_NUM_4] || !data->letters[KEY_NUM_5] \
-    || !data->letters[KEY_NUM_6] || !data->letters[KEY_NUM_7] || !data->letters[KEY_NUM_8] || !data->letters[KEY_NUM_9] || !data->letters[KEY_NUM_0])
+    || !data->letters[KEY_NUM_6] || !data->letters[KEY_NUM_7] || !data->letters[KEY_NUM_8] || !data->letters[KEY_NUM_9] || !data->letters[KEY_NUM_0] \
+    || !data->letters[KEY_MINUS] || !data->letters[KEY_EQUAL] || !data->letters[KEY_UP_ARROW] || !data->letters[KEY_DOWN_ARROW] || !data->letters[KEY_LEFT_ARROW] \
+    || !data->letters[KEY_RIGHT_ARROW])
         ft_error(ERR_XPM_MENU, data);
     if (!data->highlight[KEY_Q] || !data->highlight[KEY_W] || !data->highlight[KEY_E] || !data->highlight[KEY_R] || !data->highlight[KEY_T] || !data->highlight[KEY_Y] \
     || !data->highlight[KEY_U] || !data->highlight[KEY_I] || !data->highlight[KEY_O] || !data->highlight[KEY_P] || !data->highlight[KEY_A] || !data->highlight[KEY_S] \
@@ -137,6 +147,8 @@ void init_letters(t_data *data)
     || !data->highlight[KEY_N] || !data->highlight[KEY_M] || !data->highlight[KEY_1] || !data->highlight[KEY_2] || !data->highlight[KEY_3] || !data->highlight[KEY_4] \
     || !data->highlight[KEY_5] || !data->highlight[KEY_6] || !data->highlight[KEY_7] || !data->highlight[KEY_8] || !data->highlight[KEY_9] || !data->highlight[KEY_0] \
     || !data->highlight[KEY_NUM_1] || !data->highlight[KEY_NUM_2] || !data->highlight[KEY_NUM_3] || !data->highlight[KEY_NUM_4] || !data->highlight[KEY_NUM_5] \
-    || !data->highlight[KEY_NUM_6] || !data->highlight[KEY_NUM_7] || !data->highlight[KEY_NUM_8] || !data->highlight[KEY_NUM_9] || !data->highlight[KEY_NUM_0])
+    || !data->highlight[KEY_NUM_6] || !data->highlight[KEY_NUM_7] || !data->highlight[KEY_NUM_8] || !data->highlight[KEY_NUM_9] || !data->highlight[KEY_NUM_0] \
+    || !data->letters[KEY_MINUS] || !data->letters[KEY_EQUAL] || !data->letters[KEY_UP_ARROW] || !data->letters[KEY_DOWN_ARROW] || !data->letters[KEY_LEFT_ARROW] \
+    || !data->letters[KEY_RIGHT_ARROW])
         ft_error(ERR_XPM_MENU, data);
 }

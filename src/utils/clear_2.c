@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:07:14 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/02 16:16:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void clear_xpm(t_data *data)
 {
-    if (data->texture[NO].img_ptr)
-        mlx_destroy_image(data->mlx_connection, data->texture[NO].img_ptr);
-    // if (data->xpm.wall_so)
-    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_so);
-    // if (data->xpm.wall_ea)
-    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_ea);
-    // if (data->xpm.wall_we)
-    //     mlx_destroy_image(data->mlx_connection, data->xpm.wall_we);
+   int i = -1;
+
+   while (++i < 128)
+   {
+        if(data->letters[i])
+            mlx_destroy_image(data->mlx_connection, data->letters[i]);
+        if(data->highlight[i])
+            mlx_destroy_image(data->mlx_connection, data->highlight[i]);
+   }
+   
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:16:43 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/02 16:15:12 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void clear_data(t_data *data)
 {
     clear_struct_file(data);
+    clear_xpm(data);
 }
 
 void ft_error(char *str, t_data *data)

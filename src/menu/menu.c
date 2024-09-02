@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/02 16:05:16 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 18:29:55 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,24 @@ int handle_mouse_controls(t_data *data, int keysim, int x, int y)
         data->menu.change = 1;
         data->menu.key = M_LEFT;
     }
+    else if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause) && (x > 675 && x < 775) && (y > 115 && y < 150))
+    {
+        data->menu.change = 1;
+        data->menu.key = R_RIGHT;
+    }
+    else if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause) && (x > 675 && x < 775) && (y > 165 && y < 200))
+    {
+        data->menu.change = 1;
+        data->menu.key = R_LEFT;
+    }
     return 0;
 }
 
 int handle_mouse(int keysm, int x, int y, t_data *data)
 {
-    printf("keysm : %d      x : %d          y : %d\n",keysm, x, y);
+    // printf("keysm : %d      x : %d          y : %d\n",keysm, x, y);
     // printf("Test\n");
-    if (keysm == 1 && data->menu.menu == 1 && (x > 375 && x < 900) && (y > 140 && y < 230))
+    if (keysm == 1 && data->menu.menu && !data->menu.pause && !data->menu.controls && (x > 375 && x < 900) && (y > 140 && y < 230))
         data->menu.menu = 0;
     else if (keysm == 1 && data->menu.menu == 1 && !data->menu.pause && !data->menu.controls && (x > 450 && x < 830) && (y > 300 && y < 400))
     {
@@ -98,6 +108,12 @@ int menu_controls(t_data *data)
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_left, 200, 275);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[data->key.m_left], 375, 278);
     mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm._return, 475, 600);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_vision, 475, 75);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_right, 575, 125);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[data->key.r_right], 675, 125);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.cont_left, 575, 175);
+    mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[data->key.r_left], 675, 175);
+    
     mlx_mouse_get_pos(data->mlx_window, &x, &y);
     if ((x > 450 && x < 810) && (y > 575 && y < 680))
         mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm._return_highlight, 475, 600);
@@ -109,7 +125,11 @@ int menu_controls(t_data *data)
         mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->highlight[data->key.m_right], 375, 228);
     else if ((x > 365 && x < 400) && (y > 270 && y < 305))
         mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->highlight[data->key.m_left], 375, 278);
-    // printf("mouse x : %d            y : %d\n", x, y);
+    else if ((x > 675 && x < 775) && (y > 115 && y < 150))
+        mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->highlight[data->key.r_right], 675, 125);
+    else if ((x > 675 && x < 775) && (y > 165 && y < 200))
+        mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->highlight[data->key.r_left], 675, 175);
+    printf("mouse x : %d            y : %d\n", x, y);
     return 0;
 }
 
