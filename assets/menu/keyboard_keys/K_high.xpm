@@ -2,7 +2,7 @@
 static char *xpm_[] = {
 /* columns rows colors chars-per-pixel */
 "15 20 2 1 ",
-"  c #5584AC",
+"  c #919191",
 ". c None",
 /* pixels */
 "   ............",

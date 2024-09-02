@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/08/30 17:31:50 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 15:45:19 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,15 @@ int	key_press(int keysym, t_data *data)
 		|| keysym == KEY_A || keysym == KEY_S || keysym == KEY_D || keysym == KEY_F || keysym == KEY_G || keysym == KEY_H || keysym == KEY_J
 		|| keysym == KEY_K || keysym == KEY_L || keysym == KEY_Z || keysym == KEY_X || keysym == KEY_C || keysym == KEY_V || keysym == KEY_B
 		|| keysym == KEY_N || keysym == KEY_M || keysym == KEY_1 || keysym == KEY_2 || keysym == KEY_3 || keysym == KEY_4 || keysym == KEY_5
-		|| keysym == KEY_6 || keysym == KEY_7 || keysym == KEY_8 || keysym == KEY_9 || keysym == KEY_0))
+		|| keysym == KEY_6 || keysym == KEY_7 || keysym == KEY_8 || keysym == KEY_9 || keysym == KEY_0 || keysym == KEY_NUM_0 || keysym == KEY_NUM_1
+		|| keysym == KEY_NUM_2 || keysym == KEY_NUM_3 || keysym == KEY_NUM_4 || keysym == KEY_NUM_5 || keysym == KEY_NUM_6 || keysym == KEY_NUM_7
+		|| keysym == KEY_NUM_8 || keysym == KEY_NUM_9))
 		change_controls(data, keysym);
+	else if ((data->menu.menu || data->menu.pause) && data->menu.controls && data->menu.change)
+	{
+		data->menu.change = 0;
+		menu_controls(data);
+	}
 	if (keysym == data->key.r_left)
 		data->player.key_left = 1;
 	if (keysym == data->key.r_right)

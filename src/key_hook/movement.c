@@ -117,7 +117,6 @@ int player_movement(t_data *data)
 	}
 	else if (data->menu.controls && data->menu.change && (data->menu.menu || data->menu.pause))
 	{
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 		menu_change_controls(data);
 	}
     else if (!data->menu.menu && !data->menu.pause && !data->menu.controls)

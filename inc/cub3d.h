@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 17:28:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/02 15:12:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,16 @@
         KEY_FN = 63,
         KEY_NUM_LOCK = 71,
         KEY_ENTER = 76,
+        KEY_NUM_0 = 82,
+        KEY_NUM_1 = 83,
+        KEY_NUM_2 = 84,
+        KEY_NUM_3 = 85,
+        KEY_NUM_4 = 86,
+        KEY_NUM_5 = 87,
+        KEY_NUM_6 = 88,
+        KEY_NUM_7 = 89,
+        KEY_NUM_8 = 91,
+        KEY_NUM_9 = 92,
         KEY_HOME = 115,
         KEY_PAGE_UP = 116,
         KEY_FORWARD_DELETE = 117,
@@ -152,7 +162,8 @@
 # define ERR_DUP "Duplicate key in description file"
 # define ERR_PLAY "Wrong number of players, expected only 1 player"
 # define ERR_MAP "Map not closed with walls"
-# define ERR_XPM "Xpm to image failed"
+# define ERR_XPM "Wall: Xpm to image failed"
+# define ERR_XPM_MENU "Menu: Xpm to image failed"
 #define ERR_MAP_CHAR "Wrong char in map"
 
 enum
@@ -173,7 +184,7 @@ enum
 
 typedef enum e_moves
 {
-    M_FORWARD,
+    M_FORWARD = 1,
     M_BACKWARD,
     M_RIGHT,
     M_LEFT,
