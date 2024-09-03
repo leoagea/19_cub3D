@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/03 12:24:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 14:43:24 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ void init_key_struct(t_data *data)
     data->key.m_right = KEY_D;    
     data->key.m_left = KEY_A;    
     data->key.r_right = KEY_RIGHT_ARROW;    
-    data->key.r_left = KEY_LEFT_ARROW;    
+    data->key.r_left = KEY_LEFT_ARROW;
+    data->key.speed_up = KEY_EQUAL;
+    data->key.speed_down = KEY_MINUS;
 }
 
 void init_data(t_data *data)

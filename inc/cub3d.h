@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/03 14:26:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 15:37:37 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,9 @@ typedef enum e_moves
     M_RIGHT,
     M_LEFT,
     R_RIGHT,
-    R_LEFT
+    R_LEFT,
+    SPEED_UP,
+    SPEED_DOWN
 }               t_moves;
 
 typedef struct s_color
@@ -327,6 +329,10 @@ typedef struct s_xpm
     t_img   *waitng_key_press;
     t_img   *_return;
     t_img   *_return_highlight;
+    t_img   *speed_up;
+    t_img   *speed_up_highlight;
+    t_img   *speed_down;
+    t_img   *speed_down_highlight;
 }               t_xpm;
 
 typedef struct s_floor
@@ -345,6 +351,8 @@ typedef struct s_controls
     int m_right;
     int r_left;
     int r_right;
+    int speed_up;
+    int speed_down;
 }               t_controls;
 
 typedef struct  s_enemy

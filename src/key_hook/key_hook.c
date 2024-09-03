@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/02 17:04:04 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 15:43:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	key_press(int keysym, t_data *data)
 		menu_pause(data);
 		// handle_input(keysym ,data);
 	}
-	if (keysym == KEY_G)
+	if (keysym == data->key.speed_up)
 	{
 		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
 		{
@@ -76,7 +76,7 @@ int	key_press(int keysym, t_data *data)
 			raycasting(&data->player, data);
 		}
 	}
-	if (keysym == KEY_R)
+	if (keysym == data->key.speed_down)
 	{
 		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
 		{

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/02 17:12:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 15:29:24 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static void load_xpm(t_data *data)
     data->xpm.waitng_key_press = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Waiting_key_press.xpm", &x, &y);
     data->xpm._return = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Return.xpm", &x, &y);
     data->xpm._return_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Return_highlight.xpm", &x, &y);
+    data->xpm.speed_up = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Speed_Up.xpm", &x, &y);
+    data->xpm.speed_down = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Speed_Down.xpm", &x, &y);
     if (!data->xpm.menu || !data->xpm.start || !data->xpm.start_highlight || !data->xpm.exit || !data->xpm.exit_highlight ||!data->xpm._continue || !data->xpm._continue_highlight)
     {
         printf("Error xpm menu\n");

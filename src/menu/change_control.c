@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:25:42 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/02 18:28:03 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 15:57:07 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void menu_change_controls(t_data *data)
 
 void change_controls(t_data *data, int keysim)
 {
-    printf("Test %d\n", keysim);
-    printf("data.menu.key %d\n", data->menu.key);
-    if (keysim == data->key.m_forward || keysim == data->key.m_backward || keysim == data->key.m_right || keysim == data->key.m_left || keysim == data->key.r_right || keysim == data->key.r_left)
+    // printf("Test %d\n", keysim);
+    // printf("data.menu.key %d\n", data->menu.key);
+    if (keysim == data->key.m_forward || keysim == data->key.m_backward || keysim == data->key.m_right || keysim == data->key.m_left || keysim == data->key.r_right || keysim == data->key.r_left || keysim == data->key.speed_up || keysim == data->key.speed_down)
         return ;
     if (data->menu.key == M_FORWARD)
         data->key.m_forward = keysim;
@@ -37,5 +37,9 @@ void change_controls(t_data *data, int keysim)
         data->key.r_left = keysim;
     else if (data->menu.key == R_RIGHT)
         data->key.r_right = keysim;
+    else if (data->menu.key == SPEED_UP)
+        data->key.speed_up = keysim;
+    else if (data->menu.key == SPEED_DOWN)
+        data->key.speed_down = keysim;
     data->menu.change = 0;
 }
