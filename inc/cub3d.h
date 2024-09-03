@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/02 17:11:40 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 14:26:37 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,9 @@
 # define ERR_XPM "Wall: Xpm to image failed"
 # define ERR_XPM_MENU "Menu: Xpm to image failed"
 #define ERR_MAP_CHAR "Wrong char in map"
-
+#define ERR_DOOR "Door not between walls"
+#define ERR_DOOR_2 "Door next to another door"
+#define ERR_DOOR_3_WALL "Door surrounded by 3 walls"
 enum
 {
     NO = 0,
@@ -180,6 +182,12 @@ enum
     SHOOT,
     RECOIL,
     REPLACE
+};
+
+enum
+{
+    HORIZONTAL = 0,
+    VERTICAL
 };
 
 typedef enum e_moves
@@ -321,11 +329,6 @@ typedef struct s_xpm
     t_img   *_return_highlight;
 }               t_xpm;
 
-typedef struct s_letters
-{
-    void *w;
-}               t_letters;
-
 typedef struct s_floor
 {
     double ray_dir_left_x;
@@ -353,6 +356,12 @@ typedef struct  s_enemy
     t_img   *img_frames;
 }               t_ennemy;
 
+typedef struct s_door
+{
+    double pos_x;
+    double pos_y;
+    int dir;
+}               t_door;
 typedef struct s_flag
 {
     int menu;
@@ -377,8 +386,10 @@ typedef struct s_data
     t_img    texture[4];
     t_controls key;
     t_ennemy    *ennemy;
+    t_door     *door;
     t_flag menu;
     int nb_ennemy;
+    int nb_door;
     void *letters[128];
     void *highlight[128];
 }               t_data;
@@ -484,6 +495,10 @@ void get_color(t_data *data);
 /*-------------------------data---------------------------*/
 
 void get_data_line(t_data *data, char *line);
+
+/*------------------------door----------------------------*/
+
+void get_door_pos(t_data *data);
 
 /*-------------------------map----------------------------*/
 

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 14:40:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 12:24:15 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ void init_data(t_data *data)
     data->menu.change = 0;
     data->nb_ennemy = 0;
     data->ennemy = NULL;
+    data->nb_door = 0;
+    data->door = NULL;
     init_key_struct(data);
 }

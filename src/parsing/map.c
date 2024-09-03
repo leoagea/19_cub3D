@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 13:06:05 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/03 13:23:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int check_line(t_data *data, char *line)
 	{
         if (*line == 'X')
             data->nb_ennemy++;
-		if (*line != '1' && *line != '0' && *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W' && *line != ' ' && *line != '\n' && *line!= 'X')
+        if (*line == 'D')
+            data->nb_door++;
+		if (*line != '1' && *line != '0' && *line != 'N' && *line != 'S' && *line != 'E' && *line != 'W' && *line != ' ' && *line != '\n' && *line!= 'X' && *line != 'D')
 			return 0;
 		line++;
 	}
@@ -104,10 +106,12 @@ void get_map(t_data *data, int i)
     data->file.map[j] = NULL;
     get_max_len_map(data, j);
     get_ennemy_pos(data);
-    // int k = 0;
-    // while(k < 3)
-    // {
-    //     printf("ennemy %d, pos x: %f    pos y : %f\n", k, data->ennemy[k].pos_x, data->ennemy[k].pos_y);
-    //     k++;
-    // }
+    get_door_pos(data);
+    int k = 0;
+    printf("nb_door : %d\n", data->nb_door);
+    while(k < data->nb_door)
+    {
+        printf("data.door[%d].pos_x : %f\ndata.door[%d].pos_y : %f\n\n", k, data->door[k].pos_x, k, data->door[k].pos_y);
+        k++;
+    }
 }
