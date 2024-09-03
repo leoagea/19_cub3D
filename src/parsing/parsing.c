@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:53:46 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/02 19:47:03 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void    parsing(int ac, char **av, t_data *data)
     i = skip_null_line(data, i);
     get_map(data, i);
     get_player_pos(data);
-    // get_textures(data);
     checking_map(data);
 }
 

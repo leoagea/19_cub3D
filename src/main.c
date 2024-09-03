@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 15:17:25 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/02 19:47:27 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int ac, char **av)
     parsing(ac, av, &data);
     create_window(&data);
     get_textures(&data);
+    init_enemy(&data, data.enemy);
     create_menu(&data);
     if (data.menu == 1)
     {

@@ -20,9 +20,11 @@ void	raycasting(t_player *player, t_data *data)
 		wall_height(player);
 		draw(data, player);
 		wall_texture(data, player, i);
-		draw_crosshair(data);
+		player->z_buffer[i] = player->perp_wall_dist;
 		i++;
 	}
+	enemy_calculation(data, player, data->enemy);
+	draw_crosshair(data);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
 	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 700, 16777215, "Speed :");

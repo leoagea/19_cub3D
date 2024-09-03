@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 19:29:25 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/03 15:57:20 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@
 # define TEXHEIGHT 64
 # define MINIMAP_SIZE 400
 # define ANIM 60000
+#define SHOOT_DURATION 0.3 
+#define STOP_DURATION 1.0  
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -124,6 +126,16 @@ enum
     SHOOT,
     RECOIL,
     REPLACE
+};
+
+enum
+{
+    STAND = 0,
+    ATTACK,
+    DIE1,
+    DIE2,
+    DIE3,
+    DEAD
 };
 
 typedef struct s_color
@@ -225,6 +237,11 @@ typedef struct s_player
     int     counter;
     t_img    weapon[4];
     int     minimap;
+    double  z_buffer[WIDTH];
+    int     *sprite_order;
+    double  *sprite_dist;
+    int     col;
+    int     hp;
     t_anim  anim;
 }               t_player;
 
@@ -256,22 +273,39 @@ typedef struct s_floor
     double ray_dir_right_y;
 }              t_floor;
 
-// typedef struct  s_enemy
-// {
-//     double  pos_x;
-//     double  pos_y;
-//     int     current_frame;
-//     int     number_frames;
-//     t_img   *img_frames;
-// }
+typedef struct  s_enemy
+{
+    int     current_frame;
+    int     number_frames;
+    int     width;
+    int     height;
+    double  pos_x;
+    double  pos_y;
+    double  inverse_matrix;
+    double  transform_x;
+    double  transform_y;
+    int     draw_start_x;
+    int     draw_start_y;
+    int     draw_end_x;
+    int     draw_end_y;
+    int     sprite_screen_x;
+    int     has_shot;
+    double pos_x_cam;
+    double pos_y_cam;
+    time_t  last_shoot_time;
+    int     hp;
+    t_img   img_frames[6];
+}   t_enemy;
+
 typedef struct s_data
 {
     void	 *mlx_connection;
 	void	 *mlx_window;
     t_minimap *minimap;
-    t_img	 *img;
-    // t_enemy *enemy;
-    t_wall   wall;
+    t_img	  *img;
+    t_enemy   *enemy;
+    int         nb_enemy;
+    t_wall    wall;
     t_file   file;
     t_player player;
     t_floor  floor;   
@@ -342,6 +376,14 @@ void	load_weapon(t_data *data);
 void	draw_weapon(t_data *data, int weapon_pos);
 int	    shoot_event(int keysym, int x, int y, t_data *data);
 void	render_weapon(t_data *data);
+void    sort_sprites(t_data * data, t_player *player);
+void	init_enemy(t_data *data, t_enemy *enemy);
+double	enemy_distance(t_player *player, t_enemy *enemy);
+void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
+void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
+void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i);
+void    take_damage(t_player *player);
+
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

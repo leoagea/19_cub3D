@@ -45,7 +45,8 @@ SRCS =	src/main.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \
 		src/minimap/draw.c src/minimap/minimap.c \
 		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
-		src/menu/menu.c 
+		src/menu/menu.c \
+		src/monster/monster.c src/monster/damage.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -92,6 +93,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/draw
 	@mkdir -p $(OBJS_DIR)/texture
 	@mkdir -p $(OBJS_DIR)/weapon
+	@mkdir -p $(OBJS_DIR)/monster
 	$(PROGRESS_BAR)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
@@ -101,6 +103,13 @@ $(DEBUG_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(DEBUG_DIR)/utils
 	@mkdir -p $(DEBUG_DIR)/window
 	@mkdir -p $(DEBUG_DIR)/key_hook
+	@mkdir -p $(DEBUG_DIR)/menu
+	@mkdir -p $(DEBUG_DIR)/minimap
+	@mkdir -p $(DEBUG_DIR)/raycasting
+	@mkdir -p $(DEBUG_DIR)/draw
+	@mkdir -p $(DEBUG_DIR)/texture
+	@mkdir -p $(DEBUG_DIR)/weapon
+	@mkdir -p $(DEBUG_DIR)/monster
 	@$(CC) -g -fsanitize=address -o $@ -c $<
 
 clean :

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 15:48:25 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/03 16:00:38 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void init_player_struct(t_data *data)
     data->player.is_firing = 0;
     data->player.fire_frame = 0;
     data->player.counter = 0;
+    data->player.hp = 100;
 }
 
 t_color *init_color_struct(t_data *data)
@@ -89,5 +90,6 @@ void init_data(t_data *data)
     data->mlx_window = NULL;
     data->menu = 0;
     data->player.anim.current_frame = 0;    
+    data->nb_enemy = 0;
     gettimeofday(&data->player.anim.last_update, NULL);
 }
