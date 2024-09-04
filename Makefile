@@ -45,7 +45,7 @@ SRCS =	src/main.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \
 		src/minimap/draw.c src/minimap/minimap.c \
 		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c src/parsing/door.c \
-		src/menu/menu.c src/menu/letters.c src/menu/change_control.c
+		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 

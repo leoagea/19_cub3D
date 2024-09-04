@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/03 14:43:24 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/04 16:12:01 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void init_player_struct(t_data *data)
     data->player.pitch = 0.0;
     data->player.is_firing = 0;
     data->player.fire_frame = 0;
+    data->player.hp = 100;
 }
 
 t_color *init_color_struct(t_data *data)
