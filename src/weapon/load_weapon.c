@@ -22,13 +22,3 @@ void	load_weapon(t_data *data)
 		i++;
 	}
 }
-
-void	draw_weapon(t_data *data, int weapon_pos)
-{
-	int x_start;
-	int y_start;
-
-	x_start = ((WIDTH - data->player.weapon[weapon_pos].width) / 2) + 100;
-	y_start = 400;
-	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[weapon_pos].img_ptr, x_start, y_start);
-}

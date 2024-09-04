@@ -91,6 +91,7 @@ void	move_left(t_data *data)
 
 int player_movement(t_data *data)
 {
+	int i = 0;
     if (data->menu == 0)
         create_menu(data);
     else if (data->menu == 1)
@@ -114,7 +115,10 @@ int player_movement(t_data *data)
 		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 		raycasting(&data->player, data);
 		if (data->player.is_firing == 0)
+		{
+			reset_shot(data, data->enemy);
 			mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
+		}
 		else
 			render_weapon(data);
     }

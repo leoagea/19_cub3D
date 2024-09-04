@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 16:01:38 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/04 15:22:54 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int handle_mouse(int keysm, int x, int y, t_data *data)
         data->player.is_firing = 1;
 		data->player.fire_frame = 0;
     }
-    // printf("menu : %d\n", data->menu);
     return 0;
 }
 

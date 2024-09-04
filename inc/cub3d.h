@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/03 15:57:20 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/04 18:05:32 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
 # define SPEED 0.1
-# define SENSI 0.0018
+# define SENSI 0.0010
 # define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
@@ -91,8 +91,9 @@
 # define TEXHEIGHT 64
 # define MINIMAP_SIZE 400
 # define ANIM 60000
-#define SHOOT_DURATION 0.3 
-#define STOP_DURATION 1.0  
+# define ANIM_DIE 60000
+# define SHOOT_DURATION 0.000001
+# define STOP_DURATION 2 
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -110,7 +111,7 @@
 # define ERR_PLAY "Wrong number of players, expected only 1 player"
 # define ERR_MAP "Map not closed with walls"
 # define ERR_XPM "Xpm to image failed"
-#define ERR_MAP_CHAR "Wrong char in map"
+# define ERR_MAP_CHAR "Wrong char in map"
 
 enum
 {
@@ -276,6 +277,7 @@ typedef struct s_floor
 typedef struct  s_enemy
 {
     int     current_frame;
+    struct timeval last_update;
     int     number_frames;
     int     width;
     int     height;
@@ -290,10 +292,13 @@ typedef struct  s_enemy
     int     draw_end_y;
     int     sprite_screen_x;
     int     has_shot;
+    int     was_shot;
     double pos_x_cam;
     double pos_y_cam;
     time_t  last_shoot_time;
     int     hp;
+    int     died;
+    int     cadavre;
     t_img   img_frames[6];
 }   t_enemy;
 
@@ -383,7 +388,10 @@ void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
 void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
 void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i);
 void    take_damage(t_player *player);
-
+void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy);
+void	reset_shot(t_data *data, t_enemy *enemy);
+void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
+void	enemy_die(t_data *data, t_player *player, t_enemy *enemy, int i);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

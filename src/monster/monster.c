@@ -14,6 +14,10 @@ void	init_enemy(t_data *data, t_enemy *enemy)
 		enemy[j].number_frames = 6;
 		enemy[j].hp = 2;
 		enemy[j].has_shot = 0;
+		enemy[j].was_shot = 0;
+		enemy[j].died = 0;
+		enemy[j].cadavre = 0;
+		gettimeofday(&enemy[i].last_update, NULL);
 		while (++i < 6)
 		{
 			enemy[j].img_frames[i].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, tab[i], &enemy[j].width, &enemy[j].height);
@@ -114,12 +118,14 @@ void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i)
     current_time = time(NULL);
     elapsed_time = difftime(current_time, enemy[player->sprite_order[i]].last_shoot_time);
 
+	player->col = enemy[player->sprite_order[i]].draw_start_x;
     if (elapsed_time < SHOOT_DURATION)
 	{
         enemy[player->sprite_order[i]].current_frame = SHOOT;
 		if (enemy[player->sprite_order[i]].transform_y > 0
             && enemy[player->sprite_order[i]].sprite_screen_x > 0
             && enemy[player->sprite_order[i]].sprite_screen_x < WIDTH
+			&& enemy[player->sprite_order[i]].transform_y < player->z_buffer[player->col]
             && !enemy[player->sprite_order[i]].has_shot) 
 		{
             take_damage(player); 
@@ -137,7 +143,6 @@ void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i)
         enemy[player->sprite_order[i]].current_frame = SHOOT;
 		enemy[player->sprite_order[i]].has_shot = 0;
     }
-	player->col = enemy[player->sprite_order[i]].draw_start_x;
 	while (player->col < enemy[player->sprite_order[i]].draw_end_x)
 	{
 		tex_x = (int) (256 * (player->col - (-enemy[player->sprite_order[i]].width / 2 + enemy[player->sprite_order[i]].sprite_screen_x)) * TEXWIDTH / enemy[player->sprite_order[i]].width) / 256;
@@ -150,14 +155,46 @@ void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i)
 				l = pix * 256 - HEIGHT * 128 + enemy[player->sprite_order[i]].height * 128;
 				tex_y = ((l * TEXHEIGHT) / enemy[player->sprite_order[i]].height) / 256;
 				color = *(uint32_t *)(enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].img_pixels_ptr 
-                                       + (tex_y * enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].size_line 
-                                       + tex_x * (enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].bits_per_pixel / 8)));
+									+ (tex_y * enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].size_line 
+									+ tex_x * (enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].bits_per_pixel / 8)));
 				if ((color & 0x00FFFFFF) != 0)
-                	*(uint32_t *)(data->img->img_pixels_ptr + pix * data->img->size_line + player->col * (data->img->bits_per_pixel / 8)) = color;
+					*(uint32_t *)(data->img->img_pixels_ptr + pix * data->img->size_line + player->col * (data->img->bits_per_pixel / 8)) = color;
 				pix++;
 			}
 		}
-		printf("hp : %d\n", player->hp);
+		player->col++;
+	}
+}
+
+void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i)
+{
+	int	tex_x;
+	int tex_y;
+	uint32_t color;
+	int	pix;
+	int l;
+
+	player->col = enemy[player->sprite_order[i]].draw_start_x;
+	while (player->col < enemy[player->sprite_order[i]].draw_end_x)
+	{
+		tex_x = (int) (256 * (player->col - (-enemy[player->sprite_order[i]].width / 2 + enemy[player->sprite_order[i]].sprite_screen_x)) * TEXWIDTH / enemy[player->sprite_order[i]].width) / 256;
+		pix = enemy[player->sprite_order[i]].draw_start_y;
+		if (enemy[player->sprite_order[i]].transform_y > 0 && player->col > 0
+			&& player->col < WIDTH && enemy[player->sprite_order[i]].transform_y < player->z_buffer[player->col])
+		{
+			while (pix < enemy[player->sprite_order[i]].draw_end_y)
+			{
+
+				l = pix * 256 - HEIGHT * 128 + enemy[player->sprite_order[i]].height * 128;
+				tex_y = ((l * TEXHEIGHT) / enemy[player->sprite_order[i]].height) / 256;
+				color = *(uint32_t *)(enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].img_pixels_ptr 
+									+ (tex_y * enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].size_line 
+									+ tex_x * (enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].bits_per_pixel / 8)));
+				if ((color & 0x00FFFFFF) != 0)
+					*(uint32_t *)(data->img->img_pixels_ptr + pix * data->img->size_line + player->col * (data->img->bits_per_pixel / 8)) = color;
+				pix++;
+			}
+		}
 		player->col++;
 	}
 }
