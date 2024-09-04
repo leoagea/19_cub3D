@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 16:12:01 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/04 17:49:14 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,12 @@ t_color *init_color_struct(t_data *data)
 
 void init_minimap_struct(t_data *data)
 {
-    data->minimap = malloc(sizeof(t_minimap));
-    if (!data->minimap)
-        ft_error(ERR_ALLOC, data);
-    data->minimap->start_x = 440;
-    data->minimap->start_y = (HEIGHT - MINIMAP_SIZE) / 2;
-    data->minimap->wall_thick = 0;
-    data->minimap->cell_width = MINIMAP_SIZE / data->file.map_width;
-    data->minimap->cell_height = MINIMAP_SIZE / data->file.map_height;
+    data->minimap.start_x = WIDTH - (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE) - MINIMAP_GAP;
+    data->minimap.start_y = MINIMAP_GAP;
+    data->minimap.end_x = WIDTH - MINIMAP_GAP;
+    data->minimap.end_y = MINIMAP_GAP + (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE);
+    data->minimap.map_size = MINIMAP_CELL_SIZE * MINIMAP_NBR_CELL;
+    // printf("start x : %d\nstart y : %d\n", data->minimap.start_x, data->minimap.start_y);
 }
 
 void init_key_struct(t_data *data)
@@ -97,7 +95,6 @@ void init_key_struct(t_data *data)
 void init_data(t_data *data)
 {
     data->img = NULL;
-    data->minimap = NULL;
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
     data->menu.menu = 1;
@@ -110,4 +107,5 @@ void init_data(t_data *data)
     data->nb_door = 0;
     data->door = NULL;
     init_key_struct(data);
+    init_minimap_struct(data);
 }

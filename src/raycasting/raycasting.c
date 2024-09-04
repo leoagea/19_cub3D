@@ -24,6 +24,7 @@ void	raycasting(t_player *player, t_data *data)
 	}
 	draw_crosshair(data);
 	draw_hp_bar(data);
+	create_minimap(data);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
 	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 600, 16777215, "Speed :");

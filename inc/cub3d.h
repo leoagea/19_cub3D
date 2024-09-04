@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 15:33:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/04 17:54:22 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,10 @@ typedef enum e_keys
 # define HEIGHT 720
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-# define MINIMAP_SIZE 400
+#define MINIMAP_NBR_CELL 5
+#define MINIMAP_CELL_SIZE 20
+#define MINIMAP_GAP 25
+#define MINIMAP_BORDER_THICKNESS 2
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -251,9 +254,9 @@ typedef struct s_minimap
 {
 	int			start_x;
 	int			start_y;
-	int			cell_width;
-	int			cell_height;
-	int			wall_thick;
+    int         end_x;
+    int         end_y;
+    int         map_size;
 }				t_minimap;
 
 typedef struct s_player
@@ -386,7 +389,7 @@ typedef struct s_data
 {
 	void		*mlx_connection;
 	void		*mlx_window;
-	t_minimap	*minimap;
+	t_minimap	minimap;
 	t_img		*img;
 	t_wall		wall;
 	t_file		file;
@@ -421,18 +424,6 @@ void			rotate_left(t_data *data);
 void			move_forward(t_data *data);
 void			move_backward(t_data *data);
 int				player_movement(t_data *data);
-/*========================Minimap=========================*/
-/*-------------------------draw---------------------------*/
-
-void			draw_cell(t_data *data, int x, int y, int color);
-void			draw_player(t_data *data, int x, int y, int color);
-void			draw_dda(t_data *data, int start_x, int start_y, int end_x,
-					int end_y);
-void			draw_view(t_data *data, int x, int y, int color);
-
-/*-------------------------minimap------------------------*/
-
-void			create_minimap(t_data *data);
 
 int				key_press(int keysym, t_data *data);
 int				key_release(int keysym, t_data *data);
@@ -445,6 +436,17 @@ void			move_right(t_data *data);
 int				player_movement(t_data *data);
 void			rotate_mouse(t_data *data, double angle);
 void			mouse_rotation(t_data *data);
+
+/*========================Minimap=========================*/
+/*-------------------------draw---------------------------*/
+
+void draw_horizontal_minimap_border(t_data *data, int y, int size);
+void draw_vertical_minimap_border(t_data *data, int y, int size);
+void  draw_player(t_data *data);
+
+/*-------------------------minimap------------------------*/
+
+void create_minimap(t_data *data);
 
 /*==========================Menu==========================*/
 /*--------------------change_letters----------------------*/
