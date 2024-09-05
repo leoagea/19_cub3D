@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 17:54:22 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/05 16:20:11 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ typedef enum e_keys
 # define HEIGHT 720
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-#define MINIMAP_NBR_CELL 5
+#define MINIMAP_NBR_CELL 7
 #define MINIMAP_CELL_SIZE 20
 #define MINIMAP_GAP 25
 #define MINIMAP_BORDER_THICKNESS 2
@@ -257,6 +257,7 @@ typedef struct s_minimap
     int         end_x;
     int         end_y;
     int         map_size;
+	double 		offset;
 }				t_minimap;
 
 typedef struct s_player
@@ -375,6 +376,7 @@ typedef struct s_door
 	double		pos_y;
 	int			dir;
 }				t_door;
+
 typedef struct s_flag
 {
 	int			menu;
@@ -383,6 +385,7 @@ typedef struct s_flag
 	int			controls;
 	int			change;
 	int			key;
+	// int 		select;
 }				t_flag;
 
 typedef struct s_data
@@ -438,11 +441,17 @@ void			rotate_mouse(t_data *data, double angle);
 void			mouse_rotation(t_data *data);
 
 /*========================Minimap=========================*/
+/*------------------------check---------------------------*/
+
+int is_wall(t_data *data, int x, int y);
+int is_in_map(t_data *data, int x, int y);
+
 /*-------------------------draw---------------------------*/
 
 void draw_horizontal_minimap_border(t_data *data, int y, int size);
 void draw_vertical_minimap_border(t_data *data, int y, int size);
 void  draw_player(t_data *data);
+void draw_tiles(t_data *data);
 
 /*-------------------------minimap------------------------*/
 

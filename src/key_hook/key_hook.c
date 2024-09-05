@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/03 15:43:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/05 15:35:04 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ int	key_press(int keysym, t_data *data)
 		data->menu.change = 0;
 		menu_controls(data);
 	}
-	if (keysym == data->key.r_left)
+	if (keysym == data->key.r_left && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_left = 1;
-	if (keysym == data->key.r_right)
+	if (keysym == data->key.r_right && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_right = 1;
-	if (keysym == data->key.m_forward)
+	if (keysym == data->key.m_forward && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_forward = 1;
-	if (keysym == data->key.m_backward)
+	if (keysym == data->key.m_backward && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_backward = 1;
-	if (keysym == data->key.m_left)
+	if (keysym == data->key.m_left && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_move_left = 1;
-	if (keysym == data->key.m_right)
+	if (keysym == data->key.m_right && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 		data->player.key_move_right = 1;
 	if (keysym == KEY_ESCAPE && !data->menu.menu && !data->menu.pause && !data->menu.controls && !data->menu.change)
 	{
@@ -68,7 +68,7 @@ int	key_press(int keysym, t_data *data)
 		menu_pause(data);
 		// handle_input(keysym ,data);
 	}
-	if (keysym == data->key.speed_up)
+	if (keysym == data->key.speed_up && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 	{
 		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
 		{
@@ -76,7 +76,7 @@ int	key_press(int keysym, t_data *data)
 			raycasting(&data->player, data);
 		}
 	}
-	if (keysym == data->key.speed_down)
+	if (keysym == data->key.speed_down && !data->menu.controls && !data->menu.pause && !data->menu.menu)
 	{
 		if (data->player.speed * 100.0 <= 30.0 && data->player.speed >= -30.0)
 		{

@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 17:49:14 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/05 15:26:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void init_minimap_struct(t_data *data)
     data->minimap.end_x = WIDTH - MINIMAP_GAP;
     data->minimap.end_y = MINIMAP_GAP + (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE);
     data->minimap.map_size = MINIMAP_CELL_SIZE * MINIMAP_NBR_CELL;
+    data->minimap.offset = (double)MINIMAP_NBR_CELL / 2;
+    printf("offset : %f\n", data->minimap.offset);
     // printf("start x : %d\nstart y : %d\n", data->minimap.start_x, data->minimap.start_y);
 }
 
