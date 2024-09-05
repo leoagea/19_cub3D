@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/05 15:26:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/05 18:51:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,12 @@ void init_key_struct(t_data *data)
     data->key.speed_down = KEY_MINUS;
 }
 
+void init_slider(t_data *data)
+{
+    data->slider.start_x = (WIDTH - SLIDERS_LEN) / 2;
+    data->slider.pos_slider = 4;
+}
+
 void init_data(t_data *data)
 {
     data->img = NULL;
@@ -110,4 +116,5 @@ void init_data(t_data *data)
     data->door = NULL;
     init_key_struct(data);
     init_minimap_struct(data);
+    init_slider(data);
 }

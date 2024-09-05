@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/05 16:20:11 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/05 18:47:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/time.h>
 # include <time.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # ifdef __linux__
 #  include "../mlx_linux/mlx.h"
@@ -150,6 +151,9 @@ typedef enum e_keys
 #define MINIMAP_CELL_SIZE 20
 #define MINIMAP_GAP 25
 #define MINIMAP_BORDER_THICKNESS 2
+#define SLIDERS_HEIGHT 8
+#define SLIDERS_LEN 300
+#define SLIDERS_FOV_X 480
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -388,6 +392,12 @@ typedef struct s_flag
 	// int 		select;
 }				t_flag;
 
+typedef struct s_slider
+{
+	int start_x;
+	int pos_slider;
+}				t_slider;
+
 typedef struct s_data
 {
 	void		*mlx_connection;
@@ -404,6 +414,7 @@ typedef struct s_data
 	t_ennemy	*ennemy;
 	t_door		*door;
 	t_flag		menu;
+	t_slider	slider;
 	int			nb_ennemy;
 	int			nb_door;
 	void		*letters[128];
@@ -477,6 +488,11 @@ int				handle_mouse(int keysm, int x, int y, t_data *data);
 int				menu_controls(t_data *data);
 int				menu_pause(t_data *data);
 int				create_menu(t_data *data);
+
+/*-------------------------sliders------------------------*/
+
+void create_cursor(t_data *data, int x, int y);
+void create_slider(t_data *data, int start_x, int start_y, int len);
 
 /*========================Raycasting======================*/
 void			raycasting(t_player *player, t_data *data);
