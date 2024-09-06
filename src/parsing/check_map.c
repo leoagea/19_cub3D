@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 19:16:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 12:58:38 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:02:13 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char **replace_char(char **cpy)
         while (cpy[i][j])
         {
             c = cpy[i][j];
-            if (c != -1 && c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != 'X')
+            if (c != -1 && c != '1' && c != '0' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != 'X' && c != 'D')
                 cpy[i][j] = -1;
             j++;
         }
@@ -56,7 +56,7 @@ static void backtrack(t_data *data, char **map, int i, int j)
 {   
     if (map[i][j])
     {
-        if (map[i][j] == '1' || map[i][j] == 'V')
+        if (map[i][j] == '1' || map[i][j] == 'V' || map[i][j] == 'X')
             return ;
         else if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
             map[i][j] = 'V';

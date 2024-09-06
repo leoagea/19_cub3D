@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/03 16:00:38 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:05:17 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void init_player_struct(t_data *data)
     data->player.fire_frame = 0;
     data->player.counter = 0;
     data->player.hp = 100;
+    data->player.fov = 77;
 }
 
 t_color *init_color_struct(t_data *data)
@@ -72,24 +73,51 @@ t_color *init_color_struct(t_data *data)
 
 void init_minimap_struct(t_data *data)
 {
-    data->minimap = malloc(sizeof(t_minimap));
-    if (!data->minimap)
-        ft_error(ERR_ALLOC, data);
-    data->minimap->start_x = 440;
-    data->minimap->start_y = (HEIGHT - MINIMAP_SIZE) / 2;
-    data->minimap->wall_thick = 0;
-    data->minimap->cell_width = MINIMAP_SIZE / data->file.map_width;
-    data->minimap->cell_height = MINIMAP_SIZE / data->file.map_height;
+    data->minimap.start_x = WIDTH - (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE) - MINIMAP_GAP;
+    data->minimap.start_y = MINIMAP_GAP;
+    data->minimap.end_x = WIDTH - MINIMAP_GAP;
+    data->minimap.end_y = MINIMAP_GAP + (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE);
+    data->minimap.map_size = MINIMAP_CELL_SIZE * MINIMAP_NBR_CELL;
+    data->minimap.offset = (double)MINIMAP_NBR_CELL / 2;
+    printf("offset : %f\n", data->minimap.offset);
+    // printf("start x : %d\nstart y : %d\n", data->minimap.start_x, data->minimap.start_y);
+}
+
+void init_key_struct(t_data *data)
+{
+    data->key.m_forward = KEY_W;    
+    data->key.m_backward = KEY_S;    
+    data->key.m_right = KEY_D;    
+    data->key.m_left = KEY_A;    
+    data->key.r_right = KEY_RIGHT_ARROW;    
+    data->key.r_left = KEY_LEFT_ARROW;
+    data->key.speed_up = KEY_EQUAL;
+    data->key.speed_down = KEY_MINUS;
+}
+
+void init_slider(t_data *data)
+{
+    data->slider.start_x = (WIDTH - SLIDERS_LEN) / 2;
+    data->slider.pos_slider = 4;
 }
 
 void init_data(t_data *data)
 {
     data->img = NULL;
-    data->minimap = NULL;
     data->mlx_connection = NULL;
     data->mlx_window = NULL;
-    data->menu = 0;
     data->player.anim.current_frame = 0;    
-    data->nb_enemy = 0;
     gettimeofday(&data->player.anim.last_update, NULL);
+    data->menu.menu = 1;
+    data->menu.pause = 0;
+    data->menu.mouse = 1;
+    data->menu.controls = 0;
+    data->menu.change = 0;
+    data->nb_enemy = 0;
+    data->enemy = NULL;
+    data->nb_door = 0;
+    data->door = NULL;
+    init_key_struct(data);
+    init_minimap_struct(data);
+    init_slider(data);
 }

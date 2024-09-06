@@ -25,10 +25,15 @@ void	raycasting(t_player *player, t_data *data)
 	}
 	enemy_calculation(data, player, data->enemy);
 	draw_crosshair(data);
+	draw_hp_bar(data);
+	create_minimap(data);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
-	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 700, 16777215, "Speed :");
-	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 700, 16777215, ft_itoa(data->player.speed * 100));
+	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 600, 16777215, "Speed :");
+	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 600, 16777215, ft_itoa(data->player.speed * 100));
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_H], 25, 675);
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_P], 50, 675);
+
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector

@@ -5,90 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/22 15:55:32 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/23 18:16:50 by lagea            ###   ########.fr       */
+/*   Created: 2024/09/04 16:17:05 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/05 15:35:53 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void draw_cell(t_data *data, int x, int y, int color)
+void draw_horizontal_minimap_border(t_data *data, int y, int size)
 {
-    int dx;
-    int dy;
+    int x;
+    int start;
     
-    dy = 0;
-    while (dy < data->minimap->cell_height)
+    start = y;
+    while (y < start  + size)
     {
-        dx = 0;
-        while (dx < data->minimap->cell_width)
+        x = data->minimap.start_x - size;
+        while (x < data->minimap.end_x + size)
         {
-            // printf("dx : %d     dy : %d\n", dx + x, dy + y);
-            draw_point(data, dx + x, dy + y, color);
-            dx++;
+            draw_point(data, x, y, 919191);
+            x++;
         }
-        dy++;
+        y++;
     }
 }
 
-void draw_player(t_data *data, int x, int y, int color)
+void draw_vertical_minimap_border(t_data *data, int x, int size)
 {
-    int dx;
-    int dy;
-    
-    dy = 0;
-    while (dy < 6)
+    int y;
+    int start;
+
+    start = x;
+    while (x < start + size)
     {
-        dx = 0;
-        while (dx < 6)
+        y = data->minimap.start_y - size;
+        while (y < data->minimap.end_y  + size)
         {
-            // printf("dx : %d     dy : %d\n", dx + x, dy + y);
-            draw_point(data, dx + x, dy + y, color);
-            dx++;
+            draw_point(data, x, y, 919191);
+            y++;
         }
-        dy++;
+        x++;
     }
 }
 
-void draw_dda(t_data *data, int start_x, int start_y, int end_x, int end_y)
+void  draw_player(t_data *data)
 {
-    int dx;
-    int dy;
-    float incr_x;
-    float incr_y;
-    int steps;
-    int i;
-    
-    dx = end_x - start_x;
-    dy = end_y - start_y;
-    if (abs(dx) > abs(dy))
-        steps = abs(dx);
-    else
-        steps = abs(dy);
-    incr_x = dx / (float) steps;
-    incr_y = dy / (float) steps;
-    i = 0;
-    while (i < steps)
+    int pos_x;
+    int pos_y;
+    int start_x;
+    int start_y;
+
+    pos_x = data->minimap.start_x + (data->minimap.map_size / 2); 
+    pos_y = data->minimap.start_y + (data->minimap.map_size) / 2;
+    // printf("pos_x : %d\npos_y : %d\n", pos_x, pos_y);
+    start_x = pos_x - 2;
+    while (start_x <= pos_x + 2)
     {
-        draw_point(data, round(start_x), round(start_y), 12779520);
-        start_x += incr_x;
-        start_y += incr_y; 
-        i++;
+        start_y = pos_y - 2;
+        while (start_y <= pos_y + 2)
+        {
+            draw_point(data, start_x, start_y, 16711680);
+            start_y++;
+        }
+        start_x++;
     }
+    // draw_point(data, pos_x, pos_y, 16711680);
 }
 
-void draw_view(t_data *data, int x, int y, int color)
+void draw_tiles(t_data *data)
 {
-    double x_proj;
-    double y_proj;
+    int x;
+    int y;
+    double dist_x;
+    double dist_y;
 
-    x_proj = x + (cos(1.0472) * 20);
-    y_proj = y + (sin(1.0472) * 20);
-    
-    printf("player x : %d       player y :%d\n", x, y);
-    printf("proj   x : %d       poej   y :%d\n",(int) floor(x_proj),(int) floor(y_proj));
-    
-    draw_dda(data, x, y, x - x_proj, y - y_proj);
-    draw_dda(data, x, y, x + x_proj, y - y_proj);
-    
+    y = data->minimap.start_y;
+    dist_y = data->player.pos_y - data->minimap.offset;
+    while (y < data->minimap.map_size + data->minimap.start_y)
+    {
+        x = data->minimap.start_x;
+        dist_x = data->player.pos_x - data->minimap.offset;
+        while (x < data->minimap.start_x + data->minimap.map_size)
+        {
+            if (is_in_map(data, (int)dist_x, (int)dist_y) && is_wall(data, (int)dist_x, (int)dist_y))
+                draw_point(data, x, y, 1710618);
+            else
+                draw_point(data, x, y, 14342874);
+            x++;
+            dist_x += 0.05;
+        }
+        y++;
+        dist_y += 0.05;
+    }
 }

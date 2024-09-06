@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/30 16:49:18 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:03:00 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,31 @@ static void load_xpm(t_data *data)
     int x;
     int y;
     data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Menu.xpm", &x, &y);
-    data->xpm.start = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Start.xpm", &x, &y);
-    data->xpm.start_select = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Start_select.xpm", &x, &y);
+    data->xpm.start = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/main/Start.xpm", &x, &y);
+    data->xpm.start_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/main/Start_highlight.xpm", &x, &y);
     data->xpm.exit = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Exit.xpm", &x, &y);
-    data->xpm.exit_select = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Exit_select.xpm", &x, &y);
+    data->xpm.exit_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Exit_highlight.xpm", &x, &y);
+    data->xpm._continue = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Continue.xpm", &x, &y);
+    data->xpm._continue_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Continue_highlight.xpm", &x, &y);
+    data->xpm.controls = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Controls.xpm", &x, &y);
+    data->xpm.controls_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/pause/Controls_highlight.xpm", &x, &y);
+    data->xpm.cont_moves = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_moves.xpm", &x, &y);
+    data->xpm.cont_vision = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_rotate.xpm", &x, &y);
+    data->xpm.cont_interations = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Controls_interactions.xpm", &x, &y);
+    data->xpm.cont_for = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Forward.xpm", &x, &y);
+    data->xpm.cont_back = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Backward.xpm", &x, &y);
+    data->xpm.cont_left = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Left.xpm", &x, &y);
+    data->xpm.cont_right = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Right.xpm", &x, &y);
+    data->xpm.waitng_key_press = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Waiting_key_press.xpm", &x, &y);
+    data->xpm._return = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Return.xpm", &x, &y);
+    data->xpm._return_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Return_highlight.xpm", &x, &y);
+    data->xpm.speed_up = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Speed_Up.xpm", &x, &y);
+    data->xpm.speed_down = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/controls/Speed_Down.xpm", &x, &y);
+    if (!data->xpm.menu || !data->xpm.start || !data->xpm.start_highlight || !data->xpm.exit || !data->xpm.exit_highlight ||!data->xpm._continue || !data->xpm._continue_highlight)
+    {
+        printf("Error xpm menu\n");
+        exit (1);
+    }
 }
  
 static int check_xpm(t_data *data)

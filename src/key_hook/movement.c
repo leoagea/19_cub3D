@@ -91,10 +91,29 @@ void	move_left(t_data *data)
 
 int player_movement(t_data *data)
 {
-	int i = 0;
-    if (data->menu == 0)
+	// printf("data.menu.menu %d\ndata.menu.pause %d\ndata.menu.mouse %d\ndata.menu.controls%d\ndata.menu.change %d\n\n",data->menu.menu, data->menu.pause, data->menu.mouse, data->menu.controls, data->menu.change);
+    if (data->menu.menu == 1 && data->menu.pause == 0 && !data->menu.controls && !data->menu.change)
         create_menu(data);
-    else if (data->menu == 1)
+	else if (data->menu.controls && !data->menu.pause && data->menu.menu && !data->menu.change)
+	{
+        mlx_mouse_show(data->mlx_window);
+		menu_controls(data);
+	}
+	else if (!data->menu.menu && data->menu.pause && !data->menu.controls && !data->menu.change)
+	{
+        mlx_mouse_show(data->mlx_window);
+		menu_pause(data);
+	}
+	else if (!data->menu.menu && data->menu.pause && data->menu.controls && !data->menu.change)
+	{
+        mlx_mouse_show(data->mlx_window);
+		menu_controls(data);
+	}
+	else if (data->menu.controls && data->menu.change && (data->menu.menu || data->menu.pause))
+	{
+		menu_change_controls(data);
+	}
+    else if (!data->menu.menu && !data->menu.pause && !data->menu.controls)
     {
 		mlx_mouse_hide(data->mlx_window);
         if (data->player.key_left)
@@ -129,3 +148,9 @@ int player_movement(t_data *data)
     }
     return (0);
 }
+
+// else if (data->menu == 0 && data->pause == 1)
+// 	{
+//         mlx_mouse_show(data->mlx_window);
+// 		menu_pause(data);
+// 	}

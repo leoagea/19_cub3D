@@ -23,7 +23,7 @@ else
 	MLX_OBJ = -Imlx -c
 endif
 
-MLX_LIB = -L $(MLX_DIR) -lmlx
+MLX_LIB = -L $(MLX_DIR) -lmlx 
 
 CC = cc
 
@@ -43,11 +43,11 @@ SRCS =	src/main.c \
 		src/utils/clear_2.c src/utils/clear.c src/utils/utils_exit.c src/utils/init.c src/utils/parsing.c \
 		src/texture/wall.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \
-		src/minimap/draw.c src/minimap/minimap.c \
-		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c \
-		src/menu/menu.c \
 		src/monster/monster.c src/monster/damage.c src/monster/dying.c \
 		src/floor/floor.c \
+		src/minimap/draw.c src/minimap/minimap.c src/minimap/check.c \
+		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c src/parsing/door.c \
+		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c src/menu/sliders.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 

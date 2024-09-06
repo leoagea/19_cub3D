@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 13:13:44 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:03:40 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char **av)
     get_textures(&data);
     init_enemy(&data, data.enemy);
     create_menu(&data);
-    if (data.menu == 1)
+    if (data.menu.menu == 0)
     {
         mlx_mouse_hide(data.mlx_window);
         mlx_mouse_move(data.mlx_window, WIDTH / 2, HEIGHT / 2);
