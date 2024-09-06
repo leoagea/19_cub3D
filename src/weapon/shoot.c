@@ -17,7 +17,6 @@ void	render_weapon(t_data *data)
 			data->player.is_firing = 0;
 		}
 		data->player.anim.last_update = current_time;
-		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
 	}
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
 }
@@ -36,13 +35,16 @@ void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy)
 		if (enemy[i].transform_y > 0 && enemy_center > (WIDTH / 2 - hitbox)
 									 && enemy_center < (WIDTH / 2 + hitbox)
 									 && enemy[i].transform_y < player->z_buffer[WIDTH / 2]
-									 && !enemy[i].was_shot)
+									 && !enemy[i].was_shot
+									 && enemy[i].died == 0)
 		{
 			enemy[i].hp--;
-			// printf("Monster number %d has lost 1 hp, hp left %d", i, enemy[i].hp);
 			if (enemy[i].hp <= 0)
+			{
+				// player->hp += 4;
+				// printf("HP left : %d\n", player->hp);
 				enemy[i].died = 1;
-			ft_putstr_fd("SHOT\n", 2);
+			}
 			enemy[i].was_shot = 1;
 		}
 		i++;

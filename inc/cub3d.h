@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 18:05:32 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 12:28:28 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,13 @@
 # define TEXHEIGHT 64
 # define MINIMAP_SIZE 400
 # define ANIM 60000
-# define ANIM_DIE 60000
+# define ANIM_DIE 53000
 # define SHOOT_DURATION 0.000001
 # define STOP_DURATION 2 
+# define FOG_R 128
+# define FOG_G 128
+# define FOG_B 128
+# define FOG_DIST 20.0
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -268,10 +272,22 @@ typedef struct s_xpm
 
 typedef struct s_floor
 {
-    double ray_dir_left_x;
-    double ray_dir_left_y;
-    double ray_dir_right_x;
-    double ray_dir_right_y;
+    double ray_dir_x0;
+    double ray_dir_y0;
+    double ray_dir_x1;
+    double ray_dir_y1;
+    int     p;
+    float   pos_z;
+    float   row_distance;
+    float   floor_step_x;
+    float   floor_step_y;
+    float   floor_x;
+    float   floor_y;
+    int     cell_x;
+    int     cell_y;
+    int     tx;
+    int     ty;
+    t_img   floor_img;
 }              t_floor;
 
 typedef struct  s_enemy
@@ -391,7 +407,12 @@ void    take_damage(t_player *player);
 void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy);
 void	reset_shot(t_data *data, t_enemy *enemy);
 void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
-void	enemy_die(t_data *data, t_player *player, t_enemy *enemy, int i);
+void	enemy_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
+void	enemy_draw_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
+int	    verif_all_dead(t_data *data, t_enemy *enemy);
+float    calculate_fog(float distance, float max_fog_dist);
+uint32_t apply_fog(uint32_t color, float fog_factor);
+void    draw_with_fog(t_data *data, int x, int y, uint32_t color, float distance);
 /*========================Parsing=========================*/
 /*-----------------------check_arg------------------------*/
 

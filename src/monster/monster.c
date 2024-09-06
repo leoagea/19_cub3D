@@ -16,7 +16,6 @@ void	init_enemy(t_data *data, t_enemy *enemy)
 		enemy[j].has_shot = 0;
 		enemy[j].was_shot = 0;
 		enemy[j].died = 0;
-		enemy[j].cadavre = 0;
 		gettimeofday(&enemy[i].last_update, NULL);
 		while (++i < 6)
 		{
@@ -65,7 +64,7 @@ void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy)
 	int i;
 
 	i = 0;
-	while (i < data->nb_enemy)
+	while (i < data->nb_enemy)	
 	{
 		player->sprite_order[i] = i;
 		player->sprite_dist[i] = sqrt(((player->pos_x - enemy[i].pos_x) * (player->pos_x - enemy[i].pos_x)) + ((player->pos_y - enemy[i].pos_y) * (player->pos_y - enemy[i].pos_y)));
@@ -76,7 +75,15 @@ void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy)
 	while (i < data->nb_enemy)
 	{
 		enemy_raycast(player, enemy, i);
-		enemy_draw(data, player, enemy, i);
+		if (enemy[player->sprite_order[i]].died == 0)	
+			enemy_draw(data, player, enemy, i);
+		if (enemy[player->sprite_order[i]].died == 1)
+			enemy_dying(data, player, enemy, i);
+		if (enemy[player->sprite_order[i]].died == 2)
+		{
+			data->file.map[(int)enemy[player->sprite_order[i]].pos_y][(int)enemy[player->sprite_order[i]].pos_x] = '0';
+			enemy_draw_dead(data, player, enemy, i);
+		}
 		i++;
 	}
 }
@@ -152,39 +159,6 @@ void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i)
 		{
 			while (pix < enemy[player->sprite_order[i]].draw_end_y)
 			{
-				l = pix * 256 - HEIGHT * 128 + enemy[player->sprite_order[i]].height * 128;
-				tex_y = ((l * TEXHEIGHT) / enemy[player->sprite_order[i]].height) / 256;
-				color = *(uint32_t *)(enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].img_pixels_ptr 
-									+ (tex_y * enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].size_line 
-									+ tex_x * (enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].bits_per_pixel / 8)));
-				if ((color & 0x00FFFFFF) != 0)
-					*(uint32_t *)(data->img->img_pixels_ptr + pix * data->img->size_line + player->col * (data->img->bits_per_pixel / 8)) = color;
-				pix++;
-			}
-		}
-		player->col++;
-	}
-}
-
-void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i)
-{
-	int	tex_x;
-	int tex_y;
-	uint32_t color;
-	int	pix;
-	int l;
-
-	player->col = enemy[player->sprite_order[i]].draw_start_x;
-	while (player->col < enemy[player->sprite_order[i]].draw_end_x)
-	{
-		tex_x = (int) (256 * (player->col - (-enemy[player->sprite_order[i]].width / 2 + enemy[player->sprite_order[i]].sprite_screen_x)) * TEXWIDTH / enemy[player->sprite_order[i]].width) / 256;
-		pix = enemy[player->sprite_order[i]].draw_start_y;
-		if (enemy[player->sprite_order[i]].transform_y > 0 && player->col > 0
-			&& player->col < WIDTH && enemy[player->sprite_order[i]].transform_y < player->z_buffer[player->col])
-		{
-			while (pix < enemy[player->sprite_order[i]].draw_end_y)
-			{
-
 				l = pix * 256 - HEIGHT * 128 + enemy[player->sprite_order[i]].height * 128;
 				tex_y = ((l * TEXHEIGHT) / enemy[player->sprite_order[i]].height) / 256;
 				color = *(uint32_t *)(enemy[player->sprite_order[i]].img_frames[enemy[player->sprite_order[i]].current_frame].img_pixels_ptr 

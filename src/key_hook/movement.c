@@ -111,6 +111,11 @@ int player_movement(t_data *data)
             move_right(data);
         if (data->player.minimap)
             create_minimap(data);
+		if (verif_all_dead(data, data->enemy)) // A ameliorer !
+		{
+			ft_putstr_fd("YOU WON !\n", 2);
+			exit (1);
+		}
 		mouse_rotation(data);
 		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 		raycasting(&data->player, data);

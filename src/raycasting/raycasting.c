@@ -3,7 +3,7 @@
 void	raycasting(t_player *player, t_data *data)
 {
 	int	i;
-	char *fps_str;
+	uint32_t color;
 
 	i = 0;
 	player->column = 0;

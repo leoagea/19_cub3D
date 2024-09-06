@@ -9,10 +9,7 @@ void	draw(t_data *data, t_player *player)
 	total = HEIGHT * WIDTH;
 	while (i < HEIGHT)
 	{
-		if (i >= player->draw_start)
-			draw_point(data, player->column, i, data->file.c_floor->color);
-		else if (i <= player->draw_end)
-			draw_point(data, player->column, i, data->file.c_ceiling->color);
+		draw_point(data, player->column, i, data->file.c_floor->color);
 		i++;
 	}
 	player->column++;
