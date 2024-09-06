@@ -4,8 +4,8 @@ void	init_enemy(t_data *data, t_enemy *enemy)
 {
 	int i;
 	int j;
-	char tab[6][100] = {"monster/SlayerSimple.xpm", "monster/SlayerShoot.xpm", "monster/SlayerDeath1.xpm",
-		   			 "monster/SlayerDeath2.xpm", "monster/SlayerDeath3.xpm", "monster/SlayerDeath4.xpm"};
+	char tab[6][100] = {"assets/monster/SlayerSimple.xpm", "assets/monster/SlayerShoot.xpm", "assets/monster/SlayerDeath1.xpm",
+		   			 "assets/monster/SlayerDeath2.xpm", "assets/monster/SlayerDeath3.xpm", "assets/monster/SlayerDeath4.xpm"};
 	j = 0;
 	while (j < data->nb_enemy)
 	{
