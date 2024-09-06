@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/05 18:47:25 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/06 13:51:19 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ typedef enum e_keys
 }				t_keys;
 # endif
 
-# define PLANE 77
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
 # define SPEED 0.1
@@ -305,6 +304,7 @@ typedef struct s_player
 	t_img		weapon[4];
 	int			minimap;
 	int			hp;
+	int 		fov;
 }				t_player;
 
 typedef struct s_wall
