@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 14:01:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 17:49:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ typedef enum e_keys
 # define ERR_PLAY "Wrong number of players, expected only 1 player"
 # define ERR_MAP "Map not closed with walls"
 # define ERR_XPM "Wall: Xpm to image failed"
+# define ERR_XPM_WEAPON "Weapon: Xpm to image failed"
 # define ERR_XPM_MENU "Menu: Xpm to image failed"
 # define ERR_MAP_CHAR "Wrong char in map"
 # define ERR_DOOR "Door not between walls"
@@ -429,6 +430,7 @@ typedef struct s_slider
 {
 	int start_x;
 	int pos_slider;
+	int last_pos_slider;
 }				t_slider;
 
 typedef struct  s_enemy
@@ -556,21 +558,49 @@ void create_cursor(t_data *data, int x, int y);
 void create_slider(t_data *data, int start_x, int start_y, int len);
 
 /*========================Raycasting======================*/
-void	raycasting(t_player *player, t_data *data);
-void	ray_direction(int i, t_player *player);
+/*--------------------------calcul------------------------*/
+
 void	delta_distance(t_player *player);
 void	init_dda(t_player *player);
 void	dda_algorithm(t_player *player, t_data *data);
 void	wall_height(t_player *player);
+
+/*---------------------------draw-------------------------*/
+
 void	draw(t_data *data, t_player *player);
 void	draw_point(t_data *data, int x, int y, long color);
 void	draw_crosshair(t_data *data);
+
+/*---------------------------fog--------------------------*/
+
+float    calculate_fog(float distance, float max_fog_dist);
+uint32_t apply_fog(uint32_t color, float fog_factor);
+void    draw_with_fog(t_data *data, int x, int y, uint32_t color, float distance);
+
+/*-----------------------raycasting-----------------------*/
+
+void	raycasting(t_player *player, t_data *data);
+void	ray_direction(int i, t_player *player);
+
+/*=========================Texture========================*/
+/*---------------------------wall-------------------------*/
+
 void	wall_texture(t_data *data, t_player *player, int i);
 void	side_view(t_player *player);
+
+/*=========================Weapon=========================*/
+/*----------------------load_weapon-----------------------*/
+
 void	load_weapon(t_data *data);
+
+/*-------------------------shoot--------------------------*/
+
+void	render_weapon(t_data *data);
+void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy);
+void	reset_shot(t_data *data, t_enemy *enemy);
+
 void	draw_weapon(t_data *data, int weapon_pos);
 int	    shoot_event(int keysym, int x, int y, t_data *data);
-void	render_weapon(t_data *data);
 void    sort_sprites(t_data * data, t_player *player);
 void	init_enemy(t_data *data, t_enemy *enemy);
 double	enemy_distance(t_player *player, t_enemy *enemy);
@@ -578,16 +608,16 @@ void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
 void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
 void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i);
 void    take_damage(t_player *player);
-void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy);
-void	reset_shot(t_data *data, t_enemy *enemy);
 void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
 void	enemy_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
 void	enemy_draw_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
 int	    verif_all_dead(t_data *data, t_enemy *enemy);
-float    calculate_fog(float distance, float max_fog_dist);
-uint32_t apply_fog(uint32_t color, float fog_factor);
-void    draw_with_fog(t_data *data, int x, int y, uint32_t color, float distance);
+
 /*========================Parsing=========================*/
+/*----------------------assign_data-----------------------*/
+
+void	assign_value(t_data *data, char *key, char *value);
+
 /*-----------------------check_arg------------------------*/
 
 void			check_file_extension(char *file, t_data *data);
@@ -643,14 +673,12 @@ void			get_textures(t_data *data);
 /*------------------------Clear_2-------------------------*/
 
 void			clear_xpm(t_data *data);
-void			clear_minimap_struct(t_data *data);
 
 /*-------------------------Clear--------------------------*/
 
 void			clear_file(t_data *data);
 void			clear_color_struct(t_color *color);
 void			clear_struct_file(t_data *data);
-void			clear_player_struct(t_data *data);
 
 /*-----------------------Utils_exit-----------------------*/
 
@@ -659,15 +687,18 @@ void			clear_data(t_data *data);
 void			exit_error(void);
 void			exit_malloc(void);
 
+/*-------------------------Init_2-------------------------*/
+
+void			init_minimap_struct(t_data *data);
+void	init_key_struct(t_data *data);
+void	init_slider(t_data *data);
+
 /*--------------------------Init--------------------------*/
 
 void			init_struct_file(t_data *data);
 void			init_player_struct(t_data *data);
-void			init_fps_struct(t_data *data);
 t_color			*init_color_struct(t_data *data);
-void			init_minimap_struct(t_data *data);
 void			init_data(t_data *data);
-void			init_xpm(t_data *data);
 
 /*------------------------Parsing-------------------------*/
 

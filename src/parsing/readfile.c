@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readfile.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:19:12 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 11:43:47 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 17:50:50 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,18 @@ static int	count_lines(int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-	// printf("count : %d\n", count);
 	return (count);
 }
 
-static	void get_file_data(t_data *data, int fd)
+static void	get_file_data(t_data *data, int fd)
 {
-    int i;
-    char *line;
-    
-    line = get_next_line(fd);
-    if (line)
+	int		i;
+	char	*line;
+
+	line = get_next_line(fd);
+	if (line)
 	{
-        data->file.file[0] = ft_strdup(line);
+		data->file.file[0] = ft_strdup(line);
 		if (!data->file.file[0])
 		{
 			free(line);
@@ -46,15 +45,15 @@ static	void get_file_data(t_data *data, int fd)
 		free(line);
 	}
 	i = 1;
-    while (line != NULL)
-    {
-        line = get_next_line(fd);
-        data->file.file[i] = ft_strdup(line);
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		data->file.file[i] = ft_strdup(line);
 		if (!data->file.file[i])
 			ft_error(ERR_ALLOC, data);
-        i++;
+		i++;
 		free(line);
-    }
+	}
 }
 
 void	open_file(t_data *data, char *file)
@@ -71,7 +70,7 @@ void	open_file(t_data *data, char *file)
 	}
 	data->file.line = count_lines(fd);
 	close(fd);
-    if (data->file.line == 0)
+	if (data->file.line == 0)
 		ft_error(ERR_EMPTY, data);
 	data->file.file = malloc(sizeof(char *) * (data->file.line + 1));
 	ft_memset(data->file.file, 0, sizeof(char *) * (data->file.line + 1));

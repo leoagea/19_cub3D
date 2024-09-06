@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 17:25:09 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/06 17:32:22 by lagea            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 void	draw(t_data *data, t_player *player)
@@ -42,7 +54,7 @@ void	draw_point(t_data *data, int x, int y, long color)
 
 void	draw_crosshair(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -10;
 	while (i < 10)

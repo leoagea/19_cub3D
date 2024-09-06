@@ -6,59 +6,63 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:11:38 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/19 16:20:25 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/06 16:58:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int skip_whitespace(char *str, int i)
+int	skip_whitespace(char *str, int i)
 {
-    while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-        i++;
-    return (i); 
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	return (i);
 }
 
-int get_len(char *str, int i)
+int	get_len(char *str, int i)
 {
-    int j;
+	int	j;
 
-    j = 0;
-    while (str[i] && (!(str[i] >= 9 && str[i] <= 13) && str[i] != 32))
-    {
-        j++;
-        i++;
-    }
-    return (j); 
+	j = 0;
+	while (str[i] && (!(str[i] >= 9 && str[i] <= 13) && str[i] != 32))
+	{
+		j++;
+		i++;
+	}
+	return (j);
 }
 
-void check_key(t_data *data, char *key)
+void	check_key(t_data *data, char *key)
 {
-    if(ft_strncmp(key, "NO", INT_MAX) != 0 && ft_strncmp(key, "SO", INT_MAX) != 0 && ft_strncmp(key, "WE", INT_MAX) != 0 && ft_strncmp(key, "EA", INT_MAX) != 0 && ft_strncmp(key, "F", INT_MAX) != 0 && ft_strncmp(key, "C", INT_MAX) != 0)
-    {
-        free(key);
-        ft_error(ERR_ID, data);
-    }
+	if (ft_strncmp(key, "NO", INT_MAX) != 0 && ft_strncmp(key, "SO",
+			INT_MAX) != 0 && ft_strncmp(key, "WE", INT_MAX) != 0
+		&& ft_strncmp(key, "EA", INT_MAX) != 0 && ft_strncmp(key, "F",
+			INT_MAX) != 0 && ft_strncmp(key, "C", INT_MAX) != 0)
+	{
+		free(key);
+		ft_error(ERR_ID, data);
+	}
 }
 
-void    error_color(t_data *data, char *r, char *g, char *b)
+void	error_color(t_data *data, char *r, char *g, char *b)
 {
-    if(r)
-        free(r);
-    if(g)
-        free(g);
-    if(b)
-        free(b);
-    ft_error(ERR_COL, data);
+	if (r)
+		free(r);
+	if (g)
+		free(g);
+	if (b)
+		free(b);
+	ft_error(ERR_COL, data);
 }
 
-int get_len_array(char **arr)
+int	get_len_array(char **arr)
 {
-    int i = 0;
+	int	i;
 
-    if (!arr)
-        return 0;
-    while (arr[i])
-        i++;
-    return i;
+	i = 0;
+	if (!arr)
+		return (0);
+	while (arr[i])
+		i++;
+	return (i);
 }

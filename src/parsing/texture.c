@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 14:03:00 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 18:18:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void load_xpm(t_data *data)
 {
+    int x;
+    int y;
+    
     data->texture[NO].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file.wall_no, &data->texture[NO].width, &data->texture[NO].height);
     data->texture[NO].img_pixels_ptr = mlx_get_data_addr(data->texture[NO].img_ptr, &(data->texture[NO].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[NO].endian));
     data->texture[SO].img_ptr = mlx_xpm_file_to_image(data->mlx_connection, data->file.wall_so, &data->texture[SO].width, &data->texture[SO].height);
@@ -24,8 +27,7 @@ static void load_xpm(t_data *data)
     data->texture[WE].img_pixels_ptr = mlx_get_data_addr(data->texture[WE].img_ptr, &(data->texture[WE].bits_per_pixel), &(data->texture[0].size_line), &(data->texture[WE].endian));
     if (!data->texture[NO].img_ptr || !data->texture[SO].img_ptr || !data->texture[EA].img_ptr || !data->texture[WE].img_ptr)
         ft_error(ERR_XPM, data);
-    int x;
-    int y;
+        
     data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/Menu.xpm", &x, &y);
     data->xpm.start = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/main/Start.xpm", &x, &y);
     data->xpm.start_highlight = mlx_xpm_file_to_image(data->mlx_connection, "./assets/menu/main/Start_highlight.xpm", &x, &y);
@@ -74,10 +76,6 @@ static int check_xpm(t_data *data)
     if (fd == -1)
         return (ft_error(strerror(errno), data), 1);
     close(fd);
-    // fd = open("./assets/menu.xpm", O_RDONLY);
-    // if (fd == -1)
-    //     return (ft_error(strerror(errno), data), 1);
-    // close(fd);
     return 0; 
 }
 

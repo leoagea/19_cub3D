@@ -1,9 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/06 17:39:25 by lagea            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
+
+static void	display_others(t_data *data, t_player *player)
+{
+	enemy_calculation(data, player, data->enemy);
+	draw_crosshair(data);
+	draw_hp_bar(data);
+	create_minimap(data);
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+		(data)->img->img_ptr, 0, 0);
+	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 600, 16777215,
+		"Speed :");
+	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 600, 16777215,
+		ft_itoa(data->player.speed * 100));
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+		data->letters[KEY_H], 25, 675);
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+		data->letters[KEY_P], 50, 675);
+}
 
 void	raycasting(t_player *player, t_data *data)
 {
-	int	i;
-	uint32_t color;
+	int			i;
+	uint32_t	color;
 
 	i = 0;
 	player->column = 0;
@@ -23,97 +53,15 @@ void	raycasting(t_player *player, t_data *data)
 		player->z_buffer[i] = player->perp_wall_dist;
 		i++;
 	}
-	enemy_calculation(data, player, data->enemy);
-	draw_crosshair(data);
-	draw_hp_bar(data);
-	create_minimap(data);
-	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
-		(data)->img->img_ptr, 0, 0);
-	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 600, 16777215, "Speed :");
-	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 600, 16777215, ft_itoa(data->player.speed * 100));
-	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_H], 25, 675);
-	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_P], 50, 675);
-
+	display_others(data, player);
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector
 {
-	int w = WIDTH;
+	int	w;
+
+	w = WIDTH;
 	player->camera_x = 2.0 * (i / (double)w) - 1.0;
-	player->ray_dir_x =  player->dir_x + player->plane_x * player->camera_x;
-	player->ray_dir_y =  player->dir_y + player->plane_y * player->camera_x;
-}
-
-void	delta_distance(t_player *player) // Calculation of dx and dy that represent the distance between 2 x or y axes in the ray_dir_x / ray_dir_y direction
-{
-	player->map_x = (int) player->pos_x;
-	player->map_y = (int) player->pos_y;
-	if (player->ray_dir_x == 0) // Avoid division by 0
-		player->delta_dist_x = 1e30;
-	else
-		player->delta_dist_x = fabs(1 / player->ray_dir_x);
-	if (player->ray_dir_y == 0)
-		player->delta_dist_y = 1e30;
-	else
-		player->delta_dist_y = fabs(1 / player->ray_dir_y);
-}
-
-void	init_dda(t_player *player)
-{
-	if (player->ray_dir_x < 0)
-	{
-		player->step_x = -1;
-		player->side_dist_x = (player->pos_x - player->map_x) * player->delta_dist_x;
-	}
-	else
-	{
-		player->step_x = 1;
-		player->side_dist_x = (player->map_x + 1.0 - player->pos_x) * player->delta_dist_x;
-	}
-	if (player->ray_dir_y < 0)
-	{
-		player->step_y = -1;
-		player->side_dist_y = (player->pos_y - player->map_y) * player->delta_dist_y;
-	}
-	else
-	{
-		player->step_y = 1;
-		player->side_dist_y = (player->map_y + 1.0 - player->pos_y) * player->delta_dist_y;
-	}
-}
-
-void	dda_algorithm(t_player *player, t_data *data)
-{
-	while (1)
-	{
-		if (player->side_dist_x < player->side_dist_y)
-		{
-			player->side_dist_x += player->delta_dist_x;
-			player->map_x += player->step_x;
-			player->side = 0;
-		}
-		else
-		{
-			player->side_dist_y += player->delta_dist_y;
-			player->map_y += player->step_y;
-			player->side = 1;		
-		}
-		if (data->file.map[player->map_y][player->map_x] == '1')
-			break ;
-	}
-	if (player->side == 0)
-		player->perp_wall_dist = player->side_dist_x - player->delta_dist_x;
-	else
-		player->perp_wall_dist = player->side_dist_y - player->delta_dist_y;
-}
-
-void	wall_height(t_player *player)
-{
-	player->wall_height = (int)(HEIGHT / player->perp_wall_dist);
-	player->draw_start = -1 * player->wall_height / 2 + HEIGHT / 2;
-	if (player->draw_start < 0)
-		player->draw_start = 0;
-	player->draw_end = player->wall_height / 2 + HEIGHT / 2;
-	if (player->draw_end >= HEIGHT)
-		player->draw_end = HEIGHT - 1;
+	player->ray_dir_x = player->dir_x + player->plane_x * player->camera_x;
+	player->ray_dir_y = player->dir_y + player->plane_y * player->camera_x;
 }

@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   shoot.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/06 16:27:45 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/06 16:28:09 by lagea            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 void	render_weapon(t_data *data)
 {
-	struct timeval current_time;
-	long		   delta_time;
+	struct timeval	current_time;
+	long			delta_time;
 
 	check_if_enemy(data, &data->player, data->enemy);
 	gettimeofday(&current_time, NULL);
-	delta_time =(current_time.tv_sec - data->player.anim.last_update.tv_sec) * 1000000 + (current_time.tv_usec - data->player.anim.last_update.tv_usec);
+	delta_time = (current_time.tv_sec - data->player.anim.last_update.tv_sec)
+		* 1000000 + (current_time.tv_usec
+			- data->player.anim.last_update.tv_usec);
 	if (delta_time >= ANIM)
 	{
 		data->player.anim.current_frame++;
@@ -18,12 +32,14 @@ void	render_weapon(t_data *data)
 		}
 		data->player.anim.last_update = current_time;
 	}
-	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->player.weapon[data->player.anim.current_frame].img_ptr,((WIDTH - data->player.weapon[SIMPLE].width) / 2) + 100, 400);
+	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+		data->player.weapon[data->player.anim.current_frame].img_ptr, ((WIDTH
+				- data->player.weapon[SIMPLE].width) / 2) + 100, 400);
 }
 
 void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy)
 {
-	int hitbox;
+	int	hitbox;
 	int	enemy_center;
 	int	i;
 
@@ -33,18 +49,13 @@ void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy)
 		enemy_center = enemy[i].sprite_screen_x;
 		hitbox = (1 / enemy[i].transform_y) * 150;
 		if (enemy[i].transform_y > 0 && enemy_center > (WIDTH / 2 - hitbox)
-									 && enemy_center < (WIDTH / 2 + hitbox)
-									 && enemy[i].transform_y < player->z_buffer[WIDTH / 2]
-									 && !enemy[i].was_shot
-									 && enemy[i].died == 0)
+			&& enemy_center < (WIDTH / 2 + hitbox)
+			&& enemy[i].transform_y < player->z_buffer[WIDTH / 2]
+			&& !enemy[i].was_shot && enemy[i].died == 0)
 		{
 			enemy[i].hp--;
 			if (enemy[i].hp <= 0)
-			{
-				// player->hp += 4;
-				// printf("HP left : %d\n", player->hp);
 				enemy[i].died = 1;
-			}
 			enemy[i].was_shot = 1;
 		}
 		i++;
@@ -53,12 +64,12 @@ void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy)
 
 void	reset_shot(t_data *data, t_enemy *enemy)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_enemy)
 	{
 		enemy[i].was_shot = 0;
-		i++;	
+		i++;
 	}
 }

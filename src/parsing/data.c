@@ -3,79 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 23:05:23 by lagea             #+#    #+#             */
-/*   Updated: 2024/08/28 13:37:28 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 17:42:28 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-static void	assign_value_2(t_data *data, char *key, char *value)
-{
-    if (ft_strncmp(key, "NO", INT_MAX) == 0)
-        data->file.wall_no = value;
-    else if (ft_strncmp(key, "SO", INT_MAX) == 0)
-        data->file.wall_so = value;
-    else if (ft_strncmp(key, "WE", INT_MAX) == 0)
-        data->file.wall_we = value;
-    else if (ft_strncmp(key, "EA", INT_MAX) == 0)
-        data->file.wall_ea = value;
-    else if (ft_strncmp(key, "F", INT_MAX) == 0)
-        data->file.color_floor = value;
-    else if (ft_strncmp(key, "C", INT_MAX) == 0)
-        data->file.color_ceiling = value;
-	if (ft_strncmp(key, "F", INT_MAX) == 0 && data->file.flag_f == 0)
-	{
-		data->file.flag_f = 1;
-		data->file.color_floor = value;
-	}
-	else if (ft_strncmp(key, "C", INT_MAX) == 0 && data->file.flag_c == 0)
-	{
-		data->file.flag_c = 1;
-		data->file.color_ceiling = value;
-	}
-	else if ((ft_strncmp(key, "NO", INT_MAX) == 0 && data->file.flag_no == 1)
-		|| (ft_strncmp(key, "SO", INT_MAX) == 0 && data->file.flag_so == 1)
-		|| (ft_strncmp(key, "WE", INT_MAX) == 0 && data->file.flag_we == 1)
-		|| (ft_strncmp(key, "EA", INT_MAX) == 0 && data->file.flag_ea == 1)
-		|| (ft_strncmp(key, "F", INT_MAX) == 0 && data->file.flag_f == 1)
-		|| (ft_strncmp(key, "C", INT_MAX) == 0 && data->file.flag_c == 1))
-	{
-		free(key);
-		ft_error(ERR_DUP, data);
-	}
-	free(key);
-}
-
-static void	assign_value(t_data *data, char *key, char *value)
-{
-	if (ft_strncmp(key, "NO", INT_MAX) == 0 && data->file.flag_no == 0)
-	{
-		data->file.flag_no = 1;
-		data->file.wall_no = value;
-	}
-	else if (ft_strncmp(key, "SO", INT_MAX) == 0 && data->file.flag_so == 0)
-	{
-		data->file.flag_so = 1;
-		data->file.wall_so = value;
-	}
-	else if (ft_strncmp(key, "WE", INT_MAX) == 0 && data->file.flag_we == 0)
-	{
-		data->file.flag_we = 1;
-		data->file.wall_we = value;
-	}
-	else if (ft_strncmp(key, "EA", INT_MAX) == 0 && data->file.flag_ea == 0)
-	{
-		data->file.flag_ea = 1;
-		data->file.wall_ea = value;
-	}
-	else
-	{
-		assign_value_2(data, key, value);
-	}
-}
 
 static void	get_value(t_data *data, char *line, char *key, int start)
 {
@@ -124,6 +59,6 @@ void	get_data_line(t_data *data, char *line)
 	str = get_key(data, line);
 	if (!str)
 		return ;
-    check_color_textures(data, line);
+	check_color_textures(data, line);
 	data->file.count++;
 }
