@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 14:09:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 14:46:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int handle_mouse_slider(t_data *data, int keysim, int x, int y)
 {
+    data->slider.last_pos_slider = data->slider.pos_slider;
     if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause) && (x > 485 && x < 510) && (y > 445 && y < 470))
         data->slider.pos_slider = 1;
     else if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause) && (x > 511 && x < 553) && (y > 445 && y < 470))

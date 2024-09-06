@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:23:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/05 18:56:18 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/06 15:43:59 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,44 @@ void create_cursor(t_data *data, int x, int y)
     }
 }
 
+void set_fov(t_data *data)
+{
+    int dir = -1;
+    double step = 0.005;
+    double multiply;
+
+    multiply = ((double)data->slider.last_pos_slider - (double)data->slider.pos_slider);
+    // if (data->slider.pos_slider == 1)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 2)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 3)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 4)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 5)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 6)
+    //     data->player.plane_x = data->player.plane_x + (multiply * step);
+    // else if (data->slider.pos_slider == 7)
+    if (multiply > 0)
+    {
+        data->player.plane_x = data->player.plane_x + (fabs(multiply) * step);
+        data->player.plane_y = data->player.plane_y + (fabs(multiply) * step);
+    }
+    if (multiply < 0)
+    {
+        data->player.plane_x = data->player.plane_x - (fabs(multiply) * step);
+        data->player.plane_y = data->player.plane_y - (fabs(multiply) * step);
+    }
+    // // data->player.plane_x = data->player.plane_x + 0.01;
+    // // data->player.plane_y = data->player.plane_x + 0.01;
+    // printf("data->player.plane_x : %g\n", data->player.plane_x);
+    // printf("data->player.plane_y : %g\n", data->player.plane_y);
+    // 7 2 5 
+    // 2 7 -5
+}
+
 void draw_slider(t_data *data)
 {
     if (data->slider.pos_slider == 1)
@@ -75,7 +113,7 @@ void draw_slider(t_data *data)
         create_cursor(data, data->slider.start_x + 250, 449);
     else if (data->slider.pos_slider == 7)
         create_cursor(data, data->slider.start_x + SLIDERS_LEN, 449);
-
+    set_fov(data);
 }
 
 void create_slider(t_data *data, int start_x, int start_y, int len)
