@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 15:51:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:50:38 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:08:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	assing_coord(t_data *data, int i, int j, int count)
 	count++;
 	return (count);
 }
+
 void	get_player_pos(t_data *data)
 {
 	int		i;

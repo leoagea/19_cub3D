@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:09:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:58:36 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	init_data(t_data *data)
 	data->door = NULL;
 	init_key_struct(data);
 	init_minimap_struct(data);
-	init_slider(data);
+	init_slider_struct(data);
+	init_xpm_struct(data);
 }

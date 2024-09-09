@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:22:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:50:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:08:02 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	extract_pos(t_data *data, int i, int j, int k)
 	if (data->file.map[i - 1][j] == 'D' || data->file.map[i + 1][j] == 'D'
 		|| data->file.map[i][j - 1] == 'D' || data->file.map[i][j + 1] == 'D')
 		ft_error(ERR_DOOR_2, data);
-	if (data->file.map[i - 1] && data->file.map[i + 1] && data->file.map[i
-		- 1][j] == '1' && data->file.map[i + 1][j] == '1')
+	if (data->file.map[i - 1] && data->file.map[i + 1] && \
+	data->file.map[i - 1][j] == '1' && data->file.map[i + 1][j] == '1')
 	{
 		if ((data->file.map[i][j - 1] && data->file.map[i][j - 1] == '1')
 			|| (data->file.map[i][j + 1] && data->file.map[i][j + 1] == '1'))
@@ -43,9 +43,9 @@ static void	extract_pos(t_data *data, int i, int j, int k)
 
 void	get_door_pos(t_data *data)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	if (data->nb_door == 0)
 		return ;

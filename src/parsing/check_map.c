@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 19:16:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:35:24 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:06:19 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	backtrack(t_data *data, char **map, int i, int j)
 		backtrack(data, map, i, j - 1);
 	}
 }
+
 static char	**cpy_map(char **map)
 {
 	int		i;

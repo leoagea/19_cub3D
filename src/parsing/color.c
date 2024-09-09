@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:35:52 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:06:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_color	*isolate_color_param(t_data *data, char *color)
 		error_color(data, _color->r, _color->g, _color->b);
 	_color->g = ft_substr(color, start, i - start);
 	start = skip_until_digit(color, i);
-	;
 	i = get_color_char(color, start);
 	if (start == i)
 		error_color(data, _color->r, _color->g, _color->b);

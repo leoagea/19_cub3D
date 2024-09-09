@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 14:03:40 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:10:47 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char **av)
     mlx_hook(data.mlx_window, 17, 0, &cross_event, &data);
     mlx_hook(data.mlx_window, 2, 1L<<0, &key_press, &data);
     mlx_hook(data.mlx_window, 3, 1L<<1, &key_release, &data);
-    mlx_hook(data.mlx_window,4, 1L<<2, &handle_mouse, &data);
+    mlx_hook(data.mlx_window,4, 1L<<2, &handle_mouse_menu, &data);
     mlx_loop_hook(data.mlx_connection, &player_movement, &data);
     mlx_loop(data.mlx_connection);
     return 0;

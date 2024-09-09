@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:50:23 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:08:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_line(t_data *data, char *line)
 	return (1);
 }
 
-static void	set_to_NULL(char **arr, int i)
+static void	set_to_null(char **arr, int i)
 {
 	int	j;
 
@@ -95,7 +95,7 @@ void	get_map(t_data *data, int i)
 	data->file.map = malloc(sizeof(char *) * data->file.line - i + 1);
 	if (!data->file.map)
 		ft_error(ERR_ALLOC, data);
-	set_to_NULL(data->file.map, data->file.line - i + 1);
+	set_to_null(data->file.map, data->file.line - i + 1);
 	j = 0;
 	while (i < data->file.line)
 	{

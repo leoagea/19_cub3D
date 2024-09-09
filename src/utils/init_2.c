@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:01:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:01:30 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:58:15 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,38 @@ void	init_key_struct(t_data *data)
 	data->key.speed_down = KEY_MINUS;
 }
 
-void	init_slider(t_data *data)
+void	init_slider_struct(t_data *data)
 {
 	data->slider.start_x = (WIDTH - SLIDERS_LEN) / 2;
 	data->slider.pos_slider = 4;
 	data->slider.last_pos_slider = 4;
+}
+
+void	init_xpm_struct(t_data *data)
+{
+	data->xpm.exit = NULL;
+	data->xpm.menu = NULL;
+	data->xpm.start = NULL;
+	data->xpm.floor = NULL;
+	data->xpm.ceiling = NULL;
+	data->xpm._return = NULL;
+	data->xpm.controls = NULL;
+	data->xpm.speed_up = NULL;
+	data->xpm.cont_for = NULL;
+	data->xpm._continue = NULL;
+	data->xpm.cont_back = NULL;
+	data->xpm.cont_left = NULL;
+	data->xpm.cont_right = NULL;
+	data->xpm.cont_moves = NULL;
+	data->xpm.speed_down = NULL;
+	data->xpm.cont_vision = NULL;
+	data->xpm.exit_highlight = NULL;
+	data->xpm.start_highlight = NULL;
+	data->xpm.waitng_key_press = NULL;
+	data->xpm.cont_interations = NULL;
+	data->xpm._return_highlight = NULL;
+	data->xpm.controls_highlight = NULL;
+	data->xpm.speed_up_highlight = NULL;
+	data->xpm._continue_highlight = NULL;
+	data->xpm.speed_down_highlight = NULL;
 }

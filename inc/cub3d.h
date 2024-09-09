@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:49:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:33:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,9 +178,10 @@ typedef enum e_keys
 # define ERR_DUP "Duplicate key in description file"
 # define ERR_PLAY "Wrong number of players, expected only 1 player"
 # define ERR_MAP "Map not closed with walls"
-# define ERR_XPM "Wall: Xpm to image failed"
-# define ERR_XPM_WEAPON "Weapon: Xpm to image failed"
-# define ERR_XPM_MENU "Menu: Xpm to image failed"
+# define ERR_XPM "Wall: Xpm file to image failed"
+# define ERR_XPM_WEAPON "Weapon: Xpm file to image failed"
+# define ERR_XPM_MENU "Menu: Xpm file to image failed"
+# define ERR_XPM_ENEMY "Enemy: Xpm file to image failed"
 # define ERR_MAP_CHAR "Wrong char in map"
 # define ERR_DOOR "Door not between walls"
 # define ERR_DOOR_2 "Door next to another door"
@@ -235,6 +236,16 @@ typedef struct s_color
 	char		*b;
 	int			color;
 }				t_color;
+
+typedef struct s_draw_enemy
+{
+	int 		i;
+	int			tex_x;
+	int			tex_y;
+	uint32_t	color;
+	int			pix;
+	int			l;
+}				t_draw_enemy;
 
 typedef struct s_file
 {
@@ -348,30 +359,30 @@ typedef struct s_wall
 
 typedef struct s_xpm
 {
-	t_img		*floor;
-	t_img		*ceiling;
+	t_img		*exit;
 	t_img		*menu;
 	t_img		*start;
-	t_img		*start_highlight;
-	t_img		*exit;
-	t_img		*exit_highlight;
-	t_img *_continue ;
-	t_img		*_continue_highlight;
+	t_img		*floor;
+	t_img		*ceiling;
+	t_img 		*_return;
 	t_img		*controls;
-	t_img		*controls_highlight;
-	t_img		*cont_moves;
-	t_img		*cont_vision;
-	t_img		*cont_interations;
+	t_img		*speed_up;
 	t_img		*cont_for;
+	t_img 		*_continue;
 	t_img		*cont_back;
 	t_img		*cont_left;
 	t_img		*cont_right;
-	t_img		*waitng_key_press;
-	t_img *_return ;
-	t_img		*_return_highlight;
-	t_img		*speed_up;
-	t_img		*speed_up_highlight;
+	t_img		*cont_moves;
 	t_img		*speed_down;
+	t_img		*cont_vision;
+	t_img		*exit_highlight;
+	t_img		*start_highlight;
+	t_img		*waitng_key_press;
+	t_img		*cont_interations;
+	t_img		*_return_highlight;
+	t_img		*controls_highlight;
+	t_img		*speed_up_highlight;
+	t_img		*_continue_highlight;
 	t_img		*speed_down_highlight;
 }				t_xpm;
 
@@ -532,10 +543,14 @@ void draw_tiles(t_data *data);
 void create_minimap(t_data *data);
 
 /*==========================Menu==========================*/
-/*--------------------change_letters----------------------*/
+/*---------------------change_controls--------------------*/
 
 void			menu_change_controls(t_data *data);
 void			change_controls(t_data *data, int keysim);
+
+/*----------------------controls_menu---------------------*/
+
+int	menu_controls(t_data *data);
 
 /*------------------------hp_bar--------------------------*/
 
@@ -547,15 +562,23 @@ void			init_letters(t_data *data);
 
 /*--------------------------menu--------------------------*/
 
-int				handle_mouse(int keysm, int x, int y, t_data *data);
 int				menu_controls(t_data *data);
 int				menu_pause(t_data *data);
 int				create_menu(t_data *data);
+
+/*---------------------mouse_controls----------------------*/
+
+int handle_mouse_slider(t_data *data, int keysim, int x, int y);
+int handle_mouse_controls_menu(t_data *data, int keysim, int x, int y);
 
 /*-------------------------sliders------------------------*/
 
 void create_cursor(t_data *data, int x, int y);
 void create_slider(t_data *data, int start_x, int start_y, int len);
+
+/*----------------------switch_menu-----------------------*/
+
+int	handle_mouse_menu(int keysm, int x, int y, t_data *data);
 
 /*========================Raycasting======================*/
 /*--------------------------calcul------------------------*/
@@ -601,17 +624,30 @@ void	reset_shot(t_data *data, t_enemy *enemy);
 
 void	draw_weapon(t_data *data, int weapon_pos);
 int	    shoot_event(int keysym, int x, int y, t_data *data);
-void    sort_sprites(t_data * data, t_player *player);
-void	init_enemy(t_data *data, t_enemy *enemy);
 double	enemy_distance(t_player *player, t_enemy *enemy);
-void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
-void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
-void	enemy_draw(t_data *data, t_player* player, t_enemy *enemy, int i);
-void    take_damage(t_player *player);
-void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
+
+/*========================Monster=========================*/
+/*------------------------damage--------------------------*/
+
+void	take_damage(t_data *data, t_player *player);
+void	enemy_die(t_data *data, t_player *player, t_enemy *enemy, int i);
+int	    verif_all_dead(t_data *data, t_enemy *enemy);
+
+/*-------------------------draw---------------------------*/
+
+void	enemy_draw(t_data *data, t_player *player, t_enemy *enemy, int i);
+
+/*-------------------------dying--------------------------*/
+
 void	enemy_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
 void	enemy_draw_dying(t_data *data, t_player *player, t_enemy *enemy, int i);
-int	    verif_all_dead(t_data *data, t_enemy *enemy);
+void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
+
+/*------------------------monster-------------------------*/
+
+void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
+
+void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
 
 /*========================Parsing=========================*/
 /*----------------------assign_data-----------------------*/
@@ -653,6 +689,13 @@ void			get_door_pos(t_data *data);
 
 void			get_map(t_data *data, int i);
 
+/*----------------------load_xpm--------------------------*/
+
+void	load_xpm_wall(t_data *data);
+void	load_xpm_menu(t_data *data);
+void	load_xpm_controls_menu(t_data *data);
+void	load_xpm_controls_menu_2(t_data *data);
+
 /*------------------------parsing-------------------------*/
 
 void			parsing(int ac, char **av, t_data *data);
@@ -670,9 +713,13 @@ void			open_file(t_data *data, char *file);
 void			get_textures(t_data *data);
 
 /*=========================Utils==========================*/
-/*------------------------Clear_2-------------------------*/
+/*-----------------------clear_xpm------------------------*/
 
-void			clear_xpm(t_data *data);
+void	clear_xpm_menu_2(t_data *data);
+void	clear_xpm_menu(t_data *data);
+void	clear_xpm_letters(t_data *data);
+void	clear_xpm_texture(t_data *data);
+void	clear_xpm_enemy(t_data *data);
 
 /*-------------------------Clear--------------------------*/
 
@@ -682,8 +729,9 @@ void			clear_struct_file(t_data *data);
 
 /*-----------------------Utils_exit-----------------------*/
 
-void			ft_error(char *str, t_data *data);
+void			clear_xpm(t_data *data);
 void			clear_data(t_data *data);
+void			ft_error(char *str, t_data *data);
 void			exit_error(void);
 void			exit_malloc(void);
 
@@ -691,7 +739,12 @@ void			exit_malloc(void);
 
 void			init_minimap_struct(t_data *data);
 void	init_key_struct(t_data *data);
-void	init_slider(t_data *data);
+void	init_slider_struct(t_data *data);
+void	init_xpm_struct(t_data *data);
+
+/*-----------------------init_enemy-----------------------*/
+
+void	init_enemy(t_data *data, t_enemy *enemy);
 
 /*--------------------------Init--------------------------*/
 
@@ -699,6 +752,10 @@ void			init_struct_file(t_data *data);
 void			init_player_struct(t_data *data);
 t_color			*init_color_struct(t_data *data);
 void			init_data(t_data *data);
+
+/*---------------------------mlx--------------------------*/
+
+void img_to_win(t_data *data, void *img, int x, int y);
 
 /*------------------------Parsing-------------------------*/
 

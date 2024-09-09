@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 14:55:24 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:35:45 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 14:06:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	get_texture_floor(t_data *data, char *path)
 
 void	get_texture_ceiling(t_data *data, char *path)
 {
-	int x;
-	int y;
-	int fd;
+	int	x;
+	int	y;
+	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)

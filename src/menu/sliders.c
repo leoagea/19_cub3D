@@ -6,139 +6,124 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:23:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 15:43:59 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:46:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void create_slider_border(t_data *data, int start_x, int start_y, bool side)
+void	create_slider_border(t_data *data, int start_x, int start_y, bool side)
 {
-    int y;
-    int x;
-    
-    y = start_y;
-    while(y <= start_y + SLIDERS_HEIGHT - 2)
-    {
-        x = start_x;
-        while (x <= start_x + 2)
-        {
-            mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y, 0x00FFFFFF);
-            x++;
-        }
-        y++;
-    }
+	int	y;
+	int	x;
+
+	y = start_y;
+	while (y <= start_y + SLIDERS_HEIGHT - 2)
+	{
+		x = start_x;
+		while (x <= start_x + 2)
+		{
+			mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y,
+				0x00FFFFFF);
+			x++;
+		}
+		y++;
+	}
 }
 
-void create_cursor(t_data *data, int x, int y)
+void	create_cursor(t_data *data, int x, int y)
 {
-    int start_x;
-    int start_y;
-    int len;
-    
-    start_y = y;
-    start_x = x;
-    while (y <= start_y + SLIDERS_HEIGHT + 4)
-    {
-        if (y % (start_y) == 0 || y % (start_y) == 1 || y % start_y == 11 || y % (start_y) == 12)
-        {
-            len = SLIDERS_HEIGHT + 2;
-            x = start_x;
-        }
-        else
-        {
-            x = start_x - 2;
-            len = SLIDERS_HEIGHT + 4;
-        }
-        while (x < start_x + len)
-        {
-            mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y, 0x00FF0000);
-            x++;
-        }
-        y++;
-    }
+	int	start_x;
+	int	start_y;
+	int	len;
+
+	start_y = y;
+	start_x = x;
+	while (y <= start_y + SLIDERS_HEIGHT + 4)
+	{
+		if (y % (start_y) == 0 || y % (start_y) == 1 || y % start_y == 11 || y
+			% (start_y) == 12)
+		{
+			len = SLIDERS_HEIGHT + 2;
+			x = start_x - 1;
+		}
+		else
+		{
+			x = start_x - 3;
+			len = SLIDERS_HEIGHT + 4;
+		}
+		while (++x < start_x + len)
+			mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y,
+				0x00FF0000);
+		y++;
+	}
 }
 
-void set_fov(t_data *data)
+void	set_fov(t_data *data)
 {
-    int dir = -1;
-    double step = 0.005;
-    double multiply;
+	int		dir;
+	double	step;
+	double	multiply;
 
-    multiply = ((double)data->slider.last_pos_slider - (double)data->slider.pos_slider);
-    // if (data->slider.pos_slider == 1)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 2)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 3)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 4)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 5)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 6)
-    //     data->player.plane_x = data->player.plane_x + (multiply * step);
-    // else if (data->slider.pos_slider == 7)
-    if (multiply > 0)
-    {
-        data->player.plane_x = data->player.plane_x + (fabs(multiply) * step);
-        data->player.plane_y = data->player.plane_y + (fabs(multiply) * step);
-    }
-    if (multiply < 0)
-    {
-        data->player.plane_x = data->player.plane_x - (fabs(multiply) * step);
-        data->player.plane_y = data->player.plane_y - (fabs(multiply) * step);
-    }
-    // // data->player.plane_x = data->player.plane_x + 0.01;
-    // // data->player.plane_y = data->player.plane_x + 0.01;
-    // printf("data->player.plane_x : %g\n", data->player.plane_x);
-    // printf("data->player.plane_y : %g\n", data->player.plane_y);
-    // 7 2 5 
-    // 2 7 -5
+	dir = -1;
+	step = 0.005;
+	multiply = ((double)data->slider.last_pos_slider
+			- (double)data->slider.pos_slider);
+	if (multiply > 0)
+	{
+		data->player.plane_x = data->player.plane_x + (fabs(multiply) * step);
+		data->player.plane_y = data->player.plane_y + (fabs(multiply) * step);
+	}
+	if (multiply < 0)
+	{
+		data->player.plane_x = data->player.plane_x - (fabs(multiply) * step);
+		data->player.plane_y = data->player.plane_y - (fabs(multiply) * step);
+	}
 }
 
-void draw_slider(t_data *data)
+void	draw_slider(t_data *data)
 {
-    if (data->slider.pos_slider == 1)
-        create_cursor(data, data->slider.start_x, 449);
-    else if (data->slider.pos_slider == 2)
-        create_cursor(data, data->slider.start_x + 50, 449);
-    else if (data->slider.pos_slider == 3)
-        create_cursor(data, data->slider.start_x + 100, 449);
-    else if (data->slider.pos_slider == 4)
-        create_cursor(data, data->slider.start_x + 150, 449);
-    else if (data->slider.pos_slider == 5)
-        create_cursor(data, data->slider.start_x + 200, 449);
-    else if (data->slider.pos_slider == 6)
-        create_cursor(data, data->slider.start_x + 250, 449);
-    else if (data->slider.pos_slider == 7)
-        create_cursor(data, data->slider.start_x + SLIDERS_LEN, 449);
-    set_fov(data);
+	if (data->slider.pos_slider == 1)
+		create_cursor(data, data->slider.start_x, 449);
+	else if (data->slider.pos_slider == 2)
+		create_cursor(data, data->slider.start_x + 50, 449);
+	else if (data->slider.pos_slider == 3)
+		create_cursor(data, data->slider.start_x + 100, 449);
+	else if (data->slider.pos_slider == 4)
+		create_cursor(data, data->slider.start_x + 150, 449);
+	else if (data->slider.pos_slider == 5)
+		create_cursor(data, data->slider.start_x + 200, 449);
+	else if (data->slider.pos_slider == 6)
+		create_cursor(data, data->slider.start_x + 250, 449);
+	else if (data->slider.pos_slider == 7)
+		create_cursor(data, data->slider.start_x + SLIDERS_LEN, 449);
+	set_fov(data);
 }
 
-void create_slider(t_data *data, int start_x, int start_y, int len)
+void	create_slider(t_data *data, int start_x, int start_y, int len)
 {
-    int x;
-    int y;
-    int flag;
+	int	x;
+	int	y;
+	int	flag;
 
-    flag = 0;
-    y = start_y;
-    while (y <= start_y + SLIDERS_HEIGHT + 2)
-    {
-        x = start_x;
-        while (x < start_x + len)
-        {
-            mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y, 0x00FFFFFF);
-            x++;
-        }
-        if (flag % 2 == 0)
-            y++;
-        else
-            y += SLIDERS_HEIGHT;
-        flag++;
-    }
-    create_slider_border(data, start_x - 2, start_y + 2, 0);
-    create_slider_border(data, x, start_y + 2, 1);
-    draw_slider(data);
+	flag = 0;
+	y = start_y;
+	while (y <= start_y + SLIDERS_HEIGHT + 2)
+	{
+		x = start_x;
+		while (x < start_x + len)
+		{
+			mlx_pixel_put(data->mlx_connection, data->mlx_window, x, y,
+				0x00FFFFFF);
+			x++;
+		}
+		if (flag % 2 == 0)
+			y++;
+		else
+			y += SLIDERS_HEIGHT;
+		flag++;
+	}
+	create_slider_border(data, start_x - 2, start_y + 2, 0);
+	create_slider_border(data, x, start_y + 2, 1);
+	draw_slider(data);
 }
