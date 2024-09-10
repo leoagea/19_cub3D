@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 15:09:10 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 18:43:10 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,31 +359,34 @@ typedef struct s_wall
 
 typedef struct s_xpm
 {
-	t_img		*exit;
-	t_img		*menu;
-	t_img		*start;
-	t_img		*floor;
-	t_img		*ceiling;
-	t_img 		*_return;
-	t_img		*controls;
-	t_img		*speed_up;
-	t_img		*cont_for;
-	t_img 		*_continue;
-	t_img		*cont_back;
-	t_img		*cont_left;
-	t_img		*cont_right;
-	t_img		*cont_moves;
-	t_img		*speed_down;
-	t_img		*cont_vision;
-	t_img		*exit_highlight;
-	t_img		*start_highlight;
-	t_img		*waitng_key_press;
-	t_img		*cont_interations;
-	t_img		*_return_highlight;
-	t_img		*controls_highlight;
-	t_img		*speed_up_highlight;
-	t_img		*_continue_highlight;
-	t_img		*speed_down_highlight;
+	void		*dead;
+	void		*exit;
+	void		*menu;
+	void		*start;
+	void		*floor;
+	void		*escape;
+	void		*ceiling;
+	void 		*_return;
+	void		*victory;
+	void		*controls;
+	void		*speed_up;
+	void		*cont_for;
+	void 		*_continue;
+	void		*cont_back;
+	void		*cont_left;
+	void		*cont_right;
+	void		*cont_moves;
+	void		*speed_down;
+	void		*cont_vision;
+	void		*exit_highlight;
+	void		*start_highlight;
+	void		*waitng_key_press;
+	void		*cont_interations;
+	void		*_return_highlight;
+	void		*controls_highlight;
+	void		*speed_up_highlight;
+	void		*_continue_highlight;
+	void		*speed_down_highlight;
 }				t_xpm;
 
 typedef struct s_floor
@@ -435,7 +438,7 @@ typedef struct s_flag
 	int			controls;
 	int			change;
 	int			key;
-	// int 		select;
+	int			dead;
 }				t_flag;
 
 typedef struct s_slider

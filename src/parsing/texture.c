@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:43:21 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 17:46:44 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	check_load_xpm(t_data *data)
 	if (!data->texture[NO].img_ptr || !data->texture[SO].img_ptr
 		|| !data->texture[EA].img_ptr || !data->texture[WE].img_ptr)
 		ft_error(ERR_XPM, data);
-	if (!data->xpm.menu || !data->xpm.start || !data->xpm.start_highlight
+	if (!data->xpm.dead || !data->xpm.escape || !data->xpm.menu 
+		|| !data->xpm.start || !data->xpm.start_highlight
 		|| !data->xpm.exit || !data->xpm.exit_highlight || !data->xpm._continue
 		|| !data->xpm._continue_highlight || !data->xpm.controls
 		|| !data->xpm.controls_highlight || !data->xpm.cont_moves

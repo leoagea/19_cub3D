@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:42:58 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 17:32:32 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 17:29:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	take_damage(t_data *data, t_player *player)
 {
 	player->hp = player->hp - 5;
 	printf("HP left : %d\n", player->hp);
-	if (player->hp <= 0)
+	if (player->hp <= 0 && !data->menu.dead)
 	{
 		ft_putstr_fd("Game over : You died\n", 1);
-		ft_error(NULL, data);
+		data->menu.dead = 1;
 	}
 }
 

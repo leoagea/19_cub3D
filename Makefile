@@ -36,7 +36,7 @@ SRCS_DIR = src/
 OBJS_DIR = obj/
 DEBUG_DIR = debug/
 
-SRCS =	src/main.c \
+SRCS =	test.c #src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/mouse.c src/key_hook/key_press.c src/key_hook/dispatch.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c src/raycasting/calcul.c \

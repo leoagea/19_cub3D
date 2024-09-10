@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:14:09 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 13:44:04 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 17:38:28 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	check_keysym(t_data *data, int keysym)
 static int	key_press_suite_2(int keysym, t_data *data)
 {
 	if (keysym == data->key.speed_up && !data->menu.controls
-		&& !data->menu.pause && !data->menu.menu)
+		&& !data->menu.pause && !data->menu.menu && !data->menu.dead)
 	{
 		if (data->player.speed * 100.0 <= 30.0)
 		{
@@ -46,7 +46,7 @@ static int	key_press_suite_2(int keysym, t_data *data)
 		}
 	}
 	if (keysym == data->key.speed_down && !data->menu.controls
-		&& !data->menu.pause && !data->menu.menu)
+		&& !data->menu.pause && !data->menu.menu && !data->menu.dead)
 	{
 		if (data->player.speed * 100 >= -30.0)
 		{
@@ -54,19 +54,22 @@ static int	key_press_suite_2(int keysym, t_data *data)
 			raycasting(&data->player, data);
 		}
 	}
+	if (keysym == KEY_ESCAPE && !data->menu.menu && !data->menu.controls
+		&& !data->menu.change && data->menu.dead)
+		ft_error(NULL, data);
 	return (0);
 }
 
 static int	key_press_suite(int keysym, t_data *data)
 {
 	if (keysym == data->key.m_left && !data->menu.controls && !data->menu.pause
-		&& !data->menu.menu)
+		&& !data->menu.menu && !data->menu.dead)
 		data->player.key_move_left = 1;
 	if (keysym == data->key.m_right && !data->menu.controls && !data->menu.pause
-		&& !data->menu.menu)
+		&& !data->menu.menu && !data->menu.dead)
 		data->player.key_move_right = 1;
 	if (keysym == KEY_ESCAPE && !data->menu.menu && !data->menu.pause
-		&& !data->menu.controls && !data->menu.change)
+		&& !data->menu.controls && !data->menu.change && !data->menu.dead)
 	{
 		data->menu.pause = 1;
 		mlx_mouse_show(data->mlx_window);
