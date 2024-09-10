@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:52:20 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:09:10 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -561,6 +561,14 @@ void			draw_hp_bar(t_data *data);
 
 void			init_letters(t_data *data);
 
+/*--------------------load_highlight----------------------*/
+
+void	load_highlight_xpm(t_data *data);
+
+/*---------------------load_letters-----------------------*/
+
+void	load_letters_xpm(t_data *data);
+
 /*--------------------------menu--------------------------*/
 
 int				menu_controls(t_data *data);
@@ -767,6 +775,8 @@ void			init_data(t_data *data);
 /*---------------------------mlx--------------------------*/
 
 void img_to_win(t_data *data, void *img, int x, int y);
+void	letters_to_img(t_data *data, int key, char *img);
+void	highlight_to_img(t_data *data, int key, char *img);
 
 /*------------------------Parsing-------------------------*/
 

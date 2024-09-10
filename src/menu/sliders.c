@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:23:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:46:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:14:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	set_fov(t_data *data)
 
 	dir = -1;
 	step = 0.005;
-	multiply = ((double)data->slider.last_pos_slider
-			- (double)data->slider.pos_slider);
+	multiply = ((double)data->slider.pos_slider
+			- (double)data->slider.last_pos_slider);
 	if (multiply > 0)
 	{
 		data->player.plane_x = data->player.plane_x + (fabs(multiply) * step);
