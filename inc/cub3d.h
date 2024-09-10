@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:33:38 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 12:52:20 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,13 @@ typedef enum e_keys
 # define FOG_G 128
 # define FOG_B 128
 # define FOG_DIST 20.0
-#define MINIMAP_NBR_CELL 7
-#define MINIMAP_CELL_SIZE 20
-#define MINIMAP_GAP 25
-#define MINIMAP_BORDER_THICKNESS 2
-#define SLIDERS_HEIGHT 8
-#define SLIDERS_LEN 300
-#define SLIDERS_FOV_X 480
+# define MINIMAP_NBR_CELL 7
+# define MINIMAP_CELL_SIZE 20
+# define MINIMAP_GAP 25
+# define MINIMAP_BORDER_THICKNESS 2
+# define SLIDERS_HEIGHT 8
+# define SLIDERS_LEN 300
+# define SLIDERS_FOV_X 480
 # define ERR_ARG "Wrong number of arguments, expected only 2 arguments"
 # define ERR_EXT "Wrong file extension, expected only .cub extension"
 # define ERR_ALLOC "Malloc, allocation failed"
@@ -388,10 +388,10 @@ typedef struct s_xpm
 
 typedef struct s_floor
 {
-    double ray_dir_x0;
-    double ray_dir_y0;
-    double ray_dir_x1;
-    double ray_dir_y1;
+    double floor_dir_x0;
+    double floor_dir_y0;
+    double floor_dir_x1;
+    double floor_dir_y1;
     int     p;
     float   pos_z;
     float   row_distance;
@@ -403,6 +403,7 @@ typedef struct s_floor
     int     cell_y;
     int     tx;
     int     ty;
+	uint32_t color;
     t_img   floor_img;
 
 }	t_floor;
@@ -648,6 +649,16 @@ void	enemy_draw_dead(t_data *data, t_player *player, t_enemy *enemy, int i);
 void	enemy_raycast(t_player *player, t_enemy *enemy, int i);
 
 void	enemy_calculation(t_data *data, t_player *player, t_enemy *enemy);
+int	    verif_all_dead(t_data *data, t_enemy *enemy);
+float    calculate_fog(float distance, float max_fog_dist);
+uint32_t apply_fog(uint32_t color, float fog_factor);
+void    draw_with_fog(t_data *data, int x, int y, uint32_t color, float distance);
+void	draw_floor(t_data *data, t_player *player, t_floor *floor);
+void	loop_verticaly(t_data *data, t_player *player, t_floor *floor, int i);
+void	loop_horizontaly(t_data *data, t_floor *floor, int i, int j);
+void	load_floor(t_data *data);
+
+
 
 /*========================Parsing=========================*/
 /*----------------------assign_data-----------------------*/

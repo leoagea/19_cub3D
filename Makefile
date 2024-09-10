@@ -39,7 +39,7 @@ DEBUG_DIR = debug/
 SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/mouse.c \
-		src/raycasting/raycasting.c src/raycasting/draw.c src/raycasting/fog.c src/raycasting/calcul.c \
+		src/raycasting/raycasting.c src/raycasting/draw.c src/raycasting/calcul.c \
 		src/utils/clear_xpm.c src/utils/clear.c src/utils/exit.c src/utils/init.c src/utils/parsing.c src/utils/init_2.c src/utils/init_enemy.c src/utils/mlx.c \
 		src/texture/wall.c \
 		src/weapon/load_weapon.c src/weapon/shoot.c \

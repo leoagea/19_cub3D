@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:39:25 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 12:52:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	raycasting(t_player *player, t_data *data)
 	data->img->img_pixels_ptr = mlx_get_data_addr(data->img->img_ptr,
 			&(data->img->bits_per_pixel), &(data->img->size_line),
 			&(data->img->endian));
+	draw_floor(data, player, &data->floor);
 	while (i < WIDTH)
 	{
 		ray_direction(i, player);
@@ -48,7 +49,7 @@ void	raycasting(t_player *player, t_data *data)
 		init_dda(player);
 		dda_algorithm(player, data);
 		wall_height(player);
-		draw(data, player);
+		// draw(data, player);
 		wall_texture(data, player, i);
 		player->z_buffer[i] = player->perp_wall_dist;
 		i++;

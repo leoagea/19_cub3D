@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:10:47 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 12:52:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(int ac, char **av)
     parsing(ac, av, &data);
     create_window(&data);
     get_textures(&data);
+    load_floor(&data);
     init_enemy(&data, data.enemy);
     create_menu(&data);
     if (data.menu.menu == 0)

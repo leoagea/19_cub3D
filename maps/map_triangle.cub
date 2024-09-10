@@ -1,13 +1,12 @@
-NO 				./assets/texture_2.xpm
-			SO ./assets/texture_32.xpm
-WE 						./assets/texture_5.xpm
-EA ./assets/texture_26.xpm
-
-F 0,0,0
-C 0,0,0
+F 21,21,21
+EA ./assets/wall/texture_39.xpm
+WE 						./assets/wall/texture_39.xpm
+C 21,21,21
+NO 				./assets/wall/texture_23.xpm
+			SO ./assets/wall/texture_29.xpm
 
          11
-        1001
+        10X1
        100001
       10000001
      1000000001
