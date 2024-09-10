@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:48:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 12:58:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	menu_controls(t_data *data)
 	img_to_win(data, data->xpm.cont_for, 200, 125);
 	img_to_win(data, data->letters[data->key.m_forward], 375, 128);
 	img_to_win(data, data->xpm.cont_back, 200, 175);
-	img_to_win(data, data->letters[data->key.m_backward], 375, 128);
+	img_to_win(data, data->letters[data->key.m_backward], 375, 178);
 	img_to_win(data, data->xpm.cont_right, 200, 225);
 	img_to_win(data, data->letters[data->key.m_right], 375, 228);
 	img_to_win(data, data->xpm.cont_left, 200, 275);
@@ -63,7 +63,6 @@ int	menu_controls(t_data *data)
 	img_to_win(data, data->xpm.cont_vision, 425, 75);
 	img_to_win(data, data->xpm.cont_right, 525, 125);
 	img_to_win(data, data->letters[data->key.r_right], 625, 125);
-	img_to_win(data, data->xpm.menu, 0, 0);
 	img_to_win(data, data->xpm.cont_left, 525, 175);
 	img_to_win(data, data->letters[data->key.r_left], 625, 175);
 	img_to_win(data, data->xpm.cont_interations, 800, 75);
