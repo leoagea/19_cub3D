@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 14:03:00 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/06 16:08:17 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void get_textures(t_data *data)
 {
     // check_xpm(data);
     load_weapon(data);
+    load_floor(data);
     load_xpm(data);
     if (!data->file.c_floor)
         get_texture_floor(data, data->file.color_floor);

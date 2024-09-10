@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:17:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/05 15:35:53 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/06 14:26:14 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void draw_horizontal_minimap_border(t_data *data, int y, int size)
         x = data->minimap.start_x - size;
         while (x < data->minimap.end_x + size)
         {
-            draw_point(data, x, y, 919191);
+            draw_point(data, x, y, 16115299);
             x++;
         }
         y++;
@@ -41,7 +41,7 @@ void draw_vertical_minimap_border(t_data *data, int x, int size)
         y = data->minimap.start_y - size;
         while (y < data->minimap.end_y  + size)
         {
-            draw_point(data, x, y, 919191);
+            draw_point(data, x, y, 16115299);
             y++;
         }
         x++;
@@ -90,7 +90,7 @@ void draw_tiles(t_data *data)
             if (is_in_map(data, (int)dist_x, (int)dist_y) && is_wall(data, (int)dist_x, (int)dist_y))
                 draw_point(data, x, y, 1710618);
             else
-                draw_point(data, x, y, 14342874);
+                draw_point(data, x, y, 2634302);
             x++;
             dist_x += 0.05;
         }

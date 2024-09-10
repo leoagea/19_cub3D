@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hp_bar.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:40:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/04 15:54:41 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/06 14:50:09 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void draw_hp_bar_section(t_data *data, int start)
 		x = start;
 		while(x < start + 16)
 		{
-            draw_point(data, x, y, 16711680);
+            draw_point(data, x, y, 0x00801010);
 			x++;
 		}
 		y++;
@@ -38,7 +38,7 @@ static void draw_border_vertical_hp_bar(t_data *data, int start)
 	{
 		x = start;
 		while (++x < start + 5)
-			draw_point(data, x, y, 919191);
+			draw_point(data, x, y, 9371681);
 	}
 }
 
@@ -52,7 +52,7 @@ static void draw_border_horizontal_hp_bar(t_data *data, int start)
 	{
 		x = 89;
 		while (++x < 426)
-			draw_point(data, x, y, 919191);
+			draw_point(data, x, y, 9371681);
 	}
 }
 

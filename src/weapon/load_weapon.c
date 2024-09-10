@@ -16,7 +16,7 @@ void	load_weapon(t_data *data)
 		i++;
 	}
 	i = 0;
-	while (i < 1)
+	while (i < 4)
 	{
 		data->player.weapon[i].img_pixels_ptr = mlx_get_data_addr(data->player.weapon[i].img_ptr, &data->player.weapon[i].bits_per_pixel, &data->player.weapon[i].size_line, &data->player.weapon[i].endian);
 		i++;

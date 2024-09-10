@@ -11,6 +11,7 @@ void	raycasting(t_player *player, t_data *data)
 	data->img->img_pixels_ptr = mlx_get_data_addr(data->img->img_ptr,
 			&(data->img->bits_per_pixel), &(data->img->size_line),
 			&(data->img->endian));
+	draw_floor(data, player, &data->floor);
 	while (i < WIDTH)
 	{
 		ray_direction(i, player);
@@ -18,7 +19,7 @@ void	raycasting(t_player *player, t_data *data)
 		init_dda(player);
 		dda_algorithm(player, data);
 		wall_height(player);
-		draw(data, player);
+		// draw(data, player);
 		wall_texture(data, player, i);
 		player->z_buffer[i] = player->perp_wall_dist;
 		i++;
@@ -29,11 +30,10 @@ void	raycasting(t_player *player, t_data *data)
 	create_minimap(data);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		(data)->img->img_ptr, 0, 0);
-	mlx_string_put(data->mlx_connection, data->mlx_window, 35, 600, 16777215, "Speed :");
-	mlx_string_put(data->mlx_connection, data->mlx_window, 90, 600, 16777215, ft_itoa(data->player.speed * 100));
+	mlx_string_put(data->mlx_connection, data->mlx_window, 1100 + 30, 700, 16777215, "Speed :");
+	mlx_string_put(data->mlx_connection, data->mlx_window, 1155 + 30, 700, 16777215, ft_itoa(data->player.speed * 100));
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_H], 25, 675);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->letters[KEY_P], 50, 675);
-
 }
 
 void	ray_direction(int i, t_player *player) // Calculation of Ray vector
