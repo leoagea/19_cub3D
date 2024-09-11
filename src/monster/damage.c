@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   damage.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:42:58 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 15:34:18 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 19:03:08 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	take_damage(t_data *data, t_player *player)
 {
 	player->hp = player->hp - player->damage;
-	if (player->hp >= 0)
-		printf("HP left : %d\n", player->hp);
 	if (player->hp <= 0 && !data->menu.dead)
 	{
 		ft_putstr_fd("Game over : You died\n", 1);

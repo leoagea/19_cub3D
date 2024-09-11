@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:41:43 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:54:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,3 @@ int	main(int ac, char **av)
 	mlx_loop(data.mlx_connection);
 	return (0);
 }
-
-
-//OTHER LETTER THAN IN MAP RESULT TO SEGV

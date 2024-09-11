@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:22:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 13:18:28 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:58:53 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	extract_pos(t_data *data, int i, int j, int k)
 	if (data->file.map[i - 1][j] == 'D' || data->file.map[i + 1][j] == 'D'
 		|| data->file.map[i][j - 1] == 'D' || data->file.map[i][j + 1] == 'D')
 		ft_error(ERR_DOOR_2, data);
-	if (data->file.map[i - 1] && data->file.map[i + 1] && \
-	data->file.map[i - 1][j] == '1' && data->file.map[i + 1][j] == '1')
+	if (data->file.map[i - 1] && data->file.map[i + 1] && data->file.map[i
+			- 1][j] == '1' && data->file.map[i + 1][j] == '1')
 	{
 		if ((data->file.map[i][j - 1] && data->file.map[i][j - 1] == '1')
 			|| (data->file.map[i][j + 1] && data->file.map[i][j + 1] == '1'))
@@ -69,7 +69,7 @@ void	get_door_pos(t_data *data)
 	init_doors(data);
 }
 
-void init_doors(t_data *data)
+void	init_doors(t_data *data)
 {
 	int	i;
 	int	x;
@@ -77,20 +77,20 @@ void init_doors(t_data *data)
 
 	i = 0;
 	y = 0;
-    while (data->file.map[y])
-    {
+	while (data->file.map[y])
+	{
 		x = 0;
-        while (data->file.map[y][x])
-        {
-            if (data->file.map[y][x] == 'D')
-            {
-                data->door[i].x = x;
-                data->door[i].y = y;
-                data->door[i].is_open = 0;
-                i++;
-            }
+		while (data->file.map[y][x])
+		{
+			if (data->file.map[y][x] == 'D')
+			{
+				data->door[i].x = x;
+				data->door[i].y = y;
+				data->door[i].is_open = 0;
+				i++;
+			}
 			x++;
-        }
+		}
 		y++;
-    }
+	}
 }

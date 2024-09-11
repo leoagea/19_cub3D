@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:24:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 15:39:34 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 19:37:42 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,14 @@ void	create_minimap(t_data *data)
 	draw_tiles(data);
 	draw_player(data);
 	draw_enemies(data);
+}
+
+void	calc_map_enemies(t_data *data, int *enemy_x, int *enemy_y, int i)
+{
+	*enemy_x = data->minimap.start_x + (data->enemy[i].pos_x
+			- data->player.pos_x + data->minimap.offset)
+		* data->minimap.map_size / (data->minimap.offset * 2);
+	*enemy_y = data->minimap.start_y + (data->enemy[i].pos_y
+			- data->player.pos_y + data->minimap.offset)
+		* data->minimap.map_size / (data->minimap.offset * 2);
 }

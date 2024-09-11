@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/11 18:38:43 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:54:46 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	cross_event(t_data *data)
 {
-	clear_data(data); 
+	clear_data(data);
 	mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
 	mlx_destroy_window(data->mlx_connection, data->mlx_window);
 	free(data->mlx_connection);

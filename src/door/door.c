@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:13:02 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/11 16:13:44 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 19:00:20 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	load_door(t_data *data)
 {
-	data->texture[DOOR].img_ptr = mlx_xpm_file_to_image(data->mlx_connection,
+	data->texture[DOOR].img_ptr = mlx_xpm_file_to_image(
+			data->mlx_connection,
 			"./assets/door/door.xpm", &data->texture[DOOR].width,
 			&data->texture[DOOR].height);
 	data->texture[DOOR].img_pixels_ptr = mlx_get_data_addr(

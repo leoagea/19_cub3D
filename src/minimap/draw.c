@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:17:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:40:45 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 19:37:53 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,27 +109,18 @@ void	draw_enemies(t_data *data)
 	i = 0;
 	while (i < data->nb_enemy)
 	{
-		enemy_x = data->minimap.start_x + (data->enemy[i].pos_x
-				- data->player.pos_x + data->minimap.offset)
-			* data->minimap.map_size / (data->minimap.offset * 2);
-		enemy_y = data->minimap.start_y + (data->enemy[i].pos_y
-				- data->player.pos_y + data->minimap.offset)
-			* data->minimap.map_size / (data->minimap.offset * 2);
+		calc_map_enemies(data, &enemy_x, &enemy_y, i);
 		if (enemy_x >= data->minimap.start_x && enemy_x < data->minimap.end_x
 			&& enemy_y >= data->minimap.start_y
 			&& enemy_y < data->minimap.end_y)
 		{
-			start_x = enemy_x - 2;
-			while (start_x <= enemy_x + 2)
+			start_x = enemy_x - 2 - 1;
+			while (++start_x <= enemy_x + 2)
 			{
-				start_y = enemy_y - 2;
-				while (start_y <= enemy_y + 2)
-				{
+				start_y = enemy_y - 2 - 1;
+				while (++start_y <= enemy_y + 2)
 					if (data->enemy[i].died == 0)
 						draw_point(data, start_x, start_y, 0x00D01157);
-					start_y++;
-				}
-				start_x++;
 			}
 		}
 		i++;

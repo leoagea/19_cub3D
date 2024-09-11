@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:16:52 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 15:18:53 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:59:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	draw_wall(t_data *data, t_player *player, int i, int j)
 
 void	wall_texture(t_data *data, t_player *player, int i)
 {
-	int				j;
+	int	j;
 
 	if (player->side == 0)
 		data->wall.wall_coord = player->pos_y + player->perp_wall_dist
@@ -49,13 +49,10 @@ void	wall_texture(t_data *data, t_player *player, int i)
 	if (data->file.map[player->map_y][player->map_x] == 'D')
 		data->texture_index = DOOR;
 	else
-		side_view(data, player); 
-	j = player->draw_start;
-	while (j < player->draw_end)
-	{
+		side_view(data, player);
+	j = player->draw_start - 1;
+	while (++j < player->draw_end)
 		draw_wall(data, player, i, j);
-		j++;
-	}
 }
 
 void	side_view(t_data *data, t_player *player)

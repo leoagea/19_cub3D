@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:41:07 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:59:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	display_others(t_data *data, t_player *player)
 {
-	char *speed;
-	char *enemy;
+	char	*speed;
+	char	*enemy;
 
 	enemy_calculation(data, player, data->enemy);
 	draw_crosshair(data);
