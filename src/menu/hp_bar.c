@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:40:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:41:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:15:38 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_hp_bar_section(t_data *data, int start)
 		x = start;
 		while (x < start + 16)
 		{
-            draw_point(data, x, y, 0x00801010);
+			draw_point(data, x, y, 0x00801010);
 			x++;
 		}
 		y++;

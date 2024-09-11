@@ -1,13 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_window.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/10 13:02:17 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/11 18:17:00 by lagea            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 void	create_window(t_data *data)
 {
 	data->img = malloc(sizeof(t_img));
 	if (!data->img)
-	{
-		free(data);
-		exit(1);
-	}
+		ft_error(ERR_ALLOC, data);
 	data->mlx_connection = mlx_init();
 	if (!data->mlx_connection)
 		exit_malloc();

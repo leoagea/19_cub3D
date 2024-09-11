@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:01:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 13:33:23 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:41:20 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	init_minimap_struct(t_data *data)
 {
+	data->minimap.map_size = 140;
 	data->minimap.start_x = WIDTH - (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE)
 		- MINIMAP_GAP;
 	data->minimap.start_y = MINIMAP_GAP;
 	data->minimap.end_x = WIDTH - MINIMAP_GAP;
 	data->minimap.end_y = MINIMAP_GAP + (MINIMAP_NBR_CELL * MINIMAP_CELL_SIZE);
-	data->minimap.map_size = MINIMAP_CELL_SIZE * MINIMAP_NBR_CELL;
 	data->minimap.offset = (double)MINIMAP_NBR_CELL / 2;
 }
 
@@ -38,9 +38,21 @@ void	init_key_struct(t_data *data)
 
 void	init_slider_struct(t_data *data)
 {
-	data->slider.start_x = (WIDTH - SLIDERS_LEN) / 2;
-	data->slider.pos_slider = 4;
-	data->slider.last_pos_slider = 4;
+	data->slider[0].start_x = (WIDTH - SLIDERS_LEN) / 2;
+	data->slider[0].pos_slider = 4;
+	data->slider[1].start_x = (WIDTH - SLIDERS_LEN) / 2;
+	data->slider[1].pos_slider = 2;
+	data->slider[2].start_x = (WIDTH - SLIDERS_LEN) / 2;
+	data->slider[2].pos_slider = 3;
+}
+
+static void	init_xpm_struct_suite(t_data *data)
+{
+	data->xpm.dead = NULL;
+	data->xpm.escape = NULL;
+	data->xpm.victory = NULL;
+	data->xpm.waiting_victory = NULL;
+	data->xpm.speed_down_highlight = NULL;
 }
 
 void	init_xpm_struct(t_data *data)
@@ -69,5 +81,5 @@ void	init_xpm_struct(t_data *data)
 	data->xpm.controls_highlight = NULL;
 	data->xpm.speed_up_highlight = NULL;
 	data->xpm._continue_highlight = NULL;
-	data->xpm.speed_down_highlight = NULL;
+	init_xpm_struct_suite(data);
 }

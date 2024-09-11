@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 17:20:35 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 13:02:55 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	clear_xpm_menu_2(t_data *data)
 {
-
 	if (data->xpm.cont_vision)
 		mlx_destroy_image(data->mlx_connection, data->xpm.cont_vision);
 	if (data->xpm.cont_interations)

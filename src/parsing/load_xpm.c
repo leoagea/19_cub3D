@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:38:19 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 15:20:05 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:40:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	load_xpm_menu(t_data *data)
 	int	x;
 	int	y;
 
+	data->xpm.dead = mlx_xpm_file_to_image(data->mlx_connection,
+			"./assets/menu/Dead.xpm", &x, &y);
+	data->xpm.escape = mlx_xpm_file_to_image(data->mlx_connection,
+			"./assets/menu/Escape.xpm", &x, &y);
+	data->xpm.victory = mlx_xpm_file_to_image(data->mlx_connection,
+			"./assets/menu/Victory.xpm", &x, &y);
+	data->xpm.waiting_victory = mlx_xpm_file_to_image(\
+			data->mlx_connection, "./assets/menu/Waiting_victory.xpm", &x, &y);
 	data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection,
 			"./assets/menu/Menu.xpm", &x, &y);
 	data->xpm.start = mlx_xpm_file_to_image(data->mlx_connection,

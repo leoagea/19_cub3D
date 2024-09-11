@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:14:12 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/11 16:16:07 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:38:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	load_floor(t_data *data)
 	data->floor.floor_img.img_ptr = mlx_xpm_file_to_image(data->mlx_connection,
 			"assets/floor/floor.xpm", &data->floor.floor_img.width,
 			&data->floor.floor_img.height);
-	data->floor.floor_img.img_pixels_ptr = mlx_get_data_addr(
-			data->floor.floor_img.img_ptr,
+	data->floor.floor_img.img_pixels_ptr = mlx_get_data_addr(\
+	data->floor.floor_img.img_ptr,
 			&(data->floor.floor_img.bits_per_pixel),
 			&(data->floor.floor_img.size_line),
 			&(data->floor.floor_img.endian));

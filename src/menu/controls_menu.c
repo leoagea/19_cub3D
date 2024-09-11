@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:59:32 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:40:01 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,35 @@ static void	highlight_selection(t_data *data)
 		img_to_win(data, data->highlight[data->key.speed_down], 1075, 178);
 }
 
-static void	display_fov_slider(t_data *data)
+static void	display_sensi_slider(t_data *data)
 {
-	img_to_win(data, data->letters[KEY_F], 612, 400);
-	img_to_win(data, data->letters[KEY_O], 632, 400);
-	img_to_win(data, data->letters[KEY_V], 657, 400);
-	create_slider(data, data->slider.start_x, 450, 300);
+	img_to_win(data, data->letters[KEY_S], 532, 400);
+	img_to_win(data, data->letters[KEY_E], 552, 400);
+	img_to_win(data, data->letters[KEY_N], 572, 400);
+	img_to_win(data, data->letters[KEY_S], 592, 400);
+	img_to_win(data, data->letters[KEY_I], 612, 400);
+	img_to_win(data, data->letters[KEY_B], 622, 400);
+	img_to_win(data, data->letters[KEY_I], 642, 400);
+	img_to_win(data, data->letters[KEY_L], 657, 400);
+	img_to_win(data, data->letters[KEY_I], 677, 400);
+	img_to_win(data, data->letters[KEY_T], 687, 400);
+	img_to_win(data, data->letters[KEY_Y], 707, 400);
+	create_slider(data, data->slider[0].start_x, 450, 300);
+	draw_slider_sensi(data);
+}
+
+static void	display_dmg_slider(t_data *data)
+{
+	img_to_win(data, data->letters[KEY_D], 552, 300);
+	img_to_win(data, data->letters[KEY_M], 572, 300);
+	img_to_win(data, data->letters[KEY_G], 592, 300);
+	img_to_win(data, data->letters[KEY_T], 622, 300);
+	img_to_win(data, data->letters[KEY_A], 642, 300);
+	img_to_win(data, data->letters[KEY_K], 662, 300);
+	img_to_win(data, data->letters[KEY_E], 682, 300);
+	img_to_win(data, data->letters[KEY_N], 707, 300);
+	create_slider(data, data->slider[1].start_x, 350, 300);
+	draw_slider_dmg(data, data->slider[1]);
 }
 
 int	menu_controls(t_data *data)
@@ -70,6 +93,7 @@ int	menu_controls(t_data *data)
 	img_to_win(data, data->xpm.speed_down, 900, 175);
 	img_to_win(data, data->letters[data->key.speed_up], 1075, 128);
 	img_to_win(data, data->letters[data->key.speed_down], 1075, 178);
-	display_fov_slider(data);
+	display_sensi_slider(data);
+	display_dmg_slider(data);
 	return (highlight_selection(data), 0);
 }
