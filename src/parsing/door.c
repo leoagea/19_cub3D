@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 13:22:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:08:02 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 13:18:28 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,31 @@ void	get_door_pos(t_data *data)
 			}
 		}
 	}
+	init_doors(data);
+}
+
+void init_doors(t_data *data)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	y = 0;
+    while (data->file.map[y])
+    {
+		x = 0;
+        while (data->file.map[y][x])
+        {
+            if (data->file.map[y][x] == 'D')
+            {
+                data->door[i].x = x;
+                data->door[i].y = y;
+                data->door[i].is_open = 0;
+                i++;
+            }
+			x++;
+        }
+		y++;
+    }
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_enemy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:00:56 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 15:14:17 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 15:48:21 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	init_enemy_frames(t_data *data, int j, int i, char tab[6][100])
 			&data->enemy[j].img_frames[i].bits_per_pixel,
 			&data->enemy[j].img_frames[i].size_line,
 			&data->enemy[j].img_frames[i].endian);
+	data->enemy_alive = data->nb_enemy;
 }
 
 void	init_enemy(t_data *data, t_enemy *enemy)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:27:13 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:31:55 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:03:21 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	dda_algorithm(t_player *player, t_data *data)
 			player->map_y += player->step_y;
 			player->side = 1;
 		}
-		if (data->file.map[player->map_y][player->map_x] == '1')
+		if (data->file.map[player->map_y][player->map_x] == '1' ||
+			data->file.map[player->map_y][player->map_x] == 'D')
 			break ;
 	}
 	if (player->side == 0)

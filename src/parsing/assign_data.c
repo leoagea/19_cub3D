@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:42:06 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:42:42 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:13:59 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	assign_value_2(t_data *data, char *key, char *value)
 	}
 	else if (!check_value(data, key))
 		ft_error(ERR_DUP, data);
-	free(key);
 }
 
 void	assign_value(t_data *data, char *key, char *value)
@@ -82,4 +81,5 @@ void	assign_value(t_data *data, char *key, char *value)
 	{
 		assign_value_2(data, key, value);
 	}
+	free(key);
 }

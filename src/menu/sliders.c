@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sliders.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:23:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:46:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 16:07:29 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,15 @@ void	set_fov(t_data *data)
 {
 	int		dir;
 	double	step;
-	double	multiply;
+	int	multiply;
 
 	dir = -1;
-	step = 0.005;
-	multiply = ((double)data->slider.last_pos_slider
-			- (double)data->slider.pos_slider);
-	if (multiply > 0)
+	step = 0.08;
+	multiply = (data->slider.pos_slider - data->slider.last_pos_slider);
+	if (multiply != 0)
 	{
-		data->player.plane_x = data->player.plane_x + (fabs(multiply) * step);
-		data->player.plane_y = data->player.plane_y + (fabs(multiply) * step);
-	}
-	if (multiply < 0)
-	{
-		data->player.plane_x = data->player.plane_x - (fabs(multiply) * step);
-		data->player.plane_y = data->player.plane_y - (fabs(multiply) * step);
+		data->player.plane_x = data->player.plane_x + step * data->player.dir_y;
+		data->player.plane_y = data->player.plane_y - step * data->player.dir_x;
 	}
 }
 

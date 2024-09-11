@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:01:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:58:15 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 13:33:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_key_struct(t_data *data)
 	data->key.r_left = KEY_LEFT_ARROW;
 	data->key.speed_up = KEY_EQUAL;
 	data->key.speed_down = KEY_MINUS;
+	data->key.interact = KEY_E;
 }
 
 void	init_slider_struct(t_data *data)

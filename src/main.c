@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:52:31 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:04:50 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,6 @@ int main(int ac, char **av)
     mlx_loop(data.mlx_connection);
     return 0;
 }
+
+
+//OTHER LETTER THAN IN MAP RESULT TO SEGV

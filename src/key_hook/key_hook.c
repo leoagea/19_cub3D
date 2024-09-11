@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/06 14:01:25 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/11 18:29:18 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	cross_event(t_data *data)
 {
+	clear_data(data); 
+	mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
 	mlx_destroy_window(data->mlx_connection, data->mlx_window);
 	free(data->mlx_connection);
 	free(data->img);
@@ -25,7 +27,7 @@ int	cross_event(t_data *data)
 void	handle_input(int keysym, t_data *data)
 {
 	(void) keysym;
-	// mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
+	mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
 	mlx_destroy_window(data->mlx_connection, data->mlx_window);
 	free(data->mlx_connection);
 	free(data->img);
@@ -86,6 +88,8 @@ int	key_press(int keysym, t_data *data)
 	}
 	if (keysym == KEY_TAB)
 		data->player.minimap = 1;
+	if (keysym == data->key.interact)
+		interact_door(data, &data->player, data->door);
 	return (0);
 }
 

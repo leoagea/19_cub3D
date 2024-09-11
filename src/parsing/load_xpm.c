@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:38:19 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 17:20:41 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:20:05 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	load_xpm_wall(t_data *data)
 	data->texture[WE].img_pixels_ptr = mlx_get_data_addr(\
 			data->texture[WE].img_ptr, &(data->texture[WE].bits_per_pixel), \
 			&(data->texture[0].size_line), &(data->texture[WE].endian));
+	load_door(data);
 }
 
 void	load_xpm_menu(t_data *data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shoot.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:27:45 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 16:28:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 15:46:44 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	check_if_enemy(t_data *data, t_player *player, t_enemy *enemy)
 		{
 			enemy[i].hp--;
 			if (enemy[i].hp <= 0)
+			{
 				enemy[i].died = 1;
+				data->enemy_alive--;
+			}
 			enemy[i].was_shot = 1;
 		}
 		i++;

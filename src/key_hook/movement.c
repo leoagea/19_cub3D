@@ -7,14 +7,21 @@ void	move_forward(t_data *data)
 
 	new_pos_x = data->player.pos_x + data->player.dir_x * data->player.speed;
 	new_pos_y = data->player.pos_y + data->player.dir_y * data->player.speed;
-	if (data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'N' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'E')
+	if (data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == '0' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'W' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'S' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'N' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'E')
+	{
+        data->player.pos_y = new_pos_y;
+	}
+	if (data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == '0' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'W' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'S' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'N' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'E')
 	{
 		data->player.pos_x = new_pos_x;
-        data->player.pos_y = new_pos_y;
 	}
 }
 
@@ -26,14 +33,21 @@ void	move_backward(t_data *data)
 	new_pos_x = data->player.pos_x - data->player.dir_x * data->player.speed;
 	new_pos_y = data->player.pos_y - data->player.dir_y * data->player.speed;
 
-	if (data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'N' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'E')
+	if (data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == '0' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'W' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'S' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'N' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'E')
+	{
+        data->player.pos_y = new_pos_y;
+	}
+	if (data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == '0' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'W' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'S' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'N' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'E')
 	{
 		data->player.pos_x = new_pos_x;
-        data->player.pos_y = new_pos_y;
 	}
 }
 
@@ -48,19 +62,22 @@ void	move_right(t_data *data)
 	new_vect_y = data->player.dir_x * sin(PI / 2) + data->player.dir_y * cos(PI / 2);
 	new_pos_x = data->player.pos_x + new_vect_x * data->player.speed;
 	new_pos_y = data->player.pos_y + new_vect_y * data->player.speed;
-	if (data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'N' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'E')
+	if (data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == '0' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'W' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'S' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'N' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'E')
+	{
+        data->player.pos_y = new_pos_y;
+	}
+	if (data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == '0' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'W' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'S' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'N' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'E')
 	{
 		data->player.pos_x = new_pos_x;
-        data->player.pos_y = new_pos_y;
-		// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-		// raycasting(&data->player, data);
 	}
-	// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-	// raycasting(&data->player, data);
 }
 
 void	move_left(t_data *data)
@@ -74,24 +91,26 @@ void	move_left(t_data *data)
 	new_vect_y = data->player.dir_x * sin(PI / 2) + data->player.dir_y * cos(PI / 2);
 	new_pos_x = data->player.pos_x - new_vect_x * data->player.speed;
 	new_pos_y = data->player.pos_y - new_vect_y * data->player.speed;
-	if (data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == '0' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'W' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'S' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'N' ||
-		data->file.map[(int)(new_pos_y)][(int)(new_pos_x)] == 'E')
+	if (data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == '0' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'W' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'S' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'N' ||
+		data->file.map[(int)(new_pos_y)][(int)data->player.pos_x] == 'E')
+	{
+        data->player.pos_y = new_pos_y;
+	}
+	if (data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == '0' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'W' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'S' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'N' ||
+		data->file.map[(int)data->player.pos_y][(int)(new_pos_x)] == 'E')
 	{
 		data->player.pos_x = new_pos_x;
-        data->player.pos_y = new_pos_y;
-		// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-		// raycasting(&data->player, data);
 	}
-	// mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
-	// raycasting(&data->player, data);
 }
 
 int player_movement(t_data *data)
 {
-	// printf("data.menu.menu %d\ndata.menu.pause %d\ndata.menu.mouse %d\ndata.menu.controls%d\ndata.menu.change %d\n\n",data->menu.menu, data->menu.pause, data->menu.mouse, data->menu.controls, data->menu.change);
     if (data->menu.menu == 1 && data->menu.pause == 0 && !data->menu.controls && !data->menu.change)
         create_menu(data);
 	else if (data->menu.controls && !data->menu.pause && data->menu.menu && !data->menu.change)
@@ -136,8 +155,8 @@ int player_movement(t_data *data)
 			exit (1);
 		}
 		mouse_rotation(data);
-		mlx_destroy_image(data->mlx_connection , data->img->img_ptr);
 		raycasting(&data->player, data);
+		check_near_door(data, &data->player, data->door);
 		if (data->player.is_firing == 0)
 		{
 			reset_shot(data, data->enemy);
@@ -148,9 +167,3 @@ int player_movement(t_data *data)
     }
     return (0);
 }
-
-// else if (data->menu == 0 && data->pause == 1)
-// 	{
-//         mlx_mouse_show(data->mlx_window);
-// 		menu_pause(data);
-// 	}
