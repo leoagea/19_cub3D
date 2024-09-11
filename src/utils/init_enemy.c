@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:00:56 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 16:39:22 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:09:54 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ static void	init_enemy_struct(t_enemy *enemy, int j)
 	enemy[j].died = 0;
 }
 
-static void	init_enemy_frames(t_data *data, int j, int i, const char tab[6][100])
+static void	init_enemy_frames(t_data *data, int j, int i,
+		const char tab[6][100])
 {
 	data->enemy[j].img_frames[i].img_ptr = mlx_xpm_file_to_image(\
 		data->mlx_connection,
-			(char *) tab[i], &data->enemy[j].width, &data->enemy[j].height);
+			(char *)tab[i], &data->enemy[j].width, &data->enemy[j].height);
 	if (!data->enemy[j].img_frames[i].img_ptr)
 		ft_error(ERR_XPM_ENEMY, data);
 	data->enemy[j].img_frames[i].img_pixels_ptr = mlx_get_data_addr(\

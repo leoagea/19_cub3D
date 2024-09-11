@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:38:19 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 18:44:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 13:24:48 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	load_xpm_menu(t_data *data)
 			"./assets/menu/Escape.xpm", &x, &y);
 	data->xpm.victory = mlx_xpm_file_to_image(data->mlx_connection,
 			"./assets/menu/Victory.xpm", &x, &y);
+	data->xpm.waiting_victory = mlx_xpm_file_to_image(\
+			data->mlx_connection, "./assets/menu/Waiting_victory.xpm", &x, &y);
 	data->xpm.menu = mlx_xpm_file_to_image(data->mlx_connection,
 			"./assets/menu/Menu.xpm", &x, &y);
 	data->xpm.start = mlx_xpm_file_to_image(data->mlx_connection,

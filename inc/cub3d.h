@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 18:43:10 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:07:07 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef enum e_keys
 	KEY_F,
 	KEY_H,
 	KEY_G,
-	KEY_Z,
 	KEY_X,
+	KEY_Z,
 	KEY_C,
 	KEY_V,
 	KEY_B = 11,
@@ -140,13 +140,11 @@ typedef enum e_keys
 # define PI 3.14159265359
 # define ONEDEG 0.0174533
 # define SPEED 0.1
-# define SENSI 0.0010
 # define ROTATE_SPEED 2
 # define WIDTH 1280
 # define HEIGHT 720
 # define TEXWIDTH 64
 # define TEXHEIGHT 64
-# define MINIMAP_SIZE 400
 # define ANIM 60000
 # define ANIM_DIE 53000
 # define SHOOT_DURATION 0.000001
@@ -291,6 +289,7 @@ typedef struct s_minimap
     int         end_y;
     int         map_size;
 	double 		offset;
+	int			nbr_cell;
 }				t_minimap;
 
 typedef struct s_anim
@@ -345,6 +344,8 @@ typedef struct s_player
     int     col;
     int     hp;
     int     fov;
+	double	sensibility;
+	int		damage;
     t_anim  anim;
 }               t_player;
 
@@ -380,6 +381,7 @@ typedef struct s_xpm
 	void		*cont_vision;
 	void		*exit_highlight;
 	void		*start_highlight;
+	void		*waiting_victory;
 	void		*waitng_key_press;
 	void		*cont_interations;
 	void		*_return_highlight;
@@ -439,13 +441,15 @@ typedef struct s_flag
 	int			change;
 	int			key;
 	int			dead;
+	int			check_win;
+	int			victory;
+	int			playing;
 }				t_flag;
 
 typedef struct s_slider
 {
 	int start_x;
 	int pos_slider;
-	int last_pos_slider;
 }				t_slider;
 
 typedef struct  s_enemy
@@ -492,7 +496,7 @@ typedef struct s_data
 	t_enemy	    *enemy;
 	t_door		*door;
 	t_flag		menu;
-	t_slider	slider;
+	t_slider	slider[3];
 	int			nb_enemy;
 	int			nb_door;
 	void		*letters[128];
@@ -503,11 +507,10 @@ typedef struct s_data
 void			create_window(t_data *data);
 void			error_window(t_data *data);
 int				cross_event(t_data *data);
-void			get_fps(t_player *player);
+
 /*========================KeyHook=========================*/
-void			init_key(t_player *player);
+
 void			handle_input(int keysym, t_data *data);
-int				handle_key(int keysym, t_data *data);
 
 int				key_press(int keysym, t_data *data);
 int				key_release(int keysym, t_data *data);
@@ -556,6 +559,11 @@ void			change_controls(t_data *data, int keysim);
 
 int	menu_controls(t_data *data);
 
+/*---------------------create_sliders---------------------*/
+
+void create_cursor(t_data *data, int x, int y);
+void create_slider(t_data *data, int start_x, int start_y, int len);
+
 /*------------------------hp_bar--------------------------*/
 
 void			draw_hp_bar(t_data *data);
@@ -580,13 +588,20 @@ int				create_menu(t_data *data);
 
 /*---------------------mouse_controls----------------------*/
 
-int handle_mouse_slider(t_data *data, int keysim, int x, int y);
 int handle_mouse_controls_menu(t_data *data, int keysim, int x, int y);
 
-/*-------------------------sliders------------------------*/
+/*----------------------mouse_sliders----------------------*/
 
-void create_cursor(t_data *data, int x, int y);
-void create_slider(t_data *data, int start_x, int start_y, int len);
+int handle_mouse_slider(t_data *data, int keysim, int x, int y);
+
+/*-------------------------sliders---0---------------------*/
+
+void	set_sensibility(t_data *data);
+void	draw_slider_sensi(t_data *data);
+void	set_difficulty(t_data *data);
+void	draw_slider_dmg(t_data *data, t_slider slider);
+void	set_map_zoom(t_data *data);
+void	draw_slider_map(t_data *data, t_slider slider);
 
 /*----------------------switch_menu-----------------------*/
 

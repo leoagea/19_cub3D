@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:18:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 18:44:37 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 17:58:09 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ static void	not_firing(t_data *data)
 
 static void	win_screen(t_data *data)
 {
-	ft_putstr_fd("YOU WON !\n", 2);
-	// ft_error(NULL, data);
+	if (!data->menu.victory && !data->menu.check_win)
+	{
+		ft_putstr_fd("YOU WON !\n", 2);
+		data->menu.victory = 1;
+	}
 }
 
 static void	dispatch_movement(t_data *data)
@@ -54,29 +57,52 @@ static void	dispatch_movement(t_data *data)
 		render_weapon(data);
 }
 
+static int	end_screen(t_data *data)
+{
+	if (!data->menu.menu && !data->menu.pause && !data->menu.controls
+		&& data->menu.dead && !data->menu.playing && !data->menu.victory)
+	{
+		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+			data->xpm.dead, 445, 175);
+		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+			data->xpm.escape, 425, 600);
+	}
+	else if (!data->menu.menu && !data->menu.pause && !data->menu.controls
+		&& !data->menu.dead && !data->menu.playing && data->menu.victory)
+	{
+		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+			data->xpm.victory, 440, 275);
+		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
+			data->xpm.waiting_victory, 375, 500);
+		data->menu.playing = 1;
+	}
+	return (0);
+}
+
 int	player_movement(t_data *data)
 {
 	if (data->menu.menu == 1 && data->menu.pause == 0 && !data->menu.controls
-		&& !data->menu.change && !data->menu.dead)
+		&& !data->menu.change && !data->menu.dead && !data->menu.playing
+		&& !data->menu.victory)
 		create_menu(data);
 	else if (data->menu.controls && !data->menu.pause && data->menu.menu
-		&& !data->menu.change && !data->menu.dead)
+		&& !data->menu.change && !data->menu.dead && !data->menu.playing
+		&& !data->menu.victory)
 		menu_controls(data);
 	else if (!data->menu.menu && data->menu.pause && !data->menu.controls
-		&& !data->menu.change && !data->menu.dead)
+		&& !data->menu.change && !data->menu.dead && !data->menu.playing
+		&& !data->menu.victory)
 		menu_pause(data);
 	else if (!data->menu.menu && data->menu.pause && data->menu.controls
-		&& !data->menu.change && !data->menu.dead)
+		&& !data->menu.change && !data->menu.dead && !data->menu.playing
+		&& !data->menu.victory)
 		menu_controls(data);
 	else if (data->menu.controls && data->menu.change && (data->menu.menu
-			|| data->menu.pause) && !data->menu.dead)
+			|| data->menu.pause) && !data->menu.dead && !data->menu.playing
+		&& !data->menu.victory)
 		menu_change_controls(data);
-	else if (!data->menu.menu && !data->menu.pause && !data->menu.controls && !data->menu.dead)
+	else if (!data->menu.menu && !data->menu.pause && !data->menu.controls
+		&& !data->menu.dead && !data->menu.playing && !data->menu.victory)
 		dispatch_movement(data);
-	else if (!data->menu.menu && !data->menu.pause && !data->menu.controls && data->menu.dead)
-	{
-		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.dead, 445, 175);
-		mlx_put_image_to_window(data->mlx_connection, data->mlx_window, data->xpm.escape, 425,600);
-	}
-	return (0);
+	return (end_screen(data), 0);
 }

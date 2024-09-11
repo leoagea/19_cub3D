@@ -36,7 +36,7 @@ SRCS_DIR = src/
 OBJS_DIR = obj/
 DEBUG_DIR = debug/
 
-SRCS =	test.c #src/main.c \
+SRCS =	src/main.c \
 		src/window/create_window.c \
 		src/key_hook/key_hook.c src/key_hook/rotate.c src/key_hook/movement.c src/key_hook/mouse.c src/key_hook/key_press.c src/key_hook/dispatch.c \
 		src/raycasting/raycasting.c src/raycasting/draw.c src/raycasting/calcul.c \
@@ -47,7 +47,7 @@ SRCS =	test.c #src/main.c \
 		src/floor/floor.c \
 		src/minimap/draw.c src/minimap/minimap.c src/minimap/check.c \
 		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c src/parsing/door.c src/parsing/assign_data.c src/parsing/load_xpm.c \
-		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c src/menu/sliders.c src/menu/mouse_controls.c src/menu/switch_menu.c src/menu/controls_menu.c src/menu/load_letters.c src/menu/load_highlight.c 
+		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c src/menu/create_sliders.c src/menu/mouse_controls.c src/menu/switch_menu.c src/menu/controls_menu.c src/menu/load_letters.c src/menu/load_highlight.c src/menu/sliders.c src/menu/mouse_sliders.c
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 

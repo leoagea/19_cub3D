@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:44:43 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 13:45:12 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:05:02 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	mouse_rotation(t_data *data)
 	mlx_mouse_get_pos(data->mlx_window, &x, &y);
 	if (x - WIDTH / 2 != 0)
 	{
-		rotate_mouse(data, ((double)x - (double)WIDTH / 2) * SENSI);
+		rotate_mouse(data, ((double)x - (double)WIDTH / 2) * \
+			data->player.sensibility);
 		mlx_mouse_move(data->mlx_window, WIDTH / 2, HEIGHT / 2);
 	}
 	if (y - HEIGHT / 2 != 0)

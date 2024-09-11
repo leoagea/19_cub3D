@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:50:30 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:01:39 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	parsing(int ac, char **av, t_data *data)
 	int	i;
 
 	if (ac != 2)
-		ft_error(ERR_ARG, data);
+	{
+		printf("Error :\n%s\n", ERR_ARG);
+		exit(1);
+	}
 	check_file_extension(av[1], data);
 	init_struct_file(data);
 	init_player_struct(data);

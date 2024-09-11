@@ -6,50 +6,11 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:49:35 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:15:16 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:06:10 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-static int	handle_mouse_slider_suite(t_data *data, int keysim, int x, int y)
-{
-	if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause)
-		&& (x > 645 && x < 689) && (y > 445 && y < 470))
-		data->slider.pos_slider = 5;
-	else if (keysim && data->menu.controls && (data->menu.menu
-			|| data->menu.pause) && (x > 691 && x < 735) && (y > 445
-			&& y < 470))
-		data->slider.pos_slider = 6;
-	else if (keysim && data->menu.controls && (data->menu.menu
-			|| data->menu.pause) && (x > 736 && x < 780) && (y > 445
-			&& y < 470))
-		data->slider.pos_slider = 7;
-	return (0);
-}
-
-int	handle_mouse_slider(t_data *data, int keysim, int x, int y)
-{
-	data->slider.last_pos_slider = data->slider.pos_slider;
-	if (keysim && data->menu.controls && (data->menu.menu || data->menu.pause)
-		&& (x > 485 && x < 510) && (y > 445 && y < 470))
-		data->slider.pos_slider = 1;
-	else if (keysim && data->menu.controls && (data->menu.menu
-			|| data->menu.pause) && (x > 511 && x < 553) && (y > 445
-			&& y < 470))
-		data->slider.pos_slider = 2;
-	else if (keysim && data->menu.controls && (data->menu.menu
-			|| data->menu.pause) && (x > 554 && x < 598) && (y > 445
-			&& y < 470))
-		data->slider.pos_slider = 3;
-	else if (keysim && data->menu.controls && (data->menu.menu
-			|| data->menu.pause) && (x > 600 && x < 644) && (y > 445
-			&& y < 470))
-		data->slider.pos_slider = 4;
-	else
-		handle_mouse_slider_suite(data, keysim, x, y);
-	return (0);
-}
 
 static int	handle_mouse_controls_suite_2(t_data *data, int keysim, int x,
 		int y)

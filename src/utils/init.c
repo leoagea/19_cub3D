@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 18:44:23 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:10:01 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	init_player_struct(t_data *data)
 	data->player.counter = 0;
 	data->player.hp = 100;
 	data->player.fov = 77;
+	data->player.sensibility = 0.0010;
+	data->player.damage = 5;
 }
 
 t_color	*init_color_struct(t_data *data)
@@ -84,6 +86,9 @@ void	init_data(t_data *data)
 	data->menu.controls = 0;
 	data->menu.change = 0;
 	data->menu.dead = 0;
+	data->menu.victory = 0;
+	data->menu.playing = 0;
+	data->menu.check_win = 0;
 	data->nb_enemy = 0;
 	data->enemy = NULL;
 	data->nb_door = 0;
@@ -92,7 +97,4 @@ void	init_data(t_data *data)
 	init_minimap_struct(data);
 	init_slider_struct(data);
 	init_xpm_struct(data);
-	data->xpm.dead = NULL;
-	data->xpm.escape = NULL;
-	data->xpm.victory = NULL;
 }
