@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:52:20 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/11 16:15:35 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ typedef enum e_keys
 # define ERR_XPM_WEAPON "Weapon: Xpm file to image failed"
 # define ERR_XPM_MENU "Menu: Xpm file to image failed"
 # define ERR_XPM_ENEMY "Enemy: Xpm file to image failed"
+# define ERR_XPM_FLOOR "Floor: Xpm file to image failed"
 # define ERR_MAP_CHAR "Wrong char in map"
 # define ERR_DOOR "Door not between walls"
 # define ERR_DOOR_2 "Door next to another door"
@@ -191,7 +192,8 @@ enum
 	NO = 0,
 	SO,
 	EA,
-	WE
+	WE,
+	DOOR
 };
 
 enum
@@ -418,13 +420,18 @@ typedef struct s_controls
 	int			r_right;
 	int			speed_up;
 	int			speed_down;
+	int			interact;
 }				t_controls;
 
 typedef struct s_door
 {
 	double		pos_x;
 	double		pos_y;
+	int			x;
+	int			y;
 	int			dir;
+	int			is_open;
+	t_img		door_img;
 }				t_door;
 
 typedef struct s_flag
@@ -477,6 +484,7 @@ typedef struct s_data
 {
 	void		*mlx_connection;
 	void		*mlx_window;
+	int			texture_index;
 	t_minimap	minimap;
 	t_img		*img;
 	t_wall		wall;
@@ -484,13 +492,14 @@ typedef struct s_data
 	t_player	player;
 	t_floor		floor;
 	t_xpm		xpm;
-	t_img		texture[4];
+	t_img		texture[6];
 	t_controls	key;
 	t_enemy	    *enemy;
 	t_door		*door;
 	t_flag		menu;
 	t_slider	slider;
 	int			nb_enemy;
+	int			enemy_alive;
 	int			nb_door;
 	void		*letters[128];
 	void		*highlight[128];
@@ -525,7 +534,7 @@ void			move_right(t_data *data);
 int				player_movement(t_data *data);
 void			rotate_mouse(t_data *data, double angle);
 void			mouse_rotation(t_data *data);
-
+void			check_near_door(t_data *data, t_player *player, t_door *door);
 /*========================Minimap=========================*/
 /*------------------------check---------------------------*/
 
@@ -534,10 +543,11 @@ int is_in_map(t_data *data, int x, int y);
 
 /*-------------------------draw---------------------------*/
 
-void draw_horizontal_minimap_border(t_data *data, int y, int size);
-void draw_vertical_minimap_border(t_data *data, int y, int size);
-void  draw_player(t_data *data);
-void draw_tiles(t_data *data);
+void	draw_horizontal_minimap_border(t_data *data, int y, int size);
+void	draw_vertical_minimap_border(t_data *data, int y, int size);
+void 	draw_player(t_data *data);
+void	draw_tiles(t_data *data);
+void	draw_enemies(t_data *data);
 
 /*-------------------------minimap------------------------*/
 
@@ -588,18 +598,13 @@ void	delta_distance(t_player *player);
 void	init_dda(t_player *player);
 void	dda_algorithm(t_player *player, t_data *data);
 void	wall_height(t_player *player);
+void	interact_door(t_data *data, t_player *player, t_door *door);
 
 /*---------------------------draw-------------------------*/
 
 void	draw(t_data *data, t_player *player);
 void	draw_point(t_data *data, int x, int y, long color);
 void	draw_crosshair(t_data *data);
-
-/*---------------------------fog--------------------------*/
-
-float    calculate_fog(float distance, float max_fog_dist);
-uint32_t apply_fog(uint32_t color, float fog_factor);
-void    draw_with_fog(t_data *data, int x, int y, uint32_t color, float distance);
 
 /*-----------------------raycasting-----------------------*/
 
@@ -610,7 +615,7 @@ void	ray_direction(int i, t_player *player);
 /*---------------------------wall-------------------------*/
 
 void	wall_texture(t_data *data, t_player *player, int i);
-void	side_view(t_player *player);
+void	side_view(t_data *data, t_player *player);
 
 /*=========================Weapon=========================*/
 /*----------------------load_weapon-----------------------*/
@@ -657,8 +662,7 @@ void	draw_floor(t_data *data, t_player *player, t_floor *floor);
 void	loop_verticaly(t_data *data, t_player *player, t_floor *floor, int i);
 void	loop_horizontaly(t_data *data, t_floor *floor, int i, int j);
 void	load_floor(t_data *data);
-
-
+void	load_door(t_data *data);
 
 /*========================Parsing=========================*/
 /*----------------------assign_data-----------------------*/
@@ -695,6 +699,7 @@ void			get_data_line(t_data *data, char *line);
 /*------------------------door----------------------------*/
 
 void			get_door_pos(t_data *data);
+void			init_doors(t_data *data);
 
 /*-------------------------map----------------------------*/
 

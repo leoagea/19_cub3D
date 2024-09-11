@@ -47,7 +47,8 @@ SRCS =	src/main.c \
 		src/floor/floor.c \
 		src/minimap/draw.c src/minimap/minimap.c src/minimap/check.c \
 		src/parsing/check_arg.c src/parsing/check_map.c src/parsing/check.c src/parsing/color_2.c src/parsing/color.c src/parsing/data.c src/parsing/map.c src/parsing/parsing.c src/parsing/player.c src/parsing/readfile.c src/parsing/texture.c src/parsing/door.c src/parsing/assign_data.c src/parsing/load_xpm.c \
-		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c src/menu/sliders.c src/menu/mouse_controls.c src/menu/switch_menu.c src/menu/controls_menu.c
+		src/menu/menu.c src/menu/letters.c src/menu/change_control.c src/menu/hp_bar.c src/menu/sliders.c src/menu/mouse_controls.c src/menu/switch_menu.c src/menu/controls_menu.c \
+		src/door/door.c \
 
 OBJ = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
 
@@ -96,6 +97,7 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	@mkdir -p $(OBJS_DIR)/weapon
 	@mkdir -p $(OBJS_DIR)/monster
 	@mkdir -p $(OBJS_DIR)/floor
+	@mkdir -p $(OBJS_DIR)/door
 	$(PROGRESS_BAR)
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
