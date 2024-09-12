@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:55:10 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 15:33:35 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	clear_xpm_texture(t_data *data)
 	i = 0;
 	while (i < 4)
 	{
-		mlx_destroy_image(data->mlx_connection, data->player.weapon[i].img_ptr);
+		if (data->player.weapon[i].img_ptr)
+			mlx_destroy_image(data->mlx_connection, data->player.weapon[i].img_ptr);
 		i++;
 	}
 	if (data->floor.floor_img.img_ptr)

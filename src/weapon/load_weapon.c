@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:18:07 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 12:43:01 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 15:28:58 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	load_weapon(t_data *data)
 {
 	int	i;
 
-	i = -1;
-	while (++i < 4)
-		data->player.weapon[i].img_ptr = NULL;
 	load_xpm_weapon(data);
 	if (!data->player.weapon[SIMPLE].img_ptr
 		|| !data->player.weapon[SHOOT].img_ptr

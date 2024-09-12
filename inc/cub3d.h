@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:58:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 15:32:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -801,6 +801,8 @@ void				init_xpm_struct(t_data *data);
 
 void				init_textures(t_data *data);
 void				init_ennemy_textures(t_data *data);
+void				init_weapon_textures(t_data *data);
+void				init_menu_struct(t_data *data);
 
 /*-----------------------init_enemy-----------------------*/
 

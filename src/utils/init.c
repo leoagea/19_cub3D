@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:54:57 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 15:33:12 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,17 @@ void	init_data(t_data *data)
 	data->mlx_window = NULL;
 	data->player.anim.current_frame = 0;
 	gettimeofday(&data->player.anim.last_update, NULL);
-	data->menu.menu = 1;
-	data->menu.pause = 0;
-	data->menu.mouse = 1;
-	data->menu.controls = 0;
-	data->menu.change = 0;
-	data->menu.dead = 0;
-	data->menu.victory = 0;
-	data->menu.playing = 0;
-	data->menu.check_win = 0;
 	data->nb_enemy = 0;
 	data->enemy = NULL;
 	data->nb_door = 0;
 	data->door = NULL;
+	data->floor.floor_img.img_ptr = NULL;
 	init_letters(data);
 	init_key_struct(data);
 	init_minimap_struct(data);
 	init_slider_struct(data);
 	init_xpm_struct(data);
 	init_textures(data);
+	init_weapon_textures(data);
+	init_menu_struct(data);
 }

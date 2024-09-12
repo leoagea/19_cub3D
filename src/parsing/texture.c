@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:42:09 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 15:27:33 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static int	check_xpm(t_data *data)
 
 void	get_textures(t_data *data)
 {
-	check_xpm(data);
 	load_weapon(data);
+	check_xpm(data);
 	load_xpm_wall(data);
 	load_xpm_menu(data);
 	load_xpm_controls_menu(data);
