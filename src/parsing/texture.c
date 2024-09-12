@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 17:44:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:42:29 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:42:09 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,26 @@ static int	check_xpm(t_data *data)
 {
 	int	fd;
 
-	fd = open(data->file.wall_no, O_RDONLY);
+	fd = open(data->file.wall_no, O_RDONLY | X_OK);
 	if (fd == -1)
 		return (ft_error(strerror(errno), data), 1);
 	close(fd);
-	fd = open(data->file.wall_so, O_RDONLY);
+	fd = open(data->file.wall_so, O_RDONLY | X_OK);
 	if (fd == -1)
 		return (ft_error(strerror(errno), data), 1);
 	close(fd);
-	fd = open(data->file.wall_ea, O_RDONLY);
+	fd = open(data->file.wall_ea, O_RDONLY | X_OK);
 	if (fd == -1)
 		return (ft_error(strerror(errno), data), 1);
 	close(fd);
-	fd = open(data->file.wall_we, O_RDONLY);
+	fd = open(data->file.wall_we, O_RDONLY | X_OK);
 	if (fd == -1)
 		return (ft_error(strerror(errno), data), 1);
 	close(fd);
+	check_text_extension(data->file.wall_no, data);
+	check_text_extension(data->file.wall_so, data);
+	check_text_extension(data->file.wall_ea, data);
+	check_text_extension(data->file.wall_we, data);
 	return (0);
 }
 
@@ -62,9 +66,8 @@ void	get_textures(t_data *data)
 	load_xpm_menu(data);
 	load_xpm_controls_menu(data);
 	load_xpm_controls_menu_2(data);
+	load_letters(data);
 	check_load_xpm(data);
 	if (!data->file.c_floor)
 		get_texture_floor(data, data->file.color_floor);
-	if (!data->file.c_ceiling)
-		get_texture_floor(data, data->file.color_ceiling);
 }

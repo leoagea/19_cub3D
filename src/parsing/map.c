@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:08:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:57:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static void	get_max_len_map(t_data *data, int j)
 
 static void	get_enemy_pos(t_data *data)
 {
-	int	i;
-	int	j;
-	int	k;
+	int			i;
+	int			j;
+	int			k;
 
 	k = data->nb_enemy;
 	if (k == 0)
@@ -72,10 +72,11 @@ static void	get_enemy_pos(t_data *data)
 	data->enemy = malloc(sizeof(t_enemy) * data->nb_enemy);
 	if (!data->enemy)
 		ft_error(ERR_ALLOC, data);
+	init_ennemy_textures(data);
 	while (data->file.map[++i])
 	{
-		j = 0;
-		while (data->file.map[i][j])
+		j = -1;
+		while (data->file.map[i][++j])
 		{
 			if (data->file.map[i][j] == 'X')
 			{
@@ -83,7 +84,6 @@ static void	get_enemy_pos(t_data *data)
 				data->enemy[k].pos_x = (double)j + 0.5;
 				data->enemy[k].pos_y = (double)i + 0.5;
 			}
-			j++;
 		}
 	}
 }

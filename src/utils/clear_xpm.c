@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 11:56:11 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:55:10 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,16 @@ void	clear_xpm_enemy(t_data *data)
 	int	j;
 
 	j = -1;
-	while (++j < data->nb_enemy)
+	if (data->enemy)
 	{
-		i = -1;
-		while (++i < 6)
-			if (data->enemy[j].img_frames[i].img_ptr)
-				mlx_destroy_image(data->mlx_connection,
-					data->enemy[j].img_frames[i].img_ptr);
+		while (++j < data->nb_enemy)
+		{
+			i = -1;
+			while (++i < 6)
+				if (data->enemy[j].img_frames[i].img_ptr)
+					mlx_destroy_image(data->mlx_connection,
+						data->enemy[j].img_frames[i].img_ptr);
+		}
 	}
 	if (data->player.sprite_order)
 		free(data->player.sprite_order);

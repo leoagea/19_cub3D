@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 14:55:24 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:06:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:40:19 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 int	check_is_rgb_color(char *line)
 {
-	while (*line)
-	{
-		if (!ft_isdigit((int)*line) && !ft_isalpha((int)*line) && *line != ' '
-			&& *line != ',')
-		{
-			return (0);
-		}
-		line++;
-	}
+	if (ft_strncmp(line, "./assets/", 9) == 0)
+		return (0);
 	return (1);
 }
 

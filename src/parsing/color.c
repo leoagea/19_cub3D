@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:50:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:54:14 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	get_color_char(char *color, int i)
 {
-	while (ft_isdigit((int)color[i]) && color[i])
+	while (color[i] && ft_isdigit((int)color[i]))
 		i++;
 	return (i);
 }
 
 static int	skip_until_digit(char *color, int i)
 {
-	while (!ft_isdigit((int)color[i]) && color[i])
+	while (color[i] && !ft_isdigit((int)color[i]))
 		i++;
 	return (i);
 }

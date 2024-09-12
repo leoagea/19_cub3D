@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   change_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:25:42 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 17:48:46 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:59:24 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	change_controls(t_data *data, int keysim)
 	if (keysim == data->key.m_forward || keysim == data->key.m_backward
 		|| keysim == data->key.m_right || keysim == data->key.m_left
 		|| keysim == data->key.r_right || keysim == data->key.r_left
-		|| keysim == data->key.speed_up || keysim == data->key.speed_down)
+		|| keysim == data->key.speed_up || keysim == data->key.speed_down
+		|| keysim == data->key.interact)
 		return ;
 	if (data->menu.key == M_FORWARD)
 		data->key.m_forward = keysim;

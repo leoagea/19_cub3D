@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 10:03:31 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:54:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,18 @@ t_color	*init_color_struct(t_data *data)
 	return (color);
 }
 
+void	init_letters(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 128)
+		data->letters[i] = NULL;
+	i = -1;
+	while (++i < 128)
+		data->highlight[i] = NULL;
+}
+
 void	init_data(t_data *data)
 {
 	data->img = NULL;
@@ -95,8 +107,10 @@ void	init_data(t_data *data)
 	data->enemy = NULL;
 	data->nb_door = 0;
 	data->door = NULL;
+	init_letters(data);
 	init_key_struct(data);
 	init_minimap_struct(data);
 	init_slider_struct(data);
 	init_xpm_struct(data);
+	init_textures(data);
 }

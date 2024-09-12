@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:26:16 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:50:33 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:54:10 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,8 @@ static void	check_highlight_xpm(t_data *data)
 		ft_error(ERR_XPM_MENU, data);
 }
 
-void	init_letters(t_data *data)
+void	load_letters(t_data *data)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 128)
-		data->letters[i] = NULL;
-	i = -1;
-	while (++i < 128)
-		data->highlight[i] = NULL;
 	load_letters_xpm(data);
 	load_highlight_xpm(data);
 	check_letters_xpm(data);
