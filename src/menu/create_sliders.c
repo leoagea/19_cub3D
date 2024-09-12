@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_sliders.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:23:05 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:05:13 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:51:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	create_slider_border(t_data *data, int start_x, int start_y,
-		bool side)
+static void	create_slider_border(t_data *data, int start_x, int start_y)
 {
 	int	y;
 	int	x;
@@ -83,6 +82,6 @@ void	create_slider(t_data *data, int start_x, int start_y, int len)
 			y += SLIDERS_HEIGHT;
 		flag++;
 	}
-	create_slider_border(data, start_x - 2, start_y + 2, 0);
-	create_slider_border(data, x, start_y + 2, 1);
+	create_slider_border(data, start_x - 2, start_y + 2);
+	create_slider_border(data, x, start_y + 2);
 }

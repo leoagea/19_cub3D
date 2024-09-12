@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   letters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:26:16 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 15:15:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:50:33 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ static void	check_highlight_xpm(t_data *data)
 
 void	init_letters(t_data *data)
 {
-	int	x;
-	int	y;
 	int	i;
 
 	i = -1;

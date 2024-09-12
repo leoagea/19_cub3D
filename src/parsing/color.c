@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:06:35 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:50:16 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ t_color	*isolate_color_param(t_data *data, char *color)
 
 void	get_color(t_data *data)
 {
-	int		x;
-	int		y;
 	t_color	*color;
 
 	if (check_is_rgb_color(data->file.color_floor))

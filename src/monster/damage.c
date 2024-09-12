@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:42:58 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 19:03:08 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:48:59 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	take_damage(t_data *data, t_player *player)
 	}
 }
 
-void	enemy_die(t_data *data, t_player *player, t_enemy *enemy, int i)
+void	enemy_die(t_data *data, t_enemy *enemy, int i)
 {
 	struct timeval	current_time;
 	long			delta_time;

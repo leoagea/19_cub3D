@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:14:12 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/12 12:27:23 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:49:58 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	load_floor(t_data *data)
 void	draw_floor(t_data *data, t_player *player, t_floor *floor)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	simple_color(data, HEIGHT / 2, &i, data->file.c_ceiling->color);
@@ -73,7 +72,6 @@ void	loop_verticaly(t_data *data, t_player *player, t_floor *floor, int i)
 
 void	loop_horizontaly(t_data *data, t_floor *floor, int i, int j)
 {
-	int	pixel;
 	int	pixel_index;
 
 	floor->cell_x = (int)floor->floor_x;

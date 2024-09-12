@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 11:59:02 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:47:57 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	display_others(t_data *data, t_player *player)
 void	raycasting(t_player *player, t_data *data)
 {
 	int			i;
-	uint32_t	color;
 
 	i = 0;
 	player->column = 0;

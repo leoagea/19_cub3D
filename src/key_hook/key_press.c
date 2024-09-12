@@ -6,13 +6,13 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:14:09 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:45:11 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:47:45 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	check_keysym(t_data *data, int keysym)
+static int	check_keysym(int keysym)
 {
 	if (keysym == KEY_Q || keysym == KEY_W || keysym == KEY_E || keysym == KEY_R
 		|| keysym == KEY_T || keysym == KEY_Y || keysym == KEY_U
@@ -40,7 +40,7 @@ static int	key_press_check_end(int keysym, t_data *data)
 		&& !data->menu.change && ((data->menu.dead && !data->menu.victory)
 			|| (!data->menu.dead && data->menu.victory)))
 		ft_error(NULL, data);
-	if (check_keysym(data, keysym) && !data->menu.controls && !data->menu.change
+	if (check_keysym(keysym) && !data->menu.controls && !data->menu.change
 		&& (!data->menu.dead && data->menu.victory) && data->menu.playing)
 	{
 		data->menu.playing = 0;
@@ -101,7 +101,7 @@ static int	key_press_suite(int keysym, t_data *data)
 int	key_press(int keysym, t_data *data)
 {
 	if ((data->menu.menu || data->menu.pause) && data->menu.controls
-		&& data->menu.change && check_keysym(data, keysym) && !data->menu.dead
+		&& data->menu.change && check_keysym(keysym) && !data->menu.dead
 		&& !data->menu.victory)
 		change_controls(data, keysym);
 	else if ((data->menu.menu || data->menu.pause) && data->menu.controls

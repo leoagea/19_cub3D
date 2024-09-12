@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monster.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:41:56 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 17:36:33 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:48:38 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	sort_sprites(t_data *data, t_player *player)
 	int		i;
 	int		j;
 	double	tmp;
-	int		is_sort;
 
 	i = data->nb_enemy;
 	while (i > 0)

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:03:35 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:49:31 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -664,7 +664,7 @@ double	enemy_distance(t_player *player, t_enemy *enemy);
 /*------------------------damage--------------------------*/
 
 void	take_damage(t_data *data, t_player *player);
-void	enemy_die(t_data *data, t_player *player, t_enemy *enemy, int i);
+void	enemy_die(t_data *data, t_enemy *enemy, int i);
 int	    verif_all_dead(t_data *data, t_enemy *enemy);
 
 /*-------------------------draw---------------------------*/

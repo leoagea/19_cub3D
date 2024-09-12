@@ -6,13 +6,13 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:16:52 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:59:57 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:48:24 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	draw_wall(t_data *data, t_player *player, int i, int j)
+static void	draw_wall(t_data *data, int i, int j)
 {
 	int				pixel_index;
 	unsigned char	*pixel;
@@ -52,7 +52,7 @@ void	wall_texture(t_data *data, t_player *player, int i)
 		side_view(data, player);
 	j = player->draw_start - 1;
 	while (++j < player->draw_end)
-		draw_wall(data, player, i, j);
+		draw_wall(data, i, j);
 }
 
 void	side_view(t_data *data, t_player *player)
