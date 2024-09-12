@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 19:16:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:06:19 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:40:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ static char	**replace_char(char **cpy)
 
 static void	backtrack(t_data *data, char **map, int i, int j)
 {
-	if (map[i][j])
+	if (map[i] && map[i][j])
 	{
-		if (map[i][j] == '1' || map[i][j] == 'V' || map[i][j] == 'X')
+		if (map[i][j] == '1' || map[i][j] == 'V')
 			return ;
 		else if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
-			|| map[i][j] == 'W' || map[i][j] == 'E')
+			|| map[i][j] == 'W' || map[i][j] == 'E' || map[i][j] == 'D'
+			|| map[i][j] == 'X')
 			map[i][j] = 'V';
 		else if (map[i][j] == -1)
 			ft_error(ERR_MAP, data);

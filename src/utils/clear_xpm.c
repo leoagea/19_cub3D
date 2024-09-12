@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 13:02:55 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 10:35:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	clear_xpm_texture(t_data *data)
 
 	i = -1;
 	while (++i < 4)
-		if (!data->texture[i].img_ptr)
+		if (data->texture[i].img_ptr)
 			mlx_destroy_image(data->mlx_connection, data->texture[i].img_ptr);
 }
 
@@ -92,12 +92,15 @@ void	clear_xpm_enemy(t_data *data)
 	int	j;
 
 	j = -1;
-	while (++j < data->nb_enemy)
+	if (data->enemy)
 	{
-		i = -1;
-		while (++i < 6)
-			if (!data->enemy[j].img_frames[i].img_ptr)
-				mlx_destroy_image(data->mlx_connection,
-					data->enemy[j].img_frames[i].img_ptr);
+		while (++j < data->nb_enemy)
+		{
+			i = -1;
+			while (++i < 6)
+				if (data->enemy[j].img_frames[i].img_ptr)
+					mlx_destroy_image(data->mlx_connection,
+						data->enemy[j].img_frames[i].img_ptr);
+		}
 	}
 }

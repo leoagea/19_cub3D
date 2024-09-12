@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:06:35 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:36:46 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	get_color_char(char *color, int i)
 {
-	while (ft_isdigit((int)color[i]) && color[i])
+	while (color[i] && ft_isdigit((int)color[i]))
 		i++;
 	return (i);
 }
 
 static int	skip_until_digit(char *color, int i)
 {
-	while (!ft_isdigit((int)color[i]) && color[i])
+	while (color[i] && !ft_isdigit((int)color[i]))
 		i++;
 	return (i);
 }

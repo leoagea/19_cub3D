@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:26:16 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 15:15:29 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 09:57:40 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,8 @@ static void	check_highlight_xpm(t_data *data)
 		ft_error(ERR_XPM_MENU, data);
 }
 
-void	init_letters(t_data *data)
+void	load_letters(t_data *data)
 {
-	int	x;
-	int	y;
-	int	i;
-
-	i = -1;
-	while (++i < 128)
-		data->letters[i] = NULL;
-	i = -1;
-	while (++i < 128)
-		data->highlight[i] = NULL;
 	load_letters_xpm(data);
 	load_highlight_xpm(data);
 	check_letters_xpm(data);

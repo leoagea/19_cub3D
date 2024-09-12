@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 19:09:00 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 14:08:44 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:41:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ static void	get_max_len_map(t_data *data, int j)
 
 static void	get_enemy_pos(t_data *data)
 {
-	int	i;
-	int	j;
-	int	k;
+	int			i;
+	int			j;
+	const int	k = data->nb_enemy;
 
-	k = data->nb_enemy;
 	if (k == 0)
 		return ;
 	i = -1;
 	data->enemy = malloc(sizeof(t_enemy) * data->nb_enemy);
 	if (!data->enemy)
 		ft_error(ERR_ALLOC, data);
+	init_ennemy_textures(data);
 	while (data->file.map[++i])
 	{
 		j = 0;

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   init_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/16 14:49:18 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 10:31:36 by lagea            ###   ########.fr       */
+/*   Created: 2024/09/12 09:59:59 by lagea             #+#    #+#             */
+/*   Updated: 2024/09/12 12:42:43 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	check_file_extension(char *file, t_data *data)
+void	init_textures(t_data *data)
 {
-	char	*ext;
+	int	i;
 
-	ext = ft_strrchr(file, '.');
-	if (ft_strncmp(ext, ".cub", INT_MAX) != 0)
-		ft_error(ERR_EXT, data);
+	i = -1;
+	while (++i < 6)
+		data->texture[i].img_ptr = NULL;
 }
 
-void	check_text_extension(char *file, t_data *data)
+void	init_ennemy_textures(t_data *data)
 {
-	char	*ext;
+	int	i;
+	int	j;
 
-	ext = ft_strrchr(file, '.');
-	if (ft_strncmp(ext, ".xpm", INT_MAX) != 0)
-		ft_error(ERR_XPM_EXT, data);
+	j = -1;
+	while (++j < data->nb_enemy)
+	{
+		i = -1;
+		while (++i < 6)
+			data->enemy[j].img_frames[i].img_ptr = NULL;
+	}
 }

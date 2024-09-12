@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:42:36 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/06 17:35:34 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 12:38:42 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ static void	check_coma(t_data *data, char *color)
 			else
 				ft_error(ERR_TOK_COL, data);
 		}
+		else if (*color != ',' && *color != '\0')
+			ft_error(ERR_TOK_COL, data);
 	}
 }
 

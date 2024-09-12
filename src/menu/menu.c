@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/09 18:16:35 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 09:54:59 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	create_menu(t_data *data)
 	int	x;
 	int	y;
 
-	init_letters(data);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		data->xpm.menu, 0, 0);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
