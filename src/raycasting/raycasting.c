@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:59:16 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 11:59:02 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	raycasting(t_player *player, t_data *data)
 	display_others(data, player);
 }
 
-void	ray_direction(int i, t_player *player) // Calculation of Ray vector
+void	ray_direction(int i, t_player *player)
 {
 	int	w;
 

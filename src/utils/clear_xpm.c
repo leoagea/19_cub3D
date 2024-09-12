@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_xpm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/10 13:02:55 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 11:56:11 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,17 @@ void	clear_xpm_texture(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
-		if (!data->texture[i].img_ptr)
+	while (++i < 5)
+		if (data->texture[i].img_ptr)
 			mlx_destroy_image(data->mlx_connection, data->texture[i].img_ptr);
+	i = 0;
+	while (i < 4)
+	{
+		mlx_destroy_image(data->mlx_connection, data->player.weapon[i].img_ptr);
+		i++;
+	}
+	if (data->floor.floor_img.img_ptr)
+		mlx_destroy_image(data->mlx_connection, data->floor.floor_img.img_ptr);
 }
 
 void	clear_xpm_enemy(t_data *data)
@@ -96,8 +104,12 @@ void	clear_xpm_enemy(t_data *data)
 	{
 		i = -1;
 		while (++i < 6)
-			if (!data->enemy[j].img_frames[i].img_ptr)
+			if (data->enemy[j].img_frames[i].img_ptr)
 				mlx_destroy_image(data->mlx_connection,
 					data->enemy[j].img_frames[i].img_ptr);
 	}
+	if (data->player.sprite_order)
+		free(data->player.sprite_order);
+	if (data->player.sprite_dist)
+		free(data->player.sprite_dist);
 }

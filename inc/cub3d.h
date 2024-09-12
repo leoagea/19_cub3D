@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 19:37:14 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:03:35 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -626,6 +626,7 @@ void	init_dda(t_player *player);
 void	dda_algorithm(t_player *player, t_data *data);
 void	wall_height(t_player *player);
 void	interact_door(t_data *data, t_player *player, t_door *door);
+void	simple_color(t_data *data, int height, int *i, int color);
 
 /*---------------------------draw-------------------------*/
 

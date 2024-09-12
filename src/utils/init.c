@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:41:30 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 10:03:31 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	init_player_struct(t_data *data)
 	data->player.fov = 77;
 	data->player.sensibility = 0.0010;
 	data->player.damage = 5;
+	data->player.sprite_order = NULL;
+	data->player.sprite_dist = NULL;
 }
 
 t_color	*init_color_struct(t_data *data)

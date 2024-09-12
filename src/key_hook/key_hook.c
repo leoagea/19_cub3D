@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 19:03:30 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/11 18:54:46 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:39:43 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	cross_event(t_data *data)
 	free(data->mlx_connection);
 	free(data->img);
 	write(1, "Window has been closed\n", 24);
+	system("leaks cub3d");
 	exit(1);
 	return (0);
 }

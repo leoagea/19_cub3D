@@ -1,7 +1,7 @@
-F 21,21,21
+F ./assets/floor/floor.xpm
 EA ./assets/wall/texture_39.xpm
 WE 						./assets/wall/texture_39.xpm
-C 21,21,21
+C 10,10,10
 NO 				./assets/wall/texture_23.xpm
 			SO ./assets/wall/texture_29.xpm
 

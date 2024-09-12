@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:02:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:17:00 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/12 11:03:53 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	create_window(t_data *data)
 		ft_error(ERR_ALLOC, data);
 	data->mlx_connection = mlx_init();
 	if (!data->mlx_connection)
-		exit_malloc();
+		ft_error(ERR_ALLOC, data);
 	data->mlx_window = mlx_new_window(data->mlx_connection, WIDTH, HEIGHT,
 			"Cub3D");
 	if (!data->mlx_window)

@@ -6,7 +6,7 @@
 /*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 16:14:12 by vdarras           #+#    #+#             */
-/*   Updated: 2024/09/11 18:38:23 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/12 12:27:23 by vdarras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,33 @@
 void	load_floor(t_data *data)
 {
 	data->floor.floor_img.img_ptr = mlx_xpm_file_to_image(data->mlx_connection,
-			"assets/floor/floor.xpm", &data->floor.floor_img.width,
+			data->file.color_floor, &data->floor.floor_img.width,
 			&data->floor.floor_img.height);
+	if (!data->floor.floor_img.img_ptr)
+		return ;
 	data->floor.floor_img.img_pixels_ptr = mlx_get_data_addr(\
 	data->floor.floor_img.img_ptr,
 			&(data->floor.floor_img.bits_per_pixel),
 			&(data->floor.floor_img.size_line),
 			&(data->floor.floor_img.endian));
-	if (!data->floor.floor_img.img_ptr)
-		ft_error(ERR_XPM_FLOOR, data);
 }
 
 void	draw_floor(t_data *data, t_player *player, t_floor *floor)
 {
 	int	i;
+	int	j;
 
-	i = HEIGHT / 2;
-	while (i < HEIGHT)
+	i = 0;
+	simple_color(data, HEIGHT / 2, &i, data->file.c_ceiling->color);
+	if (!data->file.c_floor)
 	{
-		loop_verticaly(data, player, floor, i);
-		i++;
+		while (i < HEIGHT)
+		{
+			loop_verticaly(data, player, floor, i);
+			i++;
+		}
 	}
+	simple_color(data, HEIGHT, &i, data->file.c_floor->color);
 }
 
 void	loop_verticaly(t_data *data, t_player *player, t_floor *floor, int i)
@@ -83,4 +89,20 @@ void	loop_horizontaly(t_data *data, t_floor *floor, int i, int j)
 	floor->color = *(uint32_t *)(floor->floor_img.img_pixels_ptr + pixel_index);
 	floor->color = (floor->color >> 1) & 8355711;
 	draw_point(data, j, i, floor->color);
+}
+
+void	simple_color(t_data *data, int height, int *i, int color)
+{
+	int	j;
+
+	while (*i < height)
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			draw_point(data, j, *i, color);
+			j++;
+		}
+		*i = *i + 1;
+	}
 }
