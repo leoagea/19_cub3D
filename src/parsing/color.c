@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 20:01:08 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:54:14 by vdarras          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:52:28 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,6 @@ void	get_color(t_data *data)
 		color = isolate_color_param(data, data->file.color_floor);
 		data->file.c_floor = color;
 	}
-	if (check_is_rgb_color(data->file.color_ceiling))
-	{
-		color = isolate_color_param(data, data->file.color_ceiling);
-		data->file.c_ceiling = color;
-	}
+	color = isolate_color_param(data, data->file.color_ceiling);
+	data->file.c_ceiling = color;
 }
