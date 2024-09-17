@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 09:59:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 15:32:25 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/17 14:56:45 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	init_ennemy_textures(t_data *data)
 	}
 }
 
-void init_weapon_textures(t_data *data)
+void	init_weapon_textures(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 4)
 		data->player.weapon[i].img_ptr = NULL;
 }
 
-void init_menu_struct(t_data *data)
+void	init_menu_struct(t_data *data)
 {
 	data->menu.menu = 1;
 	data->menu.pause = 0;

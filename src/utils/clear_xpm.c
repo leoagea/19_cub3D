@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 18:11:28 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 15:33:35 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/17 14:57:27 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	clear_xpm_texture(t_data *data)
 	while (i < 4)
 	{
 		if (data->player.weapon[i].img_ptr)
-			mlx_destroy_image(data->mlx_connection, data->player.weapon[i].img_ptr);
+			mlx_destroy_image(data->mlx_connection, \
+				data->player.weapon[i].img_ptr);
 		i++;
 	}
 	if (data->floor.floor_img.img_ptr)
