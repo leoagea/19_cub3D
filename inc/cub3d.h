@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 15:32:43 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/25 15:29:57 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ typedef enum e_keys
 # define ERR_DUP "Duplicate key in description file"
 # define ERR_PLAY "Wrong number of players, expected only 1 player"
 # define ERR_MAP "Map not closed with walls"
-# define ERR_XPM "Wall: Xpm file to image failed"
+# define ERR_XPM "Xpm file to image failed"
 # define ERR_XPM_EXT "Wall: Xpm file, expected only .xpm extension"
 # define ERR_XPM_WEAPON "Weapon: Xpm file to image failed"
 # define ERR_XPM_MENU "Menu: Xpm file to image failed"

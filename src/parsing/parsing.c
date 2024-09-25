@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:20:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:36:38 by lagea            ###   ########.fr       */
+/*   Updated: 2024/09/19 17:21:24 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	parsing(int ac, char **av, t_data *data)
 		printf("Error :\n%s\n", ERR_ARG);
 		exit(1);
 	}
-	check_file_extension(av[1], data);
 	init_struct_file(data);
 	init_player_struct(data);
+	check_file_extension(av[1], data);
 	open_file(data, av[1]);
 	i = get_data(data);
 	get_color(data);
