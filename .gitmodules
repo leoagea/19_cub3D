@@ -1,3 +1,6 @@
 [submodule "libft"]
 	path = libft
 	url = https://github.com/leoagea/19_new_libft.git
+[submodule "mlx-linux"]
+	path = mlx-linux
+	url = https://github.com/42Paris/minilibx-linux.git
