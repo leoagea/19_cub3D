@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/25 15:29:57 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/17 18:24:59 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <unistd.h>
 
 # ifdef __linux__
-#  include "../mlx_linux/mlx.h"
+#  include "../mlx-linux/mlx.h"
 #  include <X11/keysym.h>
 #  define KEY_A 113
 #  define KEY_D 100
@@ -48,7 +48,7 @@
 # endif
 
 # ifdef __APPLE__
-#  include "../mlx/mlx.h"
+#  include "../mlx-mac/mlx.h"
 
 typedef enum e_keys
 {

@@ -11,24 +11,25 @@ DEBUG = debug
 
 LIBFT = libft/lib/libft.a
 
-ifeq ($(shell uname), Linux)
-	MLX_DIR = ./mlx_linux
-	MLX_PATH = mlx_linux/libmlx.a
+ifeq ($(shell uname -s), Linux)
+	MLX_DIR = mlx-linux
+	MLX_PATH = mlx-linux/libmlx.a
 	MLX =  -L /usr/lib -lXext -lX11 -lm 
 	MLX_OBJ = -I/usr/include -Imlx_linux -O3
+	CFLAGS = -Wall -Werror -Wextra -g -g3 -finline-functions -ftree-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing \
+	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3 
 else
-	MLX_DIR = ./mlx
-	MLX_PATH = mlx/libmlx.a
-	MLX = -lmlx -Lmlx -framework OpenGl -framework AppKit
-	MLX_OBJ = -Imlx -c
+	MLX_DIR = mlx-mac
+	MLX_PATH = mlx-mac/libmlx.a
+	MLX = -Lmlx -framework OpenGl -framework AppKit
+	MLX_OBJ = -Imlx -c -o3
+	CFLAGS = -Wall -Werror -Wextra -g -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing \
+	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3 
 endif
 
 MLX_LIB = -L $(MLX_DIR) -lmlx 
 
 CC = cc
-
-CFLAGS = -Wall -Werror -Wextra -g -g3 -finline-functions -fvectorize -fslp-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing \
-	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3 
 
 RM = rm -rf
 
