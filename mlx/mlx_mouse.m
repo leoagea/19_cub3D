@@ -6,26 +6,31 @@
 #include	"mlx_int.h"
 #include	"mlx_new_window.h"
 
-int	mlx_mouse_hide()
+int	mlx_mouse_hide(mlx_ptr_t *ptr, mlx_win_list_t *win)
 {
+  (void) ptr;
+  (void) win;
   //  CGDisplayHideCursor(kCGDirectMainDisplay);
   [NSCursor hide];
   return (0);
 }
 
-int	mlx_mouse_show()
+int	mlx_mouse_show(mlx_ptr_t *ptr, mlx_win_list_t *win)
 {
   //  CGDisplayShowCursor(kCGDirectMainDisplay);
+  (void) ptr;
+  (void) win;
   [NSCursor unhide];
   return (0);
 }
 
-int	mlx_mouse_move(mlx_win_list_t *win, int x, int y)
+int	mlx_mouse_move(mlx_ptr_t *ptr, mlx_win_list_t *win, int x, int y)
 {
   CGPoint	point;
   NSRect	pos;
   id	thewin;
 
+  (void) ptr;
   thewin = [(id)(win->winid) win];
   pos = [thewin frame];
   //  printf("got win pos %f %f\n", pos.origin.x, pos.origin.y);
@@ -37,12 +42,13 @@ int	mlx_mouse_move(mlx_win_list_t *win, int x, int y)
 }
 
 
-int	mlx_mouse_get_pos(mlx_win_list_t *win, int *x, int *y)
+int	mlx_mouse_get_pos(mlx_ptr_t *ptr, mlx_win_list_t *win, int *x, int *y)
 {
   CGPoint	point;
   id		thewin;
   NSRect	pos;
 
+  (void) ptr;
   thewin = [(id)(win->winid) win];
   pos = [(id)(win->winid) frame];
   point = [thewin mouseLocationOutsideOfEventStream];
