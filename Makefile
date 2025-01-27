@@ -17,7 +17,7 @@ ifeq ($(shell uname -s), Linux)
 	MLX =  -L /usr/lib -lXext -lX11 -lm 
 	MLX_OBJ = -I/usr/include -Imlx_linux -O3
 	CFLAGS = -Wall -Werror -Wextra -g -g3 -finline-functions -ftree-vectorize -ffast-math -falign-functions -funroll-loops -fstrict-aliasing \
-	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3 
+	 -fomit-frame-pointer -flto -Ofast -O1 -O2 -Os -O3
 else
 	MLX_DIR = mlx-mac
 	MLX_PATH = mlx-mac/libmlx.a
@@ -58,9 +58,9 @@ OBJD = $(SRCS:$(SRCS_DIR)%.c=$(DEBUG_DIR)%.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ) Makefile
-	#@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR)
 	@export DYLD_LIBRARY_PATH=./mlx:$DYLD_LIBRARY_PATH
-	@make -C libft
+	@make -s -C libft
 	@printf "                                              							   \r"
 	@echo "\033[0;34m 														"
 	@echo "\033[0;34m	██████╗  ██╗   ██╗ ██████╗    ██████╗  ██████╗ 		"
