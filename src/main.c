@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:14:57 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:55:01 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:59:15 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(int ac, char **av)
 	create_menu(&data);
 	if (data.menu.menu == 0)
 	{
-		mlx_mouse_hide(data.mlx_window);
-		mlx_mouse_move(data.mlx_window, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_hide(data.mlx_connection ,data.mlx_window);
+		mlx_mouse_move(data.mlx_connection, data.mlx_window, WIDTH / 2, HEIGHT / 2);
 		raycasting(&data.player, &data);
 	}
 	mlx_hook(data.mlx_window, 17, 0, &cross_event, &data);

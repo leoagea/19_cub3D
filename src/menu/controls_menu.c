@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:16:15 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:40:01 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:44:48 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	highlight_selection(t_data *data)
 	int	x;
 	int	y;
 
-	mlx_mouse_get_pos(data->mlx_window, &x, &y);
+	mlx_mouse_get_pos(data->mlx_connection, data->mlx_window, &x, &y);
 	if ((x > 450 && x < 810) && (y > 575 && y < 680))
 		img_to_win(data, data->xpm._return_highlight, 475, 600);
 	else if ((x > 365 && x < 400) && (y > 120 && y < 155))
@@ -40,38 +40,38 @@ static void	highlight_selection(t_data *data)
 
 static void	display_sensi_slider(t_data *data)
 {
-	img_to_win(data, data->letters[KEY_S], 532, 400);
-	img_to_win(data, data->letters[KEY_E], 552, 400);
-	img_to_win(data, data->letters[KEY_N], 572, 400);
-	img_to_win(data, data->letters[KEY_S], 592, 400);
-	img_to_win(data, data->letters[KEY_I], 612, 400);
-	img_to_win(data, data->letters[KEY_B], 622, 400);
-	img_to_win(data, data->letters[KEY_I], 642, 400);
-	img_to_win(data, data->letters[KEY_L], 657, 400);
-	img_to_win(data, data->letters[KEY_I], 677, 400);
-	img_to_win(data, data->letters[KEY_T], 687, 400);
-	img_to_win(data, data->letters[KEY_Y], 707, 400);
+	img_to_win(data, data->letters[XK_s], 532, 400);
+	img_to_win(data, data->letters[XK_e], 552, 400);
+	img_to_win(data, data->letters[XK_n], 572, 400);
+	img_to_win(data, data->letters[XK_s], 592, 400);
+	img_to_win(data, data->letters[XK_i], 612, 400);
+	img_to_win(data, data->letters[XK_b], 622, 400);
+	img_to_win(data, data->letters[XK_i], 642, 400);
+	img_to_win(data, data->letters[XK_l], 657, 400);
+	img_to_win(data, data->letters[XK_i], 677, 400);
+	img_to_win(data, data->letters[XK_t], 687, 400);
+	img_to_win(data, data->letters[XK_y], 707, 400);
 	create_slider(data, data->slider[0].start_x, 450, 300);
 	draw_slider_sensi(data);
 }
 
 static void	display_dmg_slider(t_data *data)
 {
-	img_to_win(data, data->letters[KEY_D], 552, 300);
-	img_to_win(data, data->letters[KEY_M], 572, 300);
-	img_to_win(data, data->letters[KEY_G], 592, 300);
-	img_to_win(data, data->letters[KEY_T], 622, 300);
-	img_to_win(data, data->letters[KEY_A], 642, 300);
-	img_to_win(data, data->letters[KEY_K], 662, 300);
-	img_to_win(data, data->letters[KEY_E], 682, 300);
-	img_to_win(data, data->letters[KEY_N], 707, 300);
+	img_to_win(data, data->letters[XK_d], 552, 300);
+	img_to_win(data, data->letters[XK_m], 572, 300);
+	img_to_win(data, data->letters[XK_g], 592, 300);
+	img_to_win(data, data->letters[XK_t], 622, 300);
+	img_to_win(data, data->letters[XK_a], 642, 300);
+	img_to_win(data, data->letters[XK_k], 662, 300);
+	img_to_win(data, data->letters[XK_e], 682, 300);
+	img_to_win(data, data->letters[XK_n], 707, 300);
 	create_slider(data, data->slider[1].start_x, 350, 300);
 	draw_slider_dmg(data, data->slider[1]);
 }
 
 int	menu_controls(t_data *data)
 {
-	mlx_mouse_show(data->mlx_window);
+	mlx_mouse_show(data->mlx_connection, data->mlx_window);
 	img_to_win(data, data->xpm.menu, 0, 0);
 	img_to_win(data, data->xpm.cont_moves, 100, 75);
 	img_to_win(data, data->xpm.cont_for, 200, 125);

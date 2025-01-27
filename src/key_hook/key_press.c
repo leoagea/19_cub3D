@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:14:09 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:47:45 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:43:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 static int	check_keysym(int keysym)
 {
-	if (keysym == KEY_Q || keysym == KEY_W || keysym == KEY_E || keysym == KEY_R
-		|| keysym == KEY_T || keysym == KEY_Y || keysym == KEY_U
-		|| keysym == KEY_I || keysym == KEY_O || keysym == KEY_P
-		|| keysym == KEY_A || keysym == KEY_S || keysym == KEY_D
-		|| keysym == KEY_F || keysym == KEY_G || keysym == KEY_H
-		|| keysym == KEY_J || keysym == KEY_K || keysym == KEY_L
-		|| keysym == KEY_Z || keysym == KEY_X || keysym == KEY_C
-		|| keysym == KEY_V || keysym == KEY_B || keysym == KEY_N
-		|| keysym == KEY_M || keysym == KEY_1 || keysym == KEY_2
-		|| keysym == KEY_3 || keysym == KEY_4 || keysym == KEY_5
-		|| keysym == KEY_6 || keysym == KEY_7 || keysym == KEY_8
-		|| keysym == KEY_9 || keysym == KEY_0 || keysym == KEY_NUM_0
-		|| keysym == KEY_NUM_1 || keysym == KEY_NUM_2 || keysym == KEY_NUM_3
-		|| keysym == KEY_NUM_4 || keysym == KEY_NUM_5 || keysym == KEY_NUM_6
-		|| keysym == KEY_NUM_7 || keysym == KEY_NUM_8 || keysym == KEY_NUM_9
-		|| keysym == KEY_MINUS || keysym == KEY_EQUAL)
+	if (keysym == XK_q || keysym == XK_w || keysym == XK_e || keysym == XK_r
+		|| keysym == XK_t || keysym == XK_y || keysym == XK_u
+		|| keysym == XK_i || keysym == XK_o || keysym == XK_p
+		|| keysym == XK_a || keysym == XK_s || keysym == XK_d
+		|| keysym == XK_f || keysym == XK_g || keysym == XK_h
+		|| keysym == XK_j || keysym == XK_k || keysym == XK_l
+		|| keysym == XK_z || keysym == XK_x || keysym == XK_c
+		|| keysym == XK_v || keysym == XK_b || keysym == XK_n
+		|| keysym == XK_m || keysym == XK_1 || keysym == XK_2
+		|| keysym == XK_3 || keysym == XK_4 || keysym == XK_5
+		|| keysym == XK_6 || keysym == XK_7 || keysym == XK_8
+		|| keysym == XK_9 || keysym == XK_0 || keysym == XK_0
+		|| keysym == XK_1 || keysym == XK_2 || keysym == XK_3
+		|| keysym == XK_4 || keysym == XK_5 || keysym == XK_6
+		|| keysym == XK_7 || keysym == XK_8 || keysym == XK_9
+		|| keysym == XK_minus || keysym == XK_equal)
 		return (1);
 	return (0);
 }
 
 static int	key_press_check_end(int keysym, t_data *data)
 {
-	if (keysym == KEY_ESCAPE && !data->menu.menu && !data->menu.controls
+	if (keysym == XK_Escape && !data->menu.menu && !data->menu.controls
 		&& !data->menu.change && ((data->menu.dead && !data->menu.victory)
 			|| (!data->menu.dead && data->menu.victory)))
 		ft_error(NULL, data);
@@ -84,12 +84,12 @@ static int	key_press_suite(int keysym, t_data *data)
 	if (keysym == data->key.m_right && !data->menu.controls && !data->menu.pause
 		&& !data->menu.menu && !data->menu.dead && !data->menu.victory)
 		data->player.key_move_right = 1;
-	if (keysym == KEY_ESCAPE && !data->menu.menu && !data->menu.pause
+	if (keysym == XK_Escape && !data->menu.menu && !data->menu.pause
 		&& !data->menu.controls && !data->menu.change && !data->menu.dead
 		&& !data->menu.victory)
 	{
 		data->menu.pause = 1;
-		mlx_mouse_show(data->mlx_window);
+		mlx_mouse_show(data->mlx_connection ,data->mlx_window);
 		menu_pause(data);
 	}
 	if (keysym == data->key.interact)

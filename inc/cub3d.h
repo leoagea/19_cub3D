@@ -6,7 +6,7 @@
 /*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 13:15:25 by lagea             #+#    #+#             */
-/*   Updated: 2025/01/17 18:24:59 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/27 13:56:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,6 @@
 # ifdef __linux__
 #  include "../mlx-linux/mlx.h"
 #  include <X11/keysym.h>
-#  define KEY_A 113
-#  define KEY_D 100
-#  define KEY_E 101
-#  define KEY_G 103
-#  define KEY_M 109
-#  define KEY_Q 97
-#  define KEY_R 114
-#  define KEY_S 115
-#  define KEY_W 122
-#  define KEY_ESC 65307
-#  define KEY_PLUS 61
-#  define KEY_MINUS 45
-#  define KEY_UP 65362
-#  define KEY_RIGHT 65363
-#  define KEY_DOWN 65364
-#  define KEY_LEFT 65361
-#  define KEY_SHIFT 65505
-#  define KEY_SPACE 32
 # endif
 
 # ifdef __APPLE__
@@ -52,88 +34,83 @@
 
 typedef enum e_keys
 {
-	KEY_A = 0,
-	KEY_S,
-	KEY_D,
-	KEY_F,
-	KEY_H,
-	KEY_G,
-	KEY_X,
-	KEY_Z,
-	KEY_C,
-	KEY_V,
-	KEY_B = 11,
-	KEY_Q,
-	KEY_W,
-	KEY_E,
-	KEY_R,
-	KEY_Y,
-	KEY_T,
-	KEY_1,
-	KEY_2,
-	KEY_3,
-	KEY_4,
-	KEY_6,
-	KEY_5,
-	KEY_EQUAL,
-	KEY_9,
-	KEY_7,
-	KEY_MINUS,
-	KEY_8,
-	KEY_0,
-	KEY_RIGHT_BRACKET,
-	KEY_O,
-	KEY_U,
-	KEY_LEFT_BRACKET,
-	KEY_I,
-	KEY_P,
-	KEY_RETURN,
-	KEY_L,
-	KEY_J,
-	KEY_QUOTE,
-	KEY_K,
-	KEY_SEMICOLON,
-	KEY_BACKSLASH,
-	KEY_COMMA,
-	KEY_SLASH,
-	KEY_N,
-	KEY_M,
-	KEY_PERIOD,
-	KEY_TAB,
-	KEY_SPACE,
-	KEY_GRAVE,
-	KEY_DELETE,
-	KEY_ESCAPE = 53,
-	KEY_COMMAND = 55,
-	KEY_SHIFT = 56,
-	KEY_CAPSLOCK = 57,
-	KEY_OPTION = 58,
-	KEY_CONTROL = 59,
-	KEY_SHIFT_RIGHT = 60,
-	KEY_OPTION_RIGHT = 61,
-	KEY_CONTROL_RIGHT = 62,
-	KEY_FN = 63,
-	KEY_NUM_LOCK = 71,
-	KEY_ENTER = 76,
-	KEY_NUM_0 = 82,
-	KEY_NUM_1 = 83,
-	KEY_NUM_2 = 84,
-	KEY_NUM_3 = 85,
-	KEY_NUM_4 = 86,
-	KEY_NUM_5 = 87,
-	KEY_NUM_6 = 88,
-	KEY_NUM_7 = 89,
-	KEY_NUM_8 = 91,
-	KEY_NUM_9 = 92,
-	KEY_HOME = 115,
-	KEY_PAGE_UP = 116,
-	KEY_FORWARD_DELETE = 117,
-	KEY_END = 119,
-	KEY_PAGE_DOWN = 121,
-	KEY_LEFT_ARROW = 123,
-	KEY_RIGHT_ARROW,
-	KEY_DOWN_ARROW,
-	KEY_UP_ARROW
+	XK_a = 0,
+	XK_s,
+	XK_d,
+	XK_f,
+	XK_h,
+	XK_g,
+	XK_x,
+	XK_z,
+	XK_c,
+	XK_v,
+	XK_b = 11,
+	XK_q,
+	XK_w,
+	XK_e,
+	XK_r,
+	XK_y,
+	XK_t,
+	XK_1,
+	XK_2,
+	XK_3,
+	XK_4,
+	XK_6,
+	XK_5,
+	XK_equal,
+	XK_9,
+	XK_7,
+	XK_minus,
+	XK_8,
+	XK_0,
+	XK_bracketright,
+	XK_o,
+	XK_u,
+	XK_bracketleft,
+	XK_i,
+	XK_p,
+	XK_Return,
+	XK_l,
+	XK_j,
+	XK_QUOTE,
+	XK_k,
+	XK_semicolon,
+	XK_backslash,
+	XK_comma,
+	XK_slash,
+	XK_n,
+	XK_m,
+	XK_period,
+	XK_Tab,
+	XK_space,
+	XK_Grave,
+	XK_Delete,
+	XK_Escape = 53,
+	XK_Shift_L = 56,
+	XK_Caps_Lock = 57,
+	XK_Control_L = 59,
+	XK_Shift_R = 60,
+	XK_Control_R = 62,
+	XK_Num_Lock = 71,
+	XK_Return = 76,
+	XK_KP_0 = 82,
+	XK_KP_1 = 83,
+	XK_KP_2 = 84,
+	XK_KP_3 = 85,
+	XK_KP_4 = 86,
+	XK_KP_5 = 87,
+	XK_KP_6 = 88,
+	XK_KP_7 = 89,
+	XK_KP_8 = 91,
+	XK_KP_9 = 92,
+	XK_Home = 115,
+	XK_Page_Up = 116,
+	XK_End = 119,
+	XK_Page_Down = 121,
+	XK_Left = 123,
+	XK_Right,
+	XK_Down,
+	XK_Up
 }					t_keys;
 # endif
 
@@ -278,6 +255,7 @@ typedef struct s_img
 {
 	void			*img_ptr;
 	char			*img_pixels_ptr;
+	int				*img_pixels_int;
 	int				bits_per_pixel;
 	int				endian;
 	int				size_line;
@@ -510,8 +488,8 @@ typedef struct s_data
 	int				nb_enemy;
 	int				enemy_alive;
 	int				nb_door;
-	void			*letters[128];
-	void			*highlight[128];
+	void			*letters[65535];
+	void			*highlight[65535];
 }					t_data;
 
 /*========================Window==========================*/
@@ -660,6 +638,7 @@ void				render_weapon(t_data *data);
 void				check_if_enemy(t_data *data, t_player *player,
 						t_enemy *enemy);
 void				reset_shot(t_data *data, t_enemy *enemy);
+void	transparency_linux(t_data *data, t_img *img, int start_x, int start_y);
 
 /*========================Monster=========================*/
 /*------------------------damage--------------------------*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_enemy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:00:56 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:41:24 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 16:44:31 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ void	init_enemy(t_data *data, t_enemy *enemy)
 	j = 0;
 	while (j < data->nb_enemy)
 	{
-		i = -1;
+		i = 0;
 		init_enemy_struct(enemy, j);
 		gettimeofday(&enemy[i].last_update, NULL);
-		while (++i < 6)
+		while (i < 6){
 			init_enemy_frames(data, j, i, tab);
+			i++;
+		}
 		enemy[j].last_shoot_time = time(NULL);
 		j++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:26:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:47:57 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:45:06 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	display_others(t_data *data, t_player *player)
 	mlx_string_put(data->mlx_connection, data->mlx_window, 125, 640, 16777215,
 		enemy);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
-		data->letters[KEY_H], 25, 675);
+		data->letters[XK_h], 25, 675);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
-		data->letters[KEY_P], 50, 675);
+		data->letters[XK_p], 50, 675);
 	free(speed);
 	free(enemy);
 }

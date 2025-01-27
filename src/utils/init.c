@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:40:53 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 15:33:12 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/23 15:20:54 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void	init_letters(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < 128)
+	while (++i < 65535)
 		data->letters[i] = NULL;
 	i = -1;
-	while (++i < 128)
+	while (++i < 65535)
 		data->highlight[i] = NULL;
 }
 

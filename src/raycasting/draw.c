@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:25:09 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 11:09:06 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:42:54 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	draw(t_data *data, t_player *player)
 {
 	int	i;
-	int	total;
 
 	i = 0;
-	total = HEIGHT * WIDTH;
 	while (i < HEIGHT)
 	{
 		draw_point(data, player->column, i, data->file.c_floor->color);

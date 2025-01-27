@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 16:18:50 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 09:54:59 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:44:40 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	menu_pause(t_data *data)
 	int	x;
 	int	y;
 
-	mlx_mouse_show(data->mlx_window);
+	mlx_mouse_show(data->mlx_connection, data->mlx_window);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		data->xpm.menu, 0, 0);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
@@ -26,7 +26,7 @@ int	menu_pause(t_data *data)
 		data->xpm.controls, 465, 312);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		data->xpm.exit, 550, 500);
-	mlx_mouse_get_pos(data->mlx_window, &x, &y);
+	mlx_mouse_get_pos(data->mlx_connection, data->mlx_window, &x, &y);
 	if ((x > 375 && x < 900) && (y > 140 && y < 230))
 		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 			data->xpm._continue_highlight, 445, 150);
@@ -52,7 +52,7 @@ int	create_menu(t_data *data)
 		data->xpm.controls, 465, 312);
 	mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 		data->xpm.exit, 555, 500);
-	mlx_mouse_get_pos(data->mlx_window, &x, &y);
+	mlx_mouse_get_pos(data->mlx_connection, data->mlx_window, &x, &y);
 	if ((x > 375 && x < 900) && (y > 140 && y < 230))
 		mlx_put_image_to_window(data->mlx_connection, data->mlx_window,
 			data->xpm.start_highlight, 395, 150);

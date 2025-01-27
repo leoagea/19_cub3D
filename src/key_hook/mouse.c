@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:44:43 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:05:02 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:01:56 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	mouse_rotation(t_data *data)
 	int	x;
 	int	y;
 
-	mlx_mouse_get_pos(data->mlx_window, &x, &y);
+	mlx_mouse_get_pos(data->mlx_connection, data->mlx_window, &x, &y);
 	if (x - WIDTH / 2 != 0)
 	{
 		rotate_mouse(data, ((double)x - (double)WIDTH / 2) * \
 			data->player.sensibility);
-		mlx_mouse_move(data->mlx_window, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_move(data->mlx_connection, data->mlx_window, WIDTH / 2, HEIGHT / 2);
 	}
 	if (y - HEIGHT / 2 != 0)
-		mlx_mouse_move(data->mlx_window, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_move(data->mlx_connection ,data->mlx_window, WIDTH / 2, HEIGHT / 2);
 }

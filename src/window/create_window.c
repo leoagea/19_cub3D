@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:02:17 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 11:03:53 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/22 19:11:00 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	error_window(t_data *data)
 {
 	free(data->mlx_connection);
 	free(data->img);
-	free(data);
-	write(2, "Error while creating new window\n", 33);
+	(void)!write(2, "Error while creating new window\n", 33);
 	mlx_destroy_image(data->mlx_connection, data->img->img_ptr);
 	mlx_destroy_window(data->mlx_connection, data->mlx_window);
 	exit(1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lagea <lagea@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:39:55 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 14:24:12 by lagea            ###   ########.fr       */
+/*   Updated: 2025/01/22 18:43:09 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	exit_error(void)
 
 void	exit_malloc(void)
 {
-	write(2, "Error memory allocation\n", 24);
+	(void)!write(2, "Error memory allocation\n", 24);
 	exit(1);
 }

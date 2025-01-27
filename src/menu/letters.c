@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   letters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:26:16 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/12 12:54:10 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:42:14 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,23 @@ static void	check_letters_xpm(t_data *data)
 	void	**arr;
 
 	arr = data->letters;
-	if (!arr[KEY_Q] || !arr[KEY_W] || !arr[KEY_E] || !arr[KEY_R] || !arr[KEY_T]
-		|| !arr[KEY_Y] || !arr[KEY_U] || !arr[KEY_I] || !arr[KEY_O]
-		|| !arr[KEY_P] || !arr[KEY_A] || !arr[KEY_S] || !arr[KEY_D]
-		|| !arr[KEY_F] || !arr[KEY_G] || !arr[KEY_H] || !arr[KEY_J]
-		|| !arr[KEY_K] || !arr[KEY_L] || !arr[KEY_Z] || !arr[KEY_X]
-		|| !arr[KEY_C] || !arr[KEY_V] || !arr[KEY_B] || !arr[KEY_N]
-		|| !arr[KEY_M] || !arr[KEY_1] || !arr[KEY_2] || !arr[KEY_3]
-		|| !arr[KEY_4] || !arr[KEY_5] || !arr[KEY_6] || !arr[KEY_7]
-		|| !arr[KEY_8] || !arr[KEY_9] || !arr[KEY_0] || !arr[KEY_NUM_1]
-		|| !arr[KEY_NUM_2] || !arr[KEY_NUM_3] || !arr[KEY_NUM_4]
-		|| !arr[KEY_NUM_5] || !arr[KEY_NUM_6] || !arr[KEY_NUM_7]
-		|| !arr[KEY_NUM_8] || !arr[KEY_NUM_9] || !arr[KEY_NUM_0]
-		|| !arr[KEY_MINUS] || !arr[KEY_EQUAL] || !arr[KEY_UP_ARROW]
-		|| !arr[KEY_DOWN_ARROW] || !arr[KEY_LEFT_ARROW]
-		|| !arr[KEY_RIGHT_ARROW])
-		ft_error(ERR_XPM_MENU, data);
+	if (!arr[XK_q] || !arr[XK_w] || !arr[XK_e] || !arr[XK_r] || !arr[XK_t]
+		|| !arr[XK_y] || !arr[XK_u] || !arr[XK_i] || !arr[XK_o]
+		|| !arr[XK_p] || !arr[XK_a] || !arr[XK_s] || !arr[XK_d]
+		|| !arr[XK_f] || !arr[XK_g] || !arr[XK_h] || !arr[XK_j]
+		|| !arr[XK_k] || !arr[XK_l] || !arr[XK_z] || !arr[XK_x]
+		|| !arr[XK_c] || !arr[XK_v] || !arr[XK_b] || !arr[XK_n]
+		|| !arr[XK_m] || !arr[XK_1] || !arr[XK_2] || !arr[XK_3]
+		|| !arr[XK_4] || !arr[XK_5] || !arr[XK_6] || !arr[XK_7]
+		|| !arr[XK_8] || !arr[XK_9] || !arr[XK_0] || !arr[XK_KP_1]
+		|| !arr[XK_KP_2] || !arr[XK_KP_3] || !arr[XK_KP_4] || !arr[XK_KP_5]
+		|| !arr[XK_KP_6] || !arr[XK_KP_7] || !arr[XK_KP_8] || !arr[XK_KP_9] 
+		|| !arr[XK_KP_0] || !arr[XK_minus] || !arr[XK_equal] 
+		|| !arr[XK_Up]|| !arr[XK_Down] || !arr[XK_Left]
+		|| !arr[XK_Right]){
+			printf("Ici\n");
+			ft_error(ERR_XPM_MENU, data);
+		}
 }
 
 static void	check_highlight_xpm(t_data *data)
@@ -40,22 +41,30 @@ static void	check_highlight_xpm(t_data *data)
 	void	**arr;
 
 	arr = data->highlight;
-	if (!arr[KEY_Q] || !arr[KEY_W] || !arr[KEY_E] || !arr[KEY_R] || !arr[KEY_T]
-		|| !arr[KEY_Y] || !arr[KEY_U] || !arr[KEY_I] || !arr[KEY_O]
-		|| !arr[KEY_P] || !arr[KEY_A] || !arr[KEY_S] || !arr[KEY_D]
-		|| !arr[KEY_F] || !arr[KEY_G] || !arr[KEY_H] || !arr[KEY_J]
-		|| !arr[KEY_K] || !arr[KEY_L] || !arr[KEY_Z] || !arr[KEY_X]
-		|| !arr[KEY_C] || !arr[KEY_V] || !arr[KEY_B] || !arr[KEY_N]
-		|| !arr[KEY_M] || !arr[KEY_1] || !arr[KEY_2] || !arr[KEY_3]
-		|| !arr[KEY_4] || !arr[KEY_5] || !arr[KEY_6] || !arr[KEY_7]
-		|| !arr[KEY_8] || !arr[KEY_9] || !arr[KEY_0] || !arr[KEY_NUM_1]
-		|| !arr[KEY_NUM_2] || !arr[KEY_NUM_3] || !arr[KEY_NUM_4]
-		|| !arr[KEY_NUM_5] || !arr[KEY_NUM_6] || !arr[KEY_NUM_7]
-		|| !arr[KEY_NUM_8] || !arr[KEY_NUM_9] || !arr[KEY_NUM_0]
-		|| !arr[KEY_MINUS] || !arr[KEY_EQUAL] || !arr[KEY_UP_ARROW]
-		|| !arr[KEY_DOWN_ARROW] || !arr[KEY_LEFT_ARROW]
-		|| !arr[KEY_RIGHT_ARROW])
-		ft_error(ERR_XPM_MENU, data);
+	if (!arr[XK_q] || !arr[XK_w] || !arr[XK_e] || !arr[XK_r] || !arr[XK_t]
+		|| !arr[XK_y] || !arr[XK_u] || !arr[XK_i] || !arr[XK_o]
+		|| !arr[XK_p] || !arr[XK_a] || !arr[XK_s] || !arr[XK_d]
+		|| !arr[XK_f] || !arr[XK_g] || !arr[XK_h] || !arr[XK_j]
+		|| !arr[XK_k] || !arr[XK_l] || !arr[XK_z] || !arr[XK_x]
+		|| !arr[XK_c] || !arr[XK_v] || !arr[XK_b] || !arr[XK_n])
+			printf("Ici 2\n");
+	if (!arr[XK_q] || !arr[XK_w] || !arr[XK_e] || !arr[XK_r] || !arr[XK_t]
+		|| !arr[XK_y] || !arr[XK_u] || !arr[XK_i] || !arr[XK_o]
+		|| !arr[XK_p] || !arr[XK_a] || !arr[XK_s] || !arr[XK_d]
+		|| !arr[XK_f] || !arr[XK_g] || !arr[XK_h] || !arr[XK_j]
+		|| !arr[XK_k] || !arr[XK_l] || !arr[XK_z] || !arr[XK_x]
+		|| !arr[XK_c] || !arr[XK_v] || !arr[XK_b] || !arr[XK_n]
+		|| !arr[XK_m] || !arr[XK_1] || !arr[XK_2] || !arr[XK_3]
+		|| !arr[XK_4] || !arr[XK_5] || !arr[XK_6] || !arr[XK_7]
+		|| !arr[XK_8] || !arr[XK_9] || !arr[XK_0] || !arr[XK_KP_1]
+		|| !arr[XK_KP_2] || !arr[XK_KP_3] || !arr[XK_KP_4] || !arr[XK_KP_5]
+		|| !arr[XK_KP_6] || !arr[XK_KP_7] || !arr[XK_KP_8] || !arr[XK_KP_9] 
+		|| !arr[XK_KP_0] || !arr[XK_minus] || !arr[XK_equal] 
+		|| !arr[XK_Up]|| !arr[XK_Down] || !arr[XK_Left]
+		|| !arr[XK_Right]){
+			printf("Ici 1\n");
+			ft_error(ERR_XPM_MENU, data);
+		}
 }
 
 void	load_letters(t_data *data)

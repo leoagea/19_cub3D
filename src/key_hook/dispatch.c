@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dispatch.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:18:59 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:39:48 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:42:42 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	win_screen(t_data *data)
 
 static void	dispatch_movement(t_data *data)
 {
-	mlx_mouse_hide(data->mlx_window);
+	mlx_mouse_hide(data->mlx_connection, data->mlx_window);
 	if (data->player.key_left)
 		rotate_left(data);
 	if (data->player.key_right)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vdarras <vdarras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lagea <lagea@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 17:01:01 by lagea             #+#    #+#             */
-/*   Updated: 2024/09/11 18:41:20 by vdarras          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:21:25 by lagea            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	init_minimap_struct(t_data *data)
 
 void	init_key_struct(t_data *data)
 {
-	data->key.m_forward = KEY_W;
-	data->key.m_backward = KEY_S;
-	data->key.m_right = KEY_D;
-	data->key.m_left = KEY_A;
-	data->key.r_right = KEY_RIGHT_ARROW;
-	data->key.r_left = KEY_LEFT_ARROW;
-	data->key.speed_up = KEY_EQUAL;
-	data->key.speed_down = KEY_MINUS;
-	data->key.interact = KEY_E;
+	data->key.m_forward = XK_w;
+	data->key.m_backward = XK_s;
+	data->key.m_right = XK_d;
+	data->key.m_left = XK_a;
+	data->key.r_right = XK_Right;
+	data->key.r_left = XK_Left;
+	data->key.speed_up = XK_equal;
+	data->key.speed_down = XK_minus;
+	data->key.interact = XK_e;
 }
 
 void	init_slider_struct(t_data *data)
